@@ -6,7 +6,7 @@
 /*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 14:18:43 by marianamest       #+#    #+#             */
-/*   Updated: 2024/11/06 14:24:33 by marianamest      ###   ########.fr       */
+/*   Updated: 2024/11/08 16:40:50 by marianamest      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,4 +15,32 @@
 void print_error(const char *message) 
 {
     printf("Error: %s\n", strerror(errno));
+}
+
+void	my_strcpy(char *dest, const char *src)
+{
+	int	i;
+
+	i = 0;
+	while (src[i])
+	{
+		dest[i] = src[i];
+		i++;
+	}
+	dest[i] = '\0';
+}
+
+void	my_strcat(char *dest, const char *src)
+{
+	int	i;
+	int	dest_len;
+
+	i = 0;
+	dest_len = ft_strlen(dest);
+	while (src[i])
+	{
+		dest[dest_len + i] = src[i];
+		i++;
+	}
+	dest[dest_len + i] = '\0';
 }

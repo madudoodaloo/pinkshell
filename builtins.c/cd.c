@@ -6,7 +6,7 @@
 /*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/03 20:40:50 by marianamest       #+#    #+#             */
-/*   Updated: 2024/11/06 18:14:29 by marianamest      ###   ########.fr       */
+/*   Updated: 2024/11/08 16:50:33 by marianamest      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,4 +57,11 @@ void	change_directory(char **env, const char *path) // changes the current direc
 		path = find_env_value(env, "HOME");
 	if (chdir(path) == 0 && get_current_directory(new_pwd, sizeof(new_pwd)))
 		update_pwd_vars(env, old_pwd, new_pwd);
+}
+
+void	cd_command(char **env, char **args) // if given none or 1 arg (ex.: cd or cd Documents are acceptable), otherwise uses change directory if the target defaults to NULL
+{
+	if (args[1] && args[2])
+		return ;
+	change_directory(env, args[1] ? args[1] : NULL);
 }
