@@ -6,7 +6,7 @@
 /*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 13:57:32 by marianamest       #+#    #+#             */
-/*   Updated: 2024/11/08 17:37:56 by marianamest      ###   ########.fr       */
+/*   Updated: 2024/11/09 17:39:12 by marianamest      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,9 @@ int		find_env_key_index(char **env, const char *key);
 char	**update_env_var(char *arg, char **env, int idx);
 char	**expand_env(char **env, char *new_entry);
 void	set_or_add_env_value(char ***env, const char *key, const char *value);
+
+/* pwd */
+void    my_pwd(int fd);
 
 /* helper functions */
 void	my_strcpy(char *dest, const char *src);
