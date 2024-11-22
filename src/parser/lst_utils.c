@@ -37,13 +37,13 @@ t_token	*newtoken(char *str, char *content, int start, int wdlen)
 	new->content = content;
     new->type = -1;
 	new->before = '\0';
-	printf("start: %d | wdlen is %d\n", start, wdlen);
+	//printf("start: %d | wdlen is %d\n", start, wdlen);
 	if (start)
 		new->before = str[start - 1];
 	new->after = '\0';
-	printf("strlen is %zu\n", ft_strlen(str));
+	//printf("strlen is %zu\n", ft_strlen(str));
 	if (wdlen < ft_strlen(str))
-		new->after = str[wdlen + 1];
+		new->after = str[wdlen];
 	new->next = NULL;
 	return (new);
 }
@@ -71,8 +71,8 @@ t_token	*ft_tknlast(t_token *lst)
 		//printf("%s is content\n", lst->content);
 		lst = lst->next;
 	}
-	ft_printf("lst->content is %s\n", lst->content);
-	ft_printf("lst->next is %p\n", lst->next);
+	//ft_printf("lst->content is %s\n", lst->content);
+	//ft_printf("lst->next is %p\n", lst->next);
 	//ft_printf("%s --- address is %p current->next is %p\n", lst->content, &lst, lst->next);
 	return (lst);
 }

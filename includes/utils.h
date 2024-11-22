@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 06:01:56 by msilva-c          #+#    #+#             */
-/*   Updated: 2024/11/22 06:05:44 by msilva-c         ###   ########.fr       */
+/*   Updated: 2024/11/22 12:09:54 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,13 @@
 # define UTILS_H
 
 # include "../includes/minishell.h"
+
+/* free.c */
+void   free_and_exit(t_msh *msh);
+void	ft_free_matrix(char **matrix);
+
+/* testers */
+void	print_struct(t_token **lst_head);
 
 /* error handling */
 void	print_error(const char *message);

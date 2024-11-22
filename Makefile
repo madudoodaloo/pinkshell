@@ -1,11 +1,11 @@
 NAME = minishell
 CC = cc
 
-SRC =			src/main/main.c src/parser/env_utils.c src/parser/free.c src/parser/init.c \
+SRC =			src/main/main.c src/parser/env_utils.c src/parser/init.c \
                 src/parser/parser.c src/parser/lst_utils.c src/parser/quote_handlers.c \
                 src/builtins/cd.c src/builtins/echo.c src/builtins/env1.c src/builtins/env2.c \
                 src/builtins/exit.c src/builtins/pwd.c \
-                src/utils/helpers.c
+                src/utils/utils_builtins.c src/utils/free.c
 
 LIBFT_PATH=		./ft_libft/
 LIBFT=			$(LIBFT_PATH)libft.a

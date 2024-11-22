@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 05:59:04 by msilva-c          #+#    #+#             */
-/*   Updated: 2024/11/22 07:47:52 by msilva-c         ###   ########.fr       */
+/*   Updated: 2024/11/22 12:19:33 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,6 @@ char **copy_matrix(char **src);
 /* init.c */
 t_msh    *init_all(t_msh *msh);
 
-/* free.c */
-void   free_and_exit(t_msh *msh);
-void	ft_free_matrix(char **matrix);
-
 /* parser.c */
 int     findtype(char *s);
 t_token *tokenize(char *str, int start, int wdlen);
@@ -36,7 +32,6 @@ void	parser(char *cmdline, t_token **lst_head);
 /* quote_handler.c */
 int	quote_handler(char *cmdline, int i, t_token **lst_head);
 int count_quotes(char *line, int i);
-
 
 /* lst_utils.c */
 char	*substr_new(char const *s, unsigned int start, size_t len);
