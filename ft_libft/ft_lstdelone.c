@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstdelone.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mabrito- <mabrito-@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: skioridi <skioridi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/16 14:48:06 by mabrito-          #+#    #+#             */
-/*   Updated: 2023/10/16 14:57:25 by mabrito-         ###   ########.fr       */
+/*   Created: 2023/04/17 17:53:48 by skioridi          #+#    #+#             */
+/*   Updated: 2023/04/19 19:38:37 by skioridi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,7 @@
 
 void	ft_lstdelone(t_list *lst, void (*del)(void *))
 {
-	if (lst == NULL || del == NULL)
-		return ;
 	del(lst->content);
 	free(lst);
+	lst = NULL;
 }

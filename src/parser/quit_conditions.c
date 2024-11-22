@@ -6,9 +6,9 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 16:19:56 by codespace         #+#    #+#             */
-/*   Updated: 2024/09/18 19:12:36 by msilva-c         ###   ########.fr       */
+/*   Updated: 2024/11/22 04:52:32 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../header.h"
+#include "../includes/minishell.h"
 

@@ -3,39 +3,35 @@
 /*                                                        :::      ::::::::   */
 /*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mabrito- <mabrito-@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: skioridi <skioridi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/09 14:42:44 by mabrito-          #+#    #+#             */
-/*   Updated: 2023/10/21 14:56:19 by mabrito-         ###   ########.fr       */
+/*   Created: 2023/04/14 13:38:58 by skioridi          #+#    #+#             */
+/*   Updated: 2023/04/14 15:26:12 by skioridi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_substr(const char *string, unsigned int start, size_t len)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	char	*s2;
+	char	*new;
+	size_t	cp_len;
 	size_t	i;
 
-	i = 0;
-	if (len == 0 || start >= ft_strlen(string))
-	{
-		s2 = malloc(1);
-		if (!s2)
-			return (NULL);
-		s2[0] = '\0';
-		return (s2);
-	}
-	if (start + len > ft_strlen(string))
-		len = ft_strlen(string) - start;
-	s2 = malloc(sizeof(char) * (len + 1));
-	if (!s2)
+	if (!s)
 		return (NULL);
-	while (i < len && string[start])
-	{
-		s2[i++] = string[start];
-		start++;
-	}
-	s2[i] = '\0';
-	return (s2);
+	if (start >= ft_strlen(s))
+		cp_len = 0;
+	else if (start + len >= ft_strlen(s))
+		cp_len = ft_strlen(s) - start;
+	else
+		cp_len = len;
+	new = (char *)malloc(cp_len + 1);
+	if (!new)
+		return (NULL);
+	i = -1;
+	while ((++i < cp_len))
+		new[i] = (char)s[start + i];
+	new[i] = 0;
+	return (new);
 }

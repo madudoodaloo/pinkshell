@@ -3,121 +3,69 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mabrito- <mabrito-@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: skioridi <skioridi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/11 15:27:30 by mabrito-          #+#    #+#             */
-/*   Updated: 2023/11/12 14:44:23 by mabrito-         ###   ########.fr       */
+/*   Created: 2023/04/14 13:24:38 by astein            #+#    #+#             */
+/*   Updated: 2023/04/14 21:20:45 by skioridi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	wlen(const char *s, char c)
+static int	cnt_wrds(char const *s, char c)
 {
-	int	i;
+	int	cnt;
 
-	i = 0;
-	while (s[i] && s[i] != c)
-		i++;
-	return (i);
-}
-
-static int	count_words(const char *s, char c)
-{
-	int	count;
-	int	i;
-
-	i = 0;
-	count = 0;
-	while (s[i])
+	cnt = 0;
+	while (*s)
 	{
-		if (s[i] != c)
+		if (*s != c)
 		{
-			count++;
-			while (s[i] && s[i] != c)
-				i++;
+			cnt++;
+			while (*s && *s != c)
+				s++;
 		}
-		if (s[i])
-			i++;
+		else
+			s++;
 	}
-	return (count);
+	return (cnt);
 }
 
-static void	ft_freeloop(char **finalstr, int final_len)
+int	wdlen(const char *s, char c)
 {
-	int	i;
+	size_t	len;
 
-	i = 0;
-	while (i < final_len)
-	{
-		free(finalstr[i]);
-		i++;
-	}
-	free(finalstr);
-}
-
-char	*ft_malloc(char const **s, char c)
-{
-	char	*word;
-	int		word_length;
-	int		j;
-
-	j = 0;
-	word_length = wlen(*s, c);
-	word = (char *)malloc(sizeof(char) * (word_length + 1));
-	if (!word)
-		return (NULL);
-	while (j < word_length)
-	{
-		word[j] = (*s)[j];
-		j++;
-	}
-	word[word_length] = '\0';
-	*s += word_length;
-	return (word);
+	len = 0;
+	while (s[len] && s[len] != c)
+		len++;
+	return (len);
 }
 
 char	**ft_split(char const *s, char c)
 {
-	char	**finalstr;
+	char	**res;
+	int		w;
 	int		i;
+	int		len;
 
 	if (!s)
 		return (NULL);
-	finalstr = (char **)malloc(sizeof(char *) * (count_words(s, c) + 1));
-	if (!finalstr)
+	w = cnt_wrds(s, c);
+	res = malloc(sizeof(char *) * (w + 1));
+	if (!res)
 		return (NULL);
 	i = 0;
-	while (*s)
+	while (i < w)
 	{
-		while (*s && *s == c)
+		while (*s == c && *s != '\0')
 			s++;
-		if (*s == '\0')
-			break ;
-		finalstr[i] = ft_malloc(&s, c);
-		if (!finalstr[i])
-		{
-			ft_freeloop(finalstr, i);
+		len = wdlen(s, c);
+		res[i] = ft_substr(s, 0, len);
+		if (!res[i])
 			return (NULL);
-		}
+		s += len;
 		i++;
 	}
-	finalstr[i] = NULL;
-	return (finalstr);
-}
-
-int main ()
-{
-	char *a = "a marta é linda e modesta";
-	char b = ' ';
-	char **finalstr;
-	int i = 0;
-
-	finalstr = ft_split(a, b);
-	while(finalstr[i])
-	{
-		printf("%s\n", finalstr[i]);
-		i++;
-	}
-	return (0);
+	res[w] = NULL;
+	return (res);
 }

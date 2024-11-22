@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mabrito- <mabrito-@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: skioridi <skioridi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/06 16:46:32 by mabrito-          #+#    #+#             */
-/*   Updated: 2023/11/02 13:27:33 by mabrito-         ###   ########.fr       */
+/*   Created: 2023/04/13 18:48:59 by skioridi          #+#    #+#             */
+/*   Updated: 2023/04/14 18:42:25 by skioridi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,31 +16,23 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
 	size_t	i;
 	size_t	j;
+	char	*res;
 
-	i = 0;
 	j = 0;
-	if (little[j] == '\0')
-		return ((char *)big);
-	while (big[i] && (i < len))
+	i = 0;
+	res = (char *)big;
+	if (!little[j])
+		return (res);
+	while ((i < len) && res[i])
 	{
-		while (big[i + j] == little[j] && big[i + j] && (i + j) < len)
-			j++;
-		if (little[j] == '\0')
-			return ((char *) big + i);
-		i++;
 		j = 0;
+		while (res[i + j] == little[j] && (i + j < len))
+		{
+			j++;
+			if (little[j] == '\0')
+				return (&res[i]);
+		}
+		i++;
 	}
-	return (0);
-}
-
-
-int	main(void)
-{
-    const char *a = "hello world";
-    const char *b = "";
-    size_t len = 11;
-    char *result = ft_strnstr(a, b, len);
-    
-    printf("%zu", result - a);
-    return(0);
+	return (NULL);
 }

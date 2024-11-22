@@ -3,61 +3,32 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mabrito- <mabrito-@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: skioridi <skioridi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/11 13:54:34 by mabrito-          #+#    #+#             */
-/*   Updated: 2023/11/02 13:25:35 by mabrito-         ###   ########.fr       */
+/*   Created: 2023/04/14 15:10:30 by skioridi          #+#    #+#             */
+/*   Updated: 2023/04/14 15:17:31 by skioridi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-size_t	ft_strlen(const char *s)
+
+char	*ft_strjoin(char const *s1, char const *s2)
 {
+	char	*new;
+	size_t	newlen;
 	size_t	i;
+	size_t	j;
 
-	i = 0;
-	while (s[i] != '\0')
-		i++;
-	return (i);
-}
-
-char	*ft_strjoin(const char *s1, const char *s2)
-{
-	char	*str;
-	int		i;
-	int		j;
-
-	i = 0;
-	j = 0;
-	if (!s1 || !s2)
+	newlen = ft_strlen(s1) + ft_strlen(s2);
+	new = malloc(newlen + 1);
+	if (!new)
 		return (NULL);
-	str = (char *)malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
-	if (!str)
-		return (NULL);
-	while (s1[i] != '\0')
-	{
-		str[i] = s1[i];
-		i++;
-	}
-	while (s2[j] != '\0')
-	{
-		str[i] = s2[j];
-		i++;
-		j++;
-	}
-	str[i] = '\0';
-	return (str);
-}
-
-
-#include <stdio.h>
-#include <strings.h>
-
-int	main(void)
-{
-    const char *a = "a ";
-    const char *b = "mariana";
-
-    printf ("%s", ft_strjoin(a, b));
-    return(0);
+	i = -1;
+	j = -1;
+	while (++i < ft_strlen(s1))
+		new[i] = s1[i];
+	while (++j < ft_strlen(s2))
+		new[i + j] = s2[j];
+	new[i + j] = 0;
+	return (new);
 }

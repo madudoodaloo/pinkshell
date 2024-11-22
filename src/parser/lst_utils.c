@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../header.h"
+#include "../includes/minishell.h"
 
 int     findtype(char *s)
 {

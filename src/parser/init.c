@@ -6,11 +6,11 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 18:18:18 by msilva-c          #+#    #+#             */
-/*   Updated: 2024/11/22 03:15:40 by msilva-c         ###   ########.fr       */
+/*   Updated: 2024/11/22 04:52:32 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../header.h"
+#include "../includes/minishell.h"
 
 t_msh    *init_all(t_msh *msh)
 {

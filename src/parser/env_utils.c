@@ -6,11 +6,11 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 17:01:39 by msilva-c          #+#    #+#             */
-/*   Updated: 2024/09/18 19:12:36 by msilva-c         ###   ########.fr       */
+/*   Updated: 2024/11/22 04:52:32 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../header.h"
+#include "../includes/minishell.h"
 
 char **copy_matrix(char **src)
 {

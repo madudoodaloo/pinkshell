@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cd1.c                                              :+:      :+:    :+:   */
+/*   cd.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
+/*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/03 20:40:50 by marianamest       #+#    #+#             */
-/*   Updated: 2024/11/08 16:50:33 by marianamest      ###   ########.fr       */
+/*   Updated: 2024/11/22 05:52:34 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../minishell.h"
+#include "../includes/minishell.h"
 
 char	*find_env_value(char **env, const char *var) // searches through env to find the key we want and returns pointer to the value portion
 {
@@ -42,8 +42,8 @@ int	get_current_directory(char *buffer, int size) // retrieves the current direc
 
 void	update_pwd_vars(char **env, const char *old_pwd, const char *new_pwd) // updates the current (PWD) and previous (OLDPWD) values
 {
-	set_env_value(&env, "OLDPWD", old_pwd);
-	set_env_value(&env, "PWD", new_pwd);
+	//set_env_value(&env, "OLDPWD", old_pwd);
+	//set_env_value(&env, "PWD", new_pwd);
 }
 
 void	change_directory(char **env, const char *path) // changes the current directory to either *path or HOME (in case of failure as a fallback option)

@@ -3,20 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   pwd.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
+/*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 17:32:36 by marianamest       #+#    #+#             */
-/*   Updated: 2024/11/10 20:46:56 by marianamest      ###   ########.fr       */
+/*   Updated: 2024/11/22 04:52:32 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../minishell.h"
+#include "../includes/minishell.h"
 
 void	my_pwd(int fd) // takes in the specific file descriptor to output to, (ex.: 1 for stdin)
 {
 	char		cwd [PATH_MAX];
 	const char	*error_msg;
-    
+
 	error_msg = "pwd: ";
 	if (getcwd(cwd, sizeof(cwd)) != NULL) // Attempt to get the current working directory
 	{
@@ -30,4 +30,3 @@ void	my_pwd(int fd) // takes in the specific file descriptor to output to, (ex.:
 		write(fd, "\n", 1);
 	}
 }
- 

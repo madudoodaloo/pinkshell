@@ -1,43 +1,41 @@
-#.SILENT:
 NAME = minishell
 CC = cc
 
-#libs
-SRC_PATH =		./src/
-SRC_FILES =		parser/env_utils.c parser/free.c parser/init.c parser/lexer.c parser/lst_utils.c parser/main.c \
-				builtins/cd.c builtins/echo.c builtins/env1.c builtins/env2.c \
-				builtins/exit.c builtins/pwd.c \
-				includes\helpers.c
-SRC =			$(addprefix $(SRC_PATH), $(SRC_FILES))
+SRC =			src/main/main.c src/parser/env_utils.c src/parser/free.c src/parser/init.c \
+                src/parser/lexer.c src/parser/lst_utils.c \
+                src/builtins/cd.c src/builtins/echo.c src/builtins/env1.c src/builtins/env2.c \
+                src/builtins/exit.c src/builtins/pwd.c \
+                src/utils/helpers.c
 
-LIBFT_PATH =	./ft_libft/
-LIBFT =			$(LIBFT_PATH)libft.a
+LIBFT_PATH=		./ft_libft/
+LIBFT=			$(LIBFT_PATH)libft.a
 
-CFLAGS =		-g -fsanitize=address #-Wall -Wextra -Werror
+CFLAGS =		-g -fsanitize=address -I./includes #-Wall -Wextra -Werror
 OTHERFLAGS =	-L$(LIBFT_PATH) -lft -lreadline -lasan -O3
 
 OBJ_DIR =		./obj/
-OBJS =			$(SRC:$(SRC_PATH)%.c=$(OBJ_DIR)%.o)
+OBJS =			$(patsubst src/%.c, $(OBJ_DIR)%.o, $(SRC))
+
 
 #rules
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	@make -sC libft/
-	@$(CC) $(CFLAGS) $(OBJS) $(OTHERFLAGS) -o $(NAME)
+	@make -sC $(LIBFT_PATH)
+	@$(CC) $(CFLAGS) $(OBJS) $(LIBFT) $(OTHERFLAGS) -o $(NAME)
 
-$(OBJ_DIR)%.o: $(SRC_PATH)%.c
-	@mkdir -p $(OBJ_DIR)
+$(OBJ_DIR)%.o: src/%.c
+	@mkdir -p $(dir $@)
 	@$(CC) $(CFLAGS) $(INC_FLAGS) -c $< -o $@
 
 clean:
-	@rm -f $(OBJ_DIR)/*
-	@rm -fd obj/
-	@make clean -sC libft/
+	@rm -f $(OBJ_DIR)/*.o
+	@rm -rf $(OBJ_DIR)
+	@make clean -sC ft_libft/
 
 fclean: clean
 	@rm -f $(NAME)
-	@make fclean -sC libft/
+	@make fclean -sC ft_libft/
 
 re: fclean all
 
