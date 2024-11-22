@@ -3,12 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isspace.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: skioridi <skioridi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 22:08:19 by skioridi          #+#    #+#             */
-/*   Updated: 2023/12/06 22:23:16 by skioridi         ###   ########.fr       */
+/*   Updated: 2024/11/22 06:45:08 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+/* returns 1 if it's a space, 0 if it's not */
 
 int	ft_isspace(char c)
 {

@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 13:57:32 by marianamest       #+#    #+#             */
-/*   Updated: 2024/11/22 06:06:41 by msilva-c         ###   ########.fr       */
+/*   Updated: 2024/11/22 07:05:54 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,9 @@ typedef struct s_token
 {
 	char		*content;
 	int 		type;
+	char		before;
+	char		after;
 	struct s_token	*next;
-	struct s_token	*prev;
 }			t_token;
 
 typedef struct s_msh
@@ -31,6 +32,7 @@ typedef struct s_msh
 	int		exit;
 	int		ret;
 	t_token **lst_head;
+	t_token	**ex_tokens;
 	char **env;
 }			t_msh;
 

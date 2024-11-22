@@ -27,7 +27,7 @@ int     findtype(char *s)
     return (STR);
 }
 
-t_token	*newtoken(char *content)
+t_token	*newtoken(char *str, char *content, int start, int wdlen)
 {
 	t_token	*new;
 
@@ -35,11 +35,25 @@ t_token	*newtoken(char *content)
 	if (!new)
 		return (NULL);
 	new->content = content;
-    new->type = 0;
+    new->type = -1;
+	new->before = '\0';
+	//printf("start: %d | wdlen is %d\n", start, wdlen);
+	if (start)
+		new->before = str[start - 1];
+	new->after = '\0';
+	if (wdlen < ft_strlen(str))
+		new->after = str[wdlen + start];
 	new->next = NULL;
-	new->prev = NULL;
-	ft_printf("New token: %s$\n", new->content);
 	return (new);
+}
+
+t_token *tokenize(char *str, int start, int wdlen)
+{
+    t_token *a;
+
+    char *substring = substr_new(str, start, wdlen);
+    a = newtoken(str, substring, start, wdlen);
+    return (a);
 }
 
 t_token	*ft_tknlast(t_token *lst)
@@ -49,15 +63,16 @@ t_token	*ft_tknlast(t_token *lst)
 		ft_printf("!lst\n");
 		return (NULL);
 	}
-	printf("%p is %s next\n", &lst->next, lst->content);
-	lst = lst->next;
-	printf("%p is %s next\n", lst->next, lst->content);
+	//printf("%p is %s next\n", &lst->next, lst->content);
+	//printf("%p is %s next\n", lst->next, lst->content);
 	while (lst->next != NULL)
 	{
 		//printf("%s is content\n", lst->content);
 		lst = lst->next;
 	}
-	ft_printf("%s --- address is %p current->next is %p\n", lst->content, &lst, lst->next);
+	ft_printf("lst->content is %s\n", lst->content);
+	ft_printf("lst->next is %p\n", lst->next);
+	//ft_printf("%s --- address is %p current->next is %p\n", lst->content, &lst, lst->next);
 	return (lst);
 }
 
@@ -71,23 +86,19 @@ void	ft_tknadd_back(t_token **lst, t_token *newnode)
 
 void	ft_tknclear(t_token **lst)
 {
-	t_token	*temp;
+    t_token	*temp;
 
-	while (*lst && (*lst)->next)
-	{
-		temp = (*lst)->next;
-		if ((*lst)->content)
-			free((*lst)->content);
-		free(*lst);
-		*lst = NULL;
-		*lst = temp;
-	}
-	if (*lst)
-	{
-		if ((*lst)->content)
-			free((*lst)->content);
-	}
-	free(*lst);
-	free(lst);
-	lst = NULL;
+    while (*lst)
+    {
+        temp = (*lst)->next;
+        if ((*lst)->content)
+        {
+            printf("Freeing content: %s\n", (*lst)->content); // Debugging information
+            free((*lst)->content);
+        }
+        printf("Freeing node: %p\n", *lst); // Debugging information
+        free(*lst);
+        *lst = temp;
+    }
+    printf("List cleared\n"); // Debugging information
 }

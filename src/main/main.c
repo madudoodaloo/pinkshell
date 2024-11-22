@@ -6,28 +6,31 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/12 11:01:56 by skioridi          #+#    #+#             */
-/*   Updated: 2024/11/22 05:31:23 by msilva-c         ###   ########.fr       */
+/*   Updated: 2024/11/22 10:21:33 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-/* void    free_struct(t_token **head)
+void    free_struct(t_token **head)
 {
     t_token *temp;
-    temp = head->next;
-    while (temp->next)
+
+    while (*head)
     {
-        if (temp)
-            free_token(temp);
-        temp
+        temp = (*head)->next;
+        if ((*head)->content)
+            free((*head)->content);
+        free(*head);
+        *head = temp;
     }
-} */
+    free(*head);
+}
 
 char *clearline(char *line, t_token **head)
 {
     free(line);
-    //free_struct(head);
+    free_struct(head);
     return (NULL);
 }
 
@@ -43,7 +46,7 @@ bool    handleline(t_msh *msh)
     else if (msh->line)
     {
         printf("\nfull cmdline: %s\n\n", msh->line);
-        final_lexer(msh->line, msh->lst_head);
+        parser(msh->line, msh->lst_head);
     }
     else
         return (1);
@@ -66,7 +69,9 @@ int main(int ac, char **av, char **envp)
     t_msh msh;
 
     init_all(&msh);
+    //ft_printf("msh.head is: %p\n", msh.lst_head);
     msh.env = copy_matrix(envp);
+    //ft_printf("msh.env[0] is: %s\n", msh.env[0]);
     if ((ac != 1) || !envp[0] || !envp)
         ft_printf("Error: Exiting.\n");
     signal(2, c_handler); //ctrl-C SIGINT
