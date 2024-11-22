@@ -37,12 +37,13 @@ t_token	*newtoken(char *str, char *content, int start, int wdlen)
 	new->content = content;
     new->type = -1;
 	new->before = '\0';
-	//printf("start: %d | wdlen is %d\n", start, wdlen);
+	printf("start: %d | wdlen is %d\n", start, wdlen);
 	if (start)
 		new->before = str[start - 1];
 	new->after = '\0';
+	printf("strlen is %zu\n", ft_strlen(str));
 	if (wdlen < ft_strlen(str))
-		new->after = str[wdlen + start];
+		new->after = str[wdlen + 1];
 	new->next = NULL;
 	return (new);
 }
@@ -88,17 +89,14 @@ void	ft_tknclear(t_token **lst)
 {
     t_token	*temp;
 
-    while (*lst)
+	if (!*lst)
+		return ;
+    while (lst && *lst)
     {
         temp = (*lst)->next;
         if ((*lst)->content)
-        {
-            printf("Freeing content: %s\n", (*lst)->content); // Debugging information
             free((*lst)->content);
-        }
-        printf("Freeing node: %p\n", *lst); // Debugging information
         free(*lst);
         *lst = temp;
     }
-    printf("List cleared\n"); // Debugging information
 }

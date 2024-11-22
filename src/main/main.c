@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/12 11:01:56 by skioridi          #+#    #+#             */
-/*   Updated: 2024/11/22 10:21:33 by msilva-c         ###   ########.fr       */
+/*   Updated: 2024/11/22 10:34:39 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,14 @@ void    free_struct(t_token **head)
     while (*head)
     {
         temp = (*head)->next;
+        printf("temp is %p\n", temp);
         if ((*head)->content)
             free((*head)->content);
         free(*head);
         *head = temp;
     }
     free(*head);
+    printf("freed struct\n");
 }
 
 char *clearline(char *line, t_token **head)
