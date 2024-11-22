@@ -1,32 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.h                                            :+:      :+:    :+:   */
+/*   lexer.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/22 06:01:56 by msilva-c          #+#    #+#             */
-/*   Updated: 2024/11/22 14:00:39 by msilva-c         ###   ########.fr       */
+/*   Created: 2024/11/22 13:40:08 by msilva-c          #+#    #+#             */
+/*   Updated: 2024/11/22 13:47:36 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef UTILS_H
-# define UTILS_H
+#ifndef LEXER_H
+# define LEXER_H
 
 # include "../includes/minishell.h"
 
-/* free.c */
-void    free_struct(t_token **head);
-void   free_and_exit(t_msh *msh);
-void	ft_free_matrix(char **matrix);
+/* lexer.c */
+t_token	*new_token(char *content, int next);
+void	add_token(t_token **tokens, char *content, int next);
+void	lexer(t_token **tokens, t_token **lst_head);
 
-/* testers */
-void	print_struct(t_token **lst_head);
+/* str_utils.c */
+char	*strjoinspace(char *s1, char *s2);
 
-/* error handling */
-void	print_error(const char *message);
-
-/* helper functions */
-void	my_strcpy(char *dest, const char *src);
-void	my_strcat(char *dest, const char *src);
 #endif

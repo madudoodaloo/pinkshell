@@ -6,38 +6,23 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/12 11:01:56 by skioridi          #+#    #+#             */
-/*   Updated: 2024/11/22 11:37:37 by msilva-c         ###   ########.fr       */
+/*   Updated: 2024/11/22 14:02:10 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-void    free_struct(t_token **head)
-{
-    t_token *temp;
-
-    while (*head)
-    {
-        temp = (*head)->next;
-        if ((*head)->content)
-            free((*head)->content);
-        free(*head);
-        *head = temp;
-    }
-    free(*head);
-}
-
-char *clearline(char *line, t_token **head)
+char *clearline(char *line, t_token **tokens)
 {
     free(line);
-    free_struct(head);
+    free_struct(tokens);
     return (NULL);
 }
 
 bool    handleline(t_msh *msh)
 {
     if (msh->line)
-        msh->line = clearline(msh->line, msh->lst_head);
+        msh->line = clearline(msh->line, msh->ex_tokens);
     msh->line = readline("minishell$");
     if (msh->line && *msh->line)
         add_history(msh->line);
@@ -47,6 +32,8 @@ bool    handleline(t_msh *msh)
     {
         parser(msh->line, msh->lst_head);
         print_struct(msh->lst_head);
+        lexer(msh->ex_tokens, msh->lst_head);
+        print_struct(msh->ex_tokens);
     }
     else
         return (1);

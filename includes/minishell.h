@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 13:57:32 by marianamest       #+#    #+#             */
-/*   Updated: 2024/11/22 07:05:54 by msilva-c         ###   ########.fr       */
+/*   Updated: 2024/11/22 13:33:59 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ typedef struct s_token
 	char		*content;
 	int 		type;
 	char		before;
-	char		after;
+	int			after;
 	struct s_token	*next;
 }			t_token;
 

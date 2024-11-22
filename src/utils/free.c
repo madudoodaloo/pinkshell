@@ -6,11 +6,26 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 18:17:41 by msilva-c          #+#    #+#             */
-/*   Updated: 2024/11/22 11:51:23 by msilva-c         ###   ########.fr       */
+/*   Updated: 2024/11/22 14:00:17 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
+
+void    free_struct(t_token **head)
+{
+    t_token *temp;
+
+    while (*head)
+    {
+        temp = (*head)->next;
+        if ((*head)->content)
+            free((*head)->content);
+        free(*head);
+        *head = temp;
+    }
+    free(*head);
+}
 
 void	ft_free_matrix(char **matrix)
 {

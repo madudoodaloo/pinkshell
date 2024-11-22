@@ -14,16 +14,14 @@
 
 int     findtype(char *s)
 {
-    if (!strncmp(s, "echo", ft_strlen(s)) || !strncmp(s, "pwd", ft_strlen(s)) || !strncmp(s, "export", ft_strlen(s)) \
+    /* if (!strncmp(s, "echo", ft_strlen(s)) || !strncmp(s, "pwd", ft_strlen(s)) || !strncmp(s, "export", ft_strlen(s)) \
             || !strncmp(s, "cd", ft_strlen(s)) || !strncmp(s, "unset", ft_strlen(s)) || !strncmp(s, "env", ft_strlen(s)))
-        return (CMD);
-    else if (!strncmp(s, "|", ft_strlen(s)))
+        return (CMD); */
+    if (!strncmp(s, "|", ft_strlen(s)))
         return (PIPE);
     else if (!strncmp(s, ">", ft_strlen(s)) || !strncmp(s, "<", ft_strlen(s)) || !strncmp(s, ">>", ft_strlen(s)) \
             || !strncmp(s, "<<", ft_strlen(s)))
         return (REDIR);
-	else if (!strncmp(s, "$", ft_strlen(s)))
-		return (ENVVAR);
     return (STR);
 }
 
@@ -35,7 +33,7 @@ t_token	*newtoken(char *str, char *content, int start, int wdlen)
 	if (!new)
 		return (NULL);
 	new->content = content;
-    new->type = -1;
+    new->type = findtype(content);
 	new->before = '\0';
 	//printf("start: %d | wdlen is %d\n", start, wdlen);
 	if (start)
