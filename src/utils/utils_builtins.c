@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   helpers.c                                          :+:      :+:    :+:   */
+/*   utils_builtins.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 14:18:43 by marianamest       #+#    #+#             */
-/*   Updated: 2024/11/22 11:47:40 by msilva-c         ###   ########.fr       */
+/*   Updated: 2024/12/02 23:50:19 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,28 @@
 void	print_struct(t_token **lst_head)
 {
 	t_token *current;
+	t_token *counter;
+
 
 	current = *lst_head;
+	counter = *lst_head;
 	int i = 0;
-	while (current)
+	while (counter)
 	{
 		i++;
-		printf("node %d is: %p\n", i, current);
+		counter = counter->next;
+	}
+	printf("has %d nodes\n", i);
+	while (current)
+	{
+			printf("node: %p\n", current);
+			if (current->content != NULL)
+				printf("content: %s$\n", current->content);
+			else
+				printf("content: (null)$\n");
+			current = current->next;
+	/* 	i++;
+		printf("node %d is: %p\n",, current);
 		printf("content: %s$\n", current->content);
 		printf("type: %d\n", current->type);
 		if (current->before != '\0')
@@ -33,6 +48,7 @@ void	print_struct(t_token **lst_head)
 		printf("----------\n");
 
 		current = current->next;
+		*/
 	}
 }
 

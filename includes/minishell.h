@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 13:57:32 by marianamest       #+#    #+#             */
-/*   Updated: 2024/11/22 13:33:59 by msilva-c         ###   ########.fr       */
+/*   Updated: 2024/11/30 01:54:46 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ typedef struct s_msh
 # include "parser.h"
 # include "builtins.h"
 # include "utils.h"
+# include "lexer.h"
 
 # include <errno.h>
 # include <fcntl.h>

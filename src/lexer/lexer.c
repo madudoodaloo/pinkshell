@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 12:21:38 by msilva-c          #+#    #+#             */
-/*   Updated: 2024/11/22 16:04:00 by msilva-c         ###   ########.fr       */
+/*   Updated: 2024/12/03 00:33:04 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@ t_token	*new_token(char *content, int next)
 	new = (t_token *)malloc(sizeof(t_token));
 	if (!new)
 		return (NULL);
-	new->content = content;
+	new->content = ft_strdup(content);
+	free(content);
 	new->type = CMD;
 	new->before = '\0';
 	new->after = next;
@@ -32,6 +33,7 @@ void	add_token(t_token **tokens, char *content, int next)
 	t_token	*new;
 	t_token	*last;
 
+	printf("entered add_token\n");
 	new = new_token(content, next);
 	if (!new)
 		return ;
@@ -39,10 +41,9 @@ void	add_token(t_token **tokens, char *content, int next)
 	if (!*tokens)
 	{
 		*tokens = new;
-		printf("!*tokens\n");
+		printf("created head of tokens\n");
 		return ;
 	}
-	printf("is here\n");
 	last = ft_tknlast(*tokens);
 	last->next = new;
 	return ;
@@ -62,15 +63,14 @@ void	lexer(t_token **tokens, t_token **lst_head)
 	}
 	while (old)
 	{
-		str = ft_strdup(old->content);
-		printf("str is %s\n", str);
-		printf("old->type is %d\n", old->type);
-		printf("old->next->type is %d\n", old->next->type);
-		printf("bool 1 %d || bool 2 %d\n", old->type == STR, old->next->type == STR);
-
 		while (old && old->next && old->type == STR && old->next->type == STR)
 		{
-			printf("temp is %p\n", temp);
+			if (!str)
+			{
+				str = ft_strdup(old->content);
+				if (!str)
+					return ;
+			}
 			temp = strjoinspace(str, old->next->content);
 			if (!temp)
 			{
@@ -79,11 +79,12 @@ void	lexer(t_token **tokens, t_token **lst_head)
 			}
 			free(str);
 			str = temp;
-			//printf("str is %s\n", str);
+			//free(temp);
+			printf("str is %s\n", str);
 			old = old->next;
 		}
-		printf("bool is %d\n", old->after == '\0');
-		if (old->after == '\0')
+		//printf("bool is %d\n", old->after == '\0');
+		if (!old || !old->next || old->after == '\0')
 		{
 			add_token(tokens, str, '\0');
 			return ;
