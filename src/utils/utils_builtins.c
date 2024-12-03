@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 14:18:43 by marianamest       #+#    #+#             */
-/*   Updated: 2024/12/02 23:50:19 by msilva-c         ###   ########.fr       */
+/*   Updated: 2024/12/03 01:32:19 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,20 +35,6 @@ void	print_struct(t_token **lst_head)
 			else
 				printf("content: (null)$\n");
 			current = current->next;
-	/* 	i++;
-		printf("node %d is: %p\n",, current);
-		printf("content: %s$\n", current->content);
-		printf("type: %d\n", current->type);
-		if (current->before != '\0')
-			printf("before: %c$\n", current->before);
-		else
-			printf("before: %d$\n", current->before);
-		printf("after: %c$\n", current->after);
-		printf("next: %p\n", current->next);
-		printf("----------\n");
-
-		current = current->next;
-		*/
 	}
 }
 
