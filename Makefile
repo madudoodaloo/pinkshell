@@ -11,7 +11,7 @@ SRC =			src/main/main.c src/parser/env_utils.c src/parser/init.c \
 LIBFT_PATH=		./ft_libft/
 LIBFT=			$(LIBFT_PATH)libft.a
 
-CFLAGS =		-g -fsanitize=address -I./includes #-Wall -Wextra -Werror
+CFLAGS =		-I./includes -g -fsanitize=address #-Wall -Wextra -Werror
 OTHERFLAGS =	-L$(LIBFT_PATH) -lft -lreadline -lasan -O3
 
 OBJ_DIR =		./obj/

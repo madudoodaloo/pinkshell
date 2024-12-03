@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 12:21:38 by msilva-c          #+#    #+#             */
-/*   Updated: 2024/12/03 00:33:04 by msilva-c         ###   ########.fr       */
+/*   Updated: 2024/12/03 01:13:52 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,18 @@ t_token	*new_token(char *content, int next)
 	return (new);
 }
 
-void	add_token(t_token **tokens, char *content, int next)
+void	add_token(t_token **tokens, char *content, t_token *lst_head)
 {
 	t_token	*new;
 	t_token	*last;
+	int		next_cmd;
 
 	printf("entered add_token\n");
-	new = new_token(content, next);
+	if (!lst_head->next)
+		next_cmd = '\0';
+	else
+		next_cmd = lst_head->next->type;
+	new = new_token(content, next_cmd);
 	if (!new)
 		return ;
 	printf("*tokens is %p\n", *tokens);
@@ -56,41 +61,26 @@ void	lexer(t_token **tokens, t_token **lst_head)
 	char *temp = NULL;
 	old = *lst_head;
 	printf("entered lexer\n");
-	if (!old->next)
-	{
-		add_token(tokens, old->content, '\0');
-		return ;
-	}
 	while (old)
 	{
-		while (old && old->next && old->type == STR && old->next->type == STR)
+		str = ft_strdup(old->content);
+		if (old->type == STR)
 		{
-			if (!str)
+			while (old && old->next && old->type == STR && old->next->type == STR)
 			{
-				str = ft_strdup(old->content);
-				if (!str)
-					return ;
+				temp = strjoinspace(str, old->next->content);
+				if (!temp)
+					printf("error occured in strjoinspace\n");
+				free(str);
+				str = temp;
+				old = old->next;
 			}
-			temp = strjoinspace(str, old->next->content);
-			if (!temp)
-			{
-				printf("!temp\n");
-				return ;
-			}
-			free(str);
-			str = temp;
-			//free(temp);
-			printf("str is %s\n", str);
-			old = old->next;
+			add_token(tokens, str, old);
 		}
-		//printf("bool is %d\n", old->after == '\0');
-		if (!old || !old->next || old->after == '\0')
-		{
-			add_token(tokens, str, '\0');
+		else if (old && (old->type == PIPE || old->type == REDIR))
+			add_token(tokens, str, old);
+		else if (!old)
 			return ;
-		}
-		else if (old->next->type == PIPE || old->next->type == REDIR)
-			add_token(tokens, str, old->next->type);
 		old = old->next;
 	}
 	free_struct(lst_head);

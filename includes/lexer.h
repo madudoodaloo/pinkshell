@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 13:40:08 by msilva-c          #+#    #+#             */
-/*   Updated: 2024/11/22 13:47:36 by msilva-c         ###   ########.fr       */
+/*   Updated: 2024/12/03 01:00:35 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 /* lexer.c */
 t_token	*new_token(char *content, int next);
-void	add_token(t_token **tokens, char *content, int next);
+void	add_token(t_token **tokens, char *content, t_token *lst_head);
 void	lexer(t_token **tokens, t_token **lst_head);
 
 /* str_utils.c */
