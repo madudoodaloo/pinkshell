@@ -6,7 +6,8 @@ SRC =			src/main/main.c src/parser/env_utils.c src/parser/init.c \
                 src/builtins/cd.c src/builtins/echo.c src/builtins/env1.c src/builtins/env2.c \
                 src/builtins/exit.c src/builtins/pwd.c \
                 src/utils/utils_builtins.c src/utils/free.c \
-				src/lexer/lexer.c src/lexer/str_utils.c
+				src/lexer/lexer.c src/lexer/str_utils.c \
+				src/expander/expander.c
 
 LIBFT_PATH=		./ft_libft/
 LIBFT=			$(LIBFT_PATH)libft.a

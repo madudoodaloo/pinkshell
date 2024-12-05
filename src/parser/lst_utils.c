@@ -12,14 +12,16 @@
 
 #include "../includes/minishell.h"
 
-int     findtype(char *s)
+int     findtype(char *s, int flag)
 {
     if (!strncmp(s, "|", ft_strlen(s)))
         return (PIPE);
     else if (!strncmp(s, ">", ft_strlen(s)) || !strncmp(s, "<", ft_strlen(s)) || !strncmp(s, ">>", ft_strlen(s)) \
             || !strncmp(s, "<<", ft_strlen(s)))
         return (REDIR);
-    return (STR);
+    else if (flag)
+		return (CMD);
+	return (STR);
 }
 
 t_token	*newtoken(char *str, char *content, int start, int wdlen)
@@ -30,7 +32,7 @@ t_token	*newtoken(char *str, char *content, int start, int wdlen)
 	if (!new)
 		return (NULL);
 	new->content = content;
-    new->type = findtype(content);
+    new->type = findtype(content, 0);
 	new->before = '\0';
 	//printf("start: %d | wdlen is %d\n", start, wdlen);
 	if (start)

@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 12:21:38 by msilva-c          #+#    #+#             */
-/*   Updated: 2024/12/03 01:32:54 by msilva-c         ###   ########.fr       */
+/*   Updated: 2024/12/05 12:29:16 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ t_token	*new_token(char *content, int next)
 		return (NULL);
 	new->content = ft_strdup(content);
 	free(content);
-	new->type = CMD;
+	new->type = findtype(content, 1);
 	new->before = '\0';
 	new->after = next;
 	new->next = NULL;

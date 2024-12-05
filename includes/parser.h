@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 05:59:04 by msilva-c          #+#    #+#             */
-/*   Updated: 2024/11/22 12:19:33 by msilva-c         ###   ########.fr       */
+/*   Updated: 2024/12/05 12:26:48 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ char **copy_matrix(char **src);
 t_msh    *init_all(t_msh *msh);
 
 /* parser.c */
-int     findtype(char *s);
+int     findtype(char *s, int flag);
 t_token *tokenize(char *str, int start, int wdlen);
 int add_node(t_token **lst_head, char *line, int i, int j);
 int strchr_wdlen(const char *s, int c);

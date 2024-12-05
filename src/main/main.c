@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/12 11:01:56 by skioridi          #+#    #+#             */
-/*   Updated: 2024/12/03 01:37:27 by msilva-c         ###   ########.fr       */
+/*   Updated: 2024/12/05 12:21:28 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,10 @@ bool    handleline(t_msh *msh)
         parser(msh->line, msh->lst_head);
         //print_struct(msh->lst_head);
         lexer(msh->ex_tokens, msh->lst_head);
-        print_struct(msh->ex_tokens);
         if (!msh->ex_tokens)
             return (1);
+        print_struct(msh->ex_tokens);
+        expander(*(msh->ex_tokens), msh->env);
     }
     else
         return (1);
