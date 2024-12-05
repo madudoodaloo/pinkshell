@@ -15,9 +15,9 @@
 int     findtype(char *s, int flag)
 {
     if (!strncmp(s, "|", ft_strlen(s)))
-        return (PIPE);
-    else if (!strncmp(s, ">", ft_strlen(s)) || !strncmp(s, "<", ft_strlen(s)) || !strncmp(s, ">>", ft_strlen(s)) \
-            || !strncmp(s, "<<", ft_strlen(s)))
+		return (PIPE);
+	else if (!strncmp(s, ">", ft_strlen(s)) || !strncmp(s, "<", ft_strlen(s)) || !strncmp(s, ">>", ft_strlen(s)) \
+			|| !strncmp(s, "<<", ft_strlen(s)))
         return (REDIR);
     else if (flag)
 		return (CMD);

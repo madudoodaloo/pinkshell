@@ -6,11 +6,18 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 01:40:30 by msilva-c          #+#    #+#             */
-/*   Updated: 2024/12/05 12:20:23 by msilva-c         ###   ########.fr       */
+/*   Updated: 2024/12/05 15:55:36 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
+
+
+int check_expand(t_token *token)
+{
+	if (count_quotes(token->content, 0))
+		return 0;
+}
 
 void	expander(t_token *tokens, char **env)
 {
@@ -21,8 +28,8 @@ void	expander(t_token *tokens, char **env)
 	line = NULL;
 	while (node)
 	{
-		printf("type of the node is %s\n", node->type);
-		node = node->next;
-		//line = node->content;
+		//if (node->type == 1 && check_expand(node))
+			//switch_value(node, env);
+		return ;
 	}
 }

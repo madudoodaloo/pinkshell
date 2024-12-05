@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 07:08:43 by msilva-c          #+#    #+#             */
-/*   Updated: 2024/11/22 11:42:28 by msilva-c         ###   ########.fr       */
+/*   Updated: 2024/12/05 15:55:04 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,24 @@
 
 int count_quotes(char *line, int i)
 {
-	int count;
+	int singles;
+	int doubles;
 
-	count = 0;
+	singles = 0;
+	doubles = 0;
 	while (line[i])
 	{
-		if (line[i] == 39 || line[i] == 34)
-			count++;
+		if (line[i] == 39)
+			singles++;
+		else if (line[i] == 34)
+			doubles++;
 		i++;
 	}
-	return (count % 2);
+	singles %= 2;
+	doubles %= 2;
+	if (!singles && !doubles)
+		return (0);
+	return (1);
 }
 
 int	quote_handler(char *cmdline, int i, t_token **lst_head)
