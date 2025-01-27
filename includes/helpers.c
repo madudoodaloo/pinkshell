@@ -6,13 +6,13 @@
 /*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 14:18:43 by marianamest       #+#    #+#             */
-/*   Updated: 2024/11/11 16:18:10 by marianamest      ###   ########.fr       */
+/*   Updated: 2025/01/11 18:27:04 by marianamest      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-void	print_error(const char *message)
+void	print_error(void)
 {
 	printf("Error: %s\n", strerror(errno));
 }

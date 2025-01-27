@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cd1.c                                              :+:      :+:    :+:   */
+/*   cd.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/03 20:40:50 by marianamest       #+#    #+#             */
-/*   Updated: 2024/11/08 16:50:33 by marianamest      ###   ########.fr       */
+/*   Updated: 2025/01/11 19:12:35 by marianamest      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,36 @@ int	get_current_directory(char *buffer, int size) // retrieves the current direc
 		success = getcwd(buffer, size) != NULL;
 	return (success);
 }
+void	set_env_value(char **env, const char *key, const char *value) // sets the environment variable key to the value
+{
+	int		i;
+	char	*new_var;
+	size_t	key_len;
 
+	key_len = strlen(key);
+	new_var = malloc(key_len + strlen(value) + 2);
+	if (!new_var)
+		return ;
+	sprintf(new_var, "%s=%s", key, value);
+	i = 0;
+	while (env[i])
+	{
+		if (strncmp(env[i], key, key_len) == 0 && env[i][key_len] == '=')
+		{
+			free(env[i]);
+			env[i] = new_var;
+			return ;
+		}
+		i++;
+	}
+	env[i] = new_var;
+	env[i + 1] = NULL;
+	env[i + 2] = NULL; // Ensure the env array is properly terminated
+}
 void	update_pwd_vars(char **env, const char *old_pwd, const char *new_pwd) // updates the current (PWD) and previous (OLDPWD) values
 {
-	set_env_value(&env, "OLDPWD", old_pwd);
-	set_env_value(&env, "PWD", new_pwd);
+	set_env_value(env, "OLDPWD", old_pwd);
+	set_env_value(env, "PWD", new_pwd);
 }
 
 void	change_directory(char **env, const char *path) // changes the current directory to either *path or HOME (in case of failure as a fallback option)

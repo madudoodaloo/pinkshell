@@ -6,7 +6,7 @@
 /*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 13:57:32 by marianamest       #+#    #+#             */
-/*   Updated: 2024/11/11 20:03:36 by marianamest      ###   ########.fr       */
+/*   Updated: 2025/01/11 18:27:20 by marianamest      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@
 # include <unistd.h>
 
 /* error handling */
-void	print_error(const char *message);
+void	print_error(void);
 
 /* cd */
 char	*find_env_value(char **env, const char *var);
