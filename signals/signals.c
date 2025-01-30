@@ -6,7 +6,7 @@
 /*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 17:20:19 by marianamest       #+#    #+#             */
-/*   Updated: 2025/01/04 17:22:29 by marianamest      ###   ########.fr       */
+/*   Updated: 2025/01/30 16:11:43 by marianamest      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ volatile sig_atomic_t g_signal = 0;
 
 void signal_handler(int signum)
 {
+    nana
     if (signum == SIGINT)
     {
         write(1, "\n", 1);
