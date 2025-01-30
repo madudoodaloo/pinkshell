@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mabrito- <mabrito-@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: skioridi <skioridi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/06 13:04:04 by mabrito-          #+#    #+#             */
-/*   Updated: 2023/10/26 15:15:33 by mabrito-         ###   ########.fr       */
+/*   Created: 2023/04/12 18:45:30 by skioridi          #+#    #+#             */
+/*   Updated: 2023/04/13 17:19:01 by skioridi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,16 @@
 
 char	*ft_strchr(const char *s, int c)
 {
-	int	i;
+	int		i;
 
 	i = 0;
-	while (s[i] != '\0')
+	while (s[i])
 	{
-		if (s[i] == (char)c)
-			return ((char *)s + i);
+		if ((unsigned char)c == (unsigned char)s[i])
+			return ((char *)&s[i]);
 		i++;
 	}
-	if (s[i] == (char)c) //para verificar ultimo null
-		return ((char *)s + i);
+	if ((unsigned char)c == 0)
+		return ((char *)&s[i]);
 	return (NULL);
 }

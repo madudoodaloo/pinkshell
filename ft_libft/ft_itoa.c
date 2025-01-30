@@ -3,54 +3,54 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mabrito- <mabrito-@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: skioridi <skioridi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/12 14:54:37 by mabrito-          #+#    #+#             */
-/*   Updated: 2023/10/21 14:57:54 by mabrito-         ###   ########.fr       */
+/*   Created: 2023/04/14 18:43:34 by skioridi          #+#    #+#             */
+/*   Updated: 2023/04/17 17:52:24 by skioridi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	ft_intlen(int n)
+int	finddigits(long n)
 {
-	int	i;
+	int	d;
 
-	i = 0;
-	if (n <= 0)
-		i++;
-	while (n != 0)
+	d = 1;
+	if (n < 0)
+		d++;
+	while ((n / 10 > 0) || (n / 10 < 0))
 	{
-		n = n / 10;
-		i++;
+		d++;
+		n /= 10;
 	}
-	return (i);
+	return (d);
 }
 
 char	*ft_itoa(int n)
 {
-	char	*str;
-	int		len;
-	long	nbr;
+	char	*new;
+	long	ln;
+	int		dgtno;
 
-	nbr = n;
-	len = ft_intlen(nbr);
-	str = (char *)malloc(sizeof(char) * (len + 1));
-	if (str == NULL)
+	ln = n;
+	dgtno = finddigits(ln);
+	new = malloc(dgtno + 1);
+	if (!new)
 		return (NULL);
-	str[len] = '\0';
-	if (nbr == 0)
-		str[0] = '0';
-	if (nbr < 0)
+	new[dgtno] = '\0';
+	if (ln < 0)
 	{
-		str[0] = '-';
-		nbr = nbr * -1;
+		new[0] = '-';
+		ln *= -1;
 	}
-	while (nbr > 0)
+	if (ln == 0)
+		new[0] = '0';
+	while (ln > 0)
 	{
-		str[len - 1] = (nbr % 10) + 48;
-		nbr = nbr / 10;
-		len--;
+		new[dgtno - 1] = (ln % 10) + '0';
+		ln /= 10;
+		dgtno--;
 	}
-	return (str);
+	return (new);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_tolower.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mabrito- <mabrito-@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: skioridi <skioridi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/06 12:51:00 by mabrito-          #+#    #+#             */
-/*   Updated: 2023/10/21 16:11:07 by mabrito-         ###   ########.fr       */
+/*   Created: 2023/04/12 18:37:41 by skioridi          #+#    #+#             */
+/*   Updated: 2023/04/12 18:44:05 by skioridi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 int	ft_tolower(int c)
 {
 	if (c >= 'A' && c <= 'Z')
-		return (c + 32);
+	{
+		c = c + 32;
+	}
 	return (c);
 }
