@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   signals.c                                          :+:      :+:    :+:   */
+/*   signals1.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 16:26:33 by marianamest       #+#    #+#             */
-/*   Updated: 2025/01/30 16:27:45 by marianamest      ###   ########.fr       */
+/*   Updated: 2025/01/30 17:48:33 by marianamest      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	signal_handler(int signum)
 {
 	if (signum == SIGINT)
 	{
-		write(1, "\n", 1);
+		write(1, "\nCaught SIGINT (Ctrl+C)\n", 24);
 		rl_on_new_line();
 		rl_replace_line("", 0);
 		rl_redisplay();
@@ -28,6 +28,7 @@ void	signal_handler(int signum)
 	}
 	else if (signum == SIGQUIT)
 	{
+		write(1, "Caught SIGQUIT (Ctrl+\\)\n", 25);
 		g_signal = SIGQUIT;
 		if (!msdata()->is_heredoc)
 		{
