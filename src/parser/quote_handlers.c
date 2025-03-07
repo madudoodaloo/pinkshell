@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 07:08:43 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/07 14:47:22 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/07 15:15:00 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ int count_quotes(char *line, int i)
 			if (max == i)
 				return (1);
 		}
+		flag = 1;
 		i++;
 	}
 	return (0);
