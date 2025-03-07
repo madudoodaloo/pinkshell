@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 07:08:43 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/06 12:25:56 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/07 14:47:22 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,29 +14,25 @@
 
 int count_quotes(char *line, int i)
 {
-	int singles;
-	int doubles;
-
-	singles = 0;
-	doubles = 0;
 	int flag = 1;
 	char temp = 0;
-	while (ft_strlen(line) - 1 <= i)
+	int max = ft_strlen(line);
+
+	while (max > i)
 	{
-		if (line[i] == 39 || line[i] == 34)
+		if (line[i] == 34 || line[i] == 39)
 		{
 			temp = line[i];
 			i++;
-			while (line[i] && flag)
+			while (max > i && flag)
 			{
-				printf("line[i] is %c and i=%d\n", line[i], i);
-				if (!line[i])
-					return (1);
-				else if (line[i] == temp)
+				if (line[i] == temp)
 					flag = 0;
 				else
 					i++;
 			}
+			if (max == i)
+				return (1);
 		}
 		i++;
 	}
