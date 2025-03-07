@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 18:17:41 by msilva-c          #+#    #+#             */
-/*   Updated: 2024/12/03 01:35:10 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/02/24 11:23:46 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,4 +66,16 @@ void    free_and_exit(t_msh *msh)
         ft_free_matrix(msh->env);
     }
     return ;
+}
+
+void    print_matrix(char **matrix)
+{
+    int i;
+
+    i = 0;
+    while (matrix[i])
+    {
+        ft_printf("matrix[%d] is: %s\n", i, matrix[i]);
+        i++;
+    }
 }

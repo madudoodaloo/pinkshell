@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 06:32:58 by msilva-c          #+#    #+#             */
-/*   Updated: 2024/11/22 11:49:05 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/06 11:31:19 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,7 +123,7 @@ void	parser(char *line, t_token **lst_head)
 	int start;
 
 	i = 0;
-	if (count_quotes(line, i))
+	if (count_quotes(line, i)) // if there are open quotes, returns 1
 	{
 		ft_printf("Error: invalid input\n");
 		return ;

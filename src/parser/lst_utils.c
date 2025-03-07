@@ -12,6 +12,7 @@
 
 #include "../includes/minishell.h"
 
+// tenho de mudar o libft e garantir que não tenho nenhuma função ilegal!!)
 int     findtype(char *s, int flag)
 {
     if (!strncmp(s, "|", ft_strlen(s)))
