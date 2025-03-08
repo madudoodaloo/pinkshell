@@ -1,30 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   str.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: skioridi <skioridi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/13 19:51:15 by skioridi          #+#    #+#             */
-/*   Updated: 2023/04/13 20:12:18 by skioridi         ###   ########.fr       */
+/*   Created: 2025/03/08 14:50:45 by msilva-c          #+#    #+#             */
+/*   Updated: 2025/03/08 14:52:16 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../includes/minishell.h"
 
-void	*ft_calloc(size_t nmemb, size_t size)
+char	*ft_strdup(const char *s)
 {
-	char	*ptr;
+	char	*copy;
+	size_t	n;
 	size_t	i;
 
 	i = 0;
-	ptr = (char *)malloc(nmemb * size);
-	if (!ptr)
+	n = ft_strlen((char *)s);
+	copy = (char *)safe_malloc(sizeof(char) * (n + 1));
+	if (!copy)
 		return (NULL);
-	while (i < nmemb * size)
+	while (s[i])
 	{
-		ptr[i] = 0;
+		copy[i] = s[i];
 		i++;
 	}
-	return ((void *)ptr);
+	copy[i] = '\0';
+	return (copy);
 }
+
