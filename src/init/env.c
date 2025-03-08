@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 01:27:31 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/08 02:58:05 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/08 13:17:37 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	sub[i] = '\0';
 	return (sub);
 }
-
+// rever o ft_substr
 t_env	*add_var(char *str)
 {
 	t_env *new;
@@ -49,7 +49,16 @@ t_env	*add_var(char *str)
 	while (str[i] && str[i] != '=')
 		i++;
 	new->var_name = ft_substr(str, 0, i);
-	if ()
+	if (str[i] == '=')
+		new->var_value = ft_strdup(&str[i + 1]);
+	else
+		new->var_value = ft_strdup("");
+	if (str[i] == '=')
+		new->content = true;
+	else
+		new->content = false;
+	new->next = NULL;
+	return (new);
 }
 
 t_env *copy_env(void)
