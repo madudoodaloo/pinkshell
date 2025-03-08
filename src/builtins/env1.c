@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   env1.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 15:20:31 by marianamest       #+#    #+#             */
-/*   Updated: 2024/11/22 04:52:32 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/08 13:10:18 by marianamest      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/minishell.h"
+#include "../../includes/minishell.h"
 
 char	*create_env_entry(const char *key, const char *value)// creates an environment entry in "KEY=value" format
 {

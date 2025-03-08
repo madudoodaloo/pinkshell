@@ -35,6 +35,8 @@ SRCS = ft_isalpha.c \
 	ft_putstr_fd.c \
 	ft_putendl_fd.c \
 	ft_putnbr_fd.c \
+	ft_swap.c \
+	ft_strcmp \
 	ft_printf/ft_functions.c \
 	ft_printf/ft_functions1.c \
 	ft_printf/ft_printf.c \

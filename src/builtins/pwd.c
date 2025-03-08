@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   pwd.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 17:32:36 by marianamest       #+#    #+#             */
-/*   Updated: 2024/11/22 04:52:32 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/08 13:10:34 by marianamest      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/minishell.h"
+#include "../../includes/minishell.h"
 
 void	my_pwd(int fd) // takes in the specific file descriptor to output to, (ex.: 1 for stdin)
 {

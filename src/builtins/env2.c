@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   env2.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 17:31:05 by marianamest       #+#    #+#             */
-/*   Updated: 2024/11/22 04:52:32 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/08 13:10:13 by marianamest      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/minishell.h"
+#include "../../includes/minishell.h"
 
 int	find_env_key_index(char **env, const char *key) // searches for the index of an env var by its key in the env array.
 {
