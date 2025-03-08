@@ -1,41 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   malloc.c                                           :+:      :+:    :+:   */
+/*   init.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/08 02:06:48 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/08 02:36:53 by msilva-c         ###   ########.fr       */
+/*   Created: 2024/11/22 05:59:04 by msilva-c          #+#    #+#             */
+/*   Updated: 2025/03/08 02:47:42 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/minishell.h"
+#ifndef PARSER_H
+# define PARSER_H
 
-static void	*ft_memset(void *s, int c, size_t n)
-{
-	unsigned char	*str;
+# include "../includes/minishell.h"
 
-	str = s;
-	while (n--)
-	{
-		*str = c;
-		str++;
-	}
-	return (s);
-}
+/* env.c */
+t_env	*add_var(char *var);
+t_env *copy_env(void);
+t_env *empty_env(void);
+int	check_env(char **envp);
+t_env	*get_env(char **envp);
 
-void *safe_malloc(size_t size)
-{
-	void	*new;
 
-	new = malloc(size);
-	if (!new)
-	{
-		ft_put_str_fd("Failed malloc\n", 2);
-		free_all(); //rever
-		exit(1); //rever
-	}
-	ft_memset(new, '\0', size);
-	return (new);
-}
+/* init.c */
+t_msh	*msh(void);
+t_msh    *init_all(t_msh *msh);
+
+#endif
