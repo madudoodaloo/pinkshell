@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 05:59:04 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/08 01:39:36 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/08 15:09:55 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,6 @@
 # define PARSER_H
 
 # include "../includes/minishell.h"
-
-/* env_utils.c */
-char **copy_matrix(char **src);
 
 /* init.c */
 t_msh	*msh(void);

@@ -6,38 +6,12 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 01:27:31 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/08 14:38:20 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/08 15:10:17 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
-{
-	char			*sub;
-	unsigned int	n;
-	unsigned int	i;
-
-	if (!s)
-		return (NULL);
-	n = ft_strlen((char *)s);
-	if (start >= n || len == 0)
-		return (ft_calloc(1, 1));
-	if (len > n - start)
-		len = n - start;
-	sub = (char *)malloc(sizeof(char) * (len + 1));
-	if (!sub)
-		return (NULL);
-	i = 0;
-	while (i < len && s[i + start])
-	{
-		sub[i] = s[i + start];
-		i++;
-	}
-	sub[i] = '\0';
-	return (sub);
-}
-// rever o ft_substr
 t_env	*add_var(char *str)
 {
 	t_env *new;
@@ -47,7 +21,8 @@ t_env	*add_var(char *str)
 	new = (t_env *)safe_malloc(sizeof(t_env));
 	new->var = ft_strdup(str);
 	while (str[i] && str[i] != '=')
-		i++;
+	i++;
+	// rever o ft_substr
 	new->var_name = ft_substr(str, 0, i);
 	if (str[i] == '=')
 		new->var_value = ft_strdup(&str[i + 1]);

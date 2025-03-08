@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 06:01:56 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/08 02:29:44 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/08 15:15:17 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,16 @@
 
 # include "../includes/minishell.h"
 
+/* env.c */
+char **copy_matrix(char **src);
+
+/* str.c */
+size_t	ft_strlen(const char *str);
+char	*ft_substr(char const *s, unsigned int start, size_t len);
+char	*ft_strdup(const char *s);
+
 /* malloc.c */
+void	*ft_memset(void *s, int c, size_t n);
 void *safe_malloc(size_t size);
 
 /* free.c */

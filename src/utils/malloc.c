@@ -6,13 +6,13 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 02:06:48 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/08 02:36:53 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/08 15:08:52 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-static void	*ft_memset(void *s, int c, size_t n)
+void	*ft_memset(void *s, int c, size_t n)
 {
 	unsigned char	*str;
 

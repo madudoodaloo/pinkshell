@@ -6,14 +6,12 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 13:57:32 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/08 14:38:25 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/08 15:10:36 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINISHELL_H
 # define MINISHELL_H
-
-# include "../ft_libft/libft.h"
 
 # define MAXLINE 1024
 
