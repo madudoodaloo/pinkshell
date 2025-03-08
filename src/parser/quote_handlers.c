@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 07:08:43 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/07 15:15:00 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/07 15:29:56 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ int	quote_handler(char *cmdline, int i, t_token **lst_head)
 	int		wdlen;
 
 	wdlen = strchr_wdlen(&cmdline[i], cmdline[i]);
+	//printf("wdlen - %d\n", wdlen);
 	if (wdlen)
 	{
 		add_node(lst_head, cmdline, i, i + wdlen);

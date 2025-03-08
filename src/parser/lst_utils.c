@@ -52,6 +52,7 @@ t_token *tokenize(char *str, int start, int wdlen)
 
     char *substring = substr_new(str, start, wdlen);
     a = newtoken(str, substring, start, wdlen);
+	printf("node is: %s\n", substring);
     return (a);
 }
 

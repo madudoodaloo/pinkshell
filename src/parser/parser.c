@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 06:32:58 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/06 11:31:19 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/07 15:26:54 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,6 +114,7 @@ int add_node(t_token **lst_head, char *line, int i, int end)
     }
     last = ft_tknlast(*lst_head);
     last->next = newnode;
+	printf("added successfully\n");
     return (end);
 }
 

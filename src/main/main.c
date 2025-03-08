@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/12 11:01:56 by skioridi          #+#    #+#             */
-/*   Updated: 2024/12/05 12:21:28 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/08 01:04:42 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,17 +51,11 @@ void    c_handler()
     rl_redisplay();
     return ;
 }
-
-
-int main(int ac, char **av, char **envp)
+void msh_loop(char **envp)
 {
-    (void)av;
-    t_msh msh;
+    init_all(envp);
 
-    init_all(&msh);
-    //ft_printf("msh.head is: %p\n", msh.lst_head);
     msh.env = copy_matrix(envp);
-    //ft_printf("msh.env[0] is: %s\n", msh.env[0]);
     if ((ac != 1) || !envp[0] || !envp)
         ft_printf("Error: Exiting.\n");
     signal(2, c_handler); //ctrl-C SIGINT
@@ -72,4 +66,17 @@ int main(int ac, char **av, char **envp)
     }
     free_and_exit(&msh);
     return (msh.ret);
+}
+
+int main(int ac, char **av, char **envp)
+{
+    (void)av;
+    t_msh msh;
+
+    if (ac == 1)
+    {
+        //inserir aqui a init dos sinais
+        msh_loop(envp);
+    }
+    return (0);
 }
