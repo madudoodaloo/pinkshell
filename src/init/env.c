@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 01:27:31 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/08 13:17:37 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/08 14:38:20 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,9 +54,9 @@ t_env	*add_var(char *str)
 	else
 		new->var_value = ft_strdup("");
 	if (str[i] == '=')
-		new->content = true;
+		new->valid = true;
 	else
-		new->content = false;
+		new->valid = false;
 	new->next = NULL;
 	return (new);
 }
