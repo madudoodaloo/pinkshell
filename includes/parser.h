@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 05:59:04 by msilva-c          #+#    #+#             */
-/*   Updated: 2024/12/05 12:26:48 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/08 01:39:36 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 char **copy_matrix(char **src);
 
 /* init.c */
+t_msh	*msh(void);
 t_msh    *init_all(t_msh *msh);
 
 /* parser.c */

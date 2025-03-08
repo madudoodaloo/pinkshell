@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 13:57:32 by marianamest       #+#    #+#             */
-/*   Updated: 2024/12/03 01:40:21 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/08 01:42:28 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,15 @@
 # include "../ft_libft/libft.h"
 
 # define MAXLINE 1024
+
+typedef struct s_env
+{
+	char	*var;
+	char	*var_name;
+	char	*var_value;
+	int 	exported;
+	struct s_env *next;
+}			t_env;
 
 typedef struct s_token
 {

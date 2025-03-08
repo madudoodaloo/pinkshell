@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/12 11:01:56 by skioridi          #+#    #+#             */
-/*   Updated: 2025/03/08 01:04:42 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/08 01:34:38 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,9 +55,6 @@ void msh_loop(char **envp)
 {
     init_all(envp);
 
-    msh.env = copy_matrix(envp);
-    if ((ac != 1) || !envp[0] || !envp)
-        ft_printf("Error: Exiting.\n");
     signal(2, c_handler); //ctrl-C SIGINT
     signal(3, SIG_IGN); //ctrl-\ SIGQUIT
     while (msh.exit == 0)
@@ -78,5 +75,7 @@ int main(int ac, char **av, char **envp)
         //inserir aqui a init dos sinais
         msh_loop(envp);
     }
+    else
+        printf("Cmdline to launch: ./minishell\n");
     return (0);
 }

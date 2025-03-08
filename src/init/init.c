@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 18:18:18 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/08 01:06:32 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/08 01:37:59 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,29 +14,30 @@
 
 t_msh	*msh(void)
 {
-	static t_msh	*msh;
+	static t_msh	msh;
 
 	return (&msh);
 }
 
-t_msh    *init_all(t_msh *msh)
+t_msh    *init_all(char **envp)
 {
-    t_msh *msh;
+    t_msh *minishell;
 
-    msh = msh();
-    msh->line = (char *)malloc(sizeof(char));
-    if (!msh->line)
+    minishell = msh();
+    minishell->env = init_env(envp);
+    minishell->line = (char *)malloc(sizeof(char));
+    if (!minishell->line)
         return (NULL);
-    msh->exit = 0;
-    msh->ret = 0;
-    msh->lst_head = (t_token **)malloc(sizeof(t_token *));
-    if (!msh->lst_head)
+    minishell->exit = 0;
+    minishell->ret = 0;
+    minishell->lst_head = (t_token **)malloc(sizeof(t_token *));
+    if (!minishell->lst_head)
         return (NULL);
-    *(msh->lst_head) = NULL;
-    msh->ex_tokens = (t_token **)malloc(sizeof(t_token *));
-    if (!msh->ex_tokens)
+    *(minishell->lst_head) = NULL;
+    minishell->ex_tokens = (t_token **)malloc(sizeof(t_token *));
+    if (!minishell->ex_tokens)
         return (NULL);
-    *(msh->ex_tokens) = NULL;
-    msh->env = NULL;
-    return (msh);
+    *(minishell->ex_tokens) = NULL;
+    minishell->env = NULL;
+    return (minishell);
 }
