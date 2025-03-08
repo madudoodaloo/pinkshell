@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 06:01:56 by msilva-c          #+#    #+#             */
-/*   Updated: 2024/11/22 14:00:39 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/08 02:29:44 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 # define UTILS_H
 
 # include "../includes/minishell.h"
+
+/* malloc.c */
+void *safe_malloc(size_t size);
 
 /* free.c */
 void    free_struct(t_token **head);
