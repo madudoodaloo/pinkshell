@@ -1,27 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   env.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/12 18:53:54 by skioridi          #+#    #+#             */
-/*   Updated: 2024/08/29 16:54:22 by msilva-c         ###   ########.fr       */
+/*   Created: 2024/09/18 17:01:39 by msilva-c          #+#    #+#             */
+/*   Updated: 2025/03/15 20:26:26 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../includes/minishell.h"
 
-int	ft_strncmp(const char *s1, const char *s2, size_t n)
+char **copy_matrix(char **src)
 {
-	size_t	i;
+    char **dst;
+    int i = 0;
 
-	i = 0;
-	if (n == 0)
-		return (1);
-	while ((s1[i] == s2[i]) && (s1[i] != '\0') && (i < n))
-		i++;
-	if (i == n)
-		return (0);
-	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
+    while (src[i] != NULL)
+        i++;
+    dst = (char **)malloc(sizeof(char *) * (i + 1));
+	if (!dst)
+		return (NULL);
+    i = -1;
+    while (src[++i])
+        dst[i] = ft_strdup(src[i]);
+    dst[i] = NULL;
+    return (dst);
 }

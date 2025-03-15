@@ -12,6 +12,7 @@
 
 #include "../includes/minishell.h"
 
+// tenho de mudar o libft e garantir que não tenho nenhuma função ilegal!!)
 int     findtype(char *s, int flag)
 {
     if (!strncmp(s, "|", ft_strlen(s)))
@@ -51,6 +52,7 @@ t_token *tokenize(char *str, int start, int wdlen)
 
     char *substring = substr_new(str, start, wdlen);
     a = newtoken(str, substring, start, wdlen);
+	printf("node is: %s\n", substring);
     return (a);
 }
 

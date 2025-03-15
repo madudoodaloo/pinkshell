@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 06:32:58 by msilva-c          #+#    #+#             */
-/*   Updated: 2024/11/22 11:49:05 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/15 20:26:39 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,16 +114,26 @@ int add_node(t_token **lst_head, char *line, int i, int end)
     }
     last = ft_tknlast(*lst_head);
     last->next = newnode;
+	printf("added successfully\n");
     return (end);
 }
 
-void	parser(char *line, t_token **lst_head)
+int	parser(t_msh *msh)
 {
+	if (parse_quotes(msh->line))
+		return (-1);
+	if (tokenize(msh))
+		return (-1);
+	msh->tokens = re_tokenize(msh);
+	expander(msh);
+	//dar set da struct para a exec
+
+
 	int		i;
 	int start;
 
 	i = 0;
-	if (count_quotes(line, i))
+	if (count_quotes(line, i)) // if there are open quotes, returns 1
 	{
 		ft_printf("Error: invalid input\n");
 		return ;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
+/*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 06:01:56 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/15 19:43:22 by marianamest      ###   ########.fr       */
+/*   Updated: 2025/03/15 20:30:42 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,22 @@
 
 # include "../includes/minishell.h"
 
+/* env.c */
+char **copy_matrix(char **src);
+
+/* str.c */
+size_t	ft_strlen(const char *str);
+char	*ft_substr(char const *s, unsigned int start, size_t len);
+char	*ft_strdup(const char *s);
+
+/* malloc.c */
+void	*ft_memset(void *s, int c, size_t n);
+void *safe_malloc(size_t size);
+
 /* free.c */
 void    free_struct(t_token **head);
 void   free_and_exit(t_msh *msh);
 void	ft_free_matrix(char **matrix);
-void	free_all(void *strut);
 
 /* testers */
 void	print_struct(t_token **lst_head);

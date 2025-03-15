@@ -3,33 +3,73 @@
 /*                                                        :::      ::::::::   */
 /*   expander.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
+/*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/03 01:40:30 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/01 16:59:03 by marianamest      ###   ########.fr       */
+/*   Created: 2025/03/15 17:13:16 by msilva-c          #+#    #+#             */
+/*   Updated: 2025/03/15 20:27:19 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-
-int check_expand(t_token *token)
+void	expand_vars_loop(t_token *start)
 {
-	if (count_quotes(token->content, 0))
-		return 0;
+	t_token	*step;
+
+	step = start;
+	while (step)
+	{
+		hide_expand(step->token);
+		if (needs_expand(step))
+			do_expand(step);
+		else
+		{
+			unhide_expand(step->token);
+			step = step->next;
+		}
+	}
 }
 
-void	expander(t_token *tokens, char **env)
+void	do_expand(t_token *t)
 {
-	t_token	*node;
-	char *line;
+	char	*var_name;
+	char	*var_value;
 
-	node = tokens;
-	line = NULL;
-	while (node)
-	{
-		//if (node->type == 1 && check_expand(node))
-			//switch_value(node, env);
-		return ;
-	}
+	var_name = get_var_name(t);
+	if (is_special_expand(var_name))
+		var_value = get_special_var(var_name);
+	else
+		var_value = get_var_value(mini_call()->env, var_name);
+	expand_var(t, var_value);
+	free(var_name);
+	free(var_value);
+}
+
+static void	init_index(t_index *i)
+{
+	i->new_i = 0;
+	i->t_i = 0;
+	i->var_i = 0;
+}
+
+void	expand_var(t_token *t, char *var)
+{
+	char	*new;
+	t_index	i;
+
+	init_index(&i);
+	new = safe_malloc(expanded_len(t, var) + 1);
+	while (t->token[i.t_i] != '$')
+		new[i.new_i++] = t->token[i.t_i++];
+	while (var[i.var_i] != '\0')
+		new[i.new_i++] = var[i.var_i++];
+	if (t->token[i.t_i + 1] == '?' || t->token[i.t_i + 1] == '$')
+		i.t_i += 2;
+	else
+		i.t_i += var_name_len(t->token, i.t_i + 1) + 1;
+	while (t->token[i.t_i] != '\0')
+		new[i.new_i++] = t->token[i.t_i++];
+	new[i.new_i] = '\0';
+	free(t->token);
+	t->token = new;
 }
