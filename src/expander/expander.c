@@ -5,118 +5,71 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/03 01:40:30 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/02/25 00:18:17 by msilva-c         ###   ########.fr       */
+/*   Created: 2025/03/15 17:13:16 by msilva-c          #+#    #+#             */
+/*   Updated: 2025/03/15 17:13:40 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-
-/* returns, if found and if it's suposed to be expanded, the [i] where the $ was found
- * it should not expand if the $ is inside simples quotes, despite possible ""
- */
-int check_quotes(char *str, int i)
+void	expand_vars_loop(t_token *start)
 {
-	while (str[i])
+	t_token	*step;
+
+	step = start;
+	while (step)
 	{
-		if (ft_strchr(str, 39) < ft_strchr(str, 34) && str[i] > ft_strchr(str, 39) && str[i] < ft_strchr(ft_strchr(++str, 39), 39))
-			return (0);
-		return (i);
+		hide_expand(step->token);
+		if (needs_expand(step))
+			do_expand(step);
+		else
+		{
+			unhide_expand(step->token);
+			step = step->next;
+		}
 	}
 }
 
-char *get_var_value(char *var_name, char **env)
+void	do_expand(t_token *t)
 {
-	int i = 0;
-	int j = 0;
-	char *var_value = NULL;
+	char	*var_name;
+	char	*var_value;
 
-	while (env[i])
-	{
-		if (ft_strncmp(env[i], var_name, ft_strlen(var_name)) == 0)
-		{
-			j = ft_strlen(var_name);
-			if (env[i][j] == '=')
-			{
-				var_value = ft_strdup(env[i] + j + 1);
-				break ;
-			}
-		}
-		i++;
-	}
+	var_name = get_var_name(t);
+	if (is_special_expand(var_name))
+		var_value = get_special_var(var_name);
+	else
+		var_value = get_var_value(mini_call()->env, var_name);
+	expand_var(t, var_value);
 	free(var_name);
-	return (var_value);
+	free(var_value);
 }
 
-
-char *get_var_name(char *line, int i)
+static void	init_index(t_index *i)
 {
-	int j = i;
-	char *var_name = NULL;
-
-	while (line[j] && (ft_isalnum(line[j]) || line[j] == '_'))
-		j++;
-	var_name = ft_substr(line, i, j - i);
-	return (var_name);
+	i->new_i = 0;
+	i->t_i = 0;
+	i->var_i = 0;
 }
 
-int replace_dollar(char *line, int i, char **env)
+void	expand_var(t_token *t, char *var)
 {
-	int n = 0;
-	int j = 0;
-	char *var_name = NULL;
-	char *var_value = NULL;
+	char	*new;
+	t_index	i;
 
-	var_name = get_var_name(line, i);
-	if (var_name)
-		var_value = get_var_value(var_name, env);
-	if (var_value)
-	{
-		printf("var_name: %s\n", var_name);
-		printf("var_value: %s\n", var_value);
-
-	}
-	{
-		n = ft_strlen(var_name);
-		while (var_value[j])
-			j++;
-		line = ft_strjoin(ft_strjoin(ft_substr(line, 0, i), var_value), ft_substr(line, i + n, ft_strlen(line) - i - n));
-		free(var_value);
-	}
-
-
-}
-
-void	expander(t_token *tokens, char **env)
-{
-	t_token	*node;
-	char *line;
-	char *new;
-	int i;
-
-	node = tokens;
-	new = NULL;
-	line = NULL;
-	int flag = 0;
-	//print_matrix(env);
-	//return ;
-	while (node)
-	{
-		i = 0;
-		line = node->content;
-		while (line[i] && node->type == 1)
-		{
-			if (line[i] == 39 && flag == 0)
-				flag = 1;
-			else if (line[i] == 39 && flag == 1)
-				flag = 0;
-			else if (line[i] == '$' && flag == 0)
-				new = replace_dollar(line, i, env);
-			i++;
-		}
-		free(node->content);
-		node->content = new;
-		node = node->next;
-	}
+	init_index(&i);
+	new = safe_malloc(expanded_len(t, var) + 1);
+	while (t->token[i.t_i] != '$')
+		new[i.new_i++] = t->token[i.t_i++];
+	while (var[i.var_i] != '\0')
+		new[i.new_i++] = var[i.var_i++];
+	if (t->token[i.t_i + 1] == '?' || t->token[i.t_i + 1] == '$')
+		i.t_i += 2;
+	else
+		i.t_i += var_name_len(t->token, i.t_i + 1) + 1;
+	while (t->token[i.t_i] != '\0')
+		new[i.new_i++] = t->token[i.t_i++];
+	new[i.new_i] = '\0';
+	free(t->token);
+	t->token = new;
 }

@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/15 17:09:20 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/15 17:11:27 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/15 17:12:38 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,6 @@ t_token	*tokenizer(char **words)
 		token_add_back(start, add);
 		i++;
 	}
-	free_double_char_array(words);
+	ft_free_matrix(words);
 	return (start);
 }
