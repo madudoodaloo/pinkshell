@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 13:57:32 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/08 15:10:36 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/15 14:10:40 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ typedef struct s_env
 	char	*var;
 	char	*var_name;
 	char	*var_value;
-	int 	valid;
+	int 	valid; //inicializar para false
 	struct s_env *next;
 }			t_env;
 

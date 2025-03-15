@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 05:59:04 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/08 02:47:42 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/08 16:09:24 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include "../includes/minishell.h"
 
 /* env.c */
-t_env	*add_var(char *var);
+t_env	*create_var(char *var);
 t_env *copy_env(void);
 t_env *empty_env(void);
 int	check_env(char **envp);

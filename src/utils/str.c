@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 14:50:45 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/08 15:15:03 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/15 14:33:35 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,5 +68,20 @@ char	*ft_strdup(const char *s)
 	}
 	copy[i] = '\0';
 	return (copy);
+}
+
+void free_matrix(char **matrix)
+{
+    int i;
+
+    if (!matrix)
+        return;
+    i = 0;
+    while (matrix[i])
+    {
+        free(matrix[i]);
+        i++;
+    }
+    free(matrix);
 }
 
