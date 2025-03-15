@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 13:57:32 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/15 16:29:52 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/15 16:55:05 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@ typedef struct s_msh
 	t_token			*tokens;
 	t_pipex			*pipex;
 	int				exit;
-	int				n_line;
 	int				signaled;
 	int				ret;
 }			t_msh;

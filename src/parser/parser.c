@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 06:32:58 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/07 15:26:54 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/15 17:11:03 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,8 +118,17 @@ int add_node(t_token **lst_head, char *line, int i, int end)
     return (end);
 }
 
-void	parser(char *line, t_token **lst_head)
+int	parser(t_msh *msh)
 {
+	if (parse_quotes(msh->line))
+		return (-1);
+	if (tokenize(msh))
+		return (-1);
+	msh->tokens = re_tokenize(msh);
+	expander(msh);
+	//dar set da struct para a exec
+
+
 	int		i;
 	int start;
 

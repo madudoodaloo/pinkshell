@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 18:18:18 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/15 16:18:18 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/15 16:55:12 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,10 +58,7 @@ t_msh    *init_all(char **envp)
     minishell->pwd = getcwd(NULL, 0);
     minishell->pipex = NULL;
     minishell->exit = 0;
-    minishell->n_line = 0;
     minishell->signaled = 0;
-    minishell->n_line = 0;
-    minishell->exit = 0;
     minishell->ret = 0;
     return (msh());
 }
