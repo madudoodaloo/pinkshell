@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 13:57:32 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/15 14:10:40 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/15 16:29:52 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,14 +33,23 @@ typedef struct s_token
 	struct s_token	*next;
 }			t_token;
 
+typedef struct s_pipex
+{
+	int		flag
+}			t_pipex;
+
 typedef struct s_msh
 {
-	char		*line;
-	int		exit;
-	int		ret;
-	t_token **lst_head;
-	t_token	**ex_tokens;
-	char **env;
+	char			*line;
+	char			*home;
+	char			*pwd;
+	t_env 			*env;
+	t_token			*tokens;
+	t_pipex			*pipex;
+	int				exit;
+	int				n_line;
+	int				signaled;
+	int				ret;
 }			t_msh;
 
 // types for node struct

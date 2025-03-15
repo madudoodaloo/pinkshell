@@ -6,23 +6,21 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/12 11:01:56 by skioridi          #+#    #+#             */
-/*   Updated: 2025/03/08 01:34:38 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/15 16:33:03 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-char *clearline(char *line, t_token **tokens)
+char *clearline(t_msh *msh)
 {
-    free(line);
-    free_struct(tokens);
-    return (NULL);
+
 }
 
 bool    handleline(t_msh *msh)
 {
     if (msh->line)
-        msh->line = clearline(msh->line, msh->ex_tokens);
+        msh->line = clearline(msh);
     msh->line = readline("minishell$");
     if (msh->line && *msh->line)
         add_history(msh->line);
@@ -54,15 +52,14 @@ void    c_handler()
 void msh_loop(char **envp)
 {
     init_all(envp);
-
     signal(2, c_handler); //ctrl-C SIGINT
     signal(3, SIG_IGN); //ctrl-\ SIGQUIT
-    while (msh.exit == 0)
+    while (msh()->exit == 0)
     {
-        msh.exit = handleline(&msh);
+        msh()->exit = handleline(&msh);
     }
-    free_and_exit(&msh);
-    return (msh.ret);
+    free_and_exit(msh());
+    return (msh()->ret);
 }
 
 int main(int ac, char **av, char **envp)

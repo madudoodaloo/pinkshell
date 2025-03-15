@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 01:27:31 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/15 14:36:08 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/15 14:51:50 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,11 +60,6 @@ t_env	*create_var(char *str)
 	return (new);
 }
 
-t_env *copy_env(void)
-{
-
-}
-
 char **get_default_env(void)
 {
 	char **default_env = safe_malloc(sizeof(char *) * 5);
@@ -99,7 +94,8 @@ t_env *empty_env(void)
 		var_add_back(start, temp);
 		free(temp);
 	}
-	free_matrix(default_env);
+	if (default_env)
+		free_matrix(default_env);
 	return (start);
 }
 
@@ -130,6 +126,23 @@ t_env	*get_env(char **envp)
 			if (i > 0)
 				add_var_back(new, temp);
 		}
+	}
+	return (new);
+}
+
+t_env	*env_dup(t_env *env)
+{
+	t_env	*new;
+	t_env	*temp;
+
+	if (!env)
+		return (NULL);
+	new = create_var(env->var);
+	temp = env->next;
+	while (temp)
+	{
+		var_add_back(new, init_var(temp->var));
+		temp = temp->next;
 	}
 	return (new);
 }

@@ -6,11 +6,28 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 14:50:45 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/15 14:33:35 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/15 14:43:44 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
+
+int	ft_strcmp(const char *s1, const char *s2)
+{
+	unsigned char	*s01;
+	unsigned char	*s02;
+
+	s01 = (unsigned char *)s1;
+	s02 = (unsigned char *)s2;
+	if (!s1 || !s2)
+		return (0);
+	while (*s01 && *s02 && (*s01 == *s02))
+	{
+		s01++;
+		s02++;
+	}
+	return (*s01 - *s02);
+}
 
 size_t	ft_strlen(const char *str)
 {
@@ -70,18 +87,5 @@ char	*ft_strdup(const char *s)
 	return (copy);
 }
 
-void free_matrix(char **matrix)
-{
-    int i;
 
-    if (!matrix)
-        return;
-    i = 0;
-    while (matrix[i])
-    {
-        free(matrix[i]);
-        i++;
-    }
-    free(matrix);
-}
 

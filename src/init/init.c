@@ -6,11 +6,38 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 18:18:18 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/08 01:37:59 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/15 16:18:18 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
+
+char	*get_home(void)
+{
+	char	*wd;
+	char	*ret;
+	int		i;
+	int		count_slash;
+
+	i = 0;
+	count_slash = 0;
+	wd = NULL;
+	wd = getcwd(NULL, 0);
+	while (wd[i] != '\0')
+	{
+		if (wd[i] == '/')
+			count_slash++;
+		if (count_slash == 3)
+			break ;
+		i++;
+	}
+	ret = safe_malloc(i + 1);
+	ret[i] = '\0';
+	while (--i >= 0)
+		ret[i] = wd[i];
+	free(wd);
+	return (ret);
+}
 
 t_msh	*msh(void)
 {
@@ -24,20 +51,17 @@ t_msh    *init_all(char **envp)
     t_msh *minishell;
 
     minishell = msh();
-    minishell->env = init_env(envp);
-    minishell->line = (char *)malloc(sizeof(char));
-    if (!minishell->line)
-        return (NULL);
+    minishell->line = NULL;
+    minishell->tokens = NULL;
+    minishell->env = get_env(envp);
+    minishell->home = get_home();
+    minishell->pwd = getcwd(NULL, 0);
+    minishell->pipex = NULL;
+    minishell->exit = 0;
+    minishell->n_line = 0;
+    minishell->signaled = 0;
+    minishell->n_line = 0;
     minishell->exit = 0;
     minishell->ret = 0;
-    minishell->lst_head = (t_token **)malloc(sizeof(t_token *));
-    if (!minishell->lst_head)
-        return (NULL);
-    *(minishell->lst_head) = NULL;
-    minishell->ex_tokens = (t_token **)malloc(sizeof(t_token *));
-    if (!minishell->ex_tokens)
-        return (NULL);
-    *(minishell->ex_tokens) = NULL;
-    minishell->env = NULL;
-    return (minishell);
+    return (msh());
 }
