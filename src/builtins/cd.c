@@ -3,17 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   cd.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
+/*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/03 20:40:50 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/07 20:26:53 by marianamest      ###   ########.fr       */
+/*   Updated: 2025/03/15 20:27:23 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minishell.h"
+#include "../includes/minishell.h"
 
-// ficou igual i'm sorry não consigo mm pensar noutra forma de fazer isto mas é tão básico que não deve haver stress
-char	*find_env_value(char **env, const char *var)
+char	*find_env_value(char **env, const char *var) // searches through env to find the key we want and returns pointer to the value portion
 {
 	int	i;
 	int	j;
@@ -30,129 +29,39 @@ char	*find_env_value(char **env, const char *var)
 	}
 	return (NULL);
 }
-// caguei no get current directory e fiz merge com a change directory original
-// esta é só proteção para se der erro 
-static int	change_dir(const char *path)
+
+int	get_current_directory(char *buffer, int size) // retrieves the current directory and stores it in buffer
 {
-	if (chdir(path) == -1)
-	{
-		perror("cd: chdir() error");
-		return (-1);
-	}
-	return (0);
+	int	success;
+
+	success = 0;
+	while (!success)
+		success = getcwd(buffer, size) != NULL;
+	return (success);
 }
 
-// esta ficou também a dar handle de erros de getcwd e chdir e deixou de depender de outras mini func auxiliares
-void	change_directory(char **env, const char *path)
+void	update_pwd_vars(char **env, const char *old_pwd, const char *new_pwd) // updates the current (PWD) and previous (OLDPWD) values
+{
+	//set_env_value(&env, "OLDPWD", old_pwd);
+	//set_env_value(&env, "PWD", new_pwd);
+}
+
+void	change_directory(char **env, const char *path) // changes the current directory to either *path or HOME (in case of failure as a fallback option)
 {
 	char	old_pwd[PATH_MAX];
 	char	new_pwd[PATH_MAX];
 
-	if (getcwd(old_pwd, sizeof(old_pwd)) == NULL)
-	{
-		perror("cd: getcwd() error");
+	if (!get_current_directory(old_pwd, sizeof(old_pwd)))
 		return ;
-	}
 	if (!path)
-	{
 		path = find_env_value(env, "HOME");
-		if (!path)
-		{
-			fprintf(stderr, "cd: HOME not set\n");
-			return ;
-		}
-	}
-	if (change_dir(path) == -1)
-		return ;
-	if (getcwd(new_pwd, sizeof(new_pwd)) == NULL)
-	{
-		perror("cd: getcwd() error");
-		return ;
-	}
-	printf("Changed directory from %s to %s\n", old_pwd, new_pwd);
+	if (chdir(path) == 0 && get_current_directory(new_pwd, sizeof(new_pwd)))
+		update_pwd_vars(env, old_pwd, new_pwd);
 }
 
-// acrescentei proteção para demasiados args 
-void	cd_command(char **env, char **args)
+void	cd_command(char **env, char **args) // if given none or 1 arg (ex.: cd or cd Documents are acceptable), otherwise uses change directory if the target defaults to NULL
 {
-	const char	*path;
-
 	if (args[1] && args[2])
-	{
-		write(STDERR_FILENO, "cd: too many arguments\n", 23);
 		return ;
-	}
-	if (args[1] != NULL)
-		path = args[1];
-	else
-		path = NULL;
-	change_directory(env, path);
+	change_directory(env, args[1] ? args[1] : NULL);
 }
-
-// #include <limits.h>
-// #include <stdio.h>
-// #include <stdlib.h>
-// #include <string.h>
-// #include <unistd.h>
-//
-// int main(void)
-// {
-//     // Simulate environment variables
-//     char *env[] = {
-//         "HOME=/Users/marianamestre",
-//         "PWD=/Users/marianamestre/Documents/42/minishell/src/builtins",
-//         NULL
-//     };
-
-//     // Simulate command line arguments
-//     char *args1[] = { "cd", NULL }; // cd
-//     char *args2[] = { "cd", "Documents", NULL }; // cd Documents
-//     char *args3[] = { "cd", "nonexistent_directory", NULL };
-	// cd nonexistent_directory
-//     char *args4[] = { "cd", "arg1", "arg2", NULL };
-	// cd arg1 arg2 (should fail)
-
-//     // Test case 1: cd (should change to HOME directory)
-//     printf("Test case 1: cd\n");
-//     cd_command(env, args1);
-//     char cwd1[PATH_MAX];
-//     if (getcwd(cwd1, sizeof(cwd1))) {
-//         printf("Current directory: %s\n", cwd1);
-//     } else {
-//         perror("getcwd() error");
-//     }
-
-//    
-	// Test case 2: cd Documents (should change to Documents directory if it exists)
-//     printf("\nTest case 2: cd Documents\n");
-//     cd_command(env, args2);
-//     char cwd2[PATH_MAX];
-//     if (getcwd(cwd2, sizeof(cwd2))) {
-//         printf("Current directory: %s\n", cwd2);
-//     } else {
-//         perror("getcwd() error");
-//     }
-
-//    
-	// Test case 3: cd nonexistent_directory (should fail and stay in the same directory)
-//     printf("\nTest case 3: cd nonexistent_directory\n");
-//     cd_command(env, args3);
-//     char cwd3[PATH_MAX];
-//     if (getcwd(cwd3, sizeof(cwd3))) {
-//         printf("Current directory: %s\n", cwd3);
-//     } else {
-//         perror("getcwd() error");
-//     }
-
-//     // Test case 4: cd arg1 arg2 (should fail due to too many arguments)
-//     printf("\nTest case 4: cd arg1 arg2\n");
-//     cd_command(env, args4);
-//     char cwd4[PATH_MAX];
-//     if (getcwd(cwd4, sizeof(cwd4))) {
-//         printf("Current directory: %s\n", cwd4);
-//     } else {
-//         perror("getcwd() error");
-//     }
-
-//     return (0);
-// }
