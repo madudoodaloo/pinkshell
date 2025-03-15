@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 06:01:56 by msilva-c          #+#    #+#             */
-/*   Updated: 2024/11/22 14:00:39 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/15 19:43:22 by marianamest      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 void    free_struct(t_token **head);
 void   free_and_exit(t_msh *msh);
 void	ft_free_matrix(char **matrix);
+void	free_all(void *strut);
 
 /* testers */
 void	print_struct(t_token **lst_head);

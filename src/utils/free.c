@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 18:17:41 by msilva-c          #+#    #+#             */
-/*   Updated: 2024/12/03 01:35:10 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/15 19:43:08 by marianamest      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,4 +66,10 @@ void    free_and_exit(t_msh *msh)
         ft_free_matrix(msh->env);
     }
     return ;
+}
+
+void	free_all(void *strut)
+{
+	if (strut)
+		free(strut);
 }

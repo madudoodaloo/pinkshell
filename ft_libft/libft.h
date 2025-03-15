@@ -6,7 +6,7 @@
 /*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 14:24:38 by skioridi          #+#    #+#             */
-/*   Updated: 2025/03/08 18:42:13 by marianamest      ###   ########.fr       */
+/*   Updated: 2025/03/09 19:00:27 by marianamest      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,8 @@ void				ft_putlstr(char *s, int *len);
 void				ft_putladd(unsigned long add, int *len);
 int					ft_printf(const char *s, ...);
 void				ft_swap(char **a, char **b);
+char				*ft_strcpy(char *dest, char *src);
+void				ft_swap_char(char *a, char *b);
 int					ft_strcmp(char *s1, char *s2);
 
 typedef struct s_list

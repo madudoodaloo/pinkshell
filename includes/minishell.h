@@ -6,12 +6,14 @@
 /*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 13:57:32 by marianamest       #+#    #+#             */
-/*   Updated: 2025/01/30 17:32:25 by marianamest      ###   ########.fr       */
+/*   Updated: 2025/03/12 16:29:35 by marianamest      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINISHELL_H
 # define MINISHELL_H
+
+volatile sig_atomic_t	g_signal = 0;
 
 # include <errno.h>
 # include <fcntl.h>
@@ -34,10 +36,13 @@
 # include "../ft_libft/libft.h"
 # include "builtins.h"
 # include "expander.h"
+# include "heredoc.h"
 # include "lexer.h"
 # include "parser.h"
 # include "signals.h"
 # include "utils.h"
+
+
 
 # define CMD 1
 # define PIPE 2
@@ -49,21 +54,21 @@
 
 typedef struct s_token
 {
-	char			*content;
-	int				type;
-	char			before;
-	int				after;
-	struct s_token	*next;
-}					t_token;
+	char				*content;
+	int					type;
+	char				before;
+	int					after;
+	struct s_token		*next;
+}						t_token;
 
 typedef struct s_msh
 {
-	char			*line;
-	int				exit;
-	int				ret;
-	t_token			**lst_head;
-	t_token			**ex_tokens;
-	char			**env;
-}					t_msh;
+	char				*line;
+	int					exit;
+	int					ret;
+	t_token				**lst_head;
+	t_token				**ex_tokens;
+	char				**env;
+}						t_msh;
 
 #endif
