@@ -6,11 +6,11 @@
 /*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 16:47:08 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/16 21:16:24 by marianamest      ###   ########.fr       */
+/*   Updated: 2025/03/16 23:46:09 by marianamest      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/builtins.h"
+# include "../../includes/minishell.h"
 
 
 void	add_or_update_env_var(char ***env, const char *var)
@@ -28,7 +28,7 @@ void	add_or_update_env_var(char ***env, const char *var)
 	if (index != -1)
 	{
 		free((*env)[index]);
-		(*env)[index] = strdup(var);
+		(*env)[index] = ft_strdup(var);
 		if (!(*env)[index])
 		{
 			perror("strdup failed");

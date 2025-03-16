@@ -6,7 +6,7 @@
 /*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 18:58:24 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/16 21:14:45 by marianamest      ###   ########.fr       */
+/*   Updated: 2025/03/16 23:49:52 by marianamest      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,11 +68,11 @@ void	execute_with_redirections(char **args)
 	i = 0;
 	while (args[i] != NULL)
 	{
-		if (strcmp(args[i], "<") == 0)
+		if (ft_strcmp(args[i], "<") == 0)
 			handle_input_redirection(args, &in_fd, i);
-		else if (strcmp(args[i], ">") == 0)
+		else if (ft_strcmp(args[i], ">") == 0)
 			handle_output_redirection(args, &out_fd, i);
-		else if (strcmp(args[i], ">>") == 0)
+		else if (ft_strcmp(args[i], ">>") == 0)
 			handle_append_redirection(args, &out_fd, i);
 		i++;
 	}

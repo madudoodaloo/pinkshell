@@ -6,7 +6,7 @@
 /*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 15:35:26 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/16 21:16:16 by marianamest      ###   ########.fr       */
+/*   Updated: 2025/03/16 23:44:41 by marianamest      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	normalize_exit_code(int code)
 void	exit_error(char *arg)
 {
 	write(2, "exit\nerror: exit: ", 18);
-	write(2, arg, strlen(arg)); // print the argument that caused the error
+	write(2, arg, ft_strlen(arg)); // print the argument that caused the error
 	write(2, ": numeric argument required\n", 28);
 }
 

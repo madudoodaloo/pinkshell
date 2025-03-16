@@ -6,7 +6,7 @@
 /*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 16:18:49 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/16 23:16:32 by marianamest      ###   ########.fr       */
+/*   Updated: 2025/03/16 23:50:45 by marianamest      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ const char *extract_var_name(const char *start, char *var_name)
     const char *var_end;
 	
 	var_end = start;
-    while (*var_end && (isalnum(*var_end) || *var_end == '_'))
+    while (*var_end && (ft_isalnum(*var_end) || *var_end == '_'))
         var_end++;
-    strncpy(var_name, start, var_end - start);
+    ft_strncpy(var_name, start, var_end - start);
     var_name[var_end - start] = '\0';
     return (var_end);
 }
@@ -32,7 +32,7 @@ char *expand_variables(const char *input)
 	char var_name[256];
 	char *var_value;
 	
-    expanded = malloc(strlen(input) + 250); // Depois ajustamos
+    expanded = malloc(ft_strlen(input) + 250); // Depois ajustamos
     if (!expanded) 
 		return NULL;
     expanded[0] = '\0';
@@ -44,10 +44,10 @@ char *expand_variables(const char *input)
             start = extract_var_name(start + 1, var_name);
             var_value = getenv(var_name);
             if (var_value) 
-				strcat(expanded, var_value);
+				ft_strcat(expanded, var_value);
         }
         else
-            strncat(expanded, start++, 1);
+            ft_strncat(expanded, start++, 1);
     }
     return (expanded);
 }
@@ -108,7 +108,7 @@ void read_until_delimiter(int fd, char *delimiter)
         if (bytes_read <= 0) // se der 0 ou menos quer dizer que ou foi EOF ou CTR+D
             break;
         buffer[bytes_read] = '\0'; // null terminates para o input ser tratado como string válida
-        if (strncmp(buffer, delimiter, delimiter_len) == 0 && buffer[delimiter_len] == '\n') // compara o input com o delimitador e verifica se tem \n logo  a seguir (se foi <<EOF + enter)
+        if (ft_strncmp(buffer, delimiter, delimiter_len) == 0 && buffer[delimiter_len] == '\n') // compara o input com o delimitador e verifica se tem \n logo  a seguir (se foi <<EOF + enter)
             break;
         expanded_input = expand_variables(buffer); // expande variaveis se for o caso
         if (!expanded_input)
@@ -116,7 +116,7 @@ void read_until_delimiter(int fd, char *delimiter)
             write(STDERR_FILENO, "Error: Failed to expand variables\n", 33); // se nao for possivel expandir
             break;
         }
-        write(fd, expanded_input, strlen(expanded_input)); // escreve as expansoes para o fd
+        write(fd, expanded_input, ft_strlen(expanded_input)); // escreve as expansoes para o fd
         free(expanded_input);
     }
 }

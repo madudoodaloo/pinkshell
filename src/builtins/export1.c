@@ -6,7 +6,7 @@
 /*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 13:07:55 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/16 21:16:21 by marianamest      ###   ########.fr       */
+/*   Updated: 2025/03/16 23:44:59 by marianamest      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int parse_export(char *str)
 
 void	format_export_var(const char *var)
 {
-	const char	*equals = strchr(var, '=');
+	const char	*equals = ft_strchr(var, '=');
 	int			name_len;
 
 	if (!equals)

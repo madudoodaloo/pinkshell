@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fork_and_execute.c                                 :+:      :+:    :+:   */
+/*   fork_and_execute1.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 21:05:44 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/16 22:28:14 by marianamest      ###   ########.fr       */
+/*   Updated: 2025/03/16 23:49:08 by marianamest      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 
 void	handle_error(const char *message)
 {
-	write(2, message, strlen(message));
+	write(2, message, ft_strlen(message));
 	write(2, "\n", 1);
 	exit(EXIT_FAILURE);
 }

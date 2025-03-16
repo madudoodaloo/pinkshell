@@ -6,7 +6,7 @@
 /*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 19:41:04 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/16 21:16:30 by marianamest      ###   ########.fr       */
+/*   Updated: 2025/03/16 23:48:13 by marianamest      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	unset_env_var(char **envp, char **export, const char *var)
 	i = 0;
 	while (envp[i])
 	{
-		if (ft_strcmp_nochr(var, envp[i], '=') == 0 || strcmp(var,
+		if (ft_strcmp_nochr(var, envp[i], '=') == 0 || ft_strcmp(var,
 				envp[i]) == 0)
 		{
 			remove_from_array(envp, i);
@@ -45,7 +45,7 @@ void	unset_env_var(char **envp, char **export, const char *var)
 	i = 0;
 	while (export[i])
 	{
-		if (ft_strcmp_nochr(var, export[i], '=') == 0 || strcmp(var,
+		if (ft_strcmp_nochr(var, export[i], '=') == 0 || ft_strcmp(var,
 				export[i]) == 0)
 		{
 			remove_from_array(export, i);
