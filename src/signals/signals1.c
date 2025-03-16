@@ -6,13 +6,13 @@
 /*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 16:26:33 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/16 21:17:19 by marianamest      ###   ########.fr       */
+/*   Updated: 2025/03/16 23:25:38 by marianamest      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/signals.h"
 
-int g_signal = 0;
+// int g_signal = 0;
 
 t_data	*msdata(void)
 {

@@ -6,7 +6,7 @@
 /*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 22:25:57 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/16 22:34:04 by marianamest      ###   ########.fr       */
+/*   Updated: 2025/03/16 23:24:33 by marianamest      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,18 @@ void	setup_pipe_and_execute(char **args, int *input_fd, char **env)
 
 void	wait_for_children(int num_commands)
 {
-	int	i;
+	int		i;
+	int		status;
+	pid_t	pid;
 
 	i = 0;
 	while (i < num_commands)
 	{
-		wait(NULL);
+		pid = waitpid(-1, &status, 0);
+		if (pid > 0)
+			handle_child_exit_status(status);
+		else
+			handle_error("waitpid");
 		i++;
 	}
 }
