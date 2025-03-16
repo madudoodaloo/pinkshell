@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   signals.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
+/*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 16:26:02 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/15 19:52:40 by marianamest      ###   ########.fr       */
+/*   Updated: 2025/03/16 15:29:36 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SIGNALS_H
-# define SIGNALS_H
+#ifndef SIGNS_H
+# define SIGNS_H
 
 # include "minishell.h"
 

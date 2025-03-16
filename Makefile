@@ -11,14 +11,8 @@ SRC =			src/main/main.c src/parser/env_utils.c src/parser/init.c \
 				src/lexer/lexer.c src/lexer/str_utils.c \
 				src/expander/expander.c \
 				src/signals/signals1.c src/signals/signals2.c \
-				src/heredoc/heredoc1.c src/heredoc/heredoc2.c
-
-LIBFT_PATH=		./ft_libft/
-LIBFT=			$(LIBFT_PATH)libft.a
-
-CFLAGS =		-I./includes -g -fsanitize=address #-Wall -Wextra -Werror
-OTHERFLAGS =	-L$(LIBFT_PATH) -lft -lreadline -lasan -O3
-                src/utils/utils_builtins.c src/utils/free.c \
+				src/heredoc/heredoc1.c src/heredoc/heredoc2.c \
+				src/utils/utils_builtins.c src/utils/free.c \
 				src/lexer/lexer.c src/lexer/str_utils.c \
 				src/expander/expander.c
 
@@ -29,7 +23,6 @@ OBJ_DIR =		./obj/
 OBJS =			$(patsubst src/%.c, $(OBJ_DIR)%.o, $(SRC))
 
 
-#rules
 all: $(NAME)
 
 $(NAME): $(OBJS)

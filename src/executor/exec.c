@@ -3,15 +3,12 @@
 /*                                                        :::      ::::::::   */
 /*   exec.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
+/*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 16:58:48 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/09 16:18:25 by marianamest      ###   ########.fr       */
+/*   Updated: 2025/03/16 15:30:54 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include "../includes/minishell.h"
+#include "../includes/minishell.h"
 
-#include <unistd.h>
-#include <stdio.h>
-#include <stdlib.h>
