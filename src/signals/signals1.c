@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 16:26:33 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/16 15:43:50 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/16 16:07:38 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ void	setup_signals(void)
 	sigemptyset(&sa.sa_mask); // inicializa a signal mask para excluir quaisquer outros sinais durante a execução do signal handler
 	sigaction(SIGINT, &sa, NULL); // aplica a configuração ao SIGINT
 	sa.sa_handler = SIG_IGN; // Ignora SIGQUIT
-	sigaction(SIGQUIT, &sa, NULL); // apllica a configuração ao SIGQUIT
+	sigaction(SIGQUIT, &sa, NULL); // aplica a configuração ao SIGQUIT
 	rl_clear_signals(); // da reset ao signal handling state ao limpar sinais pendentes
 }
 
