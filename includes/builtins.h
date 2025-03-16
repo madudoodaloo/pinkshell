@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtins.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 06:01:00 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/15 20:16:37 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/16 15:37:46 by marianamest      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 /* cd */
 char	*find_env_value(char **env, const char *var);
-int		get_current_directory(char *buffer, int size);
+static int	change_dir(const char *path);
 void	change_directory(char **env, const char *path);
 void	cd_command(char **env, char **args);
 

@@ -6,7 +6,7 @@
 /*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 18:13:48 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/15 19:47:18 by marianamest      ###   ########.fr       */
+/*   Updated: 2025/03/16 15:06:16 by marianamest      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,21 +100,21 @@ void	handle_heredoc(char *delimiter)
 	setup_signals(); // restora os default signal handlers
 }
 
-// int	main(int argc, char **argv)
-// {
-// 	if (argc < 2)
-// 	{
-// 		write(STDERR_FILENO, "Usage: ./a.out <delimiter>\n", 27);
-// 		exit(EXIT_FAILURE);
-// 	}
+int	main(int argc, char **argv)
+{
+	if (argc < 2)
+	{
+		write(STDERR_FILENO, "Usage: ./a.out <delimiter>\n", 27);
+		exit(EXIT_FAILURE);
+	}
 
-// 	// Handle heredoc
-// 	handle_heredoc(argv[1]);
+	// Handle heredoc
+	handle_heredoc(argv[1]);
 
-// 	// Execute the command (e.g., "cat")
-// 	execlp("cat", "cat", NULL);
+	// Execute the command (e.g., "cat")
+	execlp("cat", "cat", NULL);
 
-// 	// If execlp fails
-// 	write(STDERR_FILENO, "Error: Failed to execute command\n", 33);
-// 	exit(EXIT_FAILURE);
-// }
+	// If execlp fails
+	write(STDERR_FILENO, "Error: Failed to execute command\n", 33);
+	exit(EXIT_FAILURE);
+}
