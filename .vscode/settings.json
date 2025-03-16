@@ -1,0 +1,8 @@
+{
+    "files.associations": {
+        "*.embeddedhtml": "html",
+        "minishell.h": "c",
+        "signals.h": "c",
+        "parser.h": "c"
+    }
+}

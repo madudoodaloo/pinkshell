@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 06:01:00 by msilva-c          #+#    #+#             */
-/*   Updated: 2024/11/22 06:05:30 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/15 20:16:37 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 /* cd */
 char	*find_env_value(char **env, const char *var);
 int		get_current_directory(char *buffer, int size);
-void	update_pwd_vars(char **env, const char *old_pwd, const char *new_pwd);
 void	change_directory(char **env, const char *path);
 void	cd_command(char **env, char **args);
 

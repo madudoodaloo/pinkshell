@@ -1,30 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init.h                                             :+:      :+:    :+:   */
+/*   env_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/22 05:59:04 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/08 16:09:24 by msilva-c         ###   ########.fr       */
+/*   Created: 2024/09/18 17:01:39 by msilva-c          #+#    #+#             */
+/*   Updated: 2024/11/22 04:52:32 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PARSER_H
-# define PARSER_H
+#include "../includes/minishell.h"
 
-# include "../includes/minishell.h"
+char **copy_matrix(char **src)
+{
+    char **dst;
+    int i = 0;
 
-/* env.c */
-t_env	*create_var(char *var);
-t_env *copy_env(void);
-t_env *empty_env(void);
-int	check_env(char **envp);
-t_env	*get_env(char **envp);
-
-
-/* init.c */
-t_msh	*msh(void);
-t_msh    *init_all(t_msh *msh);
-
-#endif
+    while (src[i] != NULL)
+        i++;
+    dst = (char **)malloc(sizeof(char *) * (i + 1));
+	if (!dst)
+		return (NULL);
+    i = -1;
+    while (src[++i])
+        dst[i] = ft_strdup(src[i]);
+    dst[i] = NULL;
+    return (dst);
+}
