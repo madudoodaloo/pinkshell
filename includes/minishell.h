@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 13:57:32 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/16 19:54:16 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/16 20:02:55 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,6 @@ typedef struct s_msh
 	t_env 			*env;
 	t_token			*tokens;
 	t_pipex			*pipex;
-	//t_data			*data;+
 	int				exit;
 	int				signaled;
 	int				ret;

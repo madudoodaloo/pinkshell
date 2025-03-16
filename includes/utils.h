@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 06:01:56 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/15 20:30:42 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/16 21:54:59 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,4 +41,13 @@ void	print_error(const char *message);
 /* helper functions */
 void	my_strcpy(char *dest, const char *src);
 void	my_strcat(char *dest, const char *src);
+
+/* libft.c */
+int	ft_isoperator(char *str, int i);
+int	ft_isspace(char c);
+int	ft_isalpha(char c);
+int	ft_isdigit(char c);
+int	ft_isquote(char c);
+
+
 #endif

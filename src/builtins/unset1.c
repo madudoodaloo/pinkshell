@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   unset1.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
+/*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 19:41:04 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/14 16:50:47 by marianamest      ###   ########.fr       */
+/*   Updated: 2025/03/16 20:36:13 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minishell.h"
+#include "../includes/minishell.h"
 
 // Helper function to remove an element from an array of strings
 void	remove_from_array(char **array, int index)
@@ -30,7 +30,7 @@ void	remove_from_array(char **array, int index)
 void	unset_env_var(char **envp, char **export, const char *var)
 {
 	int	i;
-    
+
 	i = 0;
 	while (envp[i])
 	{
@@ -101,7 +101,7 @@ void	read_unset(char **envp, char **export, char **cmds, int *exit_status)
 	*exit_status = 0;
 }
 
-// // funcs for the main 
+// // funcs for the main
 // char *ft_strdup(const char *str)
 // {
 //     char *dup = malloc(strlen(str) + 1);

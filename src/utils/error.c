@@ -1,25 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parser.c                                           :+:      :+:    :+:   */
+/*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/22 06:32:58 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/16 22:01:18 by msilva-c         ###   ########.fr       */
+/*   Created: 2025/03/16 20:05:39 by msilva-c          #+#    #+#             */
+/*   Updated: 2025/03/16 20:08:07 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-int	parser(t_msh *msh)
+void	ft_put_str_fd(char *str, int fd)
 {
-	if (!check_quotes(msh->line, -1))
-		return (-1);
-	if (!tokenize(msh))
-		return (-1);
-	if (!expander(msh))
-		return (-1);
-	//dar set da struct para a exec
-	return (0);
+	int	i;
+
+	i = 0;
+	if (str == NULL)
+		return ;
+	while (str[i])
+	{
+		write (fd, &str[i], 1);
+		i++;
+	}
+}
+
+int	print_error(char *msg)
+{
+	write(2, msg, ft_strlen(msg));
+	return (1);
 }

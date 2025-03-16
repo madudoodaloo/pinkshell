@@ -3,20 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   heredoc1.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
+/*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 16:18:49 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/15 19:46:33 by marianamest      ###   ########.fr       */
+/*   Updated: 2025/03/16 20:36:13 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minishell.h"
+#include "../includes/minishell.h"
 
 /*expansão*/
 const char *extract_var_name(const char *start, char *var_name)
 {
     const char *var_end;
-	
+
 	var_end = start;
     while (*var_end && (isalnum(*var_end) || *var_end == '_'))
         var_end++;
@@ -31,9 +31,9 @@ char *expand_variables(const char *input)
 	char *expanded;
 	char var_name[256];
 	char *var_value;
-	
+
     expanded = malloc(strlen(input) + 250); // Depois ajustamos
-    if (!expanded) 
+    if (!expanded)
 		return NULL;
     expanded[0] = '\0';
     start = input;
@@ -43,7 +43,7 @@ char *expand_variables(const char *input)
         {
             start = extract_var_name(start + 1, var_name);
             var_value = getenv(var_name);
-            if (var_value) 
+            if (var_value)
 				strcat(expanded, var_value);
         }
         else
