@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 13:57:32 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/16 16:15:52 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/16 19:54:16 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ volatile sig_atomic_t	g_signal = 0;
 # define ENVVAR 5
 # define STR 6
 # define MAXLINE 1024
+# define MAXPATH 4096
 
 typedef struct s_env
 {
@@ -84,5 +85,7 @@ typedef struct s_msh
 	int				signaled;
 	int				ret;
 }			t_msh;
+
+t_msh	*msh(void);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/03 20:40:50 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/16 17:34:54 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/16 19:10:16 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,8 @@ static int	change_dir(const char *path)
 // esta ficou também a dar handle de erros de getcwd e chdir e deixou de depender de outras mini func auxiliares
 void	change_directory(char **env, const char *path)
 {
-	char	old_pwd[PATH_MAX];
-	char	new_pwd[PATH_MAX];
+	char	old_pwd[MAXPATH];
+	char	new_pwd[MAXPATH];
 
 	if (getcwd(old_pwd, sizeof(old_pwd)) == NULL)
 	{

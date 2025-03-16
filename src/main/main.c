@@ -6,69 +6,44 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 15:19:12 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/16 15:19:15 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/16 20:00:59 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #include "../includes/minishell.h"
 
-void    c_handler()
-{
-    ft_printf("\n"); // Move to a new line
-    rl_on_new_line(); // Regenerate the prompt on a newline
-    rl_replace_line("", 0); // Clear the previous text
-    rl_redisplay();
-    return ;
-}
-
-char *clearline(t_msh *msh)
-{
-
-}
-
-bool    handleline(t_msh *msh)
-{
-    if (msh->line)
-        msh->line = clearline(msh);
-    msh->line = readline("minishell$");
-    if (msh->line && *msh->line)
-        add_history(msh->line);
-    if (msh->line && !ft_strncmp(msh->line, "exit", ft_strlen(msh->line)))
-        return (1);
-    else if (msh->line)
-    {
-        if (parser(msh()))
-        {
-            execute_msh(msh());
-        }
-    }
-    else
-        return (1);
-    return (0);
-}
-
 void msh_loop(char **envp)
 {
+    t_msh *m;
+
     init_all(envp);
-    signal(2, c_handler); //ctrl-C SIGINT
-    signal(3, SIG_IGN); //ctrl-\ SIGQUIT
-    while (msh()->exit == 0)
+    m = msh();
+    while (m->exit == 0)
     {
-        msh()->exit = handleline(&msh);
+        if (m->line)
+            m->line = clearline(m);
+        m->line = readline("minishell$");
+        if (m->line && *m->line)
+        {
+            add_history(m->line);
+            if (parser(m))
+                execute(m);
+            else
+                m->exit = 2;
+        }
+        clean_cmdline();
     }
-    free_and_exit(msh());
-    return ;
+    free_and_exit(m);
 }
 
 int main(int ac, char **av, char **envp)
 {
     (void)av;
-    t_msh msh;
 
     if (ac == 1)
     {
-        //inserir aqui a init dos sinais
+        setup_signals();
         msh_loop(envp);
     }
     else
