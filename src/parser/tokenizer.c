@@ -6,74 +6,55 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 20:59:01 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/16 22:12:12 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/16 23:28:39 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-int count_words(char *line)
+void	token_add_back(t_token *head, t_token *new)
 {
-	int i;
-	int word;
+	t_token *current;
 
-	i = 0;
-	word = 0;
-	while (line[i])
-	{
-		if (!ft_isspace(line[i]) || (check_quotes(line, i) && ft_isspace(line[i])))
-		{
-			word++;
-			while (!ft_isspace(line[i]) || (check_quotes(line, i) && ft_isspace(line[i])))
-				i++;
-		}
-		if (ft_isspace(line[i]) && !check_quotes(line, i))
-			i++;
-	}
-	return (word);
+	current = head;
+	while (current->next)
+		current = current->next;
+	current->next = new;
+	new->prev = current;
 }
 
-int parser_wdlen(char *line, int i)
-{
-	int len;
 
-	len = 0;
-	while (line[i + len])
+t_token	*init_token(char *str)
+{
+	t_token *new;
+
+	new = (t_token *)safe_malloc(sizeof(t_token));
+	new->content = ft_strdup(str);
+	new->type = -1;
+	new->next = NULL;
+	new->prev = NULL;
+	new->index = -1;
+	return (new);
+}
+
+t_token	*first_tokens(char **temp)
+{
+	t_token *head;
+	t_token *current;
+	int i;
+
+	i = 0;
+	head = NULL;
+	while (temp[i])
 	{
-		if (!ft_isspace(line[i + len]))
-			len++;
-		else if (ft_isspace(line[i + len]) && check_quotes(line, i + len)) //test: see if in_quotes is working
-			len++;
+		current = init_token(temp[i]);
+		if (!head)
+			head = current;
 		else
-			return (len);
+			token_add_back(head, current);
+		i++;
 	}
-	return (len);
-}
-
-char	**split_spaces(char *line)
-{
-	char **matrix;
-	int wc;
-	int i;
-	int j;
-
-	i = 0;
-	j = 0;
-	wc = count_words(line);
-	matrix = (char **)safe_malloc(sizeof(char *) * (wc + 1));
-	if (!matrix)
-		return (NULL);
-	while (j < wc)
-	{
-		while (ft_isspace(line[i]))
-			i++;
-		matrix[j] = ft_subline(line, i, parser_wdlen(line, i)); // ver se está a guardar bem
-		if (!matrix[j++])
-			return (matrix);
-		i += parser_wdlen(line, i);
-	}
-	matrix[j] = NULL;
-	return (matrix);
+	return (head);
 }
 
 
@@ -84,6 +65,10 @@ int tokenizer(t_msh *msh)
 	temp = split_spaces(msh->line);
 	if (!temp)
 		return (-1);
-	if (!split_spaces(msh->tokens))
+	msh->tokens = first_tokens(temp);
+	free_matrix(temp);
+	if (!msh->tokens)
 		return (-1);
+
+
 }

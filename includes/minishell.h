@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 13:57:32 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/16 20:02:55 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/16 23:18:30 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ volatile sig_atomic_t	g_signal = 0;
 # include <sys/wait.h>
 # include <unistd.h>
 
-/* include headers */
+/* ../includes headers */
 # include "builtins.h"
 # include "expander.h"
 # include "heredoc.h"
@@ -62,9 +62,9 @@ typedef struct s_token
 {
 	char		*content;
 	int 		type;
-	char		before;
-	int			after;
+	int			index;
 	struct s_token	*next;
+	struct s_token	*prev;
 }			t_token;
 
 typedef struct s_pipex

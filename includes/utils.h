@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 06:01:56 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/16 21:54:59 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/16 22:59:46 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void *safe_malloc(size_t size);
 /* free.c */
 void    free_struct(t_token **head);
 void   free_and_exit(t_msh *msh);
-void	ft_free_matrix(char **matrix);
+void	free_matrix(char **matrix);
 
 /* testers */
 void	print_struct(t_token **lst_head);
@@ -48,6 +48,5 @@ int	ft_isspace(char c);
 int	ft_isalpha(char c);
 int	ft_isdigit(char c);
 int	ft_isquote(char c);
-
 
 #endif
