@@ -1,20 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lst_stuff.c                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+        
-	+:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+      
-	+#+        */
-/*                                                +#+#+#+#+#+  
-	+#+           */
-/*   Created: 2024/08/29 11:56:50 by marvin            #+#    #+#             */
-/*   Updated: 2024/08/29 11:56:50 by marvin           ###   ########.fr       */
+/*   lst_utils.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/03/16 17:47:47 by marianamest       #+#    #+#             */
+/*   Updated: 2025/03/16 17:47:47 by marianamest      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
-
 
 // tenho de mudar o libft e garantir que não tenho nenhuma função ilegal!!)
 int	findtype(char *s, int flag)
