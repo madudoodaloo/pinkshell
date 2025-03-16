@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   export.c                                           :+:      :+:    :+:   */
+/*   export1.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 13:07:55 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/14 16:47:39 by marianamest      ###   ########.fr       */
+/*   Updated: 2025/03/16 21:16:21 by marianamest      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "../../includes/minishell.h"
+#include "../../includes/builtins.h"
 
 int	is_valid_var_char(char c, int is_first_char)
 {

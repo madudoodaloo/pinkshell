@@ -14,7 +14,9 @@ SRC =			src/main/main.c src/parser/env_utils.c src/parser/init.c \
 				src/heredoc/heredoc1.c src/heredoc/heredoc2.c \
 				src/utils/utils_builtins.c src/utils/free.c \
 				src/lexer/lexer.c src/lexer/str_utils.c \
-				src/expander/expander.c
+				src/expander/expander.c \
+				src/executor/execute_builtins.c src/executor/redirections.c src/executor/fork_and_execute1.c\
+				src/executor/fork_and_execute2.c
 
 CFLAGS =		-I./includes -g -fsanitize=address #-Wall -Wextra -Werror
 OTHERFLAGS =	-lreadline -lasan -O3

@@ -6,11 +6,11 @@
 /*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/03 20:40:50 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/16 15:33:39 by marianamest      ###   ########.fr       */
+/*   Updated: 2025/03/16 21:15:40 by marianamest      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minishell.h"
+#include "../../includes/builtins.h"
 
 // ficou igual i'm sorry não consigo mm pensar noutra forma de fazer isto mas é tão básico que não deve haver stress
 char	*find_env_value(char **env, const char *var)

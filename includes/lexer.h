@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   lexer.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 13:40:08 by msilva-c          #+#    #+#             */
-/*   Updated: 2024/12/03 01:00:35 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/16 20:13:25 by marianamest      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LEXER_H
 # define LEXER_H
 
-# include "../includes/minishell.h"
+# include "minishell.h"
 
 /* lexer.c */
 t_token	*new_token(char *content, int next);

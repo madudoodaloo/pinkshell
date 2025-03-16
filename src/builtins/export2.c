@@ -6,11 +6,11 @@
 /*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 16:47:08 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/14 16:47:46 by marianamest      ###   ########.fr       */
+/*   Updated: 2025/03/16 21:16:24 by marianamest      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "../../includes/minishell.h"
+#include "../../includes/builtins.h"
 
 
 void	add_or_update_env_var(char ***env, const char *var)

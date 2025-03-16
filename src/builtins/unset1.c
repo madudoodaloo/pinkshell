@@ -6,11 +6,11 @@
 /*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 19:41:04 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/14 16:50:47 by marianamest      ###   ########.fr       */
+/*   Updated: 2025/03/16 21:16:30 by marianamest      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minishell.h"
+#include "../../includes/builtins.h"
 
 // Helper function to remove an element from an array of strings
 void	remove_from_array(char **array, int index)

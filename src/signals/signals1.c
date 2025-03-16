@@ -6,11 +6,11 @@
 /*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 16:26:33 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/16 17:47:24 by marianamest      ###   ########.fr       */
+/*   Updated: 2025/03/16 21:17:19 by marianamest      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/minishell.h"
+#include "../../includes/signals.h"
 
 int g_signal = 0;
 

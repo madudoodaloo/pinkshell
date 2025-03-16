@@ -6,11 +6,11 @@
 /*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 16:18:49 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/15 19:46:33 by marianamest      ###   ########.fr       */
+/*   Updated: 2025/03/16 21:16:59 by marianamest      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minishell.h"
+#include "../../includes/heredoc.h"
 
 /*expansão*/
 const char *extract_var_name(const char *start, char *var_name)

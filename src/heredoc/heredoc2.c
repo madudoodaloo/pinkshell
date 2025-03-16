@@ -6,11 +6,11 @@
 /*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 18:13:48 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/16 15:06:16 by marianamest      ###   ########.fr       */
+/*   Updated: 2025/03/16 21:17:05 by marianamest      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minishell.h"
+#include "../../includes/heredoc.h"
 
 void	signal_handler_set_temp_filename(char *filename)
 {
