@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 13:57:32 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/15 20:31:17 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/16 15:30:00 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,18 +31,14 @@ volatile sig_atomic_t	g_signal = 0;
 # include <sys/wait.h>
 # include <unistd.h>
 
-// types for node struct
-
-# include "../ft_libft/libft.h"
+/* include headers */
 # include "builtins.h"
 # include "expander.h"
 # include "heredoc.h"
 # include "lexer.h"
 # include "parser.h"
-# include "signals.h"
+# include "signs.h"
 # include "utils.h"
-
-
 
 # define CMD 1
 # define PIPE 2
@@ -52,23 +48,40 @@ volatile sig_atomic_t	g_signal = 0;
 # define STR 6
 # define MAXLINE 1024
 
+typedef struct s_env
+{
+	char	*var;
+	char	*var_name;
+	char	*var_value;
+	int 	valid; //inicializar para false
+	struct s_env *next;
+}			t_env;
+
 typedef struct s_token
 {
-	char				*content;
-	int					type;
-	char				before;
-	int					after;
-	struct s_token		*next;
-}						t_token;
+	char		*content;
+	int 		type;
+	char		before;
+	int			after;
+	struct s_token	*next;
+}			t_token;
+
+typedef struct s_pipex
+{
+	int		flag
+}			t_pipex;
 
 typedef struct s_msh
 {
-	char				*line;
-	int					exit;
-	int					ret;
-	t_token				**lst_head;
-	t_token				**ex_tokens;
-	char				**env;
-}						t_msh;
+	char			*line;
+	char			*home;
+	char			*pwd;
+	t_env 			*env;
+	t_token			*tokens;
+	t_pipex			*pipex;
+	int				exit;
+	int				signaled;
+	int				ret;
+}			t_msh;
 
 #endif

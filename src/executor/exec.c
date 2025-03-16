@@ -6,11 +6,11 @@
 /*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 16:58:48 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/16 15:46:06 by marianamest      ###   ########.fr       */
+/*   Updated: 2025/03/16 17:44:26 by marianamest      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include "../includes/minishell.h"
+#include "../includes/minishell.h"
 
 #include <stdio.h>
 #include <stdlib.h>

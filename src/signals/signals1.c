@@ -6,11 +6,11 @@
 /*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 16:26:33 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/16 17:18:53 by marianamest      ###   ########.fr       */
+/*   Updated: 2025/03/16 17:44:57 by marianamest      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/signals.h"
+#include "../includes/minishell.h"
 
 int g_signal = 0;
 
@@ -29,7 +29,7 @@ void	signal_handler(int signum)
 		{
 			msdata()->is_heredoc = 0; // reset da flag para 0 para indicar que o heredoc ja nao esta ativo
 			g_signal = SIGINT;
-			close(STDIN_FILENO); // fecha o stdin fd 
+			close(STDIN_FILENO); // fecha o stdin fd
 			return ;
 		}
 		rl_on_new_line(); // se não estiver em heredoc da so reset do prompt

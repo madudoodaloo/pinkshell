@@ -63,21 +63,9 @@ t_token	*tokenize(char *str, int start, int wdlen)
 t_token	*ft_tknlast(t_token *lst)
 {
 	if (!lst)
-	{
-		ft_printf("!lst\n");
 		return (NULL);
-	}
-	// printf("%p is %s next\n", &lst->next, lst->content);
-	// printf("%p is %s next\n", lst->next, lst->content);
 	while (lst->next != NULL)
-	{
-		// printf("%s is content\n", lst->content);
 		lst = lst->next;
-	}
-	// ft_printf("lst->content is %s\n", lst->content);
-	// ft_printf("lst->next is %p\n", lst->next);
-	// ft_printf("%s --- address is %p current->next is %p\n", lst->content,
-		&lst, lst->next);
 	return (lst);
 }
 
