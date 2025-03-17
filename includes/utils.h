@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
+/*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 06:01:56 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/17 00:33:54 by marianamest      ###   ########.fr       */
+/*   Updated: 2025/03/17 17:13:56 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,13 +41,23 @@ void	print_error(const char *message);
 /* helper functions */
 void	my_strcpy(char *dest, const char *src);
 void	my_strcat(char *dest, const char *src);
+
+/* libft_2.c */
+int ft_strcmp(const char *s1, const char *s2);
+
+/* libft.c */
+int	ft_isoperator(char *str, int i);
+int	ft_isspace(char c);
+int	ft_isalpha(char c);
+int	ft_isdigit(char c);
+int	ft_isquote(char c);
+
 int		ft_isalnum(int c);
 
 /* libft_utils1 */
 void	ft_swap(char **a, char **b);
 void	ft_swap_char(char *a, char *b);
 
-int		ft_strcmp(char *s1, char *s2);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 
 char	*ft_strchr(const char *s, int c);

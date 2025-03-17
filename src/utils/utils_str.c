@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 14:50:45 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/15 14:43:44 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/16 19:19:08 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	ft_strcmp(const char *s1, const char *s2)
 	return (*s01 - *s02);
 }
 
-size_t	ft_strlen(const char *str)
+int	ft_strlen(const char *str)
 {
 	int	i;
 

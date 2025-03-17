@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cd.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
+/*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/03 20:40:50 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/16 21:15:40 by marianamest      ###   ########.fr       */
+/*   Updated: 2025/03/17 17:16:34 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ char	*find_env_value(char **env, const char *var)
 	return (NULL);
 }
 // caguei no get current directory e fiz merge com a change directory original
-// esta é só proteção para se der erro 
+// esta é só proteção para se der erro
 static int	change_dir(const char *path)
 {
 	if (chdir(path) == -1)
@@ -45,8 +45,8 @@ static int	change_dir(const char *path)
 // esta ficou também a dar handle de erros de getcwd e chdir e deixou de depender de outras mini func auxiliares
 void	change_directory(char **env, const char *path)
 {
-	char	old_pwd[PATH_MAX];
-	char	new_pwd[PATH_MAX];
+	char	old_pwd[MAXPATH];
+	char	new_pwd[MAXPATH];
 
 	if (getcwd(old_pwd, sizeof(old_pwd)) == NULL)
 	{
@@ -72,7 +72,7 @@ void	change_directory(char **env, const char *path)
 	printf("Changed directory from %s to %s\n", old_pwd, new_pwd);
 }
 
-// acrescentei proteção para demasiados args 
+// acrescentei proteção para demasiados args
 void	cd_command(char **env, char **args)
 {
 	const char	*path;
@@ -122,7 +122,7 @@ void	cd_command(char **env, char **args)
 //         perror("getcwd() error");
 //     }
 
-//    
+//
 	// Test case 2: cd Documents (should change to Documents directory if it exists)
 //     printf("\nTest case 2: cd Documents\n");
 //     cd_command(env, args2);
@@ -133,7 +133,7 @@ void	cd_command(char **env, char **args)
 //         perror("getcwd() error");
 //     }
 
-//    
+//
 	// Test case 3: cd nonexistent_directory (should fail and stay in the same directory)
 //     printf("\nTest case 3: cd nonexistent_directory\n");
 //     cd_command(env, args3);

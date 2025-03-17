@@ -5,27 +5,27 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/15 17:13:16 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/15 20:27:19 by msilva-c         ###   ########.fr       */
+/*   Created: 2025/03/17 13:25:45 by msilva-c          #+#    #+#             */
+/*   Updated: 2025/03/17 14:02:46 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-void	expand_vars_loop(t_token *start)
+void	expander(t_token *tokens)
 {
-	t_token	*step;
+	t_token	*temp;
 
-	step = start;
-	while (step)
+	temp = tokens;
+	while (temp)
 	{
-		hide_expand(step->token);
-		if (needs_expand(step))
-			do_expand(step);
+		ignore_dollar(temp->content);
+		if (needs_expand(temp))
+			do_expand(temp);
 		else
 		{
-			unhide_expand(step->token);
-			step = step->next;
+			put_dollar_back(temp->content);
+			temp = temp->next;
 		}
 	}
 }
@@ -51,6 +51,7 @@ static void	init_index(t_index *i)
 	i->t_i = 0;
 	i->var_i = 0;
 }
+
 
 void	expand_var(t_token *t, char *var)
 {

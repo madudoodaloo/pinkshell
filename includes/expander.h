@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expander.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
+/*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 01:39:20 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/16 20:13:15 by marianamest      ###   ########.fr       */
+/*   Updated: 2025/03/17 17:11:56 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,12 @@
 
 # include "minishell.h"
 
-void	expander(t_token *tokens, char **env);
+
+/* ignore.c */
+void	ignore_dollar(char *str);
+void	put_dollar_back(char *str);
+
+
+void	expander(t_token *tokens);
 
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
+/*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 13:57:32 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/16 20:15:13 by marianamest      ###   ########.fr       */
+/*   Updated: 2025/03/17 17:14:56 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ volatile sig_atomic_t	g_signal = 0;
 # include <sys/wait.h>
 # include <unistd.h>
 
-/* include headers */
+/* ../includes headers */
 # include "builtins.h"
 # include "expander.h"
 # include "heredoc.h"
@@ -43,11 +43,12 @@ volatile sig_atomic_t	g_signal = 0;
 
 # define CMD 1
 # define PIPE 2
-# define REDIR 3
-# define QUOTE 4
-# define ENVVAR 5
-# define STR 6
+# define R_OUT 3
+# define R_APP 4
+# define R_IN 5
+# define HERE_DOC 6
 # define MAXLINE 1024
+# define MAXPATH 4096
 
 typedef struct s_env
 {
@@ -60,12 +61,12 @@ typedef struct s_env
 
 typedef struct s_token
 {
-	char				*content;
-	int					type;
-	char				before;
-	int					after;
-	struct s_token		*next;
-}						t_token;
+	char		*content;
+	int 		type;
+	int			index;
+	struct s_token	*next;
+	struct s_token	*prev;
+}			t_token;
 
 typedef struct s_pipex
 {
@@ -84,5 +85,15 @@ typedef struct s_msh
 	int					signaled;
 	int					ret;
 }						t_msh;
+
+typedef enum e_temp_op
+{
+	TEMP_DOLLAR = -1,
+	TEMP_PIPE = -2,
+	TEMP_IN = -3,
+	TEMP_OUT = -4,
+}		t_temp_op;
+
+t_msh	*msh(void);
 
 #endif

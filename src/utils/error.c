@@ -1,40 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   str_utils.c                                        :+:      :+:    :+:   */
+/*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/22 13:04:49 by msilva-c          #+#    #+#             */
-/*   Updated: 2024/12/03 01:33:36 by msilva-c         ###   ########.fr       */
+/*   Created: 2025/03/16 20:05:39 by msilva-c          #+#    #+#             */
+/*   Updated: 2025/03/16 20:08:07 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-char	*strjoinspace(char *s1, char *s2)
+void	ft_put_str_fd(char *str, int fd)
 {
-	char	*new;
-	size_t	newlen;
-	size_t	i;
-	size_t	j;
+	int	i;
 
-	if (!s1 && !s2)
-		return (NULL);
-	newlen = ft_strlen(s1) + ft_strlen(s2);
-	new = malloc(newlen + 2);
-	if (!new)
-		return (NULL);
-	i = -1;
-	j = -1;
-	while (s1[++i])
-		new[i] = s1[i];
-	new[i] = ' ';
-	i++;
-	while (s2[++j])
+	i = 0;
+	if (str == NULL)
+		return ;
+	while (str[i])
 	{
-		new[i + j] = s2[j];
+		write (fd, &str[i], 1);
+		i++;
 	}
-	new[i + j] = '\0';
-	return (new);
+}
+
+int	print_error(char *msg)
+{
+	write(2, msg, ft_strlen(msg));
+	return (1);
 }

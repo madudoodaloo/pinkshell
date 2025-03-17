@@ -3,40 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   utils_builtins.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
+/*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 14:18:43 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/17 00:34:25 by marianamest      ###   ########.fr       */
+/*   Updated: 2025/03/17 17:21:01 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
-
-void	print_struct(t_token **lst_head)
-{
-	t_token *current;
-	t_token *counter;
-
-
-	current = *lst_head;
-	counter = *lst_head;
-	int i = 0;
-	while (counter)
-	{
-		i++;
-		counter = counter->next;
-	}
-	printf("has %d nodes\n", i);
-	while (current)
-	{
-			printf("node: %p\n", current);
-			if (current->content != NULL)
-				printf("content: %s$ type: %d\n", current->content, current->type);
-			else
-				printf("content: (null)$\n");
-			current = current->next;
-	}
-}
 
 void	print_error(const char *message)
 {

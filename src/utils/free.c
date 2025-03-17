@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 18:17:41 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/15 20:26:14 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/16 22:54:54 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,6 @@ void free_pipex_list(t_pipex *pipex)
 }
 
 
-
 void    free_and_exit(t_msh *msh)
 {
 	if (!msh)
@@ -100,16 +99,4 @@ void    free_and_exit(t_msh *msh)
 	if (msh->home)
 		free(msh->home);
 	clear_history();
-}
-
-void    print_matrix(char **matrix)
-{
-    int i;
-
-    i = 0;
-    while (matrix[i])
-    {
-        ft_printf("matrix[%d] is: %s\n", i, matrix[i]);
-        i++;
-    }
 }
