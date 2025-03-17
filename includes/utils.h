@@ -6,7 +6,7 @@
 /*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 06:01:56 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/17 21:27:12 by marianamest      ###   ########.fr       */
+/*   Updated: 2025/03/17 23:21:27 by marianamest      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	*safe_malloc(size_t size);
 /* free.c */
 void	free_struct(t_token **head);
 void	free_and_exit(t_msh *msh);
-void	ft_free_matrix(char **matrix);
+void	free_matrix(char **matrix);
 
 /* testers */
 void	print_struct(t_token **lst_head);

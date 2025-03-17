@@ -6,7 +6,7 @@
 /*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 23:59:03 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/17 19:31:16 by marianamest      ###   ########.fr       */
+/*   Updated: 2025/03/17 23:23:57 by marianamest      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ void	ft_swap_char(char *a, char *b)
 	*a = *b;
 	*b = temp;
 }
-
 
 int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {

@@ -4,6 +4,7 @@
         "minishell.h": "c",
         "signals.h": "c",
         "parser.h": "c",
-        "builtins.h": "c"
+        "builtins.h": "c",
+        "signs.h": "c"
     }
 }

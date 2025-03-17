@@ -6,7 +6,7 @@
 /*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 00:32:44 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/17 19:31:20 by marianamest      ###   ########.fr       */
+/*   Updated: 2025/03/17 23:26:00 by marianamest      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 
 char	*ft_strcpy(char *dest, char *src)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (src[i])
@@ -70,11 +70,11 @@ char	*ft_strcat(char *dest, const char *src)
 
 	i = 0;
 	j = 0;
-	while (dest[i] != '\0') 
+	while (dest[i] != '\0')
 	{
 		i++;
 	}
-	while (src[j] != '\0') 
+	while (src[j] != '\0')
 	{
 		dest[i] = src[j];
 		i++;
@@ -91,11 +91,11 @@ char	*ft_strncat(char *dest, char *src, unsigned int nb)
 
 	i = 0;
 	j = 0;
-	while (dest[i] != '\0') 
+	while (dest[i] != '\0')
 	{
 		i++;
 	}
-	while (src[j] != '\0' && j < nb) 
+	while (src[j] != '\0' && j < nb)
 	{
 		dest[i] = src[j];
 		i++;

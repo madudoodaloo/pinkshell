@@ -6,7 +6,7 @@
 /*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 18:13:48 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/17 20:24:04 by marianamest      ###   ########.fr       */
+/*   Updated: 2025/03/17 23:17:45 by marianamest      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ void	signal_handler_set_temp_filename(char *filename)
 	temp_filename = filename;
 }
 
-// Function to generate a unique temporary filename
 char	*generate_temp_filename(void)
 {
 	char	*filename;
@@ -44,7 +43,6 @@ char	*generate_temp_filename(void)
 	return (filename);
 }
 
-// Function to create a temporary file
 int	create_temp_file(char *temp_filename)
 {
 	int	fd;
@@ -59,43 +57,42 @@ int	create_temp_file(char *temp_filename)
 	return (fd);
 }
 
-// Function to redirect the temporary file to STDIN
 void	redirect_temp_file_to_stdin(char *temp_filename)
 {
 	int	fd;
 
-	fd = open(temp_filename, O_RDONLY); // abre o ficheiro
-	if (fd == -1) // se der erro a abrir
+	fd = open(temp_filename, O_RDONLY);
+	if (fd == -1)
 	{
 		write(STDERR_FILENO, "Error: Failed to open temporary file\n", 37);
-		unlink(temp_filename); // apaga o ficheiro temporario
+		unlink(temp_filename);
 		free(temp_filename);
 		exit(EXIT_FAILURE);
 	}
-	dup2(fd, STDIN_FILENO); // duplica o fd para o stdin para qualquer tentativa de ler do stdin (terminal) seja redirecionada para o fd
+	dup2(fd, STDIN_FILENO);
 	close(fd);
 }
 
-void	handle_heredoc(char *delimiter)
+void	handle_heredoc(t_data *data, char *delimiter)
 {
 	int		fd;
 	char	*temp_filename;
 
-	setup_signals(); // configura os sinais especificamente para o heredoc
-	msdata()->is_heredoc = 1; // flag para indicar que esta em heredoc
-	temp_filename = generate_temp_filename(); // cria o nome para o temporary file
-	if (!temp_filename) // error management
+	setup_signals();
+	data->is_heredoc = 1;
+	temp_filename = generate_temp_filename();
+	if (!temp_filename)
 	{
 		write(STDERR_FILENO, "Error: Failed to allocate memory\n", 33);
 		exit(EXIT_FAILURE);
 	}
-	signal_handler_set_temp_filename(temp_filename); // vem para aqui para dar cleanup em caso de SIGINT
-	fd = create_temp_file(temp_filename); // cria o temporary file com o nome que ja foi criado
-	read_until_delimiter(fd, delimiter); // lê o input ate ao delimitador e escreve para o temp file
+	signal_handler_set_temp_filename(temp_filename);
+	fd = create_temp_file(temp_filename);
+	read_until_delimiter(fd, delimiter);
 	close(fd);
-	redirect_temp_file_to_stdin(temp_filename); // redireciona o conteudo do temporary file para o stdin
+	redirect_temp_file_to_stdin(temp_filename);
 	unlink(temp_filename);
 	free(temp_filename);
-	msdata()->is_heredoc = 0; // flag a dizer que já não está dentro de heredoc mode
-	setup_signals(); // restora os default signal handlers
+	data->is_heredoc = 0;
+	setup_signals();
 }
