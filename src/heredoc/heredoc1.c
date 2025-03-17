@@ -6,7 +6,7 @@
 /*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 16:18:49 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/16 23:50:45 by marianamest      ###   ########.fr       */
+/*   Updated: 2025/03/17 00:05:49 by marianamest      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,7 @@ void read_until_delimiter(int fd, char *delimiter)
 {
     char buffer[1024]; // quantidade standard nada de mais
     int bytes_read; // qunatidade de bytes que ja foram lidos
-    int delimiter_len = strlen(delimiter);
+    int delimiter_len = ft_strlen(delimiter);
 	char *expanded_input; // input ja expandido
 
     while (1) // lê infinitamene ate encontrar um delimitador ou der erro

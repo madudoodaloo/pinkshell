@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_builtins.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 14:18:43 by marianamest       #+#    #+#             */
-/*   Updated: 2024/12/05 15:37:49 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/17 00:34:25 by marianamest      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,4 +69,12 @@ void	my_strcat(char *dest, const char *src)
 		i++;
 	}
 	dest[dest_len + i] = '\0';
+}
+
+int	ft_isalnum(int c)
+{
+	if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z') || (c >= '0'
+			&& c <= '9'))
+		return (1);
+	return (0);
 }
