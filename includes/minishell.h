@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 13:57:32 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/16 23:18:30 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/17 03:55:46 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,10 +42,10 @@ volatile sig_atomic_t	g_signal = 0;
 
 # define CMD 1
 # define PIPE 2
-# define REDIR 3
-# define QUOTE 4
-# define ENVVAR 5
-# define STR 6
+# define R_OUT 3
+# define R_APP 4
+# define R_IN 5
+# define HERE_DOC 6
 # define MAXLINE 1024
 # define MAXPATH 4096
 

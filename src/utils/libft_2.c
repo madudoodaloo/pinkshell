@@ -1,31 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   tokenizer.c                                        :+:      :+:    :+:   */
+/*   libft_2.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/16 20:59:01 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/17 12:37:46 by msilva-c         ###   ########.fr       */
+/*   Created: 2025/03/17 04:24:44 by msilva-c          #+#    #+#             */
+/*   Updated: 2025/03/17 04:25:29 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-
-
-int tokenizer(t_msh *msh)
+int ft_strcmp(const char *s1, const char *s2)
 {
-	char **matrix;
-
-	matrix = split_spaces(msh->line);
-	if (!matrix)
-		return (-1);
-	msh->tokens = create_tokens(matrix);
-	if (!msh->tokens)
-		return (-1);
-	free_matrix(matrix);
-	msh->tokens = re_token(msh->tokens);
-	if (!msh->tokens)
-		return (-1);
+    if (s1 == NULL || s2 == NULL)
+        return (0);
+    while (*s1 && (*s1 == *s2))
+    {
+        s1++;
+        s2++;
+    }
+    return (*(const unsigned char *)s1 - *(const unsigned char *)s2);
 }
