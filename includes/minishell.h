@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 13:57:32 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/17 13:48:50 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/17 17:14:56 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,9 @@ volatile sig_atomic_t	g_signal = 0;
 # include "heredoc.h"
 # include "lexer.h"
 # include "parser.h"
-# include "signs.h"
+# include "signals.h"
 # include "utils.h"
+# include "executor.h"
 
 # define CMD 1
 # define PIPE 2
@@ -51,12 +52,12 @@ volatile sig_atomic_t	g_signal = 0;
 
 typedef struct s_env
 {
-	char	*var;
-	char	*var_name;
-	char	*var_value;
-	int 	valid; //inicializar para false
-	struct s_env *next;
-}			t_env;
+	char				*var;
+	char				*var_name;
+	char				*var_value;
+	int valid; // inicializar para false
+	struct s_env		*next;
+}						t_env;
 
 typedef struct s_token
 {
@@ -69,21 +70,21 @@ typedef struct s_token
 
 typedef struct s_pipex
 {
-	int		flag
-}			t_pipex;
+	int flag
+}						t_pipex;
 
 typedef struct s_msh
 {
-	char			*line;
-	char			*home;
-	char			*pwd;
-	t_env 			*env;
-	t_token			*tokens;
-	t_pipex			*pipex;
-	int				exit;
-	int				signaled;
-	int				ret;
-}			t_msh;
+	char				*line;
+	char				*home;
+	char				*pwd;
+	t_env				*env;
+	t_token				*tokens;
+	t_pipex				*pipex;
+	int					exit;
+	int					signaled;
+	int					ret;
+}						t_msh;
 
 typedef enum e_temp_op
 {

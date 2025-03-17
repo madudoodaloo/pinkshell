@@ -6,18 +6,14 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 05:59:04 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/17 13:12:59 by msilva-c         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-/*   Updated: 2025/03/08 15:09:55 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/17 17:15:14 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PARSER_H
 # define PARSER_H
 
-# include "../includes/minishell.h"
+# include "minishell.h"
 
 /* retokenizer.c */
 t_token	*get_operator(t_token *t);

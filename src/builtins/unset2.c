@@ -6,11 +6,11 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 16:50:02 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/16 20:36:13 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/17 17:18:04 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/minishell.h"
+#include "../../includes/builtins.h"
 
 // Helper function to compare strings up to a delimiter (e.g., '=')
 int	ft_strcmp_nochr(const char *s1, const char *s2, char delim)

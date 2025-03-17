@@ -1,26 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lexer.h                                            :+:      :+:    :+:   */
+/*   heredoc_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/22 13:40:08 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/16 20:13:25 by marianamest      ###   ########.fr       */
+/*   Created: 2025/03/16 23:15:12 by marianamest       #+#    #+#             */
+/*   Updated: 2025/03/16 23:15:41 by marianamest      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LEXER_H
-# define LEXER_H
+#include "../../includes/heredoc.h"
 
-# include "minishell.h"
+void	int_to_str(int num, char *str)
+{
+	int	i;
+	int	is_negative;
+	int	j;
 
-/* lexer.c */
-t_token	*new_token(char *content, int next);
-void	add_token(t_token **tokens, char *content, t_token *lst_head);
-void	lexer(t_token **tokens, t_token **lst_head);
-
-/* str_utils.c */
-char	*strjoinspace(char *s1, char *s2);
-
-#endif
+	i = 0;
+	is_negative = 0;
+	if (num < 0)
+	{
+		is_negative = 1;
+		num = -num;
+	}
+	while (num > 0)
+	{
+		str[i++] = (num % 10) + '0';
+		num /= 10;
+	}
+	if (is_negative)
+		str[i++] = '-';
+	j = 0;
+	while (j < i / 2)
+	{
+		ft_swap_char(&str[j], &str[i - j - 1]);
+		j++;
+	}
+	str[i] = '\0';
+}
