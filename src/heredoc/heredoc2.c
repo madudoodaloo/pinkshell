@@ -6,11 +6,11 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 18:13:48 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/16 20:36:13 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/17 17:19:25 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/minishell.h"
+#include "../../includes/heredoc.h"
 
 void	signal_handler_set_temp_filename(char *filename)
 {
@@ -37,10 +37,10 @@ char	*generate_temp_filename(void)
 	now = time(NULL);
 	int_to_str(pid, pid_str);
 	int_to_str((int)now, time_str);
-	strcpy(filename, "/tmp/minishell_heredoc_");
-	strcat(filename, pid_str);
-	strcat(filename, "_");
-	strcat(filename, time_str);
+	ft_strcpy(filename, "/tmp/minishell_heredoc_");
+	ft_strcat(filename, pid_str);
+	ft_strcat(filename, "_");
+	ft_strcat(filename, time_str);
 	return (filename);
 }
 

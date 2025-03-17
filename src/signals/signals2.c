@@ -6,11 +6,11 @@
 /*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 17:45:23 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/15 19:44:04 by marianamest      ###   ########.fr       */
+/*   Updated: 2025/03/16 21:17:25 by marianamest      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/minishell.h"
+#include "../../includes/signals.h"
 
 void	handle_sigint(char *temp_filename)
 {

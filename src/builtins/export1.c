@@ -6,11 +6,11 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 13:07:55 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/16 20:36:13 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/17 17:16:54 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "../includes/minishell.h"
+#include "../../includes/builtins.h"
 
 int	is_valid_var_char(char c, int is_first_char)
 {
@@ -39,7 +39,7 @@ int parse_export(char *str)
 
 void	format_export_var(const char *var)
 {
-	const char	*equals = strchr(var, '=');
+	const char	*equals = ft_strchr(var, '=');
 	int			name_len;
 
 	if (!equals)

@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 16:47:08 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/16 20:36:13 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/17 17:16:57 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	add_or_update_env_var(char ***env, const char *var)
 	if (index != -1)
 	{
 		free((*env)[index]);
-		(*env)[index] = strdup(var);
+		(*env)[index] = ft_strdup(var);
 		if (!(*env)[index])
 		{
 			perror("strdup failed");

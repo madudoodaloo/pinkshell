@@ -6,7 +6,7 @@
 /*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 00:04:58 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/15 19:48:37 by marianamest      ###   ########.fr       */
+/*   Updated: 2025/03/16 23:17:05 by marianamest      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 /* heredoc 1 */
 const char	*extract_var_name(const char *start, char *var_name);
 char		*expand_variables(const char *input);
-void		int_to_str(int num, char *str);
 char		*get_delimiter(char *str, int i);
 int			heredoc_parser(char *str);
 void		read_until_delimiter(int fd, char *delimiter);
@@ -29,5 +28,8 @@ char		*generate_temp_filename(void);
 int			create_temp_file(char *temp_filename);
 void		redirect_temp_file_to_stdin(char *temp_filename);
 void		handle_heredoc(char *delimiter);
+
+/* heredoc_utils */
+void		int_to_str(int num, char *str);
 
 #endif
