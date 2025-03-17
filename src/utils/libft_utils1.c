@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   libft_utils1.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 23:59:03 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/17 17:13:49 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/17 19:31:16 by marianamest      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/utils.h"
+#include "../../includes/minishell.h"
 
 void	ft_swap(char **a, char **b)
 {
@@ -59,4 +59,13 @@ char	*ft_strchr(const char *s, int c)
 	if ((unsigned char)c == 0)
 		return ((char *)&s[i]);
 	return (NULL);
+}
+
+void	ft_putstr_fd(char *s, int fd)
+{
+	while (*s)
+	{
+		write(fd, &(*s), 1);
+		s++;
+	}
 }

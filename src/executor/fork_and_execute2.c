@@ -6,17 +6,11 @@
 /*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 22:25:57 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/16 23:24:33 by marianamest      ###   ########.fr       */
+/*   Updated: 2025/03/17 20:20:48 by marianamest      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// #include "../../includes/executor.h"
-
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <sys/wait.h>
-#include <unistd.h>
+#include "../../includes/minishell.h"
 
 void	setup_pipe_and_execute(char **args, int *input_fd, char **env)
 {
@@ -41,8 +35,8 @@ void	wait_for_children(int num_commands)
 		pid = waitpid(-1, &status, 0);
 		if (pid > 0)
 			handle_child_exit_status(status);
-		else
-			handle_error("waitpid");
+		else if (pid == -1)
+			break; // No more child processes
 		i++;
 	}
 }

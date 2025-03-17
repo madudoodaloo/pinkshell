@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   signals1.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 16:26:33 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/17 17:20:43 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/17 19:49:09 by marianamest      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/signals.h"
+#include "../../includes/minishell.h"
 
 // int g_signal = 0;
 
@@ -20,6 +20,7 @@ t_data	*msdata(void)
 
 	return (&data);
 }
+
 void	signal_handler(int signum)
 {
 	if (signum == SIGINT)

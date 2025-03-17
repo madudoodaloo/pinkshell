@@ -6,17 +6,17 @@
 /*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 17:31:05 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/16 21:40:03 by marianamest      ###   ########.fr       */
+/*   Updated: 2025/03/17 19:26:09 by marianamest      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/builtins.h"
+#include "../../includes/minishell.h"
 
-int	find_env_key_index(char **env, const char *key) // searches for the index of an env var by its key in the env array.
+int	find_env_key_index(char **env, const char *key)// searches for the index of an env var by its key in the env array.
 {
-	int	i;
-	int	key_len;
-	int	j;
+	int i;
+	int key_len;
+	int j;
 
 	i = 0;
 	key_len = ft_strlen(key);
@@ -34,12 +34,12 @@ int	find_env_key_index(char **env, const char *key) // searches for the index of
 
 char	**update_env_var(char *arg, char **env, int idx) // updates the value of an existing env var, in the index idx in the env array, with arg as value
 {
-	char	*equal_sign;
-	char	*key;
-	char	*value;
+	char *equal_sign;
+	char *key;
+	char *value;
 	int key_len;
 
-	equal_sign = arg;// Find the '=' character in the arg string
+	equal_sign = arg;     // Find the '=' character in the arg string
 	while (*equal_sign && *equal_sign != '=') // if no ""="" was found
 		equal_sign++;
 	if (*equal_sign != '=')
@@ -49,16 +49,17 @@ char	**update_env_var(char *arg, char **env, int idx) // updates the value of an
 	if (!key)
 		return (NULL);
 	my_strcpy(key, arg);
-	value = equal_sign + 1;// The value is everything after the '=' character
+	value = equal_sign + 1; // The value is everything after the '=' character
 	free(env[idx]);
-	env[idx] = create_env_entry(key, value);// Create the new environment variable with the key and value
+	env[idx] = create_env_entry(key, value);
+		// Create the new environment variable with the key and value
 	free(key);
 	if (!env[idx])
 		return (NULL);
 	return (env);
 }
 
-char	**expand_env(char **env, char *new_entry)// expands env to add 1 new var and sets it to NULL
+char	**expand_env(char **env, char *new_entry) // expands env to add 1 new var and sets it to NULL
 {
 	int i;
 	int j;
@@ -81,7 +82,7 @@ char	**expand_env(char **env, char *new_entry)// expands env to add 1 new var an
 	return (new_env);
 }
 
-void	set_or_add_env_value(char ***env, const char *key, const char *value)// adds or updates an env variable (depending on if it already exists or not)
+void	set_or_add_env_value(char ***env, const char *key, const char *value) // adds or updates an env variable (depending on if it already exists or not)
 {
 	int		index;
 	char	*new_entry;
@@ -97,4 +98,17 @@ void	set_or_add_env_value(char ***env, const char *key, const char *value)// add
 	}
 	else
 		*env = expand_env(*env, new_entry);
+}
+
+void	builtin_env(char **env, int fd)
+{
+	int	i;
+
+	i = 0;
+	while (env[i])
+	{
+		ft_putstr_fd(env[i], fd);
+		ft_putstr_fd("\n", fd);
+		i++;
+	}
 }

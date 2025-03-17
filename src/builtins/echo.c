@@ -6,11 +6,11 @@
 /*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 15:07:40 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/16 21:16:06 by marianamest      ###   ########.fr       */
+/*   Updated: 2025/03/17 19:29:37 by marianamest      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/builtins.h"
+#include "../../includes/minishell.h"
 
 int	is_flag_n(char *str)
 {

@@ -6,11 +6,11 @@
 /*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 15:35:26 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/16 23:44:41 by marianamest      ###   ########.fr       */
+/*   Updated: 2025/03/17 19:29:49 by marianamest      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/builtins.h"
+#include "../../includes/minishell.h"
 
 int	exit_format_error(char *cmd) // checks is it's a valid error code
 {

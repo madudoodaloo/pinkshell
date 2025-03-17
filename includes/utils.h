@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 06:01:56 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/17 17:13:56 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/17 19:27:39 by marianamest      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,10 +57,9 @@ int		ft_isalnum(int c);
 /* libft_utils1 */
 void	ft_swap(char **a, char **b);
 void	ft_swap_char(char *a, char *b);
-
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
-
 char	*ft_strchr(const char *s, int c);
+void	ft_putstr_fd(char *s, int fd);
 
 /* libft_utils2 */
 size_t	ft_strlcpy(char *dst, const char *src, size_t size);

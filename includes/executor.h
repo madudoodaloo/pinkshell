@@ -6,7 +6,7 @@
 /*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 19:58:02 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/16 22:33:39 by marianamest      ###   ########.fr       */
+/*   Updated: 2025/03/17 20:36:40 by marianamest      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,19 @@
 
 # include "minishell.h"
 
-/* redirections */
+/* redirections1 */
 void	handle_input_redirection(char **args, int *in_fd, int i);
 void	handle_output_redirection(char **args, int *out_fd, int i);
 void	handle_append_redirection(char **args, int *out_fd, int i);
-void	execute_with_redirections(char **args);
+void	handle_redirections(char **args, int *in_fd, int *out_fd);
+void	execute_command(char **args, int input_fd, int output_fd, char **env);
+
+/* redirections2 */
+void	child_process_logic(char **args, char **env);
+void	execute_with_redirections(char **args, char **env);
 
 /* builtins */
-int		execute_builtin(char **args, char ***env, char ***export,
-			int *exit_status, int fd);
+int		execute_builtin(t_msh *msh, char **args, char ***export, int fd);
 
 /* fork_and_execute1 */
 void	handle_error(const char *message);
@@ -37,5 +41,8 @@ void	fork_and_execute_command(char **args, int input_fd, int output_fd,
 void	setup_pipe_and_execute(char **args, int *input_fd, char **env);
 void	wait_for_children(int num_commands);
 void	execute_multiple_pipes(char ***commands, int num_commands, char **env);
+
+/* exec_parser */
+
 
 #endif

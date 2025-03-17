@@ -6,17 +6,11 @@
 /*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 21:05:44 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/16 23:49:08 by marianamest      ###   ########.fr       */
+/*   Updated: 2025/03/17 19:30:41 by marianamest      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// #include "../../includes/executor.h"
-
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <sys/wait.h>
-#include <unistd.h>
+#include "../../includes/minishell.h"
 
 void	handle_error(const char *message)
 {

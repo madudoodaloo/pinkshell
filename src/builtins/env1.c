@@ -6,11 +6,11 @@
 /*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 15:20:31 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/16 21:16:01 by marianamest      ###   ########.fr       */
+/*   Updated: 2025/03/17 19:29:41 by marianamest      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/builtins.h"
+#include "../../includes/minishell.h"
 
 char	*create_env_entry(const char *key, const char *value)// creates an environment entry in "KEY=value" format
 {

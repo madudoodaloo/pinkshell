@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   heredoc2.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 18:13:48 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/17 17:19:25 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/17 20:24:04 by marianamest      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,22 +99,3 @@ void	handle_heredoc(char *delimiter)
 	msdata()->is_heredoc = 0; // flag a dizer que já não está dentro de heredoc mode
 	setup_signals(); // restora os default signal handlers
 }
-
-// int	main(int argc, char **argv)
-// {
-// 	if (argc < 2)
-// 	{
-// 		write(STDERR_FILENO, "Usage: ./a.out <delimiter>\n", 27);
-// 		exit(EXIT_FAILURE);
-// 	}
-
-// 	// Handle heredoc
-// 	handle_heredoc(argv[1]);
-
-// 	// Execute the command (e.g., "cat")
-// 	execlp("cat", "cat", NULL);
-
-// 	// If execlp fails
-// 	write(STDERR_FILENO, "Error: Failed to execute command\n", 33);
-// 	exit(EXIT_FAILURE);
-// }

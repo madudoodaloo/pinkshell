@@ -6,11 +6,11 @@
 /*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 00:32:44 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/17 00:33:05 by marianamest      ###   ########.fr       */
+/*   Updated: 2025/03/17 19:31:20 by marianamest      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/utils.h"
+#include "../../includes/minishell.h"
 
 size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 {
