@@ -6,11 +6,13 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 01:27:31 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/15 14:51:50 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/17 13:41:31 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
+
+//rever está a aceitar vars repetidas
 
 void	var_add_back(t_env *start, t_env *new)
 {

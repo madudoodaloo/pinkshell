@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 05:59:04 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/17 13:01:45 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/17 13:12:59 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@
 # include "../includes/minishell.h"
 
 /* retokenizer.c */
+t_token	*get_operator(t_token *t);
+t_token	*get_word(t_token *token);
 t_token *update_token(t_token *old, int flag);
 int	needs_retoken(char *cmd);
 t_token	*re_token(t_token *head);

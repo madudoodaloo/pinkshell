@@ -3,6 +3,7 @@
         "*.embeddedhtml": "html",
         "minishell.h": "c",
         "signals.h": "c",
-        "parser.h": "c"
+        "parser.h": "c",
+        "builtins.h": "c"
     }
 }

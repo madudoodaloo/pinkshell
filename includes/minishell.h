@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 13:57:32 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/17 03:55:46 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/17 13:48:50 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,14 @@ typedef struct s_msh
 	int				signaled;
 	int				ret;
 }			t_msh;
+
+typedef enum e_temp_op
+{
+	TEMP_DOLLAR = -1,
+	TEMP_PIPE = -2,
+	TEMP_IN = -3,
+	TEMP_OUT = -4,
+}		t_temp_op;
 
 t_msh	*msh(void);
 
