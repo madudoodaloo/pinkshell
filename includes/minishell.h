@@ -6,14 +6,12 @@
 /*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 13:57:32 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/17 19:13:36 by marianamest      ###   ########.fr       */
+/*   Updated: 2025/03/17 21:34:13 by marianamest      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINISHELL_H
 # define MINISHELL_H
-
-volatile sig_atomic_t	g_signal = 0;
 
 # include <errno.h>
 # include <fcntl.h>
@@ -33,13 +31,13 @@ volatile sig_atomic_t	g_signal = 0;
 
 /* ../includes headers */
 # include "builtins.h"
+# include "executor.h"
 # include "expander.h"
 # include "heredoc.h"
 # include "lexer.h"
 # include "parser.h"
-# include "signals.h"
+# include "signs.h"
 # include "utils.h"
-# include "executor.h"
 
 # define CMD 1
 # define PIPE 2
@@ -50,27 +48,29 @@ volatile sig_atomic_t	g_signal = 0;
 # define MAXLINE 1024
 # define MAXPATH 4096
 
+volatile sig_atomic_t	g_signal = 0;
+
 typedef struct s_env
 {
 	char				*var;
 	char				*var_name;
 	char				*var_value;
-	int valid; // inicializar para false
+	int					valid;// inicializar para false
 	struct s_env		*next;
 }						t_env;
 
 typedef struct s_token
 {
-	char		*content;
-	int 		type;
-	int			index;
-	struct s_token	*next;
-	struct s_token	*prev;
-}			t_token;
+	char				*content;
+	int					type;
+	int					index;
+	struct s_token		*next;
+	struct s_token		*prev;
+}						t_token;
 
 typedef struct s_pipex
 {
-	int flag
+	int					flag;
 }						t_pipex;
 
 typedef struct s_msh
@@ -92,8 +92,8 @@ typedef enum e_temp_op
 	TEMP_PIPE = -2,
 	TEMP_IN = -3,
 	TEMP_OUT = -4,
-}		t_temp_op;
+}						t_temp_op;
 
-t_msh	*msh(void);
+t_msh					*msh(void);
 
 #endif

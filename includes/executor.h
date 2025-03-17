@@ -6,7 +6,7 @@
 /*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 19:58:02 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/17 20:36:40 by marianamest      ###   ########.fr       */
+/*   Updated: 2025/03/17 21:26:19 by marianamest      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,5 @@ void	wait_for_children(int num_commands);
 void	execute_multiple_pipes(char ***commands, int num_commands, char **env);
 
 /* exec_parser */
-
 
 #endif

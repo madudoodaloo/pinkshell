@@ -6,12 +6,12 @@
 /*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 00:04:58 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/16 23:17:05 by marianamest      ###   ########.fr       */
+/*   Updated: 2025/03/17 21:33:45 by marianamest      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SIGNALS_H
-# define SIGNALS_H
+#ifndef HEREDOC_H
+# define HEREDOC_H
 
 # include "minishell.h"
 

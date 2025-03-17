@@ -6,7 +6,7 @@
 /*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 06:01:56 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/17 19:27:39 by marianamest      ###   ########.fr       */
+/*   Updated: 2025/03/17 21:27:12 by marianamest      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,14 +43,14 @@ void	my_strcpy(char *dest, const char *src);
 void	my_strcat(char *dest, const char *src);
 
 /* libft_2.c */
-int ft_strcmp(const char *s1, const char *s2);
+int		ft_strcmp(const char *s1, const char *s2);
 
 /* libft.c */
-int	ft_isoperator(char *str, int i);
-int	ft_isspace(char c);
-int	ft_isalpha(char c);
-int	ft_isdigit(char c);
-int	ft_isquote(char c);
+int		ft_isoperator(char *str, int i);
+int		ft_isspace(char c);
+int		ft_isalpha(char c);
+int		ft_isdigit(char c);
+int		ft_isquote(char c);
 
 int		ft_isalnum(int c);
 
