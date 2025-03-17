@@ -6,7 +6,7 @@
 /*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 16:47:08 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/17 19:45:45 by marianamest      ###   ########.fr       */
+/*   Updated: 2025/03/17 21:43:27 by marianamest      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ char	**init_export_array(char **env)
 	char	**export;
 
 	i = 0;
-	while (env[i]) // Count the number of environment variables
+	while (env[i])
 		i++;
 	export = (char **)malloc((i + 1) * sizeof(char *));
 	if (!export)

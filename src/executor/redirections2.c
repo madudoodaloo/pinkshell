@@ -6,12 +6,11 @@
 /*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 20:34:49 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/17 20:35:11 by marianamest      ###   ########.fr       */
+/*   Updated: 2025/03/17 21:45:51 by marianamest      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
-
 
 void	child_process_logic(char **args, char **env)
 {
@@ -22,7 +21,7 @@ void	child_process_logic(char **args, char **env)
 	out_fd = -1;
 	restore_parent_signals();
 	handle_redirections(args, &in_fd, &out_fd);
-    execute_command(args, in_fd, out_fd, env);
+	execute_command(args, in_fd, out_fd, env);
 }
 
 void	execute_with_redirections(char **args, char **env)
@@ -40,7 +39,7 @@ void	execute_with_redirections(char **args, char **env)
 	}
 	else
 	{
-		perror("fork"); // Handle fork error
+		perror("fork");
 		exit(EXIT_FAILURE);
 	}
 }

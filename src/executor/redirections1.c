@@ -6,7 +6,7 @@
 /*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 18:58:24 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/17 20:35:07 by marianamest      ###   ########.fr       */
+/*   Updated: 2025/03/17 21:45:07 by marianamest      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,12 +68,12 @@ void	handle_redirections(char **args, int *in_fd, int *out_fd)
 	}
 }
 
-void execute_command(char **args, int input_fd, int output_fd, char **env)
+void	execute_command(char **args, int input_fd, int output_fd, char **env)
 {
-    if (input_fd != -1)
-        redirect_input(input_fd);
-    if (output_fd != -1)
-        redirect_output(output_fd);
-    if (execve(args[0], args, env) == -1)
-        handle_error("execve");
+	if (input_fd != -1)
+		redirect_input(input_fd);
+	if (output_fd != -1)
+		redirect_output(output_fd);
+	if (execve(args[0], args, env) == -1)
+		handle_error("execve");
 }

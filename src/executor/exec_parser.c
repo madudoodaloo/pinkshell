@@ -6,10 +6,8 @@
 /*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 19:09:23 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/17 20:38:46 by marianamest      ###   ########.fr       */
+/*   Updated: 2025/03/17 21:44:52 by marianamest      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
-
- 

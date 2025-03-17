@@ -6,7 +6,7 @@
 /*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 22:25:57 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/17 20:20:48 by marianamest      ###   ########.fr       */
+/*   Updated: 2025/03/17 21:45:31 by marianamest      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	wait_for_children(int num_commands)
 		if (pid > 0)
 			handle_child_exit_status(status);
 		else if (pid == -1)
-			break; // No more child processes
+			break ;
 		i++;
 	}
 }
