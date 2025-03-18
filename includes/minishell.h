@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
+/*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 13:57:32 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/18 07:45:32 by marianamest      ###   ########.fr       */
+/*   Updated: 2025/03/18 10:35:59 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@
 # include <sys/wait.h>
 # include <unistd.h>
 
-/* ../includes headers */
+/* ../includes/*.h */
 # include "builtins.h"
 # include "executor.h"
 # include "expander.h"
@@ -48,6 +48,13 @@
 # define MAXPATH 4096
 
 volatile sig_atomic_t	g_signal = 0;
+
+typedef struct s_data
+{
+	bool is_heredoc; // Flag to indicate heredoc mode
+	void *strut;     // rever!!!  Placeholder for resources to free
+	char **envp;     // rever se ainda vai ser preciso dps da ft_dup_env - Environment variables
+}		t_data;
 
 typedef struct s_env
 {
@@ -90,12 +97,10 @@ typedef struct s_msh
 	char				*line;
 	char				*home;
 	char				*pwd;
-	t_env				*env;
+	t_env				*env; //rever: criar uma ft que transforma linked list em char **
 	t_token				*tokens;
 	t_exec				*exec;
 	int					exit;
-	int					signaled;
-	int					ret;
 }						t_msh;
 
 typedef enum e_temp_op
