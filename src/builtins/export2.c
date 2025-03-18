@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 16:47:08 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/18 02:11:29 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/18 11:55:10 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,7 @@ char	**init_export_array(char **env)
 	i = 0;
 	while (env[i])
 		i++;
-	export = (char **)malloc((i + 1) * sizeof(char *));
+	export = (char **)safe_malloc((i + 1) * sizeof(char *));
 	if (!export)
 		return (NULL);
 	i = 0;

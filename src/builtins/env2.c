@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 17:31:05 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/18 02:11:29 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/18 11:54:23 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ char	**update_env_var(char *arg, char **env, int idx)
 	if (*equal_sign != '=')
 		return (NULL);
 	key_len = equal_sign - arg;
-	key = (char *)malloc(key_len + 1);
+	key = (char *)safe_malloc(key_len + 1);
 	if (!key)
 		return (NULL);
 	my_strcpy(key, arg);
@@ -67,7 +67,7 @@ char	**expand_env(char **env, char *new_entry)
 	i = 0;
 	while (env[i])
 		i++;
-	new_env = malloc((i + 2) * sizeof(char *));
+	new_env = safe_malloc((i + 2) * sizeof(char *));
 	if (!new_env)
 		return (NULL);
 	j = 0;
