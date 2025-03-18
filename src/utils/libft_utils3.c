@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 21:44:47 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/18 02:11:29 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/18 20:11:46 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,9 +53,8 @@ int	ft_isdigit(char c)
 
 int	ft_isquote(char c)
 {
-	if (c == '"')
+	if (c == 39 || c == 35)
 		return (1);
-	else if (c == '\'')
-		return (2);
-	return (0);
+	else
+		return (0);
 }
