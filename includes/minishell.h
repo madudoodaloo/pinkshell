@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 13:57:32 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/18 10:35:59 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/18 10:38:46 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,14 +54,15 @@ typedef struct s_data
 	bool is_heredoc; // Flag to indicate heredoc mode
 	void *strut;     // rever!!!  Placeholder for resources to free
 	char **envp;     // rever se ainda vai ser preciso dps da ft_dup_env - Environment variables
-}		t_data;
+	t_msh				*msh;
+}						t_data;
 
 typedef struct s_env
 {
 	char				*var;
 	char				*var_name;
 	char				*var_value;
-	int					valid;// inicializar para false
+	int valid; // inicializar para false
 	struct s_env		*next;
 }						t_env;
 
@@ -76,21 +77,21 @@ typedef struct s_token
 
 typedef struct s_exec
 {
-	int				pid;
-	int				pipe[2];
-	int				has_doc;
-	int				doc_pipe[2];
-	int				out_fd;
-	int				in_fd;
-	bool			last_child;
-	bool			bad_command;
-	char			*path;
-	char			**red_out;
-	char			**red_in;
-	char			**cmd;
-	struct s_pipex	*next;
-	struct s_pipex	*previous;
-}			t_exec;
+	int					pid;
+	int					pipe[2];
+	int					has_doc;
+	int					doc_pipe[2];
+	int					out_fd;
+	int					in_fd;
+	bool				last_child;
+	bool				bad_command;
+	char				*path;
+	char				**red_out;
+	char				**red_in;
+	char				**cmd;
+	struct s_pipex		*next;
+	struct s_pipex		*previous;
+}						t_exec;
 
 typedef struct s_msh
 {
@@ -100,6 +101,7 @@ typedef struct s_msh
 	t_env				*env; //rever: criar uma ft que transforma linked list em char **
 	t_token				*tokens;
 	t_exec				*exec;
+	t_data				*data;
 	int					exit;
 }						t_msh;
 
