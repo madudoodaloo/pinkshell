@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   executor.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
+/*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 19:58:02 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/18 10:46:45 by marianamest      ###   ########.fr       */
+/*   Updated: 2025/03/18 10:49:48 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include "../includes/minishell.h"
 /* in ou out (?) no execute_builtins.c*/
 /* execute_builtins.c */
-int		execute_builtin(t_msh *msh, char **args, char ***export, int fd, char **envp); 
+int		execute_builtin(t_msh *msh, char **args, char ***export, int fd, char **envp);
 
 /* fork_and_execute1.c */
 void	handle_error(const char *message);
@@ -34,7 +34,7 @@ int		init_exec(t_msh *msh);
 
 /* *in_fd é pointer e n pode ser substituido pelo exec->in_fd nas redireções.c todas */
 /* redirections1.c */
-void	handle_input_redirection(char **args, int *in_fd, int i); 
+void	handle_input_redirection(char **args, int *in_fd, int i);
 void	handle_output_redirection(char **args, int *out_fd, int i);
 void	handle_append_redirection(char **args, int *out_fd, int i);
 void	handle_redirections(char **args, int *in_fd, int *out_fd);

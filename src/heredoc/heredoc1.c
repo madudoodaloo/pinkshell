@@ -6,11 +6,11 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 16:18:49 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/18 02:10:05 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/18 10:45:54 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/minishell.h""../../includes/heredoc.h"
+#include "../includes/minishell.h"
 
 /*expansão*/
 const char	*extract_var_name(const char *start, char *var_name)
