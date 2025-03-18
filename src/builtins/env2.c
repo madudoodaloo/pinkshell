@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 17:31:05 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/18 11:54:23 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/18 12:39:51 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,12 +81,12 @@ char	**expand_env(char **env, char *new_entry)
 	return (new_env);
 }
 
-void	set_or_add_env_value(char ***env, const char *key, const char *value)
+void	set_or_add_env_value(char **env, const char *key, const char *value)
 {
 	int		index;
 	char	*new_entry;
 
-	index = find_env_key_index(*env, key);
+	index = find_env_key_index(env, key);
 	new_entry = create_env_entry(key, value);
 	if (!new_entry)
 		return ;

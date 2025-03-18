@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 15:20:31 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/18 11:53:30 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/18 12:35:28 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,20 +72,25 @@ char	**init_env_array(char **envp)
 	char	**env;
 
 	i = 0;
-	env = allocate_and_init_env_array(envp);
-	if (!env)
-		return (NULL);
-	while (envp[i])
+	if (!check_env(envp))
+		env = empty_env();
+	else
 	{
-		if (!process_env_variable(envp[i], env, i))
-		{
-			while (i > 0)
-				free(env[--i]);
-			free(env);
+		env = allocate_and_init_env_array(envp);
+		if (!env)
 			return (NULL);
+		while (envp[i])
+		{
+			if (!process_env_variable(envp[i], env, i))
+			{
+				while (i > 0)
+					free(env[--i]);
+				free(env);
+				return (NULL);
+			}
+			i++;
 		}
-		i++;
+		env[i] = NULL;
 	}
-	env[i] = NULL;
 	return (env);
 }

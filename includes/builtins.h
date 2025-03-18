@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtins.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
+/*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 06:01:00 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/18 08:00:51 by marianamest      ###   ########.fr       */
+/*   Updated: 2025/03/18 12:40:36 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ char		**init_env_array(char **envp);
 int			find_env_key_index(char **env, const char *key);
 char		**update_env_var(char *arg, char **env, int idx);
 char		**expand_env(char **env, char *new_entry);
-void		set_or_add_env_value(char ***env, const char *key,
+void		set_or_add_env_value(char **env, const char *key,
 				const char *value);
 void		builtin_env(char **env, int fd);
 

@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 01:27:31 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/18 11:47:20 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/18 12:33:07 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,24 +76,35 @@ t_env	*create_var(char *str)
 	return (new);
 }
 
-char **get_default_env(void)
+//tá a ser usada
+char **empty_env(void)
 {
-	char **default_env = safe_malloc(sizeof(char *) * 5);
-	default_env[0] = ft_strdup("LS_COLORS=");
-	default_env[1] = ft_strdup("SHLVL=1");
-	default_env[2] = ft_strdup("PATH=/usr/local/bin:"
+	char	cwd[4096];
+	char **default_env;
+
+	if (getcwd(cwd, sizeof(cwd)) == NULL)
+	{
+		perror("getcwd"); //rever este handle de erros
+		exit(1);
+	}
+	default_env = safe_malloc(sizeof(char *) * 6);
+	default_env[0] = ft_strjoin("PWD=", cwd);
+	default_env[1] = ft_strdup("LS_COLORS=");
+	default_env[2] = ft_strdup("SHLVL=1");
+	default_env[3] = ft_strdup("PATH=/usr/local/bin:"
 		"/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin");
-	default_env[3] = ft_strdup("_=/usr/bin/env");
-	default_env[4] = NULL;
+	default_env[4] = ft_strdup("_=/usr/bin/env");
+	default_env[5] = NULL;
+	return (default_env);
 }
 
-t_env *empty_env(void)
+/* t_env *empty_env(void)
 {
+	char	cwd[4096];
 	t_env	*start;
 	t_env	*temp;
 	char	**default_env;
 	int	i;
-	char	cwd[4096];
 
 	i= 0;
 	if (getcwd(cwd, sizeof(cwd)) == NULL)
@@ -113,12 +124,12 @@ t_env *empty_env(void)
 	if (default_env)
 		free_matrix(default_env);
 	return (start);
-}
+} */
 
 int	check_env(char **envp)
 {
 	int i = 0;
-	if (!envp)
+	if (!envp || !*envp)
 		return (0);
 	while (envp[i])
 		i++;

@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 18:18:18 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/18 10:51:58 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/18 12:38:09 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ t_msh    *init_all(char **envp)
     minishell = msh();
     minishell->line = NULL;
     minishell->tokens = NULL;
-    minishell->env = get_env(envp);
+    minishell->env = init_env_array(envp);
     minishell->home = get_home();
     minishell->pwd = getcwd(NULL, 0);
 	minishell->data = NULL;
