@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   fork_and_execute2.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
+/*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 22:25:57 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/17 21:45:31 by marianamest      ###   ########.fr       */
+/*   Updated: 2025/03/18 02:11:29 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minishell.h"
+#include "../includes/minishell.h"
 
 void	setup_pipe_and_execute(char **args, int *input_fd, char **env)
 {

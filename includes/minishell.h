@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 13:57:32 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/18 01:01:17 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/18 02:05:25 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@
 # include "executor.h"
 # include "expander.h"
 # include "heredoc.h"
-# include "lexer.h"
 # include "parser.h"
 # include "signs.h"
 # include "utils.h"

@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   expander.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
+/*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 01:39:20 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/17 21:33:08 by marianamest      ###   ########.fr       */
+/*   Updated: 2025/03/18 02:07:26 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef EXPANDER_H
 # define EXPANDER_H
 
-# include "minishell.h"
+# include "../includes/minishell.h"
 
 /* ignore.c */
 void	ignore_dollar(char *str);

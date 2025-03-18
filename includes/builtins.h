@@ -6,14 +6,14 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 06:01:00 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/18 01:50:09 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/18 02:07:17 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef BUILTINS_H
 # define BUILTINS_H
 
-# include "minishell.h"
+# include "../includes/minishell.h"
 
 /* cd */
 char		*find_env_value(char **env, const char *var);

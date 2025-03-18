@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   redirections1.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
+/*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 18:58:24 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/17 21:45:07 by marianamest      ###   ########.fr       */
+/*   Updated: 2025/03/18 02:11:29 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minishell.h"
+#include "../includes/minishell.h"
 
 void	handle_input_redirection(char **args, int *in_fd, int i)
 {

@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   heredoc2.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
+/*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 18:13:48 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/17 23:17:45 by marianamest      ###   ########.fr       */
+/*   Updated: 2025/03/18 02:10:05 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/heredoc.h"
+#include "../includes/minishell.h""../../includes/heredoc.h"
 
 void	signal_handler_set_temp_filename(char *filename)
 {

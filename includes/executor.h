@@ -6,14 +6,14 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 19:58:02 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/18 01:49:23 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/18 02:07:02 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef EXECUTOR_H
 # define EXECUTOR_H
 
-# include "minishell.h"
+# include "../includes/minishell.h"
 
 /* execute_builtins.c */
 int		execute_builtin(t_msh *msh, char **args, char ***export, int fd);

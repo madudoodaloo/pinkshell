@@ -6,14 +6,14 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 06:01:56 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/18 01:41:43 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/18 02:08:08 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef UTILS_H
 # define UTILS_H
 
-# include "minishell.h"
+# include "../includes/minishell.h"
 
 /* free_1.c */
 void free_token_list(t_token *tokens);
