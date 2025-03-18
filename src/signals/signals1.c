@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   signals1.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 16:26:33 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/18 10:54:10 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/18 11:54:41 by marianamest      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
