@@ -6,31 +6,30 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 13:25:45 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/18 19:06:14 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/18 19:10:44 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-
-void	ignore_dollar(char *str)
+bool	needs_expand(t_token *t)
 {
 	int	i;
 
 	i = 0;
-	return ;
-	while (str[i])
+	if (!t || !t->token)
+		return (false);
+	if (ft_strlen(t->token) == 1 && t->token[0] == '$')
+		return (false);
+	while (t->token[i] != '\0')
 	{
-		if (str[i] == '$' && in_squote(str, i))
-		str[i] = TEMP_DOLLAR;
-		else if (str[i] == '$' && !str[i + 1] && i > 0 && str[i - 1] != '$')
-		str[i] = TEMP_DOLLAR;
-		else if (str[i] == '$' && str[i + 1] == 34 && in_quote(str, i))
-		str[i] = TEMP_DOLLAR;
-		else if (str[i] == '$' && str[i + 1] == 39 && in_quote(str, i + 1))
-		str[i] = TEMP_DOLLAR;
+		if (t->previous && t->previous->token_type == HERE_DOC)
+			return (false);
+		if (t->token[i] == '$' && !in_squote(t->token, i))
+			return (true);
 		i++;
 	}
+	return (false);
 }
 
 void	expander(t_token *tokens)
@@ -61,7 +60,7 @@ void	do_expand(t_token *t)
 	if (is_special_expand(var_name))
 		var_value = get_special_var(var_name);
 	else
-		var_value = get_var_value(mini_call()->env, var_name);
+		var_value = get_var_value(msh()->env, var_name);
 	expand_var(t, var_value);
 	free(var_name);
 	free(var_value);
