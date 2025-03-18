@@ -6,12 +6,18 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 15:19:12 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/18 10:41:50 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/18 10:58:40 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #include "../includes/minishell.h"
+
+void    clean_line(t_msh *msh)
+{
+    if (msh->line)
+       free(msh->line);
+}
 
 void msh_loop(char **envp)
 {
@@ -42,7 +48,7 @@ void msh_loop(char **envp)
             msh()->exit = 2;
             */
         }
-        clean_line();
+        clean_line(m);
     }
     free_and_exit(m);
 }
