@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 01:27:31 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/18 12:33:07 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/18 15:14:07 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	var_add_back(t_env *start, t_env *new)
     t_env	*end;
 
     temp = start;
-    if (new->valid == false || dup_var(temp, end))
+    if (new->valid == false && dup_var(temp, end))
         return ;
     while (temp)
     {
@@ -50,9 +50,7 @@ void	var_add_back(t_env *start, t_env *new)
         temp = temp->next;
     }
     if (end)
-    {
         end->next = new;
-    }
 }
 
 t_env	*create_var(char *str)
@@ -63,6 +61,7 @@ t_env	*create_var(char *str)
 	i = 0;
 	new = (t_env *)safe_malloc(sizeof(t_env));
 	new->var = ft_strdup(str);
+	new->valid = false;
 	while (str[i] && str[i] != '=')
 		i++;
 	new->var_name = ft_substr(str, 0, i);
@@ -76,8 +75,7 @@ t_env	*create_var(char *str)
 	return (new);
 }
 
-//tá a ser usada
-char **empty_env(void)
+char **get_default_env(void)
 {
 	char	cwd[4096];
 	char **default_env;
@@ -98,33 +96,26 @@ char **empty_env(void)
 	return (default_env);
 }
 
-/* t_env *empty_env(void)
+t_env *empty_env(void)
 {
-	char	cwd[4096];
 	t_env	*start;
 	t_env	*temp;
 	char	**default_env;
-	int	i;
+	int		i;
 
 	i= 0;
-	if (getcwd(cwd, sizeof(cwd)) == NULL)
-	{
-		perror("getcwd"); //rever este handle de erros
-		exit(1);
-	}
-	start = create_var("PWD=");
-	free(start->var_value);
-	start->var_value = ft_strdup(cwd);
+	default_env = get_default_env();
 	while (default_env && default_env[i])
 	{
-		temp = create_var(default_env[i++]);
-		var_add_back(start, temp);
+		temp = create_var(default_env[i]);
+		if (i > 0)
+			var_add_back(start, temp);
 		free(temp);
 	}
 	if (default_env)
 		free_matrix(default_env);
 	return (start);
-} */
+}
 
 int	check_env(char **envp)
 {
@@ -151,7 +142,7 @@ t_env	*get_env(char **envp)
 		{
 			temp = create_var(envp[i]);
 			if (i > 0)
-				add_var_back(new, temp);
+				var_add_back(new, temp);
 		}
 	}
 	return (new);

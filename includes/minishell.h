@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
+/*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 13:57:32 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/18 13:56:40 by marianamest      ###   ########.fr       */
+/*   Updated: 2025/03/18 14:18:46 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,13 +50,12 @@ typedef struct s_data
 	struct s_msh		*msh;
 }						t_data;
 
-// int valid - inicializar para false
 typedef struct s_env
 {
 	char				*var; // PATH=usr/folder
 	char				*var_name; // PATH
 	char				*var_value; // usr/folder/
-	int					valid; //ver se é util
+	int					valid;
 	struct s_env		*next;
 }						t_env;
 

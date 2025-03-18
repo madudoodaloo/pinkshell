@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env2.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
+/*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 17:31:05 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/18 13:54:40 by marianamest      ###   ########.fr       */
+/*   Updated: 2025/03/18 14:13:31 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,7 @@ char	**general_manage_env(t_env *env, int action, char **envp) // action é o ca
 	int	index;
 	t_env *temp;
 
-	if (env == NULL) 
+	if (env == NULL)
 		env = init_env_array(envp);
 	if (action == 0)
 		set_or_add_env_value(env, env->var_name, env->var_value);
@@ -128,3 +128,5 @@ char	**general_manage_env(t_env *env, int action, char **envp) // action é o ca
 	}
 	return (env);
 }
+
+t_env	*env_cmd(t_env *env, int action)
