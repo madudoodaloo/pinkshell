@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft_utils4.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 04:24:44 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/18 02:11:29 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/18 08:12:05 by marianamest      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,4 +36,31 @@ void	ft_put_str_fd(char *str, int fd)
 		write(fd, &str[i], 1);
 		i++;
 	}
+}
+
+int	ft_atoi(char *str)
+{
+	int	sum;
+	int	sign;
+	int	found;
+
+	sum = 0;
+	sign = 1;
+	found = 1;
+	while (*str && (*str == ' ' || *str == '\t' || *str == '\n' || *str == '\f'
+			|| *str == '\r'))
+		str++;
+	if (*str == '-')
+		sign = -1;
+	if (*str == '-' || *str == '+')
+		str++;
+	while (*str && found)
+	{
+		if (*str >= '0' && *str <= '9')
+			sum = sum * 10 + *str - '0';
+		else
+			found = 0;
+		str++;
+	}
+	return (sign * sum);
 }
