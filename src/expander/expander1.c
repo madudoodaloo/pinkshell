@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 13:25:45 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/18 21:21:09 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/18 21:33:28 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,6 +126,14 @@ char	*regular_expand(t_env *env, char *var_name)
 	return (var_value);
 }
 
+void	update_content(t_token *token, char *expanded)
+{
+	char	*new_value;
+
+	new = (char *)safe_malloc(sizeof(char) * (expanded_strlen(expanded) + 1))
+
+}
+
 void	expand_var(t_token *token, t_msh *msh)
 {
 	char	*var_name;
@@ -136,7 +144,7 @@ void	expand_var(t_token *token, t_msh *msh)
 		var_value = edge_expand(var_name, msh);
 	else
 		var_value = regular_expand(msh->env, var_name);
-	rm_dollar(token, var_value);
+	update_content(token, var_value);
 	free(var_name);
 	free(var_value);
 }
