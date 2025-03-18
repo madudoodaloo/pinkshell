@@ -6,7 +6,7 @@
 /*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 13:57:32 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/18 13:47:46 by marianamest      ###   ########.fr       */
+/*   Updated: 2025/03/18 13:56:40 by marianamest      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,10 +53,10 @@ typedef struct s_data
 // int valid - inicializar para false
 typedef struct s_env
 {
-	char				*var;
-	char				*var_name;
-	char				*var_value;
-	int					valid;
+	char				*var; // PATH=usr/folder
+	char				*var_name; // PATH
+	char				*var_value; // usr/folder/
+	int					valid; //ver se é util
 	struct s_env		*next;
 }						t_env;
 
@@ -93,7 +93,7 @@ typedef struct s_msh
 	char				*line;
 	char				*home;
 	char				*pwd;
-	char				**env;
+	t_env				*env;
 	t_token				*tokens;
 	t_exec				*exec;
 	t_data				*data;

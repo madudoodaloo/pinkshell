@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 06:01:00 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/18 12:40:36 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/18 13:40:37 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void		cd_command(char **env, char **args);
 
 /* env1 */
 char		*create_env_entry(const char *key, const char *value);
-char		**allocate_and_init_env_array(char **envp);
+char		**allocate_env(char **envp);
 int			process_env_variable(char *env_var, char **env, int i);
 char		**init_env_array(char **envp);
 

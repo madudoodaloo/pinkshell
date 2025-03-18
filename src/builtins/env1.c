@@ -6,7 +6,7 @@
 /*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 15:20:31 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/18 12:52:54 by marianamest      ###   ########.fr       */
+/*   Updated: 2025/03/18 13:56:26 by marianamest      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ char	*create_env_entry(const char *key, const char *value)
 	return (entry);
 }
 
-char	**allocate_and_init_env_array(char **envp)
+char	**allocate_env(char **envp)
 {
 	int		i;
 	char	**env;
@@ -76,7 +76,7 @@ char	**init_env_array(char **envp)
 		env = empty_env();
 	else
 	{
-		env = allocate_and_init_env_array(envp);
+		env = allocate_env(envp);
 		if (!env)
 			return (NULL);
 		while (envp[i])
