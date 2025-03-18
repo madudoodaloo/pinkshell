@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 16:18:49 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/18 10:45:54 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/18 11:55:32 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ char	*expand_variables(const char *input)
 	char		var_name[256];
 	char		*var_value;
 
-	expanded = malloc(ft_strlen(input) + 250);
+	expanded = safe_malloc(ft_strlen(input) + 250);
 	if (!expanded)
 		return (NULL);
 	expanded[0] = '\0';
@@ -63,7 +63,7 @@ char	*get_delimiter(char *str, int i)
 	k = i;
 	while (str[i] != ' ' && str[i] != '\0')
 		i++;
-	delimiter = (char *)malloc(sizeof(char) * (i - k + 1));
+	delimiter = (char *)safe_malloc(sizeof(char) * (i - k + 1));
 	if (!delimiter)
 		return (NULL);
 	m = 0;

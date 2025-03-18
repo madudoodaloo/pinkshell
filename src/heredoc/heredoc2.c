@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 18:13:48 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/18 10:45:48 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/18 11:55:57 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ char	*generate_temp_filename(void)
 	char	pid_str[20];
 	char	time_str[20];
 
-	filename = malloc(256);
+	filename = safe_malloc(256);
 	if (!filename)
 		return (NULL);
 	pid = getpid();

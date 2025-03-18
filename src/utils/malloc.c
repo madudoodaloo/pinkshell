@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 15:19:22 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/18 02:11:29 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/18 11:56:17 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	*safe_malloc(size_t size)
 {
 	void	*new;
 
-	new = malloc(size);
+	new = safe_malloc(size);
 	if (!new)
 	{
 		ft_put_str_fd("Failed malloc\n", 2);

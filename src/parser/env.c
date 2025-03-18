@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 01:27:31 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/18 10:47:28 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/18 11:47:20 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -145,7 +145,7 @@ t_env	*get_env(char **envp)
 	}
 	return (new);
 }
-
+//rever não serve para nada
 t_env	*env_dup(t_env *env)
 {
 	t_env	*new;
