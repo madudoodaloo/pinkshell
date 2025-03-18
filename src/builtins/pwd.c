@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pwd.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 17:32:36 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/18 02:11:29 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/18 10:57:04 by marianamest      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	my_pwd(int fd)
 	else
 	{
 		write(fd, error_msg, ft_strlen(error_msg));
-		write(fd, error(errno), ft_strlen(strerror(errno)));
+		write(fd, strerror(errno), ft_strlen(strerror(errno)));
 		write(fd, "\n", 1);
 	}
 }
