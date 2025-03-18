@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 15:19:12 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/16 20:00:59 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/18 00:55:40 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,18 +21,22 @@ void msh_loop(char **envp)
     m = msh();
     while (m->exit == 0)
     {
-        if (m->line)
-            m->line = clearline(m);
         m->line = readline("minishell$");
+        if (!m->line)
+        {
+            ft_put_str_fd("exit\n", 2);
+            break ;
+        }
         if (m->line && *m->line)
         {
+            //rever se o heredoc n precisa dum counter
             add_history(m->line);
-            if (parser(m))
+            if (parser(m) && init_exec(m))
                 execute(m);
             else
-                m->exit = 2;
+                msh()->exit = 2;
         }
-        clean_cmdline();
+        clean_line();
     }
     free_and_exit(m);
 }

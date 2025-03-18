@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 18:17:41 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/16 22:54:54 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/18 00:56:11 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ void free_matrix(char **matrix)
     free(matrix);
 }
 
-void free_pipex_list(t_pipex *pipex)
+void free_pipex_list(t_exec *exec)
 {
     return ;
 }
@@ -92,8 +92,8 @@ void    free_and_exit(t_msh *msh)
         free_token_list(msh->tokens);
 	if (msh->pwd)
 		free(msh->pwd);
-    if (msh->pipex)
-        free_pipex_list(msh->pipex);
+    if (msh->exec)
+        free_pipex_list(msh->exec);
     if (msh->env)
         free_env_list(msh->env);
 	if (msh->home)

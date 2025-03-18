@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 13:57:32 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/17 17:14:56 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/17 20:31:11 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,10 +68,23 @@ typedef struct s_token
 	struct s_token	*prev;
 }			t_token;
 
-typedef struct s_pipex
+typedef struct s_exec
 {
-	int flag
-}						t_pipex;
+	int				pid;
+	int				pipe[2];
+	int				has_doc;
+	int				doc_pipe[2];
+	int				out_fd;
+	int				in_fd;
+	bool			last_child;
+	bool			bad_command;
+	char			*path;
+	char			**red_out;
+	char			**red_in;
+	char			**cmd;
+	struct s_pipex	*next;
+	struct s_pipex	*previous;
+}			t_exec;
 
 typedef struct s_msh
 {
@@ -80,7 +93,7 @@ typedef struct s_msh
 	char				*pwd;
 	t_env				*env;
 	t_token				*tokens;
-	t_pipex				*pipex;
+	t_exec				*exec;
 	int					exit;
 	int					signaled;
 	int					ret;

@@ -4,6 +4,9 @@
         "minishell.h": "c",
         "signals.h": "c",
         "parser.h": "c",
-        "builtins.h": "c"
+        "builtins.h": "c",
+        "expander.h": "c",
+        "lexer.h": "c",
+        "heredoc.h": "c"
     }
 }

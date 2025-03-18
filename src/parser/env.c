@@ -6,21 +6,35 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 01:27:31 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/17 13:41:31 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/18 00:47:56 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-//rever está a aceitar vars repetidas
+int dup_var(t_env *start, t_env *new)
+{
+	t_env	*temp;
 
+	temp = start;
+	while (temp)
+	{
+		if (!ft_strcmp(temp->var_name, new->var_name))
+			return (1);
+		temp = temp->next;
+	}
+	return (0);
+
+}
+
+//rever line 37 se deve ser || or &&
 void	var_add_back(t_env *start, t_env *new)
 {
     t_env	*temp;
     t_env	*end;
 
     temp = start;
-    if (new->valid == false)
+    if (new->valid == false || dup_var(temp, end))
         return ;
     while (temp)
     {
