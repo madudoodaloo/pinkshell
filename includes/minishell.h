@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 13:57:32 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/18 10:44:49 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/18 10:51:31 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,15 +29,6 @@
 # include <sys/wait.h>
 # include <unistd.h>
 
-/* ../includes/*.h */
-# include "builtins.h"
-# include "executor.h"
-# include "expander.h"
-# include "heredoc.h"
-# include "parser.h"
-# include "signs.h"
-# include "utils.h"
-
 # define CMD 1
 # define PIPE 2
 # define R_OUT 3
@@ -53,20 +44,19 @@ volatile sig_atomic_t	g_signal = 0;
 // rever se ainda vai ser preciso dps da ft_dup_env - Environment variables
 typedef struct s_data
 {
-	bool is_heredoc;
-	void *strut;
-	char **envp;
-	t_msh				*msh;
+	bool				is_heredoc;
+	void				*strut;
+	char				**envp;
+	struct s_msh		*msh;
 }						t_data;
 
-
- // int valid - inicializar para false
+// int valid - inicializar para false
 typedef struct s_env
 {
 	char				*var;
 	char				*var_name;
 	char				*var_value;
-	int valid;
+	int					valid;
 	struct s_env		*next;
 }						t_env;
 
@@ -119,5 +109,14 @@ typedef enum e_temp_op
 }						t_temp_op;
 
 t_msh					*msh(void);
+
+/* ../includes/*.h */
+# include "builtins.h"
+# include "executor.h"
+# include "expander.h"
+# include "heredoc.h"
+# include "parser.h"
+# include "signs.h"
+# include "utils.h"
 
 #endif
