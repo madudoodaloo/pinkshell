@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 04:46:51 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/18 10:47:48 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/18 18:44:57 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ t_token	*get_word(t_token *t)
 	t_token	*remain;
 
 	i = 0;
-	while ((ft_isoperator(t->content, i) > 0 && in_quote(t->content, i)) || ft_isoperator(t->content, i) == 0)
+	while ((ft_isoperator(t->content, i) > 0 && in_quotes(t->content, i)) || ft_isoperator(t->content, i) == 0)
 		i++;
 	temp = ft_substr(t->content, 0, i);
 	word = init_token(temp);
@@ -68,7 +68,7 @@ int	needs_retoken(char *cmd)
 	i = -1;
 	while (cmd[++i])
 	{
-		if (ft_isoperator(cmd, i) && !check_quotes(cmd, i))
+		if (ft_isoperator(cmd, i) && !in_quotes(cmd, i))
 			operator = true;
 		else
 			word = true;

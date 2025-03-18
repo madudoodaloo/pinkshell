@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 20:59:01 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/18 13:38:31 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/18 17:38:04 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,5 @@ int tokenizer(t_msh *msh)
 		return (0);
 	free_matrix(matrix);
 	msh->tokens = re_token(msh->tokens);
-	t_token *temp = msh->tokens;
-	while (temp)
-	{
-		printf("token[%d]: %s\n", temp->index, temp->content);
-		temp = temp->next;
-	}
 	return (1);
 }

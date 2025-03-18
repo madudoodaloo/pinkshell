@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 13:44:20 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/18 10:46:20 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/18 19:07:02 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	put_dollar_back(char *str)
 	int	i;
 
 	i = -1;
-	while (str[++i] != '\0')
+	while (str[++i])
 	{
 		if (str[i] == TEMP_DOLLAR)
 			str[i] = '$';

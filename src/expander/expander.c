@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 13:25:45 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/18 10:46:30 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/18 19:06:14 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,11 @@ void	ignore_dollar(char *str)
 	{
 		if (str[i] == '$' && in_squote(str, i))
 		str[i] = TEMP_DOLLAR;
-		else if (str[i] == '$' && str[i + 1] == 34 && check_quotes(str, i))
-		str[i] = TEMP_DOLLAR;
-		else if (str[i] == '$' && str[i + 1] == 39 && check_quotes(str, i + 1))
-		str[i] = TEMP_DOLLAR;
 		else if (str[i] == '$' && !str[i + 1] && i > 0 && str[i - 1] != '$')
+		str[i] = TEMP_DOLLAR;
+		else if (str[i] == '$' && str[i + 1] == 34 && in_quote(str, i))
+		str[i] = TEMP_DOLLAR;
+		else if (str[i] == '$' && str[i + 1] == 39 && in_quote(str, i + 1))
 		str[i] = TEMP_DOLLAR;
 		i++;
 	}
@@ -42,7 +42,7 @@ void	expander(t_token *tokens)
 	{
 		ignore_dollar(temp->content);
 		if (needs_expand(temp))
-		do_expand(temp);
+			do_expand(temp);
 		else
 		{
 			put_dollar_back(temp->content);

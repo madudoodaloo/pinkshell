@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 15:19:12 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/18 10:58:40 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/18 17:35:37 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void msh_loop(char **envp)
             if (parser(m))
                 printf("great success parsed\n");
             else
-                printf("great success parsed\n");
+                printf("failed parse\n");
             /*
             if (parser(m) && init_exec(m))
             execute(m);

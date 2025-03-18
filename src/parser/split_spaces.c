@@ -6,12 +6,13 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 22:49:40 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/18 10:47:53 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/18 18:46:18 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
+//rever
 int count_words(char *line)
 {
 	int i;
@@ -21,13 +22,13 @@ int count_words(char *line)
 	word = 0;
 	while (line[i])
 	{
-		if (!ft_isspace(line[i]) || (check_quotes(line, i) && ft_isspace(line[i])))
+		if (!ft_isspace(line[i]) || (in_quotes(line, i) && ft_isspace(line[i])))
 		{
 			word++;
-			while (!ft_isspace(line[i]) || (check_quotes(line, i) && ft_isspace(line[i])))
+			while ((!ft_isspace(line[i]) || (in_quotes(line, i) && ft_isspace(line[i]))) && line[i])
 				i++;
 		}
-		if (ft_isspace(line[i]) && !check_quotes(line, i))
+		if (ft_isspace(line[i]) && !in_quotes(line, i))
 			i++;
 	}
 	return (word);
@@ -42,7 +43,7 @@ int parser_wdlen(char *line, int i)
 	{
 		if (!ft_isspace(line[i + len]))
 			len++;
-		else if (ft_isspace(line[i + len]) && check_quotes(line, i + len)) //test: see if in_quotes is working
+		else if (ft_isspace(line[i + len]) && in_quotes(line, i + len)) //test: see if in_quotes is working
 			len++;
 		else
 			return (len);
