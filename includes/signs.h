@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   signs.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
+/*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 16:26:02 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/18 07:58:06 by marianamest      ###   ########.fr       */
+/*   Updated: 2025/03/18 10:44:29 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,6 @@
 # define SIGNS_H
 
 # include "../includes/minishell.h"
-
-typedef struct s_data
-{
-	bool is_heredoc; // Flag to indicate heredoc mode
-	void *strut;     // Placeholder for resources to free
-	char **envp;     // Environment variables
-}		t_data;
 
 /*signals1.c*/
 void	signal_handler(t_data *data, int signum);

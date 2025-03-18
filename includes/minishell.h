@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 13:57:32 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/18 10:38:46 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/18 10:44:49 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,20 +49,24 @@
 
 volatile sig_atomic_t	g_signal = 0;
 
+// void *struct - rever!!!  Placeholder for resources to free
+// rever se ainda vai ser preciso dps da ft_dup_env - Environment variables
 typedef struct s_data
 {
-	bool is_heredoc; // Flag to indicate heredoc mode
-	void *strut;     // rever!!!  Placeholder for resources to free
-	char **envp;     // rever se ainda vai ser preciso dps da ft_dup_env - Environment variables
+	bool is_heredoc;
+	void *strut;
+	char **envp;
 	t_msh				*msh;
 }						t_data;
 
+
+ // int valid - inicializar para false
 typedef struct s_env
 {
 	char				*var;
 	char				*var_name;
 	char				*var_value;
-	int valid; // inicializar para false
+	int valid;
 	struct s_env		*next;
 }						t_env;
 
@@ -93,12 +97,13 @@ typedef struct s_exec
 	struct s_pipex		*previous;
 }						t_exec;
 
+//rever: criar uma ft que transforma linked list em char **
 typedef struct s_msh
 {
 	char				*line;
 	char				*home;
 	char				*pwd;
-	t_env				*env; //rever: criar uma ft que transforma linked list em char **
+	t_env				*env;
 	t_token				*tokens;
 	t_exec				*exec;
 	t_data				*data;

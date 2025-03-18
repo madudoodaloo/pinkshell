@@ -6,11 +6,11 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 18:13:48 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/18 02:10:05 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/18 10:45:48 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/minishell.h""../../includes/heredoc.h"
+#include "../includes/minishell.h"
 
 void	signal_handler_set_temp_filename(char *filename)
 {

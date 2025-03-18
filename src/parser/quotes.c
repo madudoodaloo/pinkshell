@@ -6,11 +6,11 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 20:35:37 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/18 02:10:05 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/18 10:47:40 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/minishell.h""../includes/minishell.h"
+#include "../includes/minishell.h"
 
 int check_singles(char *line, int max)
 {

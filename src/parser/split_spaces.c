@@ -6,11 +6,11 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 22:49:40 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/18 02:10:05 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/18 10:47:53 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/minishell.h""../includes/minishell.h"
+#include "../includes/minishell.h"
 
 int count_words(char *line)
 {
