@@ -6,7 +6,7 @@
 /*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 06:01:56 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/18 08:12:48 by marianamest      ###   ########.fr       */
+/*   Updated: 2025/03/18 12:26:03 by marianamest      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ int		ft_isquote(char c);
 int		ft_strcmp(const char *s1, const char *s2);
 void	ft_put_str_fd(char *str, int fd);
 int		ft_atoi(char *str);
+char	*ft_strjoin(const char *s1, const char *s2);
 
 /* malloc.c */
 void	*ft_memset(void *s, int c, size_t n);
