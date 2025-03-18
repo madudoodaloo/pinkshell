@@ -22,7 +22,7 @@ SRC =			src/main/main.c \
                 src/expander/ignore.c \
                 src/heredoc/heredoc1.c \
                 src/heredoc/heredoc2.c \
-				src/parser/create_token.c \
+				src/parser/create_tokens.c \
 				src/parser/env.c \
 				src/parser/init.c \
 				src/parser/parser.c \
