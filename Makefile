@@ -2,14 +2,6 @@ NAME = minishell
 CC = cc
 
 SRC =			src/main/main.c \
-				src/parser/create_token.c \
-				src/parser/env.c \
-				src/parser/init.c \
-				src/parser/parser.c \
-				src/parser/quotes.c \
-				src/parser/retokenizer.c \
-				src/parser/split_spaces.c \
-				src/parser/tokenizer.c \
 				src/builtins/cd.c \
                 src/builtins/echo.c \
                 src/builtins/env1.c \
@@ -30,7 +22,6 @@ SRC =			src/main/main.c \
                 src/expander/ignore.c \
                 src/heredoc/heredoc1.c \
                 src/heredoc/heredoc2.c \
-<<<<<<< HEAD
 				src/parser/create_tokens.c \
 				src/parser/env.c \
 				src/parser/init.c \
@@ -39,8 +30,6 @@ SRC =			src/main/main.c \
 				src/parser/retokenizer.c \
 				src/parser/split_spaces.c \
 				src/parser/tokenizer.c \
-=======
->>>>>>> 28a4c57f4912b0e49a09aecc8adcc2621c3ba8af
 				src/signals/signals1.c \
 				src/signals/signals2.c \
 				src/utils/free_1.c \
