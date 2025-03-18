@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   expander.c                                         :+:      :+:    :+:   */
+/*   expander1.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 13:25:45 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/18 20:36:34 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/18 20:58:32 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,6 @@ int	var_name_len(char *str, int i)
 	}
 }
 
-// rever preciso de ter o $$ feito????
 char *grep_var_name(t_token *token)
 {
 	char *var_name;
@@ -69,17 +68,19 @@ char *grep_var_name(t_token *token)
 	return (var_name);
 }
 
-int	is_special_expand(char *var_name)
+int	is_edge_expand(char *var_name)
 {
 	int	var_len;
 
-	if (!*var_name)
+	if (!var_name || !*var_name)
 		return (0);
-	var_len = ft_strlen(var_name);
-	if (!ft_strncmp(var_name, "$", var_len))
-		return (1);
-	else if (!ft_strncmp(var_name, "?", var_len))
-		return (1);
+	else if (ft_strlen(var_name) != 2)
+		return (0);
+	else if (var_name[0] == '$')
+	{
+		if (var_name[1] == '?' || var_name[1] == '?')
+			return (1);
+	}
 	else
 		return (0);
 }
@@ -99,49 +100,34 @@ char *edge_expand(char* var_name, t_msh *msh)
 	return (var_value);
 }
 
-void	expand_var(t_token *token)
+char	*regular_expand(t_env *env, char *var_name)
+{
+	if (!env || !var_name)
+		return (NULL);
+	if (!*var_name)
+		return (ft_strdup(""));
+	while (env)
+	{
+		if (!ft_strcmp(var_name, env->var_name))
+			return (ft_strdup(env->var_value));
+		env = env->next;
+	}
+	return (ft_strdup(""));
+}
+
+void	expand_var(t_token *token, t_msh *msh)
 {
 	char	*var_name;
 	char	*var_value;
 
 	var_name = grep_var_name(token);
-	if (is_edge_expansion(var_name))
-		var_value = edge_expand(var_name);
+	if (is_edge_expand(var_name))
+		var_value = edge_expand(var_name, msh);
 	else
-		var_value = regular_expand(msh()->env, var_name);
+		var_value = regular_expand(msh->env, var_name);
 	rm_dollar(token, var_value);
 	free(var_name);
 	free(var_value);
-}
-
-static void	init_index(t_index *i)
-{
-	i->new_i = 0;
-	i->t_i = 0;
-	i->var_i = 0;
-}
-
-
-void	sub_dollar(t_token *t, char *var)
-{
-	char	*new;
-	t_index	i;
-
-	init_index(&i);
-	new = safe_malloc(expanded_len(t, var) + 1);
-	while (t->content[i.t_i] != '$')
-		new[i.new_i++] = t->content[i.t_i++];
-	while (var[i.var_i] != '\0')
-		new[i.new_i++] = var[i.var_i++];
-	if (t->content[i.t_i + 1] == '?' || t->content[i.t_i + 1] == '$')
-		i.t_i += 2;
-		else
-		i.t_i += var_name_len(t->content, i.t_i + 1) + 1;
-	while (t->content[i.t_i] != '\0')
-	new[i.new_i++] = t->content[i.t_i++];
-	new[i.new_i] = '\0';
-	free(t->content);
-	t->content = new;
 }
 
 void	expander(t_token *tokens)
@@ -153,7 +139,7 @@ void	expander(t_token *tokens)
 	{
 		ignore_dollar(temp->content);
 		if (needs_expansion(temp))
-			expand_var(temp);
+			expand_var(temp, msh());
 		else
 		{
 			put_dollar_back(temp->content);
