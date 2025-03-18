@@ -1,16 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free.c                                             :+:      :+:    :+:   */
+/*   free_1.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
+/*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 18:17:41 by msilva-c          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2025/03/18 00:56:11 by msilva-c         ###   ########.fr       */
-=======
-/*   Updated: 2025/03/17 23:24:56 by marianamest      ###   ########.fr       */
->>>>>>> 2ed0a882eb6738b777b30c67a7bec9ab831ab186
+/*   Updated: 2025/03/18 01:38:19 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,30 +79,4 @@ void	free_matrix(char **matrix)
 void free_pipex_list(t_exec *exec)
 {
 	return ;
-}
-
-void	free_and_exit(t_msh *msh)
-{
-	if (!msh)
-		return ;
-	if (msh->line)
-		free(msh->line);
-	if (msh->tokens)
-		free_token_list(msh->tokens);
-	if (msh->pwd)
-		free(msh->pwd);
-<<<<<<< HEAD
-    if (msh->exec)
-        free_pipex_list(msh->exec);
-    if (msh->env)
-        free_env_list(msh->env);
-=======
-	if (msh->pipex)
-		free_pipex_list(msh->pipex);
-	if (msh->env)
-		free_env_list(msh->env);
->>>>>>> 2ed0a882eb6738b777b30c67a7bec9ab831ab186
-	if (msh->home)
-		free(msh->home);
-	clear_history();
 }

@@ -6,15 +6,15 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 20:35:37 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/17 14:03:26 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/18 01:43:46 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-int check_squotes(char *line, int max)
+int check_singles(char *line, int max)
 {
-
+	return (0);
 }
 
 /* checks if the given input has valid quotes

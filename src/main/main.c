@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 15:19:12 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/18 00:55:40 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/18 01:14:45 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,16 @@ void msh_loop(char **envp)
         {
             //rever se o heredoc n precisa dum counter
             add_history(m->line);
-            if (parser(m) && init_exec(m))
-                execute(m);
+            if (parser(m))
+                printf("great success parsed\n");
             else
-                msh()->exit = 2;
+                printf("great success parsed\n");
+            /*
+            if (parser(m) && init_exec(m))
+            execute(m);
+            else
+            msh()->exit = 2;
+            */
         }
         clean_line();
     }
@@ -47,7 +53,7 @@ int main(int ac, char **av, char **envp)
 
     if (ac == 1)
     {
-        setup_signals();
+        //setup_signals();
         msh_loop(envp);
     }
     else

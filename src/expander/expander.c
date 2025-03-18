@@ -6,11 +6,12 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 13:25:45 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/17 20:07:30 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/18 01:03:50 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
+
 
 void	ignore_dollar(char *str)
 {
@@ -21,13 +22,13 @@ void	ignore_dollar(char *str)
 	while (str[i])
 	{
 		if (str[i] == '$' && in_squote(str, i))
-			str[i] = TEMP_DOLLAR;
+		str[i] = TEMP_DOLLAR;
 		else if (str[i] == '$' && str[i + 1] == 34 && check_quotes(str, i))
-			str[i] = TEMP_DOLLAR;
+		str[i] = TEMP_DOLLAR;
 		else if (str[i] == '$' && str[i + 1] == 39 && check_quotes(str, i + 1))
-			str[i] = TEMP_DOLLAR;
+		str[i] = TEMP_DOLLAR;
 		else if (str[i] == '$' && !str[i + 1] && i > 0 && str[i - 1] != '$')
-			str[i] = TEMP_DOLLAR;
+		str[i] = TEMP_DOLLAR;
 		i++;
 	}
 }
@@ -41,7 +42,7 @@ void	expander(t_token *tokens)
 	{
 		ignore_dollar(temp->content);
 		if (needs_expand(temp))
-			do_expand(temp);
+		do_expand(temp);
 		else
 		{
 			put_dollar_back(temp->content);
@@ -50,6 +51,7 @@ void	expander(t_token *tokens)
 	}
 }
 
+//rever tudo
 void	do_expand(t_token *t)
 {
 	char	*var_name;
@@ -80,17 +82,17 @@ void	expand_var(t_token *t, char *var)
 
 	init_index(&i);
 	new = safe_malloc(expanded_len(t, var) + 1);
-	while (t->token[i.t_i] != '$')
-		new[i.new_i++] = t->token[i.t_i++];
+	while (t->content[i.t_i] != '$')
+		new[i.new_i++] = t->content[i.t_i++];
 	while (var[i.var_i] != '\0')
 		new[i.new_i++] = var[i.var_i++];
-	if (t->token[i.t_i + 1] == '?' || t->token[i.t_i + 1] == '$')
+	if (t->content[i.t_i + 1] == '?' || t->content[i.t_i + 1] == '$')
 		i.t_i += 2;
 	else
-		i.t_i += var_name_len(t->token, i.t_i + 1) + 1;
-	while (t->token[i.t_i] != '\0')
-		new[i.new_i++] = t->token[i.t_i++];
+		i.t_i += var_name_len(t->content, i.t_i + 1) + 1;
+	while (t->content[i.t_i] != '\0')
+		new[i.new_i++] = t->content[i.t_i++];
 	new[i.new_i] = '\0';
-	free(t->token);
-	t->token = new;
+	free(t->content);
+	t->content = new;
 }

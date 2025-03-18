@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tokenizer.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
+/*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 20:59:01 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/17 23:21:06 by marianamest      ###   ########.fr       */
+/*   Updated: 2025/03/18 01:20:01 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,10 @@ int tokenizer(t_msh *msh)
 		return (-1);
 	free_matrix(matrix);
 	msh->tokens = re_token(msh->tokens);
-
-
+	t_token *temp = msh->tokens;
+	while (temp)
+	{
+		printf("token[%d]: %s\n", temp->index, temp->content);
+		temp = temp->next;
+	}
 }
