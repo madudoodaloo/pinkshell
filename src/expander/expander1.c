@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 13:25:45 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/18 21:08:53 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/18 21:21:09 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,14 +89,19 @@ char *edge_expand(char* var_name, t_msh *msh)
 {
 	char *var_value;
 
+	var_value = ft_strdup("");
 	if (ft_strlen(var_name) != 2)
-		return NULL;
+		return (var_value);
 	else if (var_name[1] == '?')
+	{
+		free(var_value);
 		var_value = ft_itoa(msh->exit);
+	}
 	else if (var_name[1] == '$')
+	{
+		free(var_value);
 		var_value = ft_itoa(getpid());
-	else
-		var_value = ft_strdup("");
+	}
 	return (var_value);
 }
 
@@ -104,21 +109,21 @@ char	*regular_expand(t_env *env, char *var_name)
 {
 	char	*var_value;
 
-	var_value = NULL;
-	if (!env || !var_name)
+	var_value = ft_strdup("");
+	if (!env || !var_name || !*var_name)
 		return (var_value);
-	else if (!*var_name)
-		var_value = ft_strdup("");
-	else
+
+	while (env)
 	{
-		while (env)
+		if (!ft_strcmp(var_name, env->var_name))
 		{
-			if (!ft_strcmp(var_name, env->var_name))
-				return (ft_strdup(env->var_value));
-			env = env->next;
+			free(var_value);
+			var_value = ft_strdup(env->var_value);
+			break ;
 		}
+		env = env->next;
 	}
-	return (ft_strdup(""));
+	return (var_value);
 }
 
 void	expand_var(t_token *token, t_msh *msh)
