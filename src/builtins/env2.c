@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env2.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 17:31:05 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/18 12:39:51 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/18 13:54:40 by marianamest      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,15 +99,32 @@ void	set_or_add_env_value(char **env, const char *key, const char *value)
 		*env = expand_env(*env, new_entry);
 }
 
-void	builtin_env(char **env, int fd)
+char	**general_manage_env(t_env *env, int action, char **envp) // action é o case switch
 {
-	int	i;
+	int	index;
+	t_env *temp;
 
-	i = 0;
-	while (env[i])
+	if (env == NULL) 
+		env = init_env_array(envp);
+	if (action == 0)
+		set_or_add_env_value(env, env->var_name, env->var_value);
+	else if (action == 1)
 	{
-		ft_putstr_fd(env[i], fd);
-		ft_putstr_fd("\n", fd);
-		i++;
+		temp = find_env_key_index(env, env->var_name);
+		if (index != -1)
+		{
+			if (create_env_entry(env->var_name, env->var_value))
+			{
+				free(env[index]);
+				env[index] = create_env_entry(env->var_name, env->var_name);
+			}
+		}
 	}
+	else if (action == 2)
+	{
+		if (create_env_entry(env->var_name, env->var_value) && (env = expand_env(env,
+					create_env_entry(env->var_name, env->var_value))) == NULL)
+			return (NULL);
+	}
+	return (env);
 }

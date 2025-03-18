@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env1.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 15:20:31 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/18 12:35:28 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/18 12:52:54 by marianamest      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 13:57:32 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/18 12:39:15 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/18 13:47:46 by marianamest      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,14 +51,14 @@ typedef struct s_data
 }						t_data;
 
 // int valid - inicializar para false
-/* typedef struct s_env
+typedef struct s_env
 {
 	char				*var;
 	char				*var_name;
 	char				*var_value;
 	int					valid;
 	struct s_env		*next;
-}						t_env; */
+}						t_env;
 
 typedef struct s_token
 {
