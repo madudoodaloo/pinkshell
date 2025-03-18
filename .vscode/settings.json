@@ -5,8 +5,12 @@
         "signals.h": "c",
         "parser.h": "c",
         "builtins.h": "c",
+<<<<<<< HEAD
         "expander.h": "c",
         "lexer.h": "c",
         "heredoc.h": "c"
+=======
+        "signs.h": "c"
+>>>>>>> 2ed0a882eb6738b777b30c67a7bec9ab831ab186
     }
 }

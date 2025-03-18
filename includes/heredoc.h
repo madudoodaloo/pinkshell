@@ -6,12 +6,12 @@
 /*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 00:04:58 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/16 23:17:05 by marianamest      ###   ########.fr       */
+/*   Updated: 2025/03/17 23:19:49 by marianamest      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SIGNALS_H
-# define SIGNALS_H
+#ifndef HEREDOC_H
+# define HEREDOC_H
 
 # include "minishell.h"
 
@@ -27,7 +27,7 @@ void		signal_handler_set_temp_filename(char *filename);
 char		*generate_temp_filename(void);
 int			create_temp_file(char *temp_filename);
 void		redirect_temp_file_to_stdin(char *temp_filename);
-void		handle_heredoc(char *delimiter);
+void		handle_heredoc(t_data *data, char *delimiter);
 
 /* heredoc_utils */
 void		int_to_str(int num, char *str);

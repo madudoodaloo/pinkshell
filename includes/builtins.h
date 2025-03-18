@@ -6,7 +6,7 @@
 /*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 06:01:00 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/16 20:11:13 by marianamest      ###   ########.fr       */
+/*   Updated: 2025/03/17 19:42:09 by marianamest      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ char		**update_env_var(char *arg, char **env, int idx);
 char		**expand_env(char **env, char *new_entry);
 void		set_or_add_env_value(char ***env, const char *key,
 				const char *value);
+void		builtin_env(char **env, int fd);
 
 /* pwd */
 void		my_pwd(int fd);
@@ -59,6 +60,7 @@ void		add_new_var(char ***env, const char *var);
 void		add_or_update_env_var(char ***env, const char *var);
 void		print_sorted_env(char **env, int fd);
 void		export_command(char **args, char ***env, int fd);
+char		**init_export_array(char **env);
 
 /* unset1 */
 void		remove_from_array(char **array, int index);

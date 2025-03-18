@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   export2.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 16:47:08 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/17 17:16:57 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/17 21:43:27 by marianamest      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "../includes/minishell.h"
-
+#include "../../includes/minishell.h"
 
 void	add_or_update_env_var(char ***env, const char *var)
 {
@@ -68,24 +67,53 @@ void	print_sorted_env(char **env, int fd)
 	}
 }
 
-void export_command(char **args, char ***env, int fd)
+void	export_command(char **args, char ***env, int fd)
 {
-	int i;
-    if (!args[1])
-        print_sorted_env(*env, fd);
-    else
-    {
-        i = 1;
-        while (args[i])
-        {
-            if (!parse_export(args[i]))
-                printf("export: '%s': not a valid identifier\n", args[i]);
-            else
-            {
-                add_or_update_env_var(env, args[i]);
-                print_sorted_env(*env, fd);
-            }
-            i++;
-        }
-    }
+	int	i;
+
+	if (!args[1])
+		print_sorted_env(*env, fd);
+	else
+	{
+		i = 1;
+		while (args[i])
+		{
+			if (!parse_export(args[i]))
+				printf("export: '%s': not a valid identifier\n", args[i]);
+			else
+			{
+				add_or_update_env_var(env, args[i]);
+				print_sorted_env(*env, fd);
+			}
+			i++;
+		}
+	}
+}
+
+char	**init_export_array(char **env)
+{
+	int		i;
+	char	**export;
+
+	i = 0;
+	while (env[i])
+		i++;
+	export = (char **)malloc((i + 1) * sizeof(char *));
+	if (!export)
+		return (NULL);
+	i = 0;
+	while (env[i])
+	{
+		export[i] = ft_strdup(env[i]);
+		if (!export[i])
+		{
+			while (i > 0)
+				free(export[--i]);
+			free(export);
+			return (NULL);
+		}
+		i++;
+	}
+	export[i] = NULL;
+	return (export);
 }

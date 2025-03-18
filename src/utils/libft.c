@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   libft.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 21:44:47 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/16 21:55:00 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/17 23:24:06 by marianamest      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/minishell.h"
+#include "../../includes/minishell.h"
 
 int	ft_isoperator(char *str, int i)
 {
@@ -30,14 +30,12 @@ int	ft_isoperator(char *str, int i)
 	}
 }
 
-
 int	ft_isspace(char c)
 {
 	if (c == 32 || (c <= 13 && c >= 9))
 		return (1);
 	return (0);
 }
-
 
 int	ft_isalpha(char c)
 {

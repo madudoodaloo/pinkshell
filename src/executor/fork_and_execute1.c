@@ -6,17 +6,11 @@
 /*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 21:05:44 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/16 23:49:08 by marianamest      ###   ########.fr       */
+/*   Updated: 2025/03/17 21:45:20 by marianamest      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// #include "../../includes/executor.h"
-
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <sys/wait.h>
-#include <unistd.h>
+#include "../../includes/minishell.h"
 
 void	handle_error(const char *message)
 {
@@ -53,7 +47,8 @@ void	execute_command(char **args, int input_fd, int output_fd, char **env)
 		handle_error("execve");
 }
 
-void	fork_and_execute_command(char **args, int input_fd, int output_fd, char **env)
+void	fork_and_execute_command(char **args, int input_fd, int output_fd,
+		char **env)
 {
 	pid_t	pid;
 
@@ -85,5 +80,5 @@ void	fork_and_execute_command(char **args, int input_fd, int output_fd, char **e
 //     // Free memory
 //     free(commands);
 
-//     return 0;
+//     return (0);
 // }
