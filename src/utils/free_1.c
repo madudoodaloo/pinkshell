@@ -6,7 +6,11 @@
 /*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 18:17:41 by msilva-c          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2025/03/19 12:11:48 by marianamest      ###   ########.fr       */
+=======
+/*   Updated: 2025/03/19 10:02:22 by msilva-c         ###   ########.fr       */
+>>>>>>> 17c155bfb08a62142f68f6adc0b968a84a8443f4
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +30,7 @@ void	free_tokens(t_token *tokens)
 		temp = current->next;
 		if (current)
 		{
-			if (current->content)
+			if (current->content != NULL)
 				free(current->content);
 			free(current);
 		}
