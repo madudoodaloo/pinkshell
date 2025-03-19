@@ -3,14 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   envp_1.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
+/*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 01:27:31 by msilva-c          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2025/03/19 13:52:13 by msilva-c         ###   ########.fr       */
-=======
-/*   Updated: 2025/03/19 11:49:11 by marianamest      ###   ########.fr       */
->>>>>>> 0ffbed88cfd476024dcdc0e6539da8f57235453d
+/*   Updated: 2025/03/19 14:28:23 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +27,7 @@ int	dup_var(t_env *start, t_env *new)
 }
 
 // rever line 37 se deve ser || or &&
+
 void	var_add_back(t_env *start, t_env *new)
 {
 	t_env	*temp;
