@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 13:25:45 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/19 01:58:30 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/19 02:27:00 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ char *update_content(t_token *token, char *old, char *expanded)
 	x= 0;
 	y= 0;
 	z = 0;
-	new = (char *)safe_malloc(sizeof(char) * (expanded_strlen(token, expanded) + 1));
+	new = (char *)safe_malloc(sizeof(char) * (expanded_strlen(old, expanded) + 1));
 	while (old[x] != '$')
 		new[y++] = old[x++];
 	while (expanded[z])

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ignore.c                                           :+:      :+:    :+:   */
+/*   expander_3.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 13:44:20 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/19 01:58:44 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/19 02:28:02 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,13 +58,13 @@ void	ignore_dollar(char *str)
 	return ;
 	while (str[i])
 	{
-		if (str[i] == '$' && in_squote(str, i))
+		if (str[i] == '$' && in_singles(str, i))
 		str[i] = TEMP_DOLLAR;
 		else if (str[i] == '$' && !str[i + 1] && i > 0 && str[i - 1] != '$')
 		str[i] = TEMP_DOLLAR;
-		else if (str[i] == '$' && str[i + 1] == 34 && in_quote(str, i))
+		else if (str[i] == '$' && str[i + 1] == 34 && in_quotes(str, i))
 		str[i] = TEMP_DOLLAR;
-		else if (str[i] == '$' && str[i + 1] == 39 && in_quote(str, i + 1))
+		else if (str[i] == '$' && str[i + 1] == 39 && in_quotes(str, i + 1))
 		str[i] = TEMP_DOLLAR;
 		i++;
 	}
