@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 15:19:12 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/19 08:31:55 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/19 08:40:27 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,11 @@ void msh_loop(char **envp)
         if (msh()->line && *msh()->line)
         {
             add_history(msh()->line);
-            if (parser() && init_exec())
-                //execute(msh());
+            if (parser()
+            {
+                && init_exec())
+                start_exec();
+
             else
                 printf("parser failed\n");
             //msh()->exit = 2;

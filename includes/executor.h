@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 19:58:02 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/19 08:32:27 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/19 08:35:55 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include "../includes/minishell.h"
 
+/* init_exec.c */
 int		init_exec(void);
 
 /* in ou out (?) no execute_builtins.c*/
