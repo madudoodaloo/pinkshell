@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 06:32:58 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/19 15:40:16 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/19 15:58:30 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int	parser(void)
 	if (!tokenizer())
 		return (0);
 	expander(msh()->tokens);
-	print_msh(msh());
+	//print_msh(msh());
 	if (!check_syntax(msh()->tokens))
 		return (0);
 	//dar set da struct para a exec

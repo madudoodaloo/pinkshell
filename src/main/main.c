@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 15:19:12 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/19 15:37:14 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/19 15:59:20 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,6 @@ void msh_loop(char **envp)
                 else
                     printf("init_exec() = %d\n", init_exec());
             }
-            else
-                printf("parser() = %d\n", parser());
             //msh()->exit = 2;
         }
         clean_cmdline();
