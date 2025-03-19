@@ -6,13 +6,17 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 01:33:41 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/19 02:11:51 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/19 12:48:20 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
 //rever este handle de erros line 85
+// se **env vier vazio no início do programa
+// -> assumir que o env começa vazio
+// -> MAS tem de ter a t_env **env inicializada para poder fazer o export à mesma
+//
 char **get_default_env(void)
 {
 	char	cwd[4096];

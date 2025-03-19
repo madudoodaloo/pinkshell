@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   env1.c                                             :+:      :+:    :+:   */
+/*   envp_1.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 01:27:31 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/19 01:35:04 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/19 13:52:13 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ void	var_add_back(t_env *start, t_env *new)
     t_env	*temp;
     t_env	*end;
 
+	end = NULL;
     temp = start;
     if (new->valid == false && dup_var(temp, end))
         return ;
@@ -59,6 +60,7 @@ t_env	*create_var(char *str)
 	int i;
 
 	i = 0;
+	new = NULL;
 	new = (t_env *)safe_malloc(sizeof(t_env));
 	new->var = ft_strdup(str);
 	new->valid = false;
@@ -92,16 +94,19 @@ t_env	*get_env(char **envp)
 	t_env	*new;
 	t_env	*temp;
 
-	i = -1;
+	i = 0;
+	new = NULL;
+	temp = NULL;
 	if (check_env(envp) == 0)
 		new = empty_env();
 	else
 	{
-		while (envp[++i])
+		while (envp[i])
 		{
 			temp = create_var(envp[i]);
 			if (i > 0)
 				var_add_back(new, temp);
+			i++;
 		}
 	}
 	return (new);

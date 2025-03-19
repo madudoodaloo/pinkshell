@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 04:46:51 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/19 10:13:26 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/19 14:16:14 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,9 @@ int	needs_retoken(char *cmd)
 	bool word;
 
 	i = -1;
-	while (cmd[++i])
+	operator = false;
+	word = false;
+	while (cmd && cmd[++i])
 	{
 		if (ft_isoperator(cmd, i) && !in_quotes(cmd, i))
 			operator = true;
@@ -74,7 +76,7 @@ int	needs_retoken(char *cmd)
 			word = true;
 	}
 	if (ft_strlen(cmd) > ft_isoperator(cmd, 0) && operator)
-		return (2);
+		return (1);
 	else if (operator && word)
 		return (1);
 	return (0);
@@ -86,7 +88,7 @@ t_token *update_token(t_token *old, int flag)
 
 	if (flag == 0)
 		new = old;
-	else if (flag == 2 && ft_isoperator(old->content, 0) > 0)
+	else if (ft_isoperator(old->content, 0) > 0)
 		new = get_operator(old);
 	else
 		new = get_word(old);
@@ -102,10 +104,14 @@ void 	re_token(t_token *head)
 	temp = head;
 	while (temp)
 	{
-        printf("  Token content: %s\n", temp->content ? temp->content : "(NULL)");
-        printf("  needs_retoken: %s\n", needs_retoken(temp->content));
-		temp = update_token(temp, needs_retoken(temp->content));
-		temp = temp->next;
+		//printf("  needs_retoken: %s\n", needs_retoken(temp->content));
+		if (needs_retoken(temp->content))
+		{
+			printf("going to update_token\n");
+			temp = update_token(temp, needs_retoken(temp->content));
+		}
+		else
+			temp = temp->next;
 	}
 	return ;
 }
