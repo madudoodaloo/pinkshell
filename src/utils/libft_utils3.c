@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 21:44:47 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/19 05:57:24 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/19 11:30:27 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,14 @@
 
 int	ft_isoperator(char *str, int i)
 {
-	if (str[i])
-	{
-		if (str[i] == '<' || str[i] == '>')
-		{
-			if (str[i + 1] && str[i] == str[i + 1])
-				return (2);
-			else
-				return (1);
-		}
-		else if (str[i] == '|')
-			return (1);
-		else
-			return (0);
-	}
-	return (0);
+	if (str[i] == '>' && str[i + 1] == '>')
+	return (2);
+	else if (str[i] == '|' || str[i] == '>' || str[i] == '<')
+		return (1);
+	if (str[i] == '<' && str[i + 1] == '<')
+		return (2);
+	else
+		return (0);
 }
 
 int	ft_isspace(char c)

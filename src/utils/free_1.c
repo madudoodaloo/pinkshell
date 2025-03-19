@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 18:17:41 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/19 02:14:40 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/19 10:02:22 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	free_tokens(t_token *tokens)
 		temp = current->next;
 		if (current)
 		{
-			if (current->content)
+			if (current->content != NULL)
 				free(current->content);
 			free(current);
 		}

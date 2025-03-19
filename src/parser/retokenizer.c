@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 04:46:51 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/19 06:10:48 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/19 10:13:26 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,8 @@ void 	re_token(t_token *head)
 	temp = head;
 	while (temp)
 	{
+        printf("  Token content: %s\n", temp->content ? temp->content : "(NULL)");
+        printf("  needs_retoken: %s\n", needs_retoken(temp->content));
 		temp = update_token(temp, needs_retoken(temp->content));
 		temp = temp->next;
 	}
