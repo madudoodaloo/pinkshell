@@ -6,7 +6,7 @@
 /*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 18:13:48 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/19 00:40:20 by marianamest      ###   ########.fr       */
+/*   Updated: 2025/03/19 00:52:50 by marianamest      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int	create_temp_file(char *temp_filename)
 	{
 		write(STDERR_FILENO, "Error: Failed to create temporary file\n", 38);
 		free(temp_filename);
-		exit(EXIT_FAILURE);
+		exit(1);
 	}
 	return (fd);
 }
@@ -62,7 +62,7 @@ void	redirect_temp_file_to_stdin(char *temp_filename)
 		write(STDERR_FILENO, "Error: Failed to open temporary file\n", 37);
 		unlink(temp_filename);
 		free(temp_filename);
-		exit(EXIT_FAILURE);
+		exit(1);
 	}
 	dup2(fd, STDIN_FILENO);
 	close(fd);
@@ -79,7 +79,7 @@ void	handle_heredoc(t_data *data, char *delimiter)
 	if (!temp_filename)
 	{
 		write(STDERR_FILENO, "Error: Failed to allocate memory\n", 33);
-		exit(EXIT_FAILURE);
+		exit(1);
 	}
 	signal_handler_set_temp_filename(temp_filename);
 	fd = create_temp_file(temp_filename);

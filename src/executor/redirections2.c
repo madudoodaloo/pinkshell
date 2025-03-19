@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   redirections2.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 20:34:49 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/18 02:11:29 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/19 00:53:57 by marianamest      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,6 @@ void	execute_with_redirections(char **args, char **env)
 	else
 	{
 		perror("fork");
-		exit(EXIT_FAILURE);
+		exit(1);
 	}
 }

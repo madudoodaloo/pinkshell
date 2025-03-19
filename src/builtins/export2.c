@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   export2.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 16:47:08 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/18 15:18:07 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/19 00:53:13 by marianamest      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	add_or_update_env_var(char ***env, const char *var)
 		if (!(*env)[index])
 		{
 			perror("strdup failed");
-			exit(EXIT_FAILURE);
+			exit(1);
 		}
 	}
 	else
