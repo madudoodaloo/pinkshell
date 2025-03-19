@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
+/*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 13:57:32 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/19 15:17:15 by marianamest      ###   ########.fr       */
+/*   Updated: 2025/03/19 18:22:14 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,21 +44,27 @@
 # define R_IN 5
 # define HERE_DOC 6
 
-// void *struct - rever!!!  Placeholder for resources to free
 // rever se ainda vai ser preciso dps da ft_dup_env - Environment variables
-typedef struct s_data
+
+typedef struct s_exec
 {
-	bool			is_heredoc;
-	void			*strut;
-	char			**envp;
-	struct s_msh	*msh;
-}					t_data;
+	char	**redir_in;
+	char 	**redir_out;
+	char 	**args;
+	int		nr_cmds; //pipes - 1
+	int		pipe_fd[2];
+	int		in_fd; //vai ler
+	int		out_fd; //vai escrever
+	bool	is_heredoc;
+	char	**envp; // manter a t_env e arranjar uma função
+	bool	cmd_invalid;
+}					t_exec;
 
 typedef struct s_env
 {
-	char			*var;// PATH=usr/folder
-	char			*var_name;// PATH
-	char			*var_value;// usr/folder/
+	char			*var;
+	char			*var_name;
+	char			*var_value;
 	int				valid;
 	struct s_env	*next;
 }					t_env;
@@ -72,23 +78,6 @@ typedef struct s_token
 	struct s_token	*prev;
 }					t_token;
 
-typedef struct s_exec
-{
-	int				pid;
-	int				pipe[2];
-	int				has_doc;
-	int				doc_pipe[2];
-	int				out_fd;
-	int				in_fd;
-	bool			last_child;
-	bool			bad_command;
-	char			*path;
-	char			**red_out;
-	char			**red_in;
-	char			**cmd;
-	struct s_pipex	*next;
-	struct s_pipex	*previous;
-}					t_exec;
 
 // rever: criar uma ft que transforma linked list em char **
 typedef struct s_msh
@@ -99,7 +88,6 @@ typedef struct s_msh
 	t_env			*env;
 	t_token			*tokens;
 	t_exec			*exec;
-	t_data			*data;
 	int				exit;
 }					t_msh;
 
