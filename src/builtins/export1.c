@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   export1.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 13:07:55 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/18 11:54:58 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/19 00:53:08 by marianamest      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ void	add_new_var(char ***env, const char *var)
 	if (!new_env)
 	{
 		perror("malloc failed");
-		exit(EXIT_FAILURE);
+		exit(1);
 	}
 	i = 0;
 	while (i < env_size)

@@ -3,10 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 13:57:32 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/19 02:40:01 by msilva-c         ###   ########.fr       */
+<<<<<<< HEAD
+/*   Updated: 2025/03/19 01:54:13 by marianamest      ###   ########.fr       */
+=======
+/*   Updated: 2025/03/19 01:32:21 by msilva-c         ###   ########.fr       */
+>>>>>>> e5ed60d855f8fc0150f288f3740c8161e5d6958f
 /*                                                                            */
 /* ************************************************************************** */
 

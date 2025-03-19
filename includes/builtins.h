@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtins.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 06:01:00 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/18 13:40:37 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/19 02:03:21 by marianamest      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include "../includes/minishell.h"
 
-/* cd */
+/* cd *//* REVER: find_env_value */
 char		*find_env_value(char **env, const char *var);
 static int	change_dir(const char *path);
 void		change_directory(char **env, const char *path);
@@ -33,7 +33,7 @@ char		**update_env_var(char *arg, char **env, int idx);
 char		**expand_env(char **env, char *new_entry);
 void		set_or_add_env_value(char **env, const char *key,
 				const char *value);
-void		builtin_env(char **env, int fd);
+char		**general_manage_env(t_env *env, int action, char **envp);
 
 /* pwd */
 void		my_pwd(int fd);

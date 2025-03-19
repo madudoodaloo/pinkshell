@@ -3,31 +3,44 @@
 /*                                                        :::      ::::::::   */
 /*   cd.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/03 20:40:50 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/18 02:11:29 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/19 02:37:16 by marianamest      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-char	*find_env_value(char **env, const char *var)
+char	*get_env_value(t_env *env, const char *var_name)
 {
-	int	i;
-	int	j;
+	t_env	*current;
 
-	i = 0;
-	while (env[i])
+	current = env;
+	while (current)
 	{
-		j = 0;
-		while (var[j] && var[j] == env[i][j])
-			j++;
-		if (!var[j] && env[i][j] == '=')
-			return (&env[i][j + 1]);
-		i++;
+		if (strcmp(current->var_name, var_name) == 0)
+			return (current->var_value);
+		current = current->next;
 	}
 	return (NULL);
+}
+
+void	update_env_value(t_env *env, const char *var_name, const char *new_value)
+{
+	t_env	*current;
+
+	current = env;
+	while (current)
+	{
+		if (strcmp(current->var_name, var_name) == 0)
+		{
+			free(current->var_value);
+			current->var_value = strdup(new_value);
+			return ;
+		}
+		current = current->next;
+	}
 }
 
 static int	change_dir(const char *path)
@@ -40,25 +53,55 @@ static int	change_dir(const char *path)
 	return (0);
 }
 
-void	change_directory(char **env, const char *path)
+static const char	*get_target_path(t_msh *msh, const char *path)
 {
-	char	old_pwd[MAXPATH];
-	char	new_pwd[MAXPATH];
+	if (!path)
+	{
+		path = get_env_value(msh->env, "HOME");
+		if (!path)
+		{
+			write(STDERR_FILENO, "cd: HOME not set\n", 17);
+			return (NULL);
+		}
+	}
+	else if (strcmp(path, "-") == 0)
+	{
+		path = get_env_value(msh->env, "OLDPWD");
+		if (!path)
+		{
+			write(STDERR_FILENO, "cd: OLDPWD not set\n", 19);
+			return (NULL);
+		}
+	}
+	return (path);
+}
+
+static void	update_pwd_vars(t_msh *msh, const char *old_pwd, const char *new_pwd)
+{
+	update_env_value(msh->env, "OLDPWD", old_pwd);
+	update_env_value(msh->env, "PWD", new_pwd);
+}
+
+static void	print_directory_change(const char *old_pwd, const char *new_pwd, const char *path)
+{
+	if (strcmp(path, "-") == 0)
+		printf("%s\n", new_pwd);
+	printf("Changed directory from %s to %s\n", old_pwd, new_pwd);
+}
+
+void	change_directory(t_msh *msh, const char *path)
+{
+	char	old_pwd[PATH_MAX];
+	char	new_pwd[PATH_MAX];
 
 	if (getcwd(old_pwd, sizeof(old_pwd)) == NULL)
 	{
 		perror("cd: getcwd() error");
 		return ;
 	}
+	path = get_target_path(msh, path);
 	if (!path)
-	{
-		path = find_env_value(env, "HOME");
-		if (!path)
-		{
-			fprintf(stderr, "cd: HOME not set\n");
-			return ;
-		}
-	}
+		return ;
 	if (change_dir(path) == -1)
 		return ;
 	if (getcwd(new_pwd, sizeof(new_pwd)) == NULL)
@@ -66,10 +109,11 @@ void	change_directory(char **env, const char *path)
 		perror("cd: getcwd() error");
 		return ;
 	}
-	printf("Changed directory from %s to %s\n", old_pwd, new_pwd);
+	update_pwd_vars(msh, old_pwd, new_pwd);
+	print_directory_change(old_pwd, new_pwd, path);
 }
 
-void	cd_command(char **env, char **args)
+void	cd_command(t_msh *msh, char **args)
 {
 	const char	*path;
 
@@ -82,5 +126,42 @@ void	cd_command(char **env, char **args)
 		path = args[1];
 	else
 		path = NULL;
-	change_directory(env, path);
+	change_directory(msh, path);
+}
+
+/* helpers */
+static void	update_pwd_vars(t_msh *msh, const char *old_pwd, const char *new_pwd)
+{
+	update_env_value(msh->env, "OLDPWD", old_pwd);
+	update_env_value(msh->env, "PWD", new_pwd);
+}
+
+static const char	*get_target_path(t_msh *msh, const char *path)
+{
+	if (!path)
+	{
+		path = get_env_value(msh->env, "HOME");
+		if (!path)
+		{
+			write(STDERR_FILENO, "cd: HOME not set\n", 17);
+			return (NULL);
+		}
+	}
+	else if (strcmp(path, "-") == 0)
+	{
+		path = get_env_value(msh->env, "OLDPWD");
+		if (!path)
+		{
+			write(STDERR_FILENO, "cd: OLDPWD not set\n", 19);
+			return (NULL);
+		}
+	}
+	return (path);
+}
+
+static void	print_directory_change(const char *old_pwd, const char *new_pwd, const char *path)
+{
+	if (strcmp(path, "-") == 0)
+		printf("%s\n", new_pwd);
+	printf("Changed directory from %s to %s\n", old_pwd, new_pwd);
 }

@@ -6,7 +6,7 @@
 /*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 18:58:24 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/18 07:57:09 by marianamest      ###   ########.fr       */
+/*   Updated: 2025/03/19 00:53:50 by marianamest      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	handle_input_redirection(char **args, int *in_fd, int i)
 	if (*in_fd == -1)
 	{
 		perror("open");
-		exit(EXIT_FAILURE);
+		exit(1);
 	}
 	dup2(*in_fd, STDIN_FILENO);
 	close(*in_fd);
@@ -31,7 +31,7 @@ void	handle_output_redirection(char **args, int *out_fd, int i)
 	if (*out_fd == -1)
 	{
 		perror("open");
-		exit(EXIT_FAILURE);
+		exit(1);
 	}
 	dup2(*out_fd, STDOUT_FILENO);
 	close(*out_fd);
@@ -44,7 +44,7 @@ void	handle_append_redirection(char **args, int *out_fd, int i)
 	if (*out_fd == -1)
 	{
 		perror("open");
-		exit(EXIT_FAILURE);
+		exit(1);
 	}
 	dup2(*out_fd, STDOUT_FILENO);
 	close(*out_fd);
