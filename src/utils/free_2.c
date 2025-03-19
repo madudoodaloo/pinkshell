@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 01:38:25 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/19 02:14:40 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/19 04:25:01 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	free_and_exit(void)
     if (m->exec)
         free_exec(m->exec);
     if (m->env)
-        free_env_list(m->env);
+        free_env(m->env);
 	if (m->home)
 		free(m->home);
 	clear_history();
