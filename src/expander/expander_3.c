@@ -6,11 +6,49 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 13:44:20 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/18 19:10:58 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/19 01:58:44 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
+
+int	needs_expansion(t_token *token)
+{
+	int	i;
+
+	if (!token || !token->content)
+		return (0);
+	if (token->content[0] == '$' && !token->content[1])
+		return (0);
+	i = -1;
+	while (token->content[++i])
+	{
+		if (token->prev && token->prev->type == HERE_DOC)
+			return (0);
+		if (token->content[i] == '$' && !in_singles(token->content, i))
+			return (1);
+		i++;
+	}
+	return (0);
+}
+
+void	expand_var(t_token *token, t_msh *msh)
+{
+	char	*var_name;
+	char	*var_value;
+	char	*updated;
+
+	var_name = grep_var_name(token);
+	if (is_edge_expand(var_name))
+		var_value = edge_expand(var_name, msh);
+	else
+		var_value = regular_expand(msh->env, var_name);
+	updated = update_content(token, token->content, var_value);
+	free(token->content);
+	token->content = updated;
+	free(var_name);
+	free(var_value);
+}
 
 void	ignore_dollar(char *str)
 {
