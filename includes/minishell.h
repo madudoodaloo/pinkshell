@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 13:57:32 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/19 01:32:21 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/19 02:40:01 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@
 # define MAXLINE 1024
 # define MAXPATH 4096
 
-volatile sig_atomic_t	g_signal = 0;
+sig_atomic_t	g_signal = 0;
 
 // void *struct - rever!!!  Placeholder for resources to free
 // rever se ainda vai ser preciso dps da ft_dup_env - Environment variables
