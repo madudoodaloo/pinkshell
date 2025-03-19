@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 14:50:45 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/19 04:24:05 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/19 05:08:06 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,11 @@ int	ft_strcmp(const char *s1, const char *s2)
 	unsigned char	*s01;
 	unsigned char	*s02;
 
-	s01 = (unsigned char *)s1;
-	s02 = (unsigned char *)s2;
 	if (!s1 || !s2)
 		return (0);
-	while (*s01 && *s02 && (*s01 == *s02))
+	s01 = (unsigned char *)s1;
+	s02 = (unsigned char *)s2;
+	while (*s01 && (*s01 == *s02))
 	{
 		s01++;
 		s02++;
