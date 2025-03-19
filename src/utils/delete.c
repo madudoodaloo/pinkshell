@@ -6,13 +6,11 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 19:20:02 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/19 15:39:33 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/19 16:24:43 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
-
-
 
 void	print_struct(t_token **lst_head)
 {
