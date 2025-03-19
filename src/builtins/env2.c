@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env2.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 17:31:05 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/18 14:13:31 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/18 15:23:36 by marianamest      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,4 +129,4 @@ char	**general_manage_env(t_env *env, int action, char **envp) // action é o ca
 	return (env);
 }
 
-t_env	*env_cmd(t_env *env, int action)
+t_env	*env_cmd(t_env *env, int action);

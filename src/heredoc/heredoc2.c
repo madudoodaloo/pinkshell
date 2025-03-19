@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   heredoc2.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 18:13:48 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/18 11:55:57 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/19 00:40:20 by marianamest      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,23 +23,18 @@ void	signal_handler_set_temp_filename(char *filename)
 
 char	*generate_temp_filename(void)
 {
-	char	*filename;
-	int		pid;
-	time_t	now;
-	char	pid_str[20];
-	char	time_str[20];
+	char		*filename;
+	char		counter_str[20];
+	static int	counter;
 
+	counter = 0;
+	counter++;
+	int_to_str(counter, counter_str);
 	filename = safe_malloc(256);
 	if (!filename)
 		return (NULL);
-	pid = getpid();
-	now = time(NULL);
-	int_to_str(pid, pid_str);
-	int_to_str((int)now, time_str);
 	ft_strcpy(filename, "/tmp/minishell_heredoc_");
-	ft_strcat(filename, pid_str);
-	ft_strcat(filename, "_");
-	ft_strcat(filename, time_str);
+	ft_strcat(filename, counter_str);
 	return (filename);
 }
 
