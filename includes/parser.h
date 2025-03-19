@@ -6,7 +6,11 @@
 /*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 05:59:04 by msilva-c          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2025/03/19 15:13:16 by marianamest      ###   ########.fr       */
+=======
+/*   Updated: 2025/03/19 15:31:10 by msilva-c         ###   ########.fr       */
+>>>>>>> ebc20cefbf185e866de25b0816340fea00465b87
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +54,7 @@ int		check_quotes(char *line);
 t_token	*get_operator(t_token *t);
 t_token	*get_word(t_token *t);
 int		needs_retoken(char *cmd);
-t_token	*update_token(t_token *old, int flag);
+t_token	*get_which(t_token *old);
 void	re_token(t_token *head);
 
 /* split_spaces.c */

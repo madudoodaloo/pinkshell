@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Navigate to the pinkshell directory and run make re
-cd pinkshell && make re
+make re
 
 # Check if make re was successful
 if [ $? -eq 0 ]; then

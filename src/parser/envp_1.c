@@ -6,7 +6,7 @@
 /*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 01:27:31 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/19 15:33:16 by marianamest      ###   ########.fr       */
+/*   Updated: 2025/03/19 16:57:05 by marianamest      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ int	dup_var(t_env *start, t_env *new)
 }
 
 // rever line 37 se deve ser || or &&
+
 void	var_add_back(t_env *start, t_env *new)
 {
 	t_env	*temp;

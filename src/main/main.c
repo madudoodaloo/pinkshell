@@ -6,46 +6,14 @@
 /*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 15:19:12 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/19 15:27:48 by marianamest      ###   ########.fr       */
+/*   Updated: 2025/03/19 17:00:06 by marianamest      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-static void	print_msh(t_msh *msh)
-{
-	t_token	*token;
 
-	if (!msh)
-	{
-		printf("msh is NULL\n");
-		return ;
-	}
-	printf("msh->line: %s\n", msh->line ? msh->line : "(NULL)");
-	printf("msh->home: %s\n", msh->home ? msh->home : "(NULL)");
-	printf("msh->pwd: %s\n", msh->pwd ? msh->pwd : "(NULL)");
-	printf("msh->env: %p\n", (void *)msh->env);
-	printf("msh->exec: %p\n", (void *)msh->exec);
-	printf("msh->data: %p\n", (void *)msh->data);
-	printf("msh->exit: %d\n", msh->exit);
-	printf("Tokens:\n");
-	token = msh->tokens;
-	if (!token)
-		printf("  (NULL)\n");
-	while (token)
-	{
-		printf("  Token content: %s\n",
-			token->content ? token->content : "(NULL)");
-		printf("  Token type: %d\n", token->type);
-		printf("  Token index: %d\n", token->index);
-		printf("  Token prev: %p\n", (void *)token->prev);
-		printf("  Token current: %p\n", (void *)token);
-		printf("  Token next: %p\n", (void *)token->next);
-		token = token->next;
-	}
-}
-
-void	clean_cmdline(void)
+void    clean_cmdline(void)
 {
 	t_msh	*m;
 
@@ -68,36 +36,33 @@ void	clean_cmdline(void)
 
 void	msh_loop(char **envp)
 {
-	init_all(envp);
-	while (1)
-	{
-		msh()->line = readline("minishell$");
-		if (!msh()->line)
-		{
-			ft_put_str_fd("exit\n", 2);
-			break ;
-		}
-		if (msh()->line && *msh()->line)
-		{
-			add_history(msh()->line);
-			if (parser())
-			{
-				print_msh(msh());
-				if (init_exec())
-				{
-					printf("has entered exec\n");
-					start_execution();
-				}
-				else
-					printf("init_exec() = %d\n", init_exec());
-			}
-			else
-				printf("parser() = %d\n", parser());
-			// msh()->exit = 2;
-		}
-		clean_cmdline();
-	}
-	free_and_exit();
+    init_all(envp);
+    while (1)
+    {
+        msh()->line = readline("minishell$");
+        if (!msh()->line)
+        {
+            ft_put_str_fd("exit\n", 2);
+            break ;
+        }
+        if (msh()->line && *msh()->line)
+        {
+            add_history(msh()->line);
+            if (parser())
+            {
+                if (init_exec())
+                {
+                    //printf("has entered exec\n");
+                    start_execution();
+                }
+                else
+                    printf("init_exec() = %d\n", init_exec());
+            }
+            //msh()->exit = 2;
+        }
+        clean_cmdline();
+    }
+    free_and_exit();
 }
 
 int	main(int ac, char **av, char **envp)

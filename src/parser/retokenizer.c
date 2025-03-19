@@ -6,7 +6,7 @@
 /*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 04:46:51 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/19 15:34:39 by marianamest      ###   ########.fr       */
+/*   Updated: 2025/03/19 16:57:12 by marianamest      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,12 @@ t_token	*get_operator(t_token *t)
 	t_token	*remain;
 
 	temp = ft_substr(t->content, 0, ft_isoperator(t->content, 0));
+	//printf("get_op = %s\n", temp);
 	op = init_token(temp);
 	free(temp);
 	temp = ft_substr(t->content, ft_isoperator(t->content, 0),
 			ft_strlen(t->content));
+	//printf("get_remain = %s\n", temp);
 	remain = init_token(temp);
 	free(temp);
 	remain->prev = op;
@@ -51,9 +53,11 @@ t_token	*get_word(t_token *t)
 				i) == 0))
 		i++;
 	temp = ft_substr(t->content, 0, i);
+	//printf("get_op = %s\n", temp);
 	word = init_token(temp);
 	free(temp);
 	temp = ft_substr(t->content, i, ft_strlen(t->content));
+	//printf("get_remain = %s\n", temp);
 	remain = init_token(temp);
 	free(temp);
 	word->next = remain;
@@ -84,16 +88,32 @@ int	needs_retoken(char *cmd)
 	return (0);
 }
 
-t_token	*update_token(t_token *old, int flag)
+t_token	*get_which(t_token *old)
 {
 	t_token	*new;
 
-	if (flag == 0)
-		new = old;
-	else if (ft_isoperator(old->content, 0) > 0)
+
+	new = NULL;
+	if (ft_isoperator(old->content, 0) > 0)
 		new = get_operator(old);
 	else
 		new = get_word(old);
+	return (new);
+}
+
+t_token *update_token(t_token *old)
+{
+	t_token	*new;
+
+
+	new = get_which(old);
+	new->next->next = old->next;
+	if(old->prev != NULL)
+		old->prev->next = new;
+	new->prev = old->prev;
+	if (old->next)
+		old->next->prev = new->next;
+	free(old);
 	return (new);
 }
 
@@ -107,11 +127,10 @@ void	re_token(t_token *head)
 		// printf("  needs_retoken: %s\n", needs_retoken(temp->content));
 		if (needs_retoken(temp->content))
 		{
-			printf("going to update_token\n");
-			temp = update_token(temp, needs_retoken(temp->content));
+			//printf("going to get_which\n");
+			temp = update_token(temp);
 		}
 		else
 			temp = temp->next;
 	}
-	return ;
 }
