@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 05:59:04 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/19 06:18:42 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/19 07:55:29 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,13 @@ void re_token(t_token *head);
 int		count_words(char *line);
 int		parser_wdlen(char *line, int i);
 char	**split_spaces(char *line);
+
+/* syntax.c */
+int syntax_red(t_token *token);
+int syntax_pipe(t_token *token);
+int error_redir(t_token *token);
+int error_pipe(void);
+int check_syntax(t_token *token);
 
 /* tokenizer.c */
 int		tokenizer(void);

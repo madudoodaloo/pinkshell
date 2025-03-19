@@ -6,14 +6,17 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 04:24:05 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/18 10:47:16 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/19 08:09:01 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
+//rever dar hardcode nesta merda se continuar a foder
 int get_type(char *str)
 {
+	if (!str)
+		return (-1);
 	if (ft_strcmp(str, "|") == 0)
 		return (PIPE);
 	else if (ft_strcmp(str, ">") == 0)

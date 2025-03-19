@@ -21,6 +21,7 @@ SRC =			src/main/main.c \
 				src/parser/quotes.c \
 				src/parser/retokenizer.c \
 				src/parser/split_spaces.c \
+				src/parser/syntax.c \
 				src/parser/tokenizer.c \
 				src/expander/expander_1.c \
                 src/expander/expander_2.c \

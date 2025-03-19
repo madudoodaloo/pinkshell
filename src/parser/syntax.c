@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 07:28:19 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/19 07:51:33 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/19 08:11:09 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,18 +23,18 @@ int	syntax_red(t_token *token)
 
 int	syntax_pipe(t_token *token)
 {
-	if (token->next == NULL)
+	if (!token->next)
 		return (0);
-	else if (token->prev == NULL)
+	else if (!token->prev)
 		return (0);
 	else if (token->next->type == PIPE)
 		return (0);
 	return (1);
 }
 
-int	err_redir(t_token *token)
+int	error_redir(t_token *token)
 {
-	if (!token || !token->content || !*token->content)
+	if (!token || !token->content || !token->content[0])
 	{
 		ft_put_str_fd("error near redirections\n", 2);
 		return (0);
@@ -67,7 +67,7 @@ int	check_syntax(t_token *token)
 			|| temp->type == R_APP || temp->type == HERE_DOC)
 		{
 			if (!syntax_red(temp))
-				return (err_redir(temp));
+				return (error_redir(temp));
 		}
 		else if (temp->type == PIPE)
 		{
