@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 05:59:04 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/19 01:41:27 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/19 06:18:42 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ t_msh   *msh(void);
 t_msh   *init_all(char **envp);
 
 /* parser.c */
-int		parser(t_msh *msh);
+int		parser(void);
 
 /* quotes.c */
 int in_quotes(char *line, int max);
@@ -51,7 +51,7 @@ t_token *get_operator(t_token *t);
 t_token *get_word(t_token *t);
 int     needs_retoken(char *cmd);
 t_token *update_token(t_token *old, int flag);
-t_token *re_token(t_token *head);
+void re_token(t_token *head);
 
 /* split_spaces.c */
 int		count_words(char *line);
@@ -59,7 +59,7 @@ int		parser_wdlen(char *line, int i);
 char	**split_spaces(char *line);
 
 /* tokenizer.c */
-int		tokenizer(t_msh *msh);
+int		tokenizer(void);
 
 
 #endif

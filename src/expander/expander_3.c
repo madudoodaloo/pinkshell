@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 13:44:20 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/19 02:28:02 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/19 06:24:37 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,12 @@ int	needs_expansion(t_token *token)
 {
 	int	i;
 
-	if (!token || !token->content)
+	if (!token || !token->content || !token->content[0])
 		return (0);
 	if (token->content[0] == '$' && !token->content[1])
 		return (0);
-	i = -1;
-	while (token->content[++i])
+	i = 0;
+	while (token->content[i])
 	{
 		if (token->prev && token->prev->type == HERE_DOC)
 			return (0);

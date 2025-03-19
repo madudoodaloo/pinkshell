@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cd.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
+/*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/03 20:40:50 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/19 02:37:16 by marianamest      ###   ########.fr       */
+/*   Updated: 2025/03/19 05:11:15 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,8 +91,8 @@ static void	print_directory_change(const char *old_pwd, const char *new_pwd, con
 
 void	change_directory(t_msh *msh, const char *path)
 {
-	char	old_pwd[PATH_MAX];
-	char	new_pwd[PATH_MAX];
+	char	old_pwd[4096];
+	char	new_pwd[4096];
 
 	if (getcwd(old_pwd, sizeof(old_pwd)) == NULL)
 	{

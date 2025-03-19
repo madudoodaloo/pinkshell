@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 04:46:51 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/19 02:21:59 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/19 06:10:48 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 /*
  * example:
- * token->content="ola|"
+ * token->content=">>test.txt|cat"
  */
 t_token	*get_operator(t_token *t)
 {
@@ -45,7 +45,7 @@ t_token	*get_word(t_token *t)
 	t_token	*remain;
 
 	i = 0;
-	while ((ft_isoperator(t->content, i) > 0 && in_quotes(t->content, i)) || ft_isoperator(t->content, i) == 0)
+	while (t->content[i] && ((ft_isoperator(t->content, i) > 0 && in_quotes(t->content, i)) || ft_isoperator(t->content, i) == 0))
 		i++;
 	temp = ft_substr(t->content, 0, i);
 	word = init_token(temp);
@@ -93,7 +93,7 @@ t_token *update_token(t_token *old, int flag)
 	return (new);
 }
 
-t_token	*re_token(t_token *head)
+void 	re_token(t_token *head)
 {
 	t_token *temp;
 	int i;
@@ -105,7 +105,5 @@ t_token	*re_token(t_token *head)
 		temp = update_token(temp, needs_retoken(temp->content));
 		temp = temp->next;
 	}
-	while (temp->prev)
-		temp = temp->prev;
-	return (temp);
+	return ;
 }

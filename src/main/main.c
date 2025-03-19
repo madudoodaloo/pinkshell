@@ -6,10 +6,9 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 15:19:12 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/19 02:12:57 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/19 06:26:56 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "../includes/minishell.h"
 
@@ -21,33 +20,27 @@ void    clean_line(t_msh *msh)
 
 void msh_loop(char **envp)
 {
-    t_msh *m;
-
     init_all(envp);
-    m = msh();
-    while (m->exit == 0)
+    while (1)
     {
-        m->line = readline("minishell$");
-        if (!m->line)
+        msh()->line = readline("minishell$");
+        if (!msh()->line)
         {
             ft_put_str_fd("exit\n", 2);
             break ;
         }
-        if (m->line && *m->line)
+        if (msh()->line && *msh()->line)
         {
-            //rever se o heredoc n precisa dum counter
-            add_history(m->line);
-            if (parser(m))
-                printf("ended parser\n");
+            add_history(msh()->line);
+            if (parser())
+                printf("parser done\n");
+            //init_exec(msh())
+            //execute(msh());
             else
-                printf("parser(m) = 0\n");
-
-/*          if (parser(m) && init_exec(m))
-                execute(m);
-            else
-                msh()->exit = 2; */
+                printf("parser failed\n");
+            //msh()->exit = 2;
         }
-        clean_line(m);
+        clean_line(msh());
     }
     free_and_exit();
 }
