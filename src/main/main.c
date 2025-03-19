@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 15:19:12 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/19 09:24:17 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/19 09:42:18 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,9 @@ static void print_msh(t_msh *msh)
         printf("  Token content: %s\n", token->content ? token->content : "(NULL)");
         printf("  Token type: %d\n", token->type);
         printf("  Token index: %d\n", token->index);
-        printf("  Token next: %p\n", (void *)token->next);
         printf("  Token prev: %p\n", (void *)token->prev);
+        printf("  Token current: %p\n", (void *)token);
+        printf("  Token next: %p\n", (void *)token->next);
         token = token->next;
     }
 }
