@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   executor.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
+/*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 19:58:02 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/18 11:12:26 by marianamest      ###   ########.fr       */
+/*   Updated: 2025/03/19 04:26:17 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define EXECUTOR_H
 
 # include "../includes/minishell.h"
+
 /* in ou out (?) no execute_builtins.c*/
 /* execute_builtins.c */
 int		execute_builtin(t_msh *msh, char **args, char ***export, int fd);

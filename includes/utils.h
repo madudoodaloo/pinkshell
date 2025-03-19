@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 06:01:56 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/19 02:14:40 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/19 04:27:23 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 void	free_var(t_env *var);
 void	free_matrix(char **matrix);
 void	free_tokens(t_token *tokens);
-void	free_env_list(t_env *env);
+void	free_env(t_env *env);
 void	free_exec(t_exec *exec);
 
 /* free_2.c */
