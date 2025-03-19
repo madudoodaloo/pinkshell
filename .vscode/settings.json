@@ -1,5 +1,7 @@
 {
 	"files.associations": {
-		"minishell.h": "c"
+		"*.embeddedhtml": "html",
+		"minishell.h": "c",
+		"heredoc.h": "c"
 	}
 }
