@@ -19,9 +19,10 @@ SRC =			src/main/main.c \
 				src/parser/quotes.c \
 				src/parser/retokenizer.c \
 				src/parser/split_spaces.c \
-				src/parser/tokenizer.c
-
-#src/expander/expander.c 				src/expander/ignore.c 				src/executor/execute_builtins.c 				src/executor/redirections1.c 				src/executor/fork_and_execute1.c 				src/executor/fork_and_execute2.c 				src/executor/exec_parser.c 				src/executor/redirections2.c 				src/builtins/cd.c 				src/builtins/echo.c 				src/builtins/env1.c 				src/builtins/env2.c 				src/builtins/exit.c 				src/builtins/pwd.c 				src/builtins/export1.c 				src/builtins/export2.c 				src/builtins/unset1.c 				src/builtins/unset2.c 				src/heredoc/heredoc1.c 				src/heredoc/heredoc2.c 				src/signals/signals1.c 				src/signals/signals2.c \
+				src/parser/tokenizer.c \
+				src/expander/expander.c \
+ 				src/expander/ignore.c
+#src/executor/execute_builtins.c 				src/executor/redirections1.c 				src/executor/fork_and_execute1.c 				src/executor/fork_and_execute2.c 				src/executor/exec_parser.c 				src/executor/redirections2.c 				src/builtins/cd.c 				src/builtins/echo.c 				src/builtins/env1.c 				src/builtins/env2.c 				src/builtins/exit.c 				src/builtins/pwd.c 				src/builtins/export1.c 				src/builtins/export2.c 				src/builtins/unset1.c 				src/builtins/unset2.c 				src/heredoc/heredoc1.c 				src/heredoc/heredoc2.c 				src/signals/signals1.c 				src/signals/signals2.c \
 
 CFLAGS =		-I./includes -g -fsanitize=address #-Wall -Wextra -Werror
 OTHERFLAGS =	-lreadline -lasan -O3

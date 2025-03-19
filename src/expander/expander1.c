@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 13:25:45 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/18 21:33:28 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/19 00:38:54 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,10 @@ int	var_name_len(char *str, int i)
 		if (ft_isdigit(str[i + len]) || ft_isalpha(str[i + len]) || str[i + len] == '_')
 			len++;
 		else
-			return (len);
+			break ;
 	}
+	return (len);
+
 }
 
 char *grep_var_name(t_token *token)
@@ -84,7 +86,7 @@ int	is_edge_expand(char *var_name)
 	else
 		return (0);
 }
-
+// rever ilegal ft getpid()
 char *edge_expand(char* var_name, t_msh *msh)
 {
 	char *var_value;
@@ -126,25 +128,63 @@ char	*regular_expand(t_env *env, char *var_name)
 	return (var_value);
 }
 
-void	update_content(t_token *token, char *expanded)
+int	expanded_strlen(char *old, char *var_value)
 {
-	char	*new_value;
+	int	i;
+	int	len;
 
-	new = (char *)safe_malloc(sizeof(char) * (expanded_strlen(expanded) + 1))
+	i = 0;
+	len = 0;
+	while (old[i] != '$')
+		i++;
+	len += i;
+	i += var_name_len(old, i);
+	while (old[i] != '\0')
+	{
+		i++;
+		len++;
+	}
+	return (len + ft_strlen(var_value));
+}
+//rever expanded strlen, var_name_len e o if else
+char *update_content(t_token *token, char *old, char *expanded)
+{
+	char	*new;
+	int x;
+	int y;
+	int z;
 
+	x= 0;
+	y= 0;
+	z = 0;
+	new = (char *)safe_malloc(sizeof(char) * (expanded_strlen(token, expanded) + 1));
+	while (old[x] != '$')
+		new[y++] = old[x++];
+	while (expanded[z])
+		new[y++] = expanded[z++];
+	if (old[x + 1] == '$' || old[x + 1] == '?')
+		x += 2;
+	else
+		x += var_name_len(old, x + 1) + 1;
+	while (old[x])
+		new[y++] = old[x++];
+	new[x] = '\0';
 }
 
 void	expand_var(t_token *token, t_msh *msh)
 {
 	char	*var_name;
 	char	*var_value;
+	char	*updated;
 
 	var_name = grep_var_name(token);
 	if (is_edge_expand(var_name))
 		var_value = edge_expand(var_name, msh);
 	else
 		var_value = regular_expand(msh->env, var_name);
-	update_content(token, var_value);
+	updated = update_content(token, token->content, var_value);
+	free(token->content);
+	token->content = updated;
 	free(var_name);
 	free(var_value);
 }
