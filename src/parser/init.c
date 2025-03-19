@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 18:18:18 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/18 14:05:57 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/19 04:41:24 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ char	*get_home(void)
 	return (ret);
 }
 
+/* singleton */
 t_msh	*msh(void)
 {
 	static t_msh	msh;

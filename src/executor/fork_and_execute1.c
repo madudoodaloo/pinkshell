@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   fork_and_execute1.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
+/*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 21:05:44 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/19 00:53:26 by marianamest      ###   ########.fr       */
+/*   Updated: 2025/03/19 04:44:41 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
+// rever se tenho que dar free a alguma merda
 void	handle_error(const char *message)
 {
 	write(2, message, ft_strlen(message));
