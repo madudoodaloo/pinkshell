@@ -6,7 +6,7 @@
 /*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 16:26:02 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/18 12:00:51 by marianamest      ###   ########.fr       */
+/*   Updated: 2025/03/19 12:27:44 by marianamest      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,6 @@ void	handle_child_exit_status(int status);
 void	handle_ctrl_d(char *line);
 void	handle_sigint(t_data *data, char *temp_filename);
 void	handle_sigquit(t_data *data);
-void	handle_general_signals(t_data *data);
+void	handle_general_signals(t_data *data, t_exec *exec);
 
 #endif
