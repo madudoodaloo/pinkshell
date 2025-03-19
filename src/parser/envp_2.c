@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   env2.c                                             :+:      :+:    :+:   */
+/*   envp_2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 01:33:41 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/19 01:38:43 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/19 02:11:51 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ t_env	*env_dup(t_env *env)
 	temp = env->next;
 	while (temp)
 	{
-		var_add_back(new, init_var(temp->var));
+		var_add_back(new, create_var(temp->var));
 		temp = temp->next;
 	}
 	return (new);

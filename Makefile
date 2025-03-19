@@ -12,7 +12,7 @@ SRC =			src/main/main.c \
                 src/utils/libft_utils5.c \
                 src/utils/malloc.c \
                 src/utils/utils_builtins.c \
-                src/utils/utils_str.c
+                src/utils/utils_str.c \
 				src/parser/create_tokens.c \
 				src/parser/envp_1.c \
 				src/parser/envp_2.c \

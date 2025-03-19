@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 15:19:12 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/19 00:22:18 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/19 02:12:57 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void msh_loop(char **envp)
         }
         clean_line(m);
     }
-    free_and_exit(m);
+    free_and_exit();
 }
 
 int main(int ac, char **av, char **envp)
