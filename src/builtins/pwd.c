@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pwd.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
+/*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 17:32:36 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/18 10:57:04 by marianamest      ###   ########.fr       */
+/*   Updated: 2025/03/19 04:57:00 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	my_pwd(int fd)
 {
-	char		cwd[MAXPATH];
+	char		cwd[4096];
 	const char	*error_msg;
 
 	error_msg = "pwd: ";

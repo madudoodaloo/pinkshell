@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 13:57:32 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/19 04:48:59 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/19 05:02:03 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,6 @@
 # define R_APP 4
 # define R_IN 5
 # define HERE_DOC 6
-# define MAXLINE 1024
-# define MAXPATH 4096
 
 
 // void *struct - rever!!!  Placeholder for resources to free
