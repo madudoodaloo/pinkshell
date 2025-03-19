@@ -6,13 +6,48 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 15:19:12 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/19 08:40:27 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/19 09:24:17 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-void    clean_cmdline(t_msh *m)
+
+
+static void print_msh(t_msh *msh)
+{
+    t_token *token;
+
+    if (!msh)
+    {
+        printf("msh is NULL\n");
+        return;
+    }
+
+    printf("msh->line: %s\n", msh->line ? msh->line : "(NULL)");
+    printf("msh->home: %s\n", msh->home ? msh->home : "(NULL)");
+    printf("msh->pwd: %s\n", msh->pwd ? msh->pwd : "(NULL)");
+    printf("msh->env: %p\n", (void *)msh->env);
+    printf("msh->exec: %p\n", (void *)msh->exec);
+    printf("msh->data: %p\n", (void *)msh->data);
+    printf("msh->exit: %d\n", msh->exit);
+
+    printf("Tokens:\n");
+    token = msh->tokens;
+    if (!token)
+        printf("  (NULL)\n");
+    while (token)
+    {
+        printf("  Token content: %s\n", token->content ? token->content : "(NULL)");
+        printf("  Token type: %d\n", token->type);
+        printf("  Token index: %d\n", token->index);
+        printf("  Token next: %p\n", (void *)token->next);
+        printf("  Token prev: %p\n", (void *)token->prev);
+        token = token->next;
+    }
+}
+
+void    clean_cmdline(void)
 {
     t_msh *m;
 
@@ -47,16 +82,22 @@ void msh_loop(char **envp)
         if (msh()->line && *msh()->line)
         {
             add_history(msh()->line);
-            if (parser()
+            if (parser())
             {
-                && init_exec())
-                start_exec();
-
+                print_msh(msh());
+                if (init_exec())
+                {
+                    printf("has entered exec\n");
+                    start_execution();
+                }
+                else
+                    printf("init_exec() = %d\n", init_exec());
+            }
             else
-                printf("parser failed\n");
+                printf("parser() = %d\n", parser());
             //msh()->exit = 2;
         }
-        clean_cmdline(msh());
+        clean_cmdline();
     }
     free_and_exit();
 }
