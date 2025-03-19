@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   redirections1.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 18:58:24 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/19 04:43:45 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/19 10:17:40 by marianamest      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,9 +71,9 @@ void	handle_redirections(char **args, int *in_fd, int *out_fd)
 void	execute_command(char **args, t_exec *exec, char **env)
 {
 	if (exec->in_fd != -1)
-		redirect_input(exec->in_fd);
+		redirect_input(exec);
 	if (exec->out_fd != -1)
-		redirect_output(exec->out_fd);
+		redirect_output(exec);
 	if (execve(args[0], args, env) == -1)
-		handle_error("execve");
+		handle_error("ERROR ON execve");
 }

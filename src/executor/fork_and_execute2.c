@@ -3,58 +3,69 @@
 /*                                                        :::      ::::::::   */
 /*   fork_and_execute2.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 22:25:57 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/18 02:11:29 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/19 10:18:18 by marianamest      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-void	setup_pipe_and_execute(char **args, int *input_fd, char **env)
+void	setup_pipe_and_execute(t_exec *exec, int *input_fd, char **env)
 {
 	int	pipefd[2];
 
 	if (pipe(pipefd) == -1)
 		handle_error("pipe");
-	fork_and_execute_command(args, *input_fd, pipefd[1], env);
+	fork_and_execute_command(exec->cmd, exec, env);
 	close(pipefd[1]);
 	*input_fd = pipefd[0];
 }
 
-void	wait_for_children(int num_commands)
+void	wait_for_children(t_exec *exec)
 {
 	int		i;
 	int		status;
 	pid_t	pid;
 
 	i = 0;
-	while (i < num_commands)
+	while (exec)
 	{
-		pid = waitpid(-1, &status, 0);
-		if (pid > 0)
-			handle_child_exit_status(status);
-		else if (pid == -1)
-			break ;
-		i++;
+		waitpid(exec->pid, &status, 0);
+		if (exec->pid > 0)
+			// handle_child_exit_status(status);
+		// if (WIFSIGNALED(status))
+		// {
+		// 	if (status == 130)
+		// 	{
+		// 		g_exec.status = 130;
+		// 		ft_putstr(1, "\n");
+		// 	}
+		// 	else if (status == 131)
+		// 		g_exec.status = 131;
+		// }
+		// if (WIFEXITED(status))
+		// 	g_exec.status = WEXITSTATUS(status);
+		exec = exec->next;
 	}
 }
 
-void	execute_multiple_pipes(char ***commands, int num_commands, char **env)
+void	execute_multiple_pipes(t_exec *exec, char **env)
 {
 	int	input_fd;
 	int	i;
+	t_exec	*head;
 
+	head = exec;
 	input_fd = STDIN_FILENO;
 	i = 0;
-	while (i < num_commands - 1)
+	while (exec && exec->next)
 	{
-		setup_pipe_and_execute(commands[i], &input_fd, env);
-		i++;
+		setup_pipe_and_execute(exec, &input_fd, env);
+		exec = exec->next;
 	}
-	fork_and_execute_command(commands[num_commands - 1], input_fd,
-		STDOUT_FILENO, env);
-	close(input_fd);
-	wait_for_children(num_commands);
+	fork_and_execute_command(exec->cmd, exec, env);
+	// close(input_fd);	rever	IF THERE IS ONLY ONE COMMAND, NO PIPE IS MADE AND THIS CLOSES STDIN
+	wait_for_children(exec);
 }

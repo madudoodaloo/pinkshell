@@ -6,7 +6,7 @@
 /*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 06:01:00 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/19 02:03:21 by marianamest      ###   ########.fr       */
+/*   Updated: 2025/03/19 11:46:57 by marianamest      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 /* cd *//* REVER: find_env_value */
 char		*find_env_value(char **env, const char *var);
-static int	change_dir(const char *path);
+// static int	change_dir(const char *path);
 void		change_directory(char **env, const char *path);
 void		cd_command(char **env, char **args);
 

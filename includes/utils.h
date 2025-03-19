@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 06:01:56 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/19 04:27:23 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/19 11:48:27 by marianamest      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void	*ft_memset(void *s, int c, size_t n);
 void	*safe_malloc(size_t size);
 
 /* utils_builtins.c */
-void	print_error(const char *message);
+void	print_error(void);
 void	my_strcpy(char *dest, const char *src);
 void	my_strcat(char *dest, const char *src);
 int		ft_isalnum(int c);

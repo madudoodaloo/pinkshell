@@ -3,20 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   envp_2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 01:33:41 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/19 02:11:51 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/19 11:49:44 by marianamest      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-//rever este handle de erros line 85
-char **get_default_env(void)
+// rever este handle de erros line 85
+char	**get_default_env(void)
 {
 	char	cwd[4096];
-	char **default_env;
+	char	**default_env;
 
 	if (getcwd(cwd, sizeof(cwd)) == NULL)
 	{
@@ -28,20 +28,21 @@ char **get_default_env(void)
 	default_env[1] = ft_strdup("LS_COLORS=");
 	default_env[2] = ft_strdup("SHLVL=1");
 	default_env[3] = ft_strdup("PATH=/usr/local/bin:"
-		"/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin");
+								"/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin");
 	default_env[4] = ft_strdup("_=/usr/bin/env");
 	default_env[5] = NULL;
 	return (default_env);
 }
 
-t_env *empty_env(void)
+t_env	*empty_env(void)
 {
 	t_env	*start;
 	t_env	*temp;
 	char	**default_env;
 	int		i;
 
-	i= 0;
+	i = 0;
+	start = NULL;
 	default_env = get_default_env();
 	while (default_env && default_env[i])
 	{
@@ -55,7 +56,7 @@ t_env *empty_env(void)
 	return (start);
 }
 
-//rever não serve para nada
+// rever não serve para nada
 t_env	*env_dup(t_env *env)
 {
 	t_env	*new;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expander_1.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 13:25:45 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/19 02:27:00 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/19 11:53:03 by marianamest      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 
 int	is_edge_expand(char *var_name)
 {
-	int	var_len;
-
 	if (!var_name || !*var_name)
 		return (0);
 	else if (ft_strlen(var_name) != 2)
@@ -25,13 +23,12 @@ int	is_edge_expand(char *var_name)
 		if (var_name[1] == '?' || var_name[1] == '?')
 			return (1);
 	}
-	else
-		return (0);
+	return (0);
 }
 // rever ilegal ft getpid()
-char *edge_expand(char* var_name, t_msh *msh)
+char	*edge_expand(char *var_name, t_msh *msh)
 {
-	char *var_value;
+	char	*var_value;
 
 	var_value = ft_strdup("");
 	if (ft_strlen(var_name) != 2)
@@ -56,7 +53,6 @@ char	*regular_expand(t_env *env, char *var_name)
 	var_value = ft_strdup("");
 	if (!env || !var_name || !*var_name)
 		return (var_value);
-
 	while (env)
 	{
 		if (!ft_strcmp(var_name, env->var_name))
@@ -70,19 +66,20 @@ char	*regular_expand(t_env *env, char *var_name)
 	return (var_value);
 }
 
-
-//rever expanded strlen, var_name_len e o if else
-char *update_content(t_token *token, char *old, char *expanded)
+// rever expanded strlen, var_name_len e o if else
+char	*update_content(t_token *token, char *old, char *expanded)
 {
 	char	*new;
-	int x;
-	int y;
-	int z;
+	int		x;
+	int		y;
+	int		z;
 
-	x= 0;
-	y= 0;
+	(void)token;
+	x = 0;
+	y = 0;
 	z = 0;
-	new = (char *)safe_malloc(sizeof(char) * (expanded_strlen(old, expanded) + 1));
+	new = (char *)safe_malloc(sizeof(char) * (expanded_strlen(old, expanded)
+				+ 1));
 	while (old[x] != '$')
 		new[y++] = old[x++];
 	while (expanded[z])
@@ -94,6 +91,8 @@ char *update_content(t_token *token, char *old, char *expanded)
 	while (old[x])
 		new[y++] = old[x++];
 	new[x] = '\0';
+	// REVER NAO E RETURN 0 CARALHO
+	return (0);
 }
 
 void	expander(t_token *tokens)
