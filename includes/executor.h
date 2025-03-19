@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 19:58:02 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/19 04:26:17 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/19 08:32:27 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 # define EXECUTOR_H
 
 # include "../includes/minishell.h"
+
+int		init_exec(void);
 
 /* in ou out (?) no execute_builtins.c*/
 /* execute_builtins.c */
@@ -31,7 +33,6 @@ void	wait_for_children(int num_commands);
 void	execute_multiple_pipes(char ***commands, int num_commands, char **env);
 
 /* init_exec.c */
-int		init_exec(t_msh *msh);
 
 /* *in_fd é pointer e n pode ser substituido pelo exec->in_fd nas redireções.c todas */
 /* redirections1.c */

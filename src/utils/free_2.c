@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 01:38:25 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/19 04:42:02 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/19 08:28:42 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ void	free_and_exit(void)
 	m = (msh());
 	if (!m)
 		return ;
+	clear_history();
 	if (m->line)
 		free(m->line);
 	if (m->tokens)
@@ -31,5 +32,4 @@ void	free_and_exit(void)
         free_env(m->env);
 	if (m->home)
 		free(m->home);
-	clear_history();
 }
