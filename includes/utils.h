@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 06:01:56 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/19 00:25:58 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/19 01:48:26 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,9 @@ int		ft_strcmp(const char *s1, const char *s2);
 void	ft_put_str_fd(char *str, int fd);
 int		ft_atoi(char *str);
 char	*ft_strjoin(const char *s1, const char *s2);
+
+/* libft_utils5.c */
+char	*ft_itoa(int n);
 
 /* malloc.c */
 void	*ft_memset(void *s, int c, size_t n);
