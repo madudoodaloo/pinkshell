@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 18:18:18 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/19 04:41:24 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/19 15:29:46 by marianamest      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,18 +47,18 @@ t_msh	*msh(void)
 	return (&msh);
 }
 
-t_msh    *init_all(char **envp)
+t_msh	*init_all(char **envp)
 {
-    t_msh *minishell;
+	t_msh	*minishell;
 
-    minishell = msh();
-    minishell->line = NULL;
-    minishell->tokens = NULL;
-    minishell->env = get_env(envp);
-    minishell->home = get_home();
-    minishell->pwd = getcwd(NULL, 0);
+	minishell = msh();
+	minishell->line = NULL;
+	minishell->tokens = NULL;
+	minishell->env = get_env(envp);
+	minishell->home = get_home();
+	minishell->pwd = getcwd(NULL, 0);
 	minishell->data = NULL;
-    minishell->exec = NULL;
-    minishell->exit = 0;
-    return (msh());
+	minishell->exec = NULL;
+	minishell->exit = 0;
+	return (msh());
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free_2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 01:38:25 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/19 08:28:42 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/19 15:36:24 by marianamest      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,10 @@ void	free_and_exit(void)
 		free_tokens(m->tokens);
 	if (m->pwd)
 		free(m->pwd);
-    if (m->exec)
-        free_exec(m->exec);
-    if (m->env)
-        free_env(m->env);
+	if (m->exec)
+		free_exec(m->exec);
+	if (m->env)
+		free_env(m->env);
 	if (m->home)
 		free(m->home);
 }

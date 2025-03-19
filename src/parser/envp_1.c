@@ -6,11 +6,7 @@
 /*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 01:27:31 by msilva-c          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2025/03/19 13:52:13 by msilva-c         ###   ########.fr       */
-=======
-/*   Updated: 2025/03/19 11:49:11 by marianamest      ###   ########.fr       */
->>>>>>> 0ffbed88cfd476024dcdc0e6539da8f57235453d
+/*   Updated: 2025/03/19 15:33:16 by marianamest      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,24 +33,24 @@ void	var_add_back(t_env *start, t_env *new)
 	t_env	*end;
 
 	end = NULL;
-    temp = start;
-    if (new->valid == false && dup_var(temp, end))
-        return ;
-    while (temp)
-    {
-        if (!ft_strcmp(temp->var_name, new->var_name))
-        {
-            free(temp->var_value);
-            temp->var_value = ft_strdup(new->var_value);
-            temp->valid = true;
-            free_var(new);
-            return ;
-        }
-        end = temp;
-        temp = temp->next;
-    }
-    if (end)
-        end->next = new;
+	temp = start;
+	if (new->valid == false && dup_var(temp, end))
+		return ;
+	while (temp)
+	{
+		if (!ft_strcmp(temp->var_name, new->var_name))
+		{
+			free(temp->var_value);
+			temp->var_value = ft_strdup(new->var_value);
+			temp->valid = true;
+			free_var(new);
+			return ;
+		}
+		end = temp;
+		temp = temp->next;
+	}
+	if (end)
+		end->next = new;
 }
 
 t_env	*create_var(char *str)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cd.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/03 20:40:50 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/19 05:11:15 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/19 15:17:56 by marianamest      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ char	*get_env_value(t_env *env, const char *var_name)
 	return (NULL);
 }
 
-void	update_env_value(t_env *env, const char *var_name, const char *new_value)
+void	update_env_value(t_env *env, const char *var_name,
+		const char *new_value)
 {
 	t_env	*current;
 
@@ -76,13 +77,15 @@ static const char	*get_target_path(t_msh *msh, const char *path)
 	return (path);
 }
 
-static void	update_pwd_vars(t_msh *msh, const char *old_pwd, const char *new_pwd)
+static void	update_pwd_vars(t_msh *msh, const char *old_pwd,
+		const char *new_pwd)
 {
 	update_env_value(msh->env, "OLDPWD", old_pwd);
 	update_env_value(msh->env, "PWD", new_pwd);
 }
 
-static void	print_directory_change(const char *old_pwd, const char *new_pwd, const char *path)
+static void	print_directory_change(const char *old_pwd, const char *new_pwd,
+		const char *path)
 {
 	if (strcmp(path, "-") == 0)
 		printf("%s\n", new_pwd);
@@ -130,7 +133,8 @@ void	cd_command(t_msh *msh, char **args)
 }
 
 /* helpers */
-static void	update_pwd_vars(t_msh *msh, const char *old_pwd, const char *new_pwd)
+static void	update_pwd_vars(t_msh *msh, const char *old_pwd,
+		const char *new_pwd)
 {
 	update_env_value(msh->env, "OLDPWD", old_pwd);
 	update_env_value(msh->env, "PWD", new_pwd);
@@ -159,7 +163,8 @@ static const char	*get_target_path(t_msh *msh, const char *path)
 	return (path);
 }
 
-static void	print_directory_change(const char *old_pwd, const char *new_pwd, const char *path)
+static void	print_directory_change(const char *old_pwd, const char *new_pwd,
+		const char *path)
 {
 	if (strcmp(path, "-") == 0)
 		printf("%s\n", new_pwd);

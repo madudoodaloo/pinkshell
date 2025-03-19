@@ -6,7 +6,7 @@
 /*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 16:47:08 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/19 00:53:13 by marianamest      ###   ########.fr       */
+/*   Updated: 2025/03/19 15:18:14 by marianamest      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,39 +38,39 @@ void	add_or_update_env_var(char ***env, const char *var)
 		add_new_var(env, var);
 }
 
-char **get_matrix_env(t_env *env)
+char	**get_matrix_env(t_env *env)
 {
-    t_env	*temp;
-    char	**matrix_env;
-    int		env_size;
-    int		i;
+	t_env	*temp;
+	char	**matrix_env;
+	int		env_size;
+	int		i;
 
-    temp = env;
-    env_size = 0;
-    while (temp)
-    {
-        env_size++;
-        temp = temp->next;
-    }
-    matrix_env = (char **)safe_malloc((env_size + 1) * sizeof(char *));
-    temp = env;
-    i = 0;
-    while (temp && !matrix_env)
-    {
-        matrix_env[i] = ft_strdup(temp->var);
-        i++;
-        temp = temp->next;
-    }
-    matrix_env[i] = NULL;
-    return (matrix_env);
+	temp = env;
+	env_size = 0;
+	while (temp)
+	{
+		env_size++;
+		temp = temp->next;
+	}
+	matrix_env = (char **)safe_malloc((env_size + 1) * sizeof(char *));
+	temp = env;
+	i = 0;
+	while (temp && !matrix_env)
+	{
+		matrix_env[i] = ft_strdup(temp->var);
+		i++;
+		temp = temp->next;
+	}
+	matrix_env[i] = NULL;
+	return (matrix_env);
 }
 
 void	print_sorted_env(t_env *env, int fd)
 {
-	char **temp_env;
-	int	env_size;
-	int	i;
-	int	j;
+	char	**temp_env;
+	int		env_size;
+	int		i;
+	int		j;
 
 	temp_env = get_matrix_env(env);
 	env_size = 0;

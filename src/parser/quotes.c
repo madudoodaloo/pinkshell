@@ -3,20 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   quotes.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 20:35:37 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/18 18:44:50 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/19 15:29:53 by marianamest      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-int in_quotes(char *line, int max)
+int	in_quotes(char *line, int max)
 {
-	int i;
-	int singleq;
-	int doubleq;
+	int	i;
+	int	singleq;
+	int	doubleq;
 
 	i = 0;
 	singleq = 0;
@@ -36,11 +36,11 @@ int in_quotes(char *line, int max)
 	return (1);
 }
 
-int in_singles(char *line, int max)
+int	in_singles(char *line, int max)
 {
-	int i;
-	int singleq;
-	int doubleq;
+	int	i;
+	int	singleq;
+	int	doubleq;
 
 	i = 0;
 	singleq = 0;
@@ -65,11 +65,11 @@ int in_singles(char *line, int max)
  * returns 0 if it's inside any quotes, 1 otherwise
  */
 
-int check_quotes(char *line)
+int	check_quotes(char *line)
 {
-	int i;
-	int singleq;
-	int doubleq;
+	int	i;
+	int	singleq;
+	int	doubleq;
 
 	i = 0;
 	singleq = 0;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expander_2.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 20:53:02 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/19 01:56:55 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/19 15:26:54 by marianamest      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,28 +14,29 @@
 
 int	var_name_len(char *str, int i)
 {
-	int len;
+	int	len;
 
 	len = 0;
 	if (!ft_isalpha(str[i]) && str[i] != 95)
 		return (0);
 	else if (ft_isdigit(str[i]))
 		return (1);
-	while (str[i + len] && str[i + len] != '$' && str[i + len] != TEMP_DOLLAR && !ft_isquote(str[i + len]))
+	while (str[i + len] && str[i + len] != '$' && str[i + len] != TEMP_DOLLAR
+		&& !ft_isquote(str[i + len]))
 	{
-		if (ft_isdigit(str[i + len]) || ft_isalpha(str[i + len]) || str[i + len] == '_')
+		if (ft_isdigit(str[i + len]) || ft_isalpha(str[i + len])
+			|| str[i + len] == '_')
 			len++;
 		else
 			break ;
 	}
 	return (len);
-
 }
 
-char *grep_var_name(t_token *token)
+char	*grep_var_name(t_token *token)
 {
-	char *var_name;
-	int i;
+	char	*var_name;
+	int		i;
 
 	i = 0;
 	while (token->content[i] != '$')
@@ -46,10 +47,10 @@ char *grep_var_name(t_token *token)
 	else if (token->content[i] == '?')
 		var_name = ft_strdup("$?");
 	else
-		var_name = ft_substr(token->content, i, var_name_len(token->content, i));
+		var_name = ft_substr(token->content, i, var_name_len(token->content,
+					i));
 	return (var_name);
 }
-
 
 int	expanded_strlen(char *old, char *var_value)
 {

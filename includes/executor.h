@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   executor.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 19:58:02 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/19 09:14:13 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/19 15:17:35 by marianamest      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include "../includes/minishell.h"
 
 /* init_exec.c */
-void start_execution(void);
+void	start_execution(void);
 int		init_exec(void);
 
 /* in ou out (?) no execute_builtins.c*/
@@ -36,7 +36,8 @@ void	execute_multiple_pipes(char ***commands, int num_commands, char **env);
 
 /* init_exec.c */
 
-/* *in_fd é pointer e n pode ser substituido pelo exec->in_fd nas redireções.c todas */
+/* *in_fd é pointer e 
+não pode ser substituido pelo exec->in_fd nas redireções.c todas */
 /* redirections1.c */
 void	handle_input_redirection(char **args, int *in_fd, int i);
 void	handle_output_redirection(char **args, int *out_fd, int i);

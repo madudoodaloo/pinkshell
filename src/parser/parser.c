@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 06:32:58 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/19 08:07:01 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/19 15:29:49 by marianamest      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ int	parser(void)
 	expander(msh()->tokens);
 	if (!check_syntax(msh()->tokens))
 		return (0);
-
-	//dar set da struct para a exec
+	// dar set da struct para a exec
 	return (1);
 }

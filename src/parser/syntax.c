@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   syntax.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 07:28:19 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/19 08:11:09 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/19 16:06:12 by marianamest      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int	error_redir(t_token *token)
 	}
 	if (!token->prev)
 	{
-		write (2, "error near newline\n", 19);
+		write(2, "error near newline\n", 19);
 		return (0);
 	}
 	write(2, "error near \"", 12);
@@ -63,8 +63,8 @@ int	check_syntax(t_token *token)
 	temp = token;
 	while (temp)
 	{
-		if (temp->type == R_OUT || temp->type == R_IN
-			|| temp->type == R_APP || temp->type == HERE_DOC)
+		if (temp->type == R_OUT || temp->type == R_IN || temp->type == R_APP
+			|| temp->type == HERE_DOC)
 		{
 			if (!syntax_red(temp))
 				return (error_redir(temp));

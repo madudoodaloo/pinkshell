@@ -6,7 +6,7 @@
 /*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 17:45:23 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/18 12:03:59 by marianamest      ###   ########.fr       */
+/*   Updated: 2025/03/19 15:35:57 by marianamest      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,11 +53,12 @@ void	handle_ctrl_d(char *line)
 
 void	handle_general_signals(t_data *data, t_exec *exec)
 {
+	int	status;
+
 	setup_signals();
 	handle_signals_and_cleanup(data);
 	if (exec->pid > 0)
 	{
-		int status;
 		waitpid(exec->pid, &status, 0);
 		handle_child_exit_status(status);
 		exec->pid = -1;
