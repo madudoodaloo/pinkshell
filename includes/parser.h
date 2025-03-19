@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 05:59:04 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/19 15:31:10 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/19 17:00:29 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,9 @@ int check_quotes(char *line);
 /* retokenizer.c */
 t_token *get_operator(t_token *t);
 t_token *get_word(t_token *t);
-int     needs_retoken(char *cmd);
+int		needs_retoken(char *cmd);
 t_token *get_which(t_token *old);
-void re_token(t_token *head);
+void 	re_token(t_token *head);
 
 /* split_spaces.c */
 int		count_words(char *line);
