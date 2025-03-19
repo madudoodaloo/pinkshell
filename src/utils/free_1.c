@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 18:17:41 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/19 10:02:22 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/19 14:23:26 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,8 @@ void	free_matrix(char **matrix)
 	free(matrix);
 }
 
-void free_exec(t_exec *exec)
+void	free_exec(t_exec *exec)
 {
+	(void)exec;
 	return ;
 }

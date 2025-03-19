@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 04:46:51 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/19 14:16:14 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/19 14:23:14 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,9 @@ t_token	*get_operator(t_token *t)
 
 	temp = ft_substr(t->content, 0, ft_isoperator(t->content, 0));
 	op = init_token(temp);
-	free (temp);
-	temp = ft_substr(t->content, ft_isoperator(t->content, 0), ft_strlen(t->content));
+	free(temp);
+	temp = ft_substr(t->content, ft_isoperator(t->content, 0),
+			ft_strlen(t->content));
 	remain = init_token(temp);
 	free(temp);
 	remain->prev = op;
@@ -36,7 +37,7 @@ t_token	*get_operator(t_token *t)
 /*
  * example:
  * token->content="ola|"
-*/
+ */
 t_token	*get_word(t_token *t)
 {
 	int		i;
@@ -45,7 +46,9 @@ t_token	*get_word(t_token *t)
 	t_token	*remain;
 
 	i = 0;
-	while (t->content[i] && ((ft_isoperator(t->content, i) > 0 && in_quotes(t->content, i)) || ft_isoperator(t->content, i) == 0))
+	while (t->content[i] && ((ft_isoperator(t->content, i) > 0
+				&& in_quotes(t->content, i)) || ft_isoperator(t->content,
+				i) == 0))
 		i++;
 	temp = ft_substr(t->content, 0, i);
 	word = init_token(temp);
@@ -58,12 +61,11 @@ t_token	*get_word(t_token *t)
 	return (word);
 }
 
-
 int	needs_retoken(char *cmd)
 {
-	int i;
-	bool operator;
-	bool word;
+	int		i;
+	bool	operator;
+	bool	word;
 
 	i = -1;
 	operator = false;
@@ -71,7 +73,7 @@ int	needs_retoken(char *cmd)
 	while (cmd && cmd[++i])
 	{
 		if (ft_isoperator(cmd, i) && !in_quotes(cmd, i))
-			operator = true;
+			operator= true;
 		else
 			word = true;
 	}
@@ -82,9 +84,9 @@ int	needs_retoken(char *cmd)
 	return (0);
 }
 
-t_token *update_token(t_token *old, int flag)
+t_token	*update_token(t_token *old, int flag)
 {
-	t_token *new;
+	t_token	*new;
 
 	if (flag == 0)
 		new = old;
@@ -95,12 +97,10 @@ t_token *update_token(t_token *old, int flag)
 	return (new);
 }
 
-void 	re_token(t_token *head)
+void	re_token(t_token *head)
 {
-	t_token *temp;
-	int i;
+	t_token	*temp;
 
-	i = 0;
 	temp = head;
 	while (temp)
 	{

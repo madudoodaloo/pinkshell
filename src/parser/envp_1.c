@@ -3,16 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   envp_1.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 01:27:31 by msilva-c          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2025/03/19 13:52:13 by msilva-c         ###   ########.fr       */
+=======
+/*   Updated: 2025/03/19 11:49:11 by marianamest      ###   ########.fr       */
+>>>>>>> 0ffbed88cfd476024dcdc0e6539da8f57235453d
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-int dup_var(t_env *start, t_env *new)
+int	dup_var(t_env *start, t_env *new)
 {
 	t_env	*temp;
 
@@ -24,14 +28,13 @@ int dup_var(t_env *start, t_env *new)
 		temp = temp->next;
 	}
 	return (0);
-
 }
 
-//rever line 37 se deve ser || or &&
+// rever line 37 se deve ser || or &&
 void	var_add_back(t_env *start, t_env *new)
 {
-    t_env	*temp;
-    t_env	*end;
+	t_env	*temp;
+	t_env	*end;
 
 	end = NULL;
     temp = start;
@@ -56,8 +59,8 @@ void	var_add_back(t_env *start, t_env *new)
 
 t_env	*create_var(char *str)
 {
-	t_env *new;
-	int i;
+	t_env	*new;
+	int		i;
 
 	i = 0;
 	new = NULL;
@@ -77,10 +80,11 @@ t_env	*create_var(char *str)
 	return (new);
 }
 
-
 int	check_env(char **envp)
 {
-	int i = 0;
+	int	i;
+
+	i = 0;
 	if (!envp || !*envp)
 		return (0);
 	while (envp[i])
@@ -90,7 +94,7 @@ int	check_env(char **envp)
 
 t_env	*get_env(char **envp)
 {
-	int i;
+	int		i;
 	t_env	*new;
 	t_env	*temp;
 
@@ -111,4 +115,3 @@ t_env	*get_env(char **envp)
 	}
 	return (new);
 }
-
