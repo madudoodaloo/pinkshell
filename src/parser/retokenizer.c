@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 04:46:51 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/18 18:44:57 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/19 02:21:59 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ t_token	*get_operator(t_token *t)
 	temp = ft_substr(t->content, 0, ft_isoperator(t->content, 0));
 	op = init_token(temp);
 	free (temp);
-	temp = ft_strdup(t->content[ft_isoperator(t->content, 0)]);
+	temp = ft_substr(t->content, ft_isoperator(t->content, 0), ft_strlen(t->content));
 	remain = init_token(temp);
 	free(temp);
 	remain->prev = op;
@@ -50,7 +50,7 @@ t_token	*get_word(t_token *t)
 	temp = ft_substr(t->content, 0, i);
 	word = init_token(temp);
 	free(temp);
-	temp = ft_strdup(t->content[i]);
+	temp = ft_substr(t->content, i, ft_strlen(t->content));
 	remain = init_token(temp);
 	free(temp);
 	word->next = remain;

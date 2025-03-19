@@ -6,13 +6,13 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 18:17:41 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/18 02:11:29 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/19 02:14:40 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-void	free_token_list(t_token *tokens)
+void	free_tokens(t_token *tokens)
 {
 	t_token	*current;
 	t_token	*temp;
@@ -76,7 +76,7 @@ void	free_matrix(char **matrix)
 	free(matrix);
 }
 
-void free_pipex_list(t_exec *exec)
+void free_exec(t_exec *exec)
 {
 	return ;
 }

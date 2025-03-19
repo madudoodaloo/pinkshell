@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 21:44:47 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/18 20:11:46 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/19 02:15:47 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ int	ft_isoperator(char *str, int i)
 		else
 			return (0);
 	}
+	return (0);
 }
 
 int	ft_isspace(char c)
