@@ -37,18 +37,18 @@ OBJS =			$(patsubst src/%.c, $(OBJ_DIR)%.o, $(SRC))
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	@$(CC) $(CFLAGS) $(OBJS) $(LIBFT) $(OTHERFLAGS) -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJS) $(LIBFT) $(OTHERFLAGS) -o $(NAME)
 
 $(OBJ_DIR)%.o: src/%.c
-	@mkdir -p $(dir $@)
-	@$(CC) $(CFLAGS) $(INC_FLAGS) -c $< -o $@
+	mkdir -p $(dir $@)
+	$(CC) $(CFLAGS) $(INC_FLAGS) -c $< -o $@
 
 clean:
-	@rm -f $(OBJ_DIR)/*.o
-	@rm -rf $(OBJ_DIR)
+	rm -f $(OBJ_DIR)/*.o
+	rm -rf $(OBJ_DIR)
 
 fclean: clean
-	@rm -f $(NAME)
+	rm -f $(NAME)
 
 re: fclean all
 
