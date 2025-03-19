@@ -1,12 +1,12 @@
 #!/bin/bash
 
-# Run make re
-make re
+# Navigate to the pinkshell directory and run make re
+cd pinkshell && make re
 
 # Check if make re was successful
 if [ $? -eq 0 ]; then
-    # Run the minishell program
-    ./minishell
+    # Run the minishell program with valgrind
+    valgrind ./minishell
 else
     echo "make re failed. Exiting."
     exit 1

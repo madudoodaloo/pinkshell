@@ -3,17 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   envp_2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
+/*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 01:33:41 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/19 11:49:44 by marianamest      ###   ########.fr       */
+/*   Updated: 2025/03/19 14:21:25 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-// rever este handle de erros line 85
-char	**get_default_env(void)
+//rever este handle de erros line 85
+// se **env vier vazio no início do programa
+// -> assumir que o env começa vazio
+// -> MAS tem de ter a t_env **env inicializada para poder fazer o export à mesma
+//
+char **get_default_env(void)
 {
 	char	cwd[4096];
 	char	**default_env;

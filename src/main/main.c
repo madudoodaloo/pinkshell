@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 15:19:12 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/19 09:42:18 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/19 14:12:32 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ static void print_msh(t_msh *msh)
     printf("msh->exec: %p\n", (void *)msh->exec);
     printf("msh->data: %p\n", (void *)msh->data);
     printf("msh->exit: %d\n", msh->exit);
-
     printf("Tokens:\n");
     token = msh->tokens;
     if (!token)
