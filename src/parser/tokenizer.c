@@ -3,20 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   tokenizer.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 20:59:01 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/19 07:27:06 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/19 15:30:06 by marianamest      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-
-//dar set para null de todas as vars do msh()
-int tokenizer(void)
+// dar set para null de todas as vars do msh()
+int	tokenizer(void)
 {
-	char **matrix;
+	char	**matrix;
 
 	matrix = split_spaces(msh()->line);
 	if (!matrix)

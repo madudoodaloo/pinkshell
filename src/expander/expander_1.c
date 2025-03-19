@@ -6,7 +6,7 @@
 /*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 13:25:45 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/19 11:53:03 by marianamest      ###   ########.fr       */
+/*   Updated: 2025/03/19 15:26:38 by marianamest      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ int	is_edge_expand(char *var_name)
 	}
 	return (0);
 }
+
 // rever ilegal ft getpid()
 char	*edge_expand(char *var_name, t_msh *msh)
 {

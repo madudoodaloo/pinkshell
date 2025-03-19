@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 15:19:12 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/19 15:59:20 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/19 17:00:06 by marianamest      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,26 +15,26 @@
 
 void    clean_cmdline(void)
 {
-    t_msh *m;
+	t_msh	*m;
 
-    m = msh();
-    if (!m)
-        return ;
-    if (m->line)
-        free(m->line);
-    if (m->tokens)
-    {
-        free_tokens(m->tokens);
-        m->tokens = NULL;
-    }
-    if (m->exec)
-    {
-        free_exec(m->exec);
-        m->exec = NULL;
-    }
+	m = msh();
+	if (!m)
+		return ;
+	if (m->line)
+		free(m->line);
+	if (m->tokens)
+	{
+		free_tokens(m->tokens);
+		m->tokens = NULL;
+	}
+	if (m->exec)
+	{
+		free_exec(m->exec);
+		m->exec = NULL;
+	}
 }
 
-void msh_loop(char **envp)
+void	msh_loop(char **envp)
 {
     init_all(envp);
     while (1)
@@ -65,16 +65,15 @@ void msh_loop(char **envp)
     free_and_exit();
 }
 
-int main(int ac, char **av, char **envp)
+int	main(int ac, char **av, char **envp)
 {
-    (void)av;
-
-    if (ac == 1)
-    {
-        //setup_signals();
-        msh_loop(envp);
-    }
-    else
-        printf("Cmdline to launch: ./minishell\n");
-    return (0);
+	(void)av;
+	if (ac == 1)
+	{
+		// setup_signals();
+		msh_loop(envp);
+	}
+	else
+		printf("Cmdline to launch: ./minishell\n");
+	return (0);
 }

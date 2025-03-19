@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   retokenizer.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 04:46:51 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/19 15:46:23 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/19 16:57:12 by marianamest      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ int	needs_retoken(char *cmd)
 	while (cmd && cmd[++i])
 	{
 		if (ft_isoperator(cmd, i) && !in_quotes(cmd, i))
-			operator= true;
+			operator = true;
 		else
 			word = true;
 	}
@@ -124,7 +124,7 @@ void	re_token(t_token *head)
 	temp = head;
 	while (temp)
 	{
-		//printf("  needs_retoken: %s\n", needs_retoken(temp->content));
+		// printf("  needs_retoken: %s\n", needs_retoken(temp->content));
 		if (needs_retoken(temp->content))
 		{
 			//printf("going to get_which\n");

@@ -6,7 +6,7 @@
 /*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 17:31:05 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/19 12:37:00 by marianamest      ###   ########.fr       */
+/*   Updated: 2025/03/19 15:19:34 by marianamest      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,10 +99,10 @@ void	set_or_add_env_value(char **env, const char *key, const char *value)
 		*env = expand_env(*env, new_entry);
 }
 
-char	**general_manage_env(t_env *env, int action, char **envp) // action é o case switch
+char	**general_manage_env(t_env *env, int action, char **envp)
 {
-	int	index;
-	t_env *temp;
+	int		index;
+	t_env	*temp;
 
 	if (env == NULL)
 		env = init_env_array(envp);
@@ -122,8 +122,9 @@ char	**general_manage_env(t_env *env, int action, char **envp) // action é o ca
 	}
 	else if (action == 2)
 	{
-		if (create_env_entry(env->var_name, env->var_value) && (env = expand_env(env,
-					create_env_entry(env->var_name, env->var_value))) == NULL)
+		if (create_env_entry(env->var_name, env->var_value)
+			&& (env = expand_env(env, create_env_entry(env->var_name,
+						env->var_value))) == NULL)
 			return (NULL);
 	}
 	return (env);
