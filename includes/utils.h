@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
+/*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 06:01:56 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/18 12:26:03 by marianamest      ###   ########.fr       */
+/*   Updated: 2025/03/19 00:25:58 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@
 # include "../includes/minishell.h"
 
 /* free_1.c */
-void	free_token_list(t_token *tokens);
 void	free_var(t_env *var);
-void	free_env(t_env *env);
 void	free_matrix(char **matrix);
+void	free_token_list(t_token *tokens);
+void	free_env_list(t_env *env);
 void	free_pipex_list(t_exec *exec);
 
 /* free_2.c */

@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 13:25:45 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/19 00:14:20 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/19 00:38:54 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,10 @@ int	var_name_len(char *str, int i)
 		if (ft_isdigit(str[i + len]) || ft_isalpha(str[i + len]) || str[i + len] == '_')
 			len++;
 		else
-			return (len);
+			break ;
 	}
+	return (len);
+
 }
 
 char *grep_var_name(t_token *token)
@@ -126,21 +128,35 @@ char	*regular_expand(t_env *env, char *var_name)
 	return (var_value);
 }
 
-void ft_init_ints(int x, int y, int z)
+int	expanded_strlen(char *old, char *var_value)
 {
-	x = 0;
-	y = 0;
-	z = 0;
-}
+	int	i;
+	int	len;
 
+	i = 0;
+	len = 0;
+	while (old[i] != '$')
+		i++;
+	len += i;
+	i += var_name_len(old, i);
+	while (old[i] != '\0')
+	{
+		i++;
+		len++;
+	}
+	return (len + ft_strlen(var_value));
+}
+//rever expanded strlen, var_name_len e o if else
 char *update_content(t_token *token, char *old, char *expanded)
 {
 	char	*new;
-	static int x;
-	static int y;
-	static int z;
+	int x;
+	int y;
+	int z;
 
-	ft_init_ints(x, y, z);
+	x= 0;
+	y= 0;
+	z = 0;
 	new = (char *)safe_malloc(sizeof(char) * (expanded_strlen(token, expanded) + 1));
 	while (old[x] != '$')
 		new[y++] = old[x++];
@@ -149,7 +165,9 @@ char *update_content(t_token *token, char *old, char *expanded)
 	if (old[x + 1] == '$' || old[x + 1] == '?')
 		x += 2;
 	else
-		x +=
+		x += var_name_len(old, x + 1) + 1;
+	while (old[x])
+		new[y++] = old[x++];
 	new[x] = '\0';
 }
 
