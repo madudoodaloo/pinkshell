@@ -6,7 +6,7 @@
 /*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 06:01:00 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/20 15:53:59 by marianamest      ###   ########.fr       */
+/*   Updated: 2025/03/20 17:29:23 by marianamest      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,13 @@ void	pwd(int fd);
 void	update_pwd(void);
 
 /* unset1 */
+void	exec_unset(char **envp, char **export, char **args, int *exit_status);
+void	unset_env_var(char **envp, char **export, const char *var);
+void	remove_from_array(char **array, int index);
+int		input_size(char **array);
+void	read_unset(char **envp, char **export, char **cmds, int *exit_status);
 
 /* unset2 */
+int		ft_strcmp_nochr(const char *s1, const char *s2, char delim);
 
 #endif
