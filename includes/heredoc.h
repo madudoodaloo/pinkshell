@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   heredoc.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 00:04:58 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/20 01:27:35 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/20 02:22:47 by marianamest      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef HEREDOC_H
 # define HEREDOC_H
 
-# include "../includes/minishell.h"
+# include "minishell.h"
 
 // /* heredoc 1 */
 // const char	*extract_var_name(const char *start, char *var_name);
@@ -44,7 +44,7 @@ void		ft_waitpid(int pid);
 
 /* prep redir */
 int			doc_loop(char **in_redirs, t_exec *exec, int k);
-int			prep_in_redir(t_exec *exec);
+int			prep_in_redir(char **in_redirs, t_exec *exec, int k);
 int			open_infile_loop(char **in_redirs, t_exec *exec, int k);
 
 #endif
