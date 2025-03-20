@@ -42,7 +42,7 @@ SRC =			src/main/main.c \
 				# src/builtins/unset2.c \
 
 
-CFLAGS =		-I./includes -g #-fsanitize=address -Wall -Wextra -Werror
+CFLAGS =		-I./includes -g -Wall -Wextra -Werror #-fsanitize=address
 OTHERFLAGS =	-lreadline #-lasan -O3
 
 OBJ_DIR =		./obj/

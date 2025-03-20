@@ -6,7 +6,7 @@
 /*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 16:58:48 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/20 15:23:23 by marianamest      ###   ########.fr       */
+/*   Updated: 2025/03/20 15:36:08 by marianamest      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	execute_builtin_in_fork(/*whatever it requires*/)// check if void is approp
 	exit(msh()->exit_status);
 }
 
-int	is_builtin(char *command)
+int	is_builtin(char *command) // bota struct maybe
 {
 	if (ft_strcmp(command, "cd") == 0 || ft_strcmp(command, "export") == 0
 		|| ft_strcmp(command, "unset") == 0 || ft_strcmp(command, "exit") == 0

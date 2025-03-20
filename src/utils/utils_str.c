@@ -6,7 +6,7 @@
 /*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 14:50:45 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/19 15:36:54 by marianamest      ###   ########.fr       */
+/*   Updated: 2025/03/20 16:09:36 by marianamest      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ int	ft_strcmp(const char *s1, const char *s2)
 
 	if (!s1 && !s2)
 		return (0); // Both strings are NULL, considered equal
-	s01 = (unsigned char *)s1;
-	s02 = (unsigned char *)s2;
+	s01 = (char *)s1;
+	s02 = (char *)s2;
 	while (*s01 && *s02)
 	{
 		if (*s01 != *s02)

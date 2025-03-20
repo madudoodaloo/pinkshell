@@ -6,7 +6,7 @@
 /*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 18:29:52 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/20 15:25:52 by marianamest      ###   ########.fr       */
+/*   Updated: 2025/03/20 16:11:49 by marianamest      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ int	prep_in_redir(char **in_redirs, t_exec *exec, int k)
 {
 	int	i;
 
+	(void)in_redirs;
+	(void)k;
 	i = 0;
 	while (i < exec[i].nbr_cmds)
 	{
@@ -32,9 +34,10 @@ int	prep_in_redir(char **in_redirs, t_exec *exec, int k)
 		open_infile_loop(exec[i].redir_in, exec, i);
 		i++;
 	}
+	return (0);
 }
 
-int	doc_loop(char **in_redirs, t_exec *exec, int k) // doc pipe check
+int	doc_loop(char **in_redirs, t_exec *exec, int k) // rever :  doc pipe check
 {
 	int	i;
 
@@ -57,7 +60,7 @@ int	doc_loop(char **in_redirs, t_exec *exec, int k) // doc pipe check
 int	open_infile_loop(char **in_redirs, t_exec *exec, int k)
 {
 	int	i;
-	int	fd;
+	//int	fd;
 
 	i = 0;
 	while (in_redirs[i] != NULL)
