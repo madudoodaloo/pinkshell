@@ -3,21 +3,50 @@
 /*                                                        :::      ::::::::   */
 /*   prep_redir.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
+/*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 18:29:52 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/20 16:11:49 by marianamest      ###   ########.fr       */
+/*   Updated: 2025/03/20 19:56:16 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-int	prep_in_redir(char **in_redirs, t_exec *exec, int k)
+//rever se todos os prefixos estão iguais
+void open_outfiles_loop(char **out, t_exec *ex)
+{
+	int i = 0;
+	while (out[i])
+	{
+		safe_close(ex->out_fd);
+		if (!strncmp(out[i], "APP", 3))
+			ex->out_fd = open(out[i] + 3, O_CREAT, O_APPEND);
+		else if (!strncmp(out[i], "STD", 3))
+			ex->out_fd = open(out[i] + 3, O_CREAT, O_TRUNC);
+		i++;
+	}
+}
+
+int	prep_out_redir(t_exec *exec)
 {
 	int	i;
 
-	(void)in_redirs;
-	(void)k;
+	i = 0;
+	while (i < exec[i].nbr_cmds)
+	{
+		if (exec[i].redir_out != NULL)
+		{
+			open_outfiles_loop(exec[i].redir_out, exec);
+		}
+		i++;
+	}
+
+}
+
+int	prep_in_redir(t_exec *exec)
+{
+	int	i;
+
 	i = 0;
 	while (i < exec[i].nbr_cmds)
 	{

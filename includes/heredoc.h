@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 00:04:58 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/20 16:17:36 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/20 19:45:35 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 
 /* prep_redir.c */
-int     prep_in_redir(char **in_redirs, t_exec *exec, int k);
+int     prep_in_redir(t_exec *exec);
 int     doc_loop(char **in_redirs, t_exec *exec, int k);
 int     open_infile_loop(char **in_redirs, t_exec *exec, int k);
 int     is_final_heredoc(char **in_redirs, t_exec *exec, int k);

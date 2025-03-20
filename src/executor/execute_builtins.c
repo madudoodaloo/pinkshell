@@ -6,25 +6,20 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 16:58:48 by marianamest       #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2025/03/20 18:19:54 by marianamest      ###   ########.fr       */
-=======
-/*   Updated: 2025/03/20 18:17:59 by msilva-c         ###   ########.fr       */
->>>>>>> b6868b4315cb4e93b4a79003f4bc7817c8fb238b
+/*   Updated: 2025/03/20 20:38:04 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-// nana o que
-int	execute_builtin(t_msh *msh, char **args, char **wtf, int fd)
+//nana o que
+int	execute_builtin(t_exec *exec)
 {
-	(void)msh;
-	(void)args;
-	(void)wtf;
+	(void)exec;
+/*
 	if (fd == -1)
 		fd = STDOUT_FILENO;
-/* 	if (ft_strcmp(args[0], "cd") == 0)
+ 	if (ft_strcmp(args[0], "cd") == 0)
 		cd(get_matrix_env(msh->env), args);
 	else if (ft_strcmp(args[0], "export") == 0)
 		export_command(args, env, fd);
@@ -38,9 +33,9 @@ int	execute_builtin(t_msh *msh, char **args, char **wtf, int fd)
 		pwd(fd);
 	else if (ft_strcmp(args[0], "echo") == 0)
 		run_echo(args);
-	*/
 	else
 		return (0);
+		*/
 	return (1);
 }
 
