@@ -6,14 +6,13 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 11:59:02 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/20 16:02:09 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/20 17:22:29 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
 //rever se só tou a chamar isto numa child
-
 void	close_args_fds(t_exec *ex)
 {
 	int index;
@@ -145,9 +144,7 @@ void exec_single_cmd(t_exec *ex)
 	if (ex->cmd_invalid)
 		return ;
 	if (is_builtin(ex))
-	{
-		exec_if_builtin(ex);
-	}
+		execute_builtin(ex);
 	else
 	{
 		signals_ignore();
@@ -173,7 +170,7 @@ void start_executing(void)
 	int i = -1;
 	char **ex;
 	ex = msh()->exec;
-	if (check_redirs(ex) < 0)
+	if (check_redirs(ex) < 0) //nana preciso duma ft que checke se temos permissões sobre os ficheiros dados
 		return ;
 	if (msh()->exec->nbr_cmds == 1)
 		exec_single_cmd(ex);
