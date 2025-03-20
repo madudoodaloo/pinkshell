@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 05:59:04 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/19 17:05:24 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/19 20:55:56 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,15 @@ t_env	*get_env(char **envp);
 char	**get_default_env(void);
 t_env	*empty_env(void);
 t_env	*env_dup(t_env *env);
+
+/* init_exec.c */
+int     count_cmds(t_token *tokens);
+int     strlen_args(char **args);
+char    **add_prefix(t_token *token, char **args);
+char    **add_to_matrix(char *content, char **args);
+void    tokens_to_exec(t_token *token, t_exec *exec, int nbr_cmds);
+t_exec  *init_exec(t_token *tokens);
+int     set_exec(void);
 
 /* init.c */
 char	*get_home(void);

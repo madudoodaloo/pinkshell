@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
+/*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 15:19:12 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/19 17:00:06 by marianamest      ###   ########.fr       */
+/*   Updated: 2025/03/20 01:23:12 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
-
 
 void    clean_cmdline(void)
 {
@@ -49,16 +48,9 @@ void	msh_loop(char **envp)
         {
             add_history(msh()->line);
             if (parser())
-            {
-                if (init_exec())
-                {
-                    //printf("has entered exec\n");
-                    start_execution();
-                }
-                else
-                    printf("init_exec() = %d\n", init_exec());
-            }
-            //msh()->exit = 2;
+                   printf("siga crlh\n");//start_execution();
+            else
+                msh()->exit_status = 2;
         }
         clean_cmdline();
     }
@@ -70,7 +62,7 @@ int	main(int ac, char **av, char **envp)
 	(void)av;
 	if (ac == 1)
 	{
-		// setup_signals();
+		init_signals();
 		msh_loop(envp);
 	}
 	else

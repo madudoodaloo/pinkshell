@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   signals2.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
+/*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 17:45:23 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/19 15:35:57 by marianamest      ###   ########.fr       */
+/*   Updated: 2025/03/19 20:48:40 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-void	handle_sigint(t_data *data, char *temp_filename)
+void	handle_sigint(t_exec * exec, char *temp_filename)
 {
 	write(1, "\n", 1);
 	rl_on_new_line();
@@ -30,7 +30,7 @@ void	handle_sigint(t_data *data, char *temp_filename)
 	exit(130);
 }
 
-void	handle_sigquit(t_data *data)
+void	handle_sigquit(t_exec * exec)
 {
 	write(1, "Caught SIGQUIT (Ctrl+\\)\n", 25);
 	g_signal = SIGQUIT;
@@ -51,7 +51,7 @@ void	handle_ctrl_d(char *line)
 	}
 }
 
-void	handle_general_signals(t_data *data, t_exec *exec)
+void	handle_general_signals(t_exec * exec, t_exec *exec)
 {
 	int	status;
 

@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 13:57:32 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/19 18:22:14 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/19 20:48:06 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,14 +29,6 @@
 # include <sys/wait.h>
 # include <unistd.h>
 
-# include "builtins.h"
-# include "executor.h"
-# include "expander.h"
-# include "heredoc.h"
-# include "parser.h"
-# include "signs.h"
-# include "utils.h"
-
 # define CMD 1
 # define PIPE 2
 # define R_OUT 3
@@ -51,7 +43,7 @@ typedef struct s_exec
 	char	**redir_in;
 	char 	**redir_out;
 	char 	**args;
-	int		nr_cmds; //pipes - 1
+	int		nbr_cmds; //pipes
 	int		pipe_fd[2];
 	int		in_fd; //vai ler
 	int		out_fd; //vai escrever
@@ -88,7 +80,7 @@ typedef struct s_msh
 	t_env			*env;
 	t_token			*tokens;
 	t_exec			*exec;
-	int				exit;
+	int				exit_status;
 }					t_msh;
 
 typedef enum e_temp_op
@@ -100,5 +92,13 @@ typedef enum e_temp_op
 }					t_temp_op;
 
 t_msh				*msh(void);
+
+# include "builtins.h"
+# include "executor.h"
+# include "expander.h"
+# include "heredoc.h"
+# include "parser.h"
+# include "signs.h"
+# include "utils.h"
 
 #endif

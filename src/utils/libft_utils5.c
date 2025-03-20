@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 01:44:25 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/19 01:48:56 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/19 23:58:04 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,4 +68,22 @@ char	*ft_itoa(int n)
 		n /= 10;
 	}
 	return (str);
+}
+
+char	**copy_matrix(char **src)
+{
+	char	**dst;
+	int		i;
+
+	i = 0;
+	while (src[i] != NULL)
+		i++;
+	dst = (char **)safe_malloc(sizeof(char *) * (i + 1));
+	if (!dst)
+		return (NULL);
+	i = -1;
+	while (src[++i])
+		dst[i] = ft_strdup(src[i]);
+	dst[i] = NULL;
+	return (dst);
 }

@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 00:04:58 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/18 10:45:22 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/19 20:48:40 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void		signal_handler_set_temp_filename(char *filename);
 char		*generate_temp_filename(void);
 int			create_temp_file(char *temp_filename);
 void		redirect_temp_file_to_stdin(char *temp_filename);
-void		handle_heredoc(t_data *data, char *delimiter);
+void		handle_heredoc(t_exec * exec, char *delimiter);
 
 /* heredoc_utils */
 void		int_to_str(int num, char *str);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expander_1.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
+/*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 13:25:45 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/19 15:26:38 by marianamest      ###   ########.fr       */
+/*   Updated: 2025/03/19 20:50:32 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ char	*edge_expand(char *var_name, t_msh *msh)
 	else if (var_name[1] == '?')
 	{
 		free(var_value);
-		var_value = ft_itoa(msh->exit);
+		var_value = ft_itoa(msh->exit_status);
 	}
 	else if (var_name[1] == '$')
 	{

@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
+/*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 06:32:58 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/19 16:57:08 by marianamest      ###   ########.fr       */
+/*   Updated: 2025/03/20 01:15:08 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
+//token list && exec
 
 void print_msh(t_msh *msh)
 {
@@ -22,18 +23,16 @@ void print_msh(t_msh *msh)
         printf("msh is NULL\n");
         return;
     }
-
     printf("msh->line: %s\n", msh->line ? msh->line : "(NULL)");
     printf("msh->home: %s\n", msh->home ? msh->home : "(NULL)");
     printf("msh->pwd: %s\n", msh->pwd ? msh->pwd : "(NULL)");
     printf("msh->env: %p\n", (void *)msh->env);
     printf("msh->exec: %p\n", (void *)msh->exec);
-    printf("msh->data: %p\n", (void *)msh->data);
-    printf("msh->exit: %d\n", msh->exit);
+    printf("msh->exit: %d\n", msh->exit_status);
     printf("Tokens:\n");
     token = msh->tokens;
     if (!token)
-        printf("  (NULL)\n");
+        printf("(NULL)\n");
     while (token)
     {
         printf("  Token content: %s\n", token->content ? token->content : "(NULL)");
@@ -53,13 +52,12 @@ int	parser(void)
 	if (!tokenizer())
 		return (0);
 	expander(msh()->tokens);
-	//print_msh(msh());
+	print_msh(msh());
+    //remove_quotes();
 	if (!check_syntax(msh()->tokens))
 		return (0);
-<<<<<<< HEAD
-	// dar set da struct para a exec
-=======
-	//dar set da struct para a exec
->>>>>>> ebc20cefbf185e866de25b0816340fea00465b87
-	return (1);
+    if (!set_exec())
+        return (0);
+    //print_exec_struct(msh()->exec);
+    return (1);
 }
