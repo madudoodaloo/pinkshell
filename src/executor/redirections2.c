@@ -3,26 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   redirections2.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
+/*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 20:34:49 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/19 00:53:57 by marianamest      ###   ########.fr       */
+/*   Updated: 2025/03/20 17:39:27 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-void	child_process_logic(char **args, char **env)
-{
-	int	in_fd;
-	int	out_fd;
-
-	in_fd = -1;
-	out_fd = -1;
-	restore_parent_signals();
-	handle_redirections(args, &in_fd, &out_fd);
-	execute_command(args, in_fd, out_fd, env);
-}
+//void	child_process_logic(char **args, char **env)
+//{
+//	int	in_fd;
+//	int	out_fd;
+//
+//	in_fd = -1;
+//	out_fd = -1;
+//	//restore_parent_signals();
+//	handle_redirections(args, &in_fd, &out_fd);
+//	execute_command(args, in_fd, out_fd, env);
+//}
 
 void	execute_with_redirections(char **args, char **env)
 {

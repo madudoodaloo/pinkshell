@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 11:59:02 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/20 17:22:29 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/20 18:04:18 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,27 +70,26 @@ int do_child(t_exec *exec)
 		return (-1);
 	if (fix_fd_pipe(exec) < 0)
 		return (pipe_error());
-	set_parent_signals();
+	signals_parent();
 	exec->pid = fork();
 	if (exec->pid < 0)
 	{
-
 		close_pipe(exec->pipe_fd);
 		return (fork_error());
 	}
 	if (exec->pid == 0)
 	{
-		set_signals_to_default();
-		child_process_new(exec);
+		signals_default();
+		new_child(exec);
 	}
 	int i = exec->index;
 	if (i > 0 && i + 1 < msh()->exec->nbr_cmds)
-		if_close(msh()->exec[i - 1].pipe_fd[0]);
+		safe_close(msh()->exec[i - 1].pipe_fd[0]);
 	if (exec->is_heredoc)
-		if_close(exec.doc_pipe[0]);
-	if_close(exec->pipe_fd[1]);
+		safe_close(exec->pipe_doc[0]);
+	safe_close(exec->pipe_fd[1]);
 	if (i + 1 >= msh()->exec->nbr_cmds)
-		if_close(exec->pipe_fd[0]);
+		safe_close(exec->pipe_fd[0]);
 	return (1);
 }
 
@@ -100,7 +99,7 @@ void	close_args_fds(t_exec *ex)
 	if (!ex)
 		return ;
 	if (ex->is_heredoc)
-		close(ex->doc_pipe[0]);
+		close(ex->pipe_doc[0]);
 	if (ex->index > 0)
 		close(msh()->exec[index - 1].pipe_fd[0]);
 	if (ex->index == ex->nbr_cmds - 1)
@@ -143,8 +142,9 @@ void exec_single_cmd(t_exec *ex)
 {
 	if (ex->cmd_invalid)
 		return ;
-	if (is_builtin(ex))
-		execute_builtin(ex);
+	if (is_builtin(ex->args[0]))
+		return;
+//execute_builtin(ex);
 	else
 	{
 		signals_ignore();
@@ -168,18 +168,22 @@ void exec_single_cmd(t_exec *ex)
 void start_executing(void)
 {
 	int i = -1;
-	char **ex;
+	t_exec *ex;
 	ex = msh()->exec;
-	if (check_redirs(ex) < 0) //nana preciso duma ft que checke se temos permissões sobre os ficheiros dados
+	//nana preciso duma ft que checke se temos permissões sobre os ficheiros dados
+	if (check_redirs(ex) < 0)
 		return ;
+	ex = msh()->exec;
 	if (msh()->exec->nbr_cmds == 1)
 		exec_single_cmd(ex);
 	else
 	{
-		while (ex[++i])
+
+		while (ex)
 		{
-			if (do_child(ex[i]) < 0)
+			if (do_child(&ex[i]) < 0)
 				return ;
+			ex++;
 		}
 		i = 0;
 		while (i < msh()->exec->nbr_cmds)
