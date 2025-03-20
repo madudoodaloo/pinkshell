@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 06:32:58 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/20 01:15:08 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/20 04:29:47 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,6 @@ int	parser(void)
 	if (!tokenizer())
 		return (0);
 	expander(msh()->tokens);
-	print_msh(msh());
     //remove_quotes();
 	if (!check_syntax(msh()->tokens))
 		return (0);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   envp_1.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
+/*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 01:27:31 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/19 16:57:05 by marianamest      ###   ########.fr       */
+/*   Updated: 2025/03/20 03:42:00 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ t_env	*create_var(char *str)
 
 	i = 0;
 	new = NULL;
-	new = (t_env *)safe_malloc(sizeof(t_env));
+	new = safe_malloc(sizeof(t_env));
 	new->var = ft_strdup(str);
 	new->valid = false;
 	while (str[i] && str[i] != '=')

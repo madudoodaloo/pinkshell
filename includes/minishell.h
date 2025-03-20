@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 13:57:32 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/20 02:19:48 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/20 04:16:21 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,23 +36,20 @@
 # define R_IN 5
 # define HERE_DOC 6
 
-// rever 1: se ainda vai ser preciso dps da ft_dup_env - Environment variables
-// rever 2: EXPANSÃO DE VARIÁVEIS NO HEREDOC
-// rever 3: projetgemos leaks de memoria antes de matar os processos no heredoc (?)
+// rever se ainda vai ser preciso dps da ft_dup_env - Environment variables
 
 typedef struct s_exec
 {
-	char			**redir_in;
-	char			**redir_out;
-	char			**args;
-	int				heredoc_pipefd[2];
-	int 			nbr_cmds; // pipes - 1
-	int				pipe_fd[2];
-	int 			in_fd;  // vai ler
-	int 			out_fd; // vai escrever
-	bool			is_heredoc;
-	char 			**envp; // manter a t_env e arranjar uma função
-	bool			cmd_invalid;
+	char	**redir_in;
+	char 	**redir_out;
+	char 	**args;
+	int		nbr_cmds; //pipes
+	int		pipe_fd[2];
+	int		in_fd; //vai ler
+	int		out_fd; //vai escrever
+	bool	is_heredoc;
+	char	**envp; // manter a t_env e arranjar uma função
+	bool	cmd_invalid;
 }					t_exec;
 
 typedef struct s_env
