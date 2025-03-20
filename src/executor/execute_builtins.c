@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 16:58:48 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/20 19:06:23 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/20 20:38:04 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	execute_builtin(t_exec *exec)
 	return (1);
 }
 
-//void	execute_builtin_in_fork(/*whatever it requires*/)// check if void is appropriate and add to .h file
+// void	execute_builtin_in_fork(/*whatever it requires*/)// check if void is appropriate and add to .h file
 //{
 //	execute_builtin(/*args required*/);
 //	exit(msh()->exit_status);
