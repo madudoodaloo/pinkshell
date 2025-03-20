@@ -1,38 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rm_quotes.c                                        :+:      :+:    :+:   */
+/*   rm_quotes1.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 04:54:10 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/20 07:37:57 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/20 16:54:53 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-int	skip_quotes(char *str, int i)
+static void	copy_quote(char *dest, int i_dest, char *src, int i_src)
 {
-	int	len;
+	int	i;
+	int	j;
 
-	len = i;
-	if (str[len] == 34)
+	i = i_src;
+	j = i_dest;
+	if (src[i] == '\'')
 	{
-		len++;
-		while (str[len] && str[len] != 34)
-			len++;
-		return (len + 1 - i);
+		i++;
+		while (src[i] != '\'' && src[i] != '\0')
+			dest[j++] = src[i++];
 	}
-	else if (str[len] == 39)
+	else if (src[i] == '\"')
 	{
-		len++;
-		while (str[len] != 39 && str[len])
-			len++;
-		return (len - i + 1);
+		i++;
+		while (src[i] != '\"' && src[i] != '\0')
+			dest[j++] = src[i++];
 	}
-	else
-		return (-1);
 }
 
 int	rm_strlen(char *str)
@@ -63,33 +61,12 @@ void rm_util(char *str, int i, char *new, int i_new)
 		{
 			copy_quote(str, i, new, i_new);
 			i_new = i_new + skip_quotes(str, i);
-
 		}
 	}
 }
 
-static void	copy_quote(char *dest, char *src)
-{
-	int	i;
-	int	j;
 
-	i = 0;
-	j = 0;
-	if (src[i] == '\'')
-	{
-		i++;
-		while (src[i] != '\'' && src[i] != '\0')
-			dest[j++] = src[i++];
-	}
-	else if (src[i] == '\"')
-	{
-		i++;
-		while (src[i] != '\"' && src[i] != '\0')
-			dest[j++] = src[i++];
-	}
-}
-
-char *rm_quote(char*str, int i)
+char *rm_quote(char *str)
 {
 	char *new;
 	int i;
@@ -103,7 +80,7 @@ char *rm_quote(char*str, int i)
 	if(!rm_strlen(str))
 		new[0] = '\0';
 	else
-		rm_diff(str, i + 1, new, i_new);
+		rm_util(str, i + 1, new, i_new);
 	free(str);
 	return (new);
 
@@ -115,16 +92,18 @@ void	rm_quotes_exec(t_exec	*exec)
 
 	i = -1;
 	index = 0;
+	if (!exec)
+		return ;
 	while (index < exec[0].nbr_cmds)
 	{
 		while (exec[index].redir_in && exec[index].redir_in[++i])
-			exec[index].redir_in[i] = rm_quote(exec[index].redir_in, i);
+			exec[index].redir_in[i] = rm_quote(exec[index].redir_in[i]);
 		i = -1;
 		while (exec[index].redir_out && exec[index].redir_out[++i])
-			exec[index].redir_out[i] = rm_quote(exec[index].redir_out, i);
+			exec[index].redir_out[i] = rm_quote(exec[index].redir_out[i]);
 		i = -1;
 		while (exec[index].args && exec[index].args[++i])
-			exec[index].args[i] = rm_quote(exec[index].args, i);
+			exec[index].args[i] = rm_quote(exec[index].args[i]);
 		index++;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 13:57:32 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/20 15:36:33 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/20 16:05:03 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,6 @@ typedef struct s_exec
 	int		in_fd; //vai ler
 	int		out_fd; //vai escrever
 	bool	is_heredoc;
-	int		pipe_doc[2];
 	char	**envp; // manter a t_env e arranjar uma função
 	bool	cmd_invalid;
 	int		index;

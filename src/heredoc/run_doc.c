@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   run_doc.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
+/*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 12:20:57 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/20 14:35:00 by marianamest      ###   ########.fr       */
+/*   Updated: 2025/03/20 16:17:46 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,18 +34,6 @@ int	run_doc(char *delimiter, t_exec *exec, int k)
 		exec[k].cmd_invalid = true;
 		msh()->exit_status = 0;
 	}
-}
-
-void	close_pipe(int *fd)
-{
-	safe_close(fd[0]);
-	safe_close(fd[1]);
-}
-
-void	safe_close(int fd)
-{
-	if (fd > 2)
-		close(fd);
 }
 
 void	read_into_heredoc(char *delimiter, t_exec *exec, int k)

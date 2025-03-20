@@ -6,11 +6,34 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 20:35:37 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/20 04:54:01 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/20 16:29:25 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
+
+int	skip_quotes(char *str, int i)
+{
+	int	len;
+
+	len = i;
+	if (str[len] == 34)
+	{
+		len++;
+		while (str[len] && str[len] != 34)
+			len++;
+		return (len + 1 - i);
+	}
+	else if (str[len] == 39)
+	{
+		len++;
+		while (str[len] != 39 && str[len])
+			len++;
+		return (len - i + 1);
+	}
+	else
+		return (-1);
+}
 
 int	in_quotes(char *line, int max)
 {

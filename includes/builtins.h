@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtins.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
+/*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 06:01:00 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/20 14:18:29 by marianamest      ###   ########.fr       */
+/*   Updated: 2025/03/20 16:04:46 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void	export_command(char **args, t_env *env, int fd);
 char	**init_export_array(char **env);
 
 /* pwd */
-void	pwd(int fd)
+void	pwd(int fd);
 void	update_pwd(void);
 
 /* unset1 */

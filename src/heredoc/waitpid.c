@@ -3,14 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   waitpid.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
+/*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 12:22:09 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/20 14:35:03 by marianamest      ###   ########.fr       */
+/*   Updated: 2025/03/20 16:17:58 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
+
+void	close_pipe(int *fd)
+{
+	safe_close(fd[0]);
+	safe_close(fd[1]);
+}
+
+void	safe_close(int fd)
+{
+	if (fd > 2)
+		close(fd);
+}
 
 void	ft_waitpid(int pid)
 {
