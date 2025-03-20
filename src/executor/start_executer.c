@@ -6,7 +6,7 @@
 /*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 11:59:02 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/20 18:14:40 by marianamest      ###   ########.fr       */
+/*   Updated: 2025/03/20 18:17:56 by marianamest      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,8 +100,8 @@ void new_child(t_exec *ex)
 
 	if (!ex || ex->cmd_invalid)
 		close_args_fds(ex);
-	do_input_redir(ex);
-	do_out_redir(ex);
+	//do_input_redir(ex);
+	//do_out_redir(ex);
 	if (ex->index > 0 || ex->index < ex->nbr_cmds - 1)
 		close_fds(ex->pipe_fd);
 	if (!ex->args)
