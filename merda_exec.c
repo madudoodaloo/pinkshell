@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   start_executer.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
+/*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 11:59:02 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/20 18:07:15 by marianamest      ###   ########.fr       */
+/*   Updated: 2025/03/20 20:01:46 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,7 +120,7 @@ void new_child(t_exec *ex)
 	if (!ex || ex->cmd_invalid)
 		close_args_fds(ex);
 	do_input_redir(ex);
-	do_out_redir(ex);
+	do_output_redir(ex);
 	if (ex->index > 0 || ex->index < ex->nbr_cmds - 1)
 		close_fds(ex->pipe_fd);
 	if (!ex->args)

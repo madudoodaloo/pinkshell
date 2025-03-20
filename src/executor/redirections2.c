@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 20:34:49 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/20 17:39:27 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/20 18:35:19 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 //	execute_command(args, in_fd, out_fd, env);
 //}
 
-void	execute_with_redirections(char **args, char **env)
+/* void	execute_with_redirections(char **args, char **env)
 {
 	pid_t	pid;
 	int		status;
@@ -42,4 +42,4 @@ void	execute_with_redirections(char **args, char **env)
 		perror("fork");
 		exit(1);
 	}
-}
+} */

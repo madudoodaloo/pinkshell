@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   start_executer.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
+/*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 11:59:02 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/20 18:14:40 by marianamest      ###   ########.fr       */
+/*   Updated: 2025/03/20 20:17:48 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,20 +101,20 @@ void new_child(t_exec *ex)
 	if (!ex || ex->cmd_invalid)
 		close_args_fds(ex);
 	do_input_redir(ex);
-	do_out_redir(ex);
+	do_output_redir(ex);
 	if (ex->index > 0 || ex->index < ex->nbr_cmds - 1)
 		close_fds(ex->pipe_fd);
 	if (!ex->args)
 		exit(0);
 	if (is_builtin(ex->args[0]))
-		exec_if_builtin(ex);
+		execute_builtin(ex);
 	else
 	{
 		if (!ft_strchr(ex->args[0], '/'))
 			path = path_search(ex->args[0], msh()->env);
 		else
 			path = ex->args[0];
-		envp = env_to_double_chr_ptr(msh()->env);
+		envp = get_matrix_env(msh()->env);
 		execve(path, ex->args, envp);
 		excve_perror(ex->args[0]);
 	}
@@ -126,8 +126,7 @@ void exec_single_cmd(t_exec *ex)
 	if (ex->cmd_invalid)
 		return ;
 	if (is_builtin(ex->args[0]))
-		return;
-//execute_builtin(ex);
+		execute_builtin(ex);
 	else
 	{
 		signals_ignore();
@@ -154,7 +153,7 @@ void start_executing(void)
 	t_exec *ex;
 	ex = msh()->exec;
 	//nana preciso duma ft que checke se temos permissões sobre os ficheiros dados
-	if (prep_redir(ex) < 0)
+	if (check_redirs(ex) < 0)
 		return ;
 	ex = msh()->exec;
 	if (msh()->exec->nbr_cmds == 1)

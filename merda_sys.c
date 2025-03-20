@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sys_call_error.c                                   :+:      :+:    :+:   */
+/*   merda_sys.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
+/*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 11:59:02 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/20 18:07:34 by marianamest      ###   ########.fr       */
+/*   Updated: 2025/03/20 20:20:59 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	close_args_fds(t_exec *ex)
 	if (ex->index < ex->nbr_cmds - 1)
 	{
 		close_pipe(ex->pipe_fd);
-		ex[1].prev_pipe_fd = 0;
+		//ex[1].prev_pipe_fd = 0;
 	}
 	exit(1);
 }
@@ -145,9 +145,7 @@ void exec_single_cmd(t_exec *ex)
 	if (ex->cmd_invalid)
 		return ;
 	if (is_builtin(ex->args[0]))
-	{
-		exec_if_builtin(ex);
-	}
+		execute_builtin(ex);
 	else
 	{
 		signals_ignore();
@@ -167,11 +165,30 @@ void exec_single_cmd(t_exec *ex)
 	}
 }
 
+void executing()
+{
+	int i;
+	int in;
+	int out;
+
+	i = 0;
+	in = 0;
+	out = 1;
+	while (i < msh()->exec->nbr_cmds)
+	{
+
+
+		i++;
+	}
+
+}
+
 
 void start_executing(void)
 {
-	int i = -1;
-	char **ex;
+	int i;
+	t_exec *ex;
+
 	ex = msh()->exec;
 	if (check_redirs(ex) < 0)
 		return ;
@@ -179,11 +196,7 @@ void start_executing(void)
 		exec_single_cmd(ex);
 	else
 	{
-		while (ex[++i])
-		{
-			if (do_child(ex[i]) < 0)
-				return ;
-		}
+		executing(ex);
 		i = 0;
 		while (i < msh()->exec->nbr_cmds)
 		{
