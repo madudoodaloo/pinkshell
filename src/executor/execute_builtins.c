@@ -3,14 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execute_builtins.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
+/*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 16:58:48 by marianamest       #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2025/03/20 18:02:03 by marianamest      ###   ########.fr       */
-=======
-/*   Updated: 2025/03/20 17:36:47 by msilva-c         ###   ########.fr       */
->>>>>>> 7eb6f63287817aab39cbe773a6df862b7dad1f2e
+/*   Updated: 2025/03/20 18:17:59 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,16 +14,6 @@
 
 //nana o que
 int	execute_builtin(t_msh *msh, char **args, char **wtf, int fd)
-<<<<<<< HEAD
-{	
-	t_env *env;
-	
-	env = msh->env;
-	if (fd == -1)
-		fd = STDOUT_FILENO;
-	if (ft_strcmp(args[0], "cd") == 0)
-		cd(get_matrix_env(env), fd);
-=======
 {
 	(void) msh;
 	(void) args;
@@ -36,7 +22,6 @@ int	execute_builtin(t_msh *msh, char **args, char **wtf, int fd)
 		fd = STDOUT_FILENO;
 /* 	if (ft_strcmp(args[0], "cd") == 0)
 		cd(get_matrix_env(msh->env), args);
->>>>>>> 7eb6f63287817aab39cbe773a6df862b7dad1f2e
 	else if (ft_strcmp(args[0], "export") == 0)
 		export_command(args, env, fd);
 	else if (ft_strcmp(args[0], "unset") == 0)
@@ -44,12 +29,13 @@ int	execute_builtin(t_msh *msh, char **args, char **wtf, int fd)
 	else if (ft_strcmp(args[0], "exit") == 0)
 		exec_exit(args);
 	else if (ft_strcmp(args[0], "env") == 0)
-		general_manage_env(get_matrix_env(env),/*fun que da a ação*/,get_matrix_env(env));
+		general_manage_env(get_matrix_env(env),get_matrix_env(env));
 	else if (ft_strcmp(args[0], "pwd") == 0)
 		pwd(fd);
 	else if (ft_strcmp(args[0], "echo") == 0)
 		run_echo(args);
- */	else
+	*/
+	else
 		return (0);
 	return (1);
 }
