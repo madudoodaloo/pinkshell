@@ -6,20 +6,13 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 13:57:32 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/20 01:29:23 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/20 02:19:48 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINISHELL_H
 # define MINISHELL_H
 
-# include "builtins.h"
-# include "executor.h"
-# include "expander.h"
-# include "heredoc.h"
-# include "parser.h"
-# include "signs.h"
-# include "utils.h"
 # include <errno.h>
 # include <fcntl.h>
 # include <limits.h>
@@ -53,7 +46,7 @@ typedef struct s_exec
 	char			**redir_out;
 	char			**args;
 	int				heredoc_pipefd[2];
-	int 			nr_cmds; // pipes - 1
+	int 			nbr_cmds; // pipes - 1
 	int				pipe_fd[2];
 	int 			in_fd;  // vai ler
 	int 			out_fd; // vai escrever
