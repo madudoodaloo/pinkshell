@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 11:59:02 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/20 15:30:49 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/20 17:44:27 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ int do_child(t_exec *exec)
 		return (-1);
 	if (fix_fd_pipe(exec) < 0)
 		return (pipe_error());
-	set_parent_signals();
+	signals_parent();
 	exec->pid = fork();
 	if (exec->pid < 0)
 	{
@@ -81,7 +81,7 @@ int do_child(t_exec *exec)
 	}
 	if (exec->pid == 0)
 	{
-		set_signals_to_default();
+		signals_default();
 		child_process_new(exec);
 	}
 	int i = exec->index;

@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 11:59:02 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/20 17:22:29 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/20 17:49:06 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,17 +70,16 @@ int do_child(t_exec *exec)
 		return (-1);
 	if (fix_fd_pipe(exec) < 0)
 		return (pipe_error());
-	set_parent_signals();
+	signals_parent();
 	exec->pid = fork();
 	if (exec->pid < 0)
 	{
-
 		close_pipe(exec->pipe_fd);
 		return (fork_error());
 	}
 	if (exec->pid == 0)
 	{
-		set_signals_to_default();
+		signals_default();
 		child_process_new(exec);
 	}
 	int i = exec->index;
@@ -168,18 +167,20 @@ void exec_single_cmd(t_exec *ex)
 void start_executing(void)
 {
 	int i = -1;
-	char **ex;
+	char *ex;
 	ex = msh()->exec;
 	if (check_redirs(ex) < 0) //nana preciso duma ft que checke se temos permissões sobre os ficheiros dados
 		return ;
+	ex = msh()->exec;
 	if (msh()->exec->nbr_cmds == 1)
 		exec_single_cmd(ex);
 	else
 	{
-		while (ex[++i])
+		while (*ex)
 		{
-			if (do_child(ex[i]) < 0)
+			if (do_child(*ex) < 0)
 				return ;
+			*ex++;
 		}
 		i = 0;
 		while (i < msh()->exec->nbr_cmds)
