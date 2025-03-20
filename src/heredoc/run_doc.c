@@ -6,7 +6,7 @@
 /*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 18:55:08 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/19 22:02:51 by marianamest      ###   ########.fr       */
+/*   Updated: 2025/03/20 00:23:31 by marianamest      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,26 +28,26 @@ int run_doc(char *delimiter, t_exec *exec, int k)
     ft_waitpid(pid);
     if(msh()->exit == 130)
         return(-1);
-    if(msh()->exit == 169) // numero da nana
+    if(msh()->exit == 169) // numero da nana random
     {
         exec[k].cmd_invalid = true;
         msh()->exit = 0;
     }
 }
 
-void close_pipe(int *fd) // fechar todos os pipes
+void close_pipe(int *fd)
 {
     safe_close(fd[0]);
     safe_close(fd[1]);
 }
 
-void safe_close(int fd) // so fecha fd se o fd for > 2
+void safe_close(int fd)
 {
     if(fd > 2)
         close(fd);
 }
 
-void read_into_heredoc(char *delimiter, t_exec *exec, int k) // 
+void read_into_heredoc(char *delimiter, t_exec *exec, int k)
 {
     char *str;
     signal(SIGINT, SIG_DFL);
@@ -76,7 +76,10 @@ void control_d_handle(t_exec *exec, int k, char *str)
 
 void write_to_pipe(char *str, t_exec *exec)
 {
-    char *|help = strjoin str + \n ;
-    write(exec->pipe_fd[1], "??????" , ft_strlen(str));
-}   free;
+    char *s1;
+
+    s1 = ft_strjoin(str, "\n");
+    write(exec->pipe_fd[1], &s1, ft_strlen(str));
+    free(s1);
+}
 

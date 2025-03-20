@@ -6,7 +6,7 @@
 /*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 18:29:52 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/19 22:06:46 by marianamest      ###   ########.fr       */
+/*   Updated: 2025/03/20 00:29:43 by marianamest      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,9 @@ int prep_in_redir(t_exec *exec)
     i = 0;
     while(i < exec[i].nr_cmds)
     {
-        open_infile_loop();
+        open_infile_loop(, exec, /*index*/);
     }
 }
-
-// rever : is_final_heredoc -> checks if heredoc is last redir and updates is_heredoc bool
 
 int doc_loop (char **in_redirs, t_exec *exec, int k) // recebe da prep_in_redir e i de index de onde estou no arr do exec e k para char **
 {
@@ -69,9 +67,18 @@ int open_infile_loop(char **in_redirs, t_exec *exec, int k)
     safe_close(exec->in_fd);
 }
 
-// nome de funncao novo
-// if(fd = open(in_redirs[i] + 4, O_RDONLY);)
-// verificar se nome esta vazio 
-// verificar o retorno do open
+int is_final_heredoc(char **in_redirs, t_exec *exec, int k)
+{
+    int i = 0;
+    int last_heredoc_index = -1;
+    while(in_redirs)
+    
+}
 
 
+// rever : nome de funncao novo :
+// 1- if(fd = open(in_redirs[i] + 4, O_RDONLY);)
+// 2- verificar se nome esta vazio 
+// 3- verificar o return do open
+
+// rever : is_final_heredoc -> checks if heredoc is last redir and updates is_heredoc bool
