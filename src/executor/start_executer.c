@@ -6,7 +6,7 @@
 /*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 11:59:02 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/20 18:10:59 by marianamest      ###   ########.fr       */
+/*   Updated: 2025/03/20 18:14:40 by marianamest      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,23 +93,6 @@ int do_child(t_exec *exec)
 	return (1);
 }
 
-void	close_args_fds(t_exec *ex)
-{
-	int index = ex->index;
-	if (!ex)
-		return ;
-	if (ex->is_heredoc)
-		close(ex->pipe_doc[0]);
-	if (ex->index > 0)
-		close(msh()->exec[index - 1].pipe_fd[0]);
-	if (ex->index == ex->nbr_cmds - 1)
-	{
-		close(ex->pipe_fd[1]);
-		close(ex->pipe_fd[0]);
-	}
-	exit(1);
-}
-
 void new_child(t_exec *ex)
 {
 	char	**envp;
@@ -171,7 +154,7 @@ void start_executing(void)
 	t_exec *ex;
 	ex = msh()->exec;
 	//nana preciso duma ft que checke se temos permissões sobre os ficheiros dados
-	if (check_redirs(ex) < 0)
+	if (prep_redir(ex) < 0)
 		return ;
 	ex = msh()->exec;
 	if (msh()->exec->nbr_cmds == 1)
