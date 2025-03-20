@@ -6,7 +6,7 @@
 /*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 16:58:48 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/20 14:19:01 by marianamest      ###   ########.fr       */
+/*   Updated: 2025/03/20 15:23:23 by marianamest      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,4 +33,22 @@ int	execute_builtin(t_msh *msh, char **args, char ***export, int fd)
 	else
 		return (0);
 	return (1);
+}
+
+void	execute_builtin_in_fork(/*whatever it requires*/)// check if void is appropriate and add to .h file
+{
+	execute_builtin(/*args required*/);
+	exit(msh()->exit_status);
+}
+
+int	is_builtin(char *command)
+{
+	if (ft_strcmp(command, "cd") == 0 || ft_strcmp(command, "export") == 0
+		|| ft_strcmp(command, "unset") == 0 || ft_strcmp(command, "exit") == 0
+		|| ft_strcmp(command, "env") == 0 || ft_strcmp(command, "pwd") == 0
+		|| ft_strcmp(command, "echo") == 0)
+	{
+		return (1);
+	}
+	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 13:57:32 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/20 12:56:00 by marianamest      ###   ########.fr       */
+/*   Updated: 2025/03/20 15:25:00 by marianamest      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ typedef struct s_exec
 	int		in_fd; //vai ler
 	int		out_fd; //vai escrever
 	bool	is_heredoc;
+	int		pipe_doc[2];
 	char	**envp; // manter a t_env e arranjar uma função
 	bool	cmd_invalid;
 }					t_exec;

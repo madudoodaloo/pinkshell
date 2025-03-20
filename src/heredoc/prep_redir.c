@@ -6,7 +6,7 @@
 /*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 18:29:52 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/20 14:05:07 by marianamest      ###   ########.fr       */
+/*   Updated: 2025/03/20 15:25:52 by marianamest      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	prep_in_redir(char **in_redirs, t_exec *exec, int k)
 	}
 }
 
-int	doc_loop(char **in_redirs, t_exec *exec, int k)
+int	doc_loop(char **in_redirs, t_exec *exec, int k) // doc pipe check
 {
 	int	i;
 
@@ -101,13 +101,13 @@ bool	check_and_open_file(char *file_name)
 
 	if (file_name == NULL || *file_name == '\0')
 	{
-		printf("Error: File name is empty\n");
+		ft_put_str_fd("Error: File name is empty\n", STDERR_FILENO);
 		return (false);
 	}
 	fd = open(file_name, O_RDONLY);
 	if (fd < 0)
 	{
-		printf("Error opening file: %s\n", file_name);
+		ft_put_str_fd("Error opening file: %s\n", STDERR_FILENO);
 		return (false);
 	}
 	close(fd);
