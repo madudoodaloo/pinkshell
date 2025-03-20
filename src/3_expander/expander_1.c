@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 13:25:45 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/19 20:50:32 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/20 07:44:41 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ char	*edge_expand(char *var_name, t_msh *msh)
 	else if (var_name[1] == '$')
 	{
 		free(var_value);
-		var_value = ft_itoa(getpid());
+		var_value = ft_strdup("");
 	}
 	return (var_value);
 }

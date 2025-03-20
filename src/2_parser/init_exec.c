@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 20:08:55 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/19 21:11:26 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/20 14:12:20 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,7 @@ void tokens_to_exec(t_token *token, t_exec *exec, int nbr_cmds)
 	i = 0;
 	while (token)
 	{
+		exec[i].index = i;
 		exec[i].nbr_cmds = nbr_cmds;
 		if (token->type == CMD)
 				exec[i].args = add_to_matrix(token->content, exec[i].args);
@@ -115,7 +116,7 @@ t_exec *init_exec(t_token *tokens)
 	if (!tokens)
 		return (NULL);
 	nbr_cmds = count_cmds(tokens); //CHECK IF SYNTAX IS TRULLY WORKING
-	exec = (t_exec *)safe_malloc(sizeof(t_exec) * nbr_cmds);
+	exec = (t_exec *)safe_malloc(sizeof(t_exec) * (nbr_cmds + 1));
 	tokens_to_exec(tokens, exec, nbr_cmds);
 	return (exec);
 }

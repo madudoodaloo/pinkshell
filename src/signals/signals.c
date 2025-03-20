@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 01:16:49 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/20 04:22:44 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/20 13:59:15 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	sigint_handler(int sig)
 	msh()->exit_status = 130;
 }
 
-void	init_signals(void)
+void	main_signals(void)
 {
 	struct sigaction	sa;
 

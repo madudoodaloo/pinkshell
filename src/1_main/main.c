@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 15:19:12 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/20 04:34:07 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/20 15:00:54 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,11 @@ void	msh_loop(char **envp)
         {
             add_history(msh()->line);
             if (parser())
-                   printf("siga crlh\n");//start_execution();
+			{
+				start_executing();
+				printf("%s\n", msh()->exec[0]);
+				printf("%s\n", msh()->exec[1]);
+			}
             else
                 msh()->exit_status = 2;
         }
@@ -62,7 +66,7 @@ int	main(int ac, char **av, char **envp)
 	(void)av;
 	if (ac == 1)
 	{
-		init_signals();
+		main_signals();
 		msh_loop(envp);
 	}
 	else

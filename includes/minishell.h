@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 13:57:32 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/20 04:16:21 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/20 15:24:25 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,16 +40,20 @@
 
 typedef struct s_exec
 {
+	int		pid;
 	char	**redir_in;
 	char 	**redir_out;
 	char 	**args;
 	int		nbr_cmds; //pipes
 	int		pipe_fd[2];
+	int		pipe_doc[2];
+	int		prev_pipe_fd;
 	int		in_fd; //vai ler
 	int		out_fd; //vai escrever
 	bool	is_heredoc;
 	char	**envp; // manter a t_env e arranjar uma função
 	bool	cmd_invalid;
+	int		index;
 }					t_exec;
 
 typedef struct s_env
@@ -80,6 +84,7 @@ typedef struct s_msh
 	t_token			*tokens;
 	t_exec			*exec;
 	int				exit_status;
+	bool			signaled;
 }					t_msh;
 
 typedef enum e_temp_op

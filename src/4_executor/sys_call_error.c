@@ -1,25 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   signs.h                                            :+:      :+:    :+:   */
+/*   sys_call_error.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/30 16:26:02 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/20 13:59:15 by msilva-c         ###   ########.fr       */
+/*   Created: 2025/03/20 14:42:43 by msilva-c          #+#    #+#             */
+/*   Updated: 2025/03/20 14:43:36 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SIGNS_H
-# define SIGNS_H
+#include "../includes/minishell.h"
 
-# include "../includes/minishell.h"
+int	pipe_error(void)
+{
+	perror("pipe");
+	msh()->exit_status = 1;
+	return (-1);
+}
 
-/* signals.c */
-void    main_signals(void);
-void	sigint_handler(int sig);
-void    signals_parent(void);
-void    signals_ignore(void);
-void    signals_default(void);
+void	close_fds(int *fds)
+{
+	if_close(fds[0]);
+	close(fds[1]);
+}
 
-#endif
+int	fork_error(void)
+{
+	perror("fork");
+	msh()->exit_status = 1;
+	return (-1);
+}
+
+
