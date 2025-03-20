@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 11:59:02 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/20 17:44:27 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/20 18:04:18 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,16 +82,16 @@ int do_child(t_exec *exec)
 	if (exec->pid == 0)
 	{
 		signals_default();
-		child_process_new(exec);
+		new_child(exec);
 	}
 	int i = exec->index;
 	if (i > 0 && i + 1 < msh()->exec->nbr_cmds)
-		if_close(msh()->exec[i - 1].pipe_fd[0]);
+		safe_close(msh()->exec[i - 1].pipe_fd[0]);
 	if (exec->is_heredoc)
-		if_close(exec.doc_pipe[0]);
-	if_close(exec->pipe_fd[1]);
+		safe_close(exec.pipe_doc[0]);
+	safe_close(exec->pipe_fd[1]);
 	if (i + 1 >= msh()->exec->nbr_cmds)
-		if_close(exec->pipe_fd[0]);
+		safe_close(exec->pipe_fd[0]);
 	return (1);
 }
 
@@ -101,7 +101,7 @@ void	close_args_fds(t_exec *ex)
 	if (!ex)
 		return ;
 	if (ex->is_heredoc)
-		close(ex->doc_pipe[0]);
+		close(ex->pipe_doc[0]);
 	if (ex->index > 0)
 		close(msh()->exec[index - 1].pipe_fd[0]);
 	if (ex->index == ex->nbr_cmds - 1)
