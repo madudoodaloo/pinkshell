@@ -6,11 +6,7 @@
 /*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 19:58:02 by marianamest       #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2025/03/20 17:42:57 by marianamest      ###   ########.fr       */
-=======
-/*   Updated: 2025/03/20 17:35:03 by msilva-c         ###   ########.fr       */
->>>>>>> 7eb6f63287817aab39cbe773a6df862b7dad1f2e
+/*   Updated: 2025/03/20 18:09:04 by marianamest      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +16,7 @@
 # include "../includes/minishell.h"
 
 /* src/executor/execute_builtins.c */
-<<<<<<< HEAD
 int     execute_builtin(t_msh *msh, char **args, char **export, int fd);
-=======
-int	execute_builtin(t_msh *msh, char **args, char **wtf, int fd);
->>>>>>> 7eb6f63287817aab39cbe773a6df862b7dad1f2e
 void    execute_builtin_in_fork(void); // Adjust parameters as needed
 int     is_builtin(char *command);
 

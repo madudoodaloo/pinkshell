@@ -6,19 +6,11 @@
 /*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 06:01:00 by msilva-c          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2025/03/20 17:36:27 by marianamest      ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-# ifndef BUILTINS_H
-=======
-/*   Updated: 2025/03/20 17:33:59 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/20 18:08:16 by marianamest      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef BUILTINS_H
->>>>>>> 7eb6f63287817aab39cbe773a6df862b7dad1f2e
 # define BUILTINS_H
 
 
