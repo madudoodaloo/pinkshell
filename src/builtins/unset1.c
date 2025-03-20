@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   unset1.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 19:41:04 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/18 02:11:29 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/20 17:28:08 by marianamest      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
