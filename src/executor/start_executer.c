@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 11:59:02 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/20 21:57:25 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/20 23:13:39 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,10 +101,6 @@ void new_child(t_exec *ex)
 	envp = get_matrix_env(msh()->env);
 	if (!ex || ex->cmd_invalid)
 		close_args_fds(ex);
-	do_input_redir(ex);
-	do_output_redir(ex);
-	if (ex->index > 0 || ex->index < ex->nbr_cmds - 1)
-		close_fds(ex->pipe_fd);
 	if (!ex->args)
 		exit(0);
 	if (is_builtin(ex->args[0]))
@@ -122,7 +118,7 @@ void new_child(t_exec *ex)
 	exit(127);
 }
 
-void exec_single_cmd(t_exec *ex)
+void exec_single_cmd(t_exec *ex, int in, int out)
 {
 	if (ex->cmd_invalid)
 		return ;
@@ -141,9 +137,46 @@ void exec_single_cmd(t_exec *ex)
 		if (ex->pid == 0)
 		{
 			signals_default();
+			dup2(in, STDIN_FILENO);
+			dup2(out, STDOUT_FILENO);
+			ft_close(in);
+			ft_close(out);
 			new_child(ex);
 		}
-		ft_waitpid(ex->pid);
+	}
+	ft_close(in);
+	ft_close(out);
+}
+
+void ft_close(int fd)
+{
+	if (fd > 2)
+		close(fd);
+}
+void execute_loop(t_exec *ex, int in, int out)
+{
+	int i = 0;
+	while (i < msh()->exec->nbr_cmds)
+	{
+		out = STDOUT_FILENO;
+		if (i + 1 < msh()->exec->nbr_cmds)
+		{
+			pipe(ex[i].pipe_fd);
+			out = ex[i].pipe_fd[1];
+		}
+		if (ex[i].out_fd)
+		{
+			ft_close(out);
+			out = ex[i].out_fd;
+		}
+		if (ex[i].in_fd)
+		{
+			ft_close(in);
+			in = ex[i].in_fd;
+		}
+		exec_single_cmd(&ex[i], in, out);
+		in = ex[i].pipe_fd[0];
+		i++;
 	}
 }
 
@@ -151,30 +184,27 @@ void exec_single_cmd(t_exec *ex)
 void start_executing(void)
 {
 	int i = -1;
+	int pid;
+
 	t_exec *ex;
 	ex = msh()->exec;
 	//nana preciso duma ft que checke se temos permissões sobre os ficheiros dados
-	// if (check_redirs(ex) < 0)
-	// 	return ;
+	if (check_redirs(ex) < 0)
+		return ;
 	ex = msh()->exec;
 	if (msh()->exec->nbr_cmds == 1)
-		exec_single_cmd(ex);
+		exec_single_cmd(ex, 0, 1);
 	else
 	{
-
-		while (ex)
-		{
-			if (do_child(&ex[i]) < 0)
-				return ;
-			ex++;
-		}
-		i = 0;
-		while (i < msh()->exec->nbr_cmds)
-		{
-			ft_waitpid(msh()->exec[i].pid);
-			i++;
-		}
+		pid = fork();
+		if (pid == 0)
+			execute_loop(ex, STDIN_FILENO, STDOUT_FILENO);
+		else
+			ft_waitpid(pid);
 	}
+	i = -1;
+	while (++i < msh()->exec->nbr_cmds)
+		ft_waitpid(-1);
 	main_signals();
 }
 
