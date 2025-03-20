@@ -6,13 +6,13 @@
 /*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 15:19:12 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/20 02:03:01 by marianamest      ###   ########.fr       */
+/*   Updated: 2025/03/20 02:14:26 by marianamest      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-void	clean_cmdline(void)
+void    clean_cmdline(void)
 {
 	t_msh	*m;
 
@@ -35,33 +35,26 @@ void	clean_cmdline(void)
 
 void	msh_loop(char **envp)
 {
-	init_all(envp);
-	while (1)
-	{
-		msh()->line = readline("minishell$");
-		if (!msh()->line)
-		{
-			ft_put_str_fd("exit\n", 2);
-			break ;
-		}
-		if (msh()->line && *msh()->line)
-		{
-			add_history(msh()->line);
-			if (parser())
-			{
-				if (init_exec())
-				{
-					// printf("has entered exec\n");
-					start_execution();
-				}
-				else
-					printf("init_exec() = %d\n", init_exec());
-			}
-			// msh()->exit = 2;
-		}
-		clean_cmdline();
-	}
-	free_and_exit();
+    init_all(envp);
+    while (1)
+    {
+        msh()->line = readline("minishell$");
+        if (!msh()->line)
+        {
+            ft_put_str_fd("exit\n", 2);
+            break ;
+        }
+        if (msh()->line && *msh()->line)
+        {
+            add_history(msh()->line);
+            if (parser())
+                   printf("siga crlh\n");//start_execution();
+            else
+                msh()->exit_status = 2;
+        }
+        clean_cmdline();
+    }
+    free_and_exit();
 }
 
 int	main(int ac, char **av, char **envp)
@@ -69,7 +62,7 @@ int	main(int ac, char **av, char **envp)
 	(void)av;
 	if (ac == 1)
 	{
-		// setup_signals();
+		init_signals();
 		msh_loop(envp);
 	}
 	else

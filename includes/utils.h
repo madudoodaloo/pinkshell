@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 06:01:56 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/19 15:36:11 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/20 01:00:03 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,5 +76,7 @@ char	*ft_strdup(const char *s);
 
 /* delete.c */
 void print_msh(t_msh *msh);
+//void	print_exec_struct(t_exec *exec);
+char	**copy_matrix(char **src);
 
 #endif

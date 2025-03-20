@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   malloc.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
+/*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 15:19:22 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/19 15:37:22 by marianamest      ###   ########.fr       */
+/*   Updated: 2025/03/19 19:44:36 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@ void	*safe_malloc(size_t size)
 	if (!new)
 	{
 		ft_put_str_fd("Failed malloc\n", 2);
-		free_and_exit();// rever
-		exit(1);// rever
+		free_and_exit();
+		exit(1);
 	}
 	ft_memset(new, '\0', size);
 	return (new);

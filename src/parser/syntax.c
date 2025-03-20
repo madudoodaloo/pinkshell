@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   syntax.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
+/*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 07:28:19 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/19 16:56:51 by marianamest      ###   ########.fr       */
+/*   Updated: 2025/03/19 20:21:15 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ int	syntax_pipe(t_token *token)
 
 int	error_redir(t_token *token)
 {
-	printf("inside error redir\n");
 	if (!token || !token->content || !token->content[0])
 	{
 		ft_put_str_fd("error near redirections\n", 2);
@@ -42,11 +41,7 @@ int	error_redir(t_token *token)
 	}
 	if (!token->prev)
 	{
-<<<<<<< HEAD
-		write(2, "error near newline\n", 19);
-=======
 		ft_put_str_fd("error near newline\n", 2);
->>>>>>> ebc20cefbf185e866de25b0816340fea00465b87
 		return (0);
 	}
 	write(2, "error near \"", 12);
@@ -57,7 +52,6 @@ int	error_redir(t_token *token)
 
 int	error_pipe(void)
 {
-	printf("inside error pipe\n");
 	ft_put_str_fd("unexpected error near \"|\"\n", 2);
 	return (0);
 }

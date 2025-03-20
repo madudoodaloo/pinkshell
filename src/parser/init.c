@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
+/*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 18:18:18 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/19 15:29:46 by marianamest      ###   ########.fr       */
+/*   Updated: 2025/03/19 20:49:32 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,7 @@ t_msh	*init_all(char **envp)
 	minishell->env = get_env(envp);
 	minishell->home = get_home();
 	minishell->pwd = getcwd(NULL, 0);
-	minishell->data = NULL;
 	minishell->exec = NULL;
-	minishell->exit = 0;
+	minishell->exit_status = 0;
 	return (msh());
 }

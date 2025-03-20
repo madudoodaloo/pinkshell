@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   signals1.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
+/*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 16:26:33 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/19 15:35:30 by marianamest      ###   ########.fr       */
+/*   Updated: 2025/03/19 23:55:46 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-void	signal_handler(t_data *data, int signum)
+void	signal_handler(t_exec * exec, int signum)
 {
 	if (signum == SIGINT)
 	{
@@ -31,7 +31,7 @@ void	signal_handler(t_data *data, int signum)
 	}
 }
 
-void	handle_signals_and_cleanup(t_data *data)
+void	handle_signals_and_cleanup(t_exec * exec)
 {
 	if (g_signal == SIGINT)
 	{
@@ -54,7 +54,6 @@ void	handle_signals_and_cleanup(t_data *data)
 void	setup_signals(void)
 {
 	struct sigaction	sa;
-
 	sa.sa_handler = signal_handler;
 	sigemptyset(&sa.sa_mask);
 	sigaction(SIGINT, &sa, NULL);

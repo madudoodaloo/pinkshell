@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
+/*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 13:57:32 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/19 20:03:54 by marianamest      ###   ########.fr       */
+/*   Updated: 2025/03/20 01:29:23 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@
 # define HERE_DOC 6
 
 // rever 1: se ainda vai ser preciso dps da ft_dup_env - Environment variables
-// rever 2: EXPANSÃO DE VARIÁVEIS NO HEREDOC 
+// rever 2: EXPANSÃO DE VARIÁVEIS NO HEREDOC
 // rever 3: projetgemos leaks de memoria antes de matar os processos no heredoc (?)
 
 typedef struct s_exec
@@ -89,7 +89,7 @@ typedef struct s_msh
 	t_env			*env;
 	t_token			*tokens;
 	t_exec			*exec;
-	int				exit;
+	int				exit_status;
 }					t_msh;
 
 typedef enum e_temp_op
@@ -101,5 +101,13 @@ typedef enum e_temp_op
 }					t_temp_op;
 
 t_msh				*msh(void);
+
+# include "builtins.h"
+# include "executor.h"
+# include "expander.h"
+# include "heredoc.h"
+# include "parser.h"
+# include "signs.h"
+# include "utils.h"
 
 #endif

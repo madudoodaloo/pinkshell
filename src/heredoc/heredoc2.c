@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   heredoc2.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
+/*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 18:13:48 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/19 18:12:21 by marianamest      ###   ########.fr       */
+/*   Updated: 2025/03/20 01:29:31 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ void	redirect_temp_file_to_stdin(char *temp_filename)
 	close(fd);
 }
 
-void	handle_heredoc(t_data *data, char *delimiter)
+void	handle_heredoc(t_exec * exec, char *delimiter)
 {
 	int		fd;
 	char	*temp_filename;

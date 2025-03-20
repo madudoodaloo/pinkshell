@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   heredoc.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
+/*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 00:04:58 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/19 21:02:05 by marianamest      ###   ########.fr       */
+/*   Updated: 2025/03/20 01:27:35 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
