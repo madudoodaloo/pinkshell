@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   executor.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 19:58:02 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/20 16:12:26 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/20 17:42:57 by marianamest      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include "../includes/minishell.h"
 
 /* src/executor/execute_builtins.c */
-int     execute_builtin(t_msh *msh, char **args, char ***export, int fd);
+int     execute_builtin(t_msh *msh, char **args, char **export, int fd);
 void    execute_builtin_in_fork(void); // Adjust parameters as needed
 int     is_builtin(char *command);
 
