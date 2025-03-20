@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 05:59:04 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/19 20:55:56 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/20 16:52:05 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ int		parser(void);
 int		in_quotes(char *line, int max);
 int		in_singles(char *line, int max);
 int		check_quotes(char *line);
+int     skip_quotes(char *str, int i);
 
 /* retokenizer.c */
 t_token	*get_operator(t_token *t);
@@ -76,5 +77,12 @@ int		check_syntax(t_token *token);
 
 /* tokenizer.c */
 int		tokenizer(void);
+
+/* rm_quotes1.c */
+char    *rm_quote(char *str);
+void    rm_util(char *str, int i, char *new, int i_new);
+void    rm_quotes_exec(t_exec *exec);
+int     rm_strlen(char *str);
+
 
 #endif
