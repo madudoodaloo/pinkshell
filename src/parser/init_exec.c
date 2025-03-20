@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_exec.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 20:08:55 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/20 14:12:20 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/20 16:07:38 by marianamest      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@ int	strlen_args(char **args)
 	{
 		while (args[i])
 			i++;
-		return i;
 	}
+	return i;
 }
 
 char **add_prefix(t_token *token, char **args)
@@ -60,7 +60,7 @@ char **add_to_matrix(char *content, char **args)
 	int new_i;
 	char **new;
 	i = 0;
-	new_i = 0;
+	new_i = -1;
 	if (!args)
 	{
 		new = safe_malloc(sizeof(char *) * 2);
@@ -71,8 +71,8 @@ char **add_to_matrix(char *content, char **args)
 	{
 		i = strlen_args(args) + 1; //+1 is for the new str
 		new = safe_malloc(sizeof(char *) * (i + 1)); //+1 is for null
-		while (args[new_i])
-			new[new_i] = ft_strdup(args[new_i++]);
+		while (args[++new_i])
+			new[new_i] = ft_strdup(args[new_i]);
 		new[new_i] = ft_strdup(content);
 		new[++new_i] = NULL;
 	}
@@ -133,5 +133,3 @@ int	set_exec(void)
 		return (0);
 	return (1);
 }
-
-

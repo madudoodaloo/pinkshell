@@ -6,7 +6,11 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 12:20:57 by marianamest       #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2025/03/20 16:17:46 by msilva-c         ###   ########.fr       */
+=======
+/*   Updated: 2025/03/20 16:27:32 by marianamest      ###   ########.fr       */
+>>>>>>> b1f1dce60820a15246bc1ea6b7d92279a6d34e73
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +25,8 @@ int	run_doc(char *delimiter, t_exec *exec, int k)
 	pid = fork();
 	if (pid < 0)
 	{
-		safe_close(exec[k].pipe_fd);
+		safe_close(exec[k].pipe_fd[0]);
+		safe_close(exec[k].pipe_fd[1]);
 		return (-1);
 	}
 	if (pid == 0)
@@ -34,6 +39,7 @@ int	run_doc(char *delimiter, t_exec *exec, int k)
 		exec[k].cmd_invalid = true;
 		msh()->exit_status = 0;
 	}
+	return (0);
 }
 
 void	read_into_heredoc(char *delimiter, t_exec *exec, int k)
@@ -57,17 +63,9 @@ void	read_into_heredoc(char *delimiter, t_exec *exec, int k)
 
 void	control_d_handle(t_exec *exec, int k, char *str)
 {
+	(void)k;
 	if (!str)
 		return ;
 	safe_close(exec->pipe_fd[1]);
 	exit(169);
-}
-
-void	write_to_pipe(char *str, t_exec *exec)
-{
-	char	*s1;
-
-	s1 = ft_strjoin(str, "\n");
-	write(exec->pipe_fd[1], &s1, ft_strlen(str));
-	free(s1);
 }
