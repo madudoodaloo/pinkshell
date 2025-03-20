@@ -6,7 +6,7 @@
 /*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 12:22:09 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/20 13:12:22 by marianamest      ###   ########.fr       */
+/*   Updated: 2025/03/20 14:05:40 by marianamest      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,4 +30,13 @@ void	ft_waitpid(int pid)
 		msh()->exit_status = 128 + WTERMSIG(status);
 	else
 		msh()->exit_status = 1;
+}
+
+void	write_to_pipe(char *str, t_exec *exec)
+{
+	char	*s1;
+
+	s1 = ft_strjoin(str, "\n");
+	write(exec->pipe_fd[1], &s1, ft_strlen(str));
+	free(s1);
 }

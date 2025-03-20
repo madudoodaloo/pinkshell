@@ -6,7 +6,7 @@
 /*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 00:04:58 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/20 13:07:11 by marianamest      ###   ########.fr       */
+/*   Updated: 2025/03/20 14:05:58 by marianamest      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,21 +30,24 @@
 // void		handle_heredoc(t_data *data, char *delimiter);
 
 /* heredoc_utils */
-void		int_to_str(int num, char *str);
+void	int_to_str(int num, char *str);
 
 /* new and improved -> run_doc.*/
-int			run_doc(char *delimiter, t_exec *exec, int k);
-void		close_pipe(int *fd);
-void		safe_close(int fd);
-void		read_into_heredoc(char *delimiter, t_exec *exec, int k);
-void		control_d_handle(t_exec *exec, int k, char *str);
+int		run_doc(char *delimiter, t_exec *exec, int k);
+void	close_pipe(int *fd);
+void	safe_close(int fd);
+void	read_into_heredoc(char *delimiter, t_exec *exec, int k);
+void	control_d_handle(t_exec *exec, int k, char *str);
 
 /* waitpid */
-void		ft_waitpid(int pid);
+void	ft_waitpid(int pid);
+void	write_to_pipe(char *str, t_exec *exec);
 
 /* prep redir */
-int			doc_loop(char **in_redirs, t_exec *exec, int k);
-int			prep_in_redir(char **in_redirs, t_exec *exec, int k);
-int			open_infile_loop(char **in_redirs, t_exec *exec, int k);
+int		doc_loop(char **in_redirs, t_exec *exec, int k);
+int		prep_in_redir(char **in_redirs, t_exec *exec, int k);
+int		open_infile_loop(char **in_redirs, t_exec *exec, int k);
+int		is_final_heredoc(char **in_redirs, t_exec *exec, int k);
+bool	check_and_open_file(char *file_name);
 
 #endif

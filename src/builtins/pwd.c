@@ -3,27 +3,47 @@
 /*                                                        :::      ::::::::   */
 /*   pwd.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 17:32:36 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/19 04:57:00 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/20 14:17:45 by marianamest      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-void	my_pwd(int fd)
+void	pwd(int fd)
 {
-	char		cwd[4096];
-	const char	*error_msg;
+    char	cwd[PATH_MAX];
 
-	error_msg = "pwd: ";
-	if (getcwd(cwd, sizeof(cwd)) != NULL)
-		write(fd, cwd, ft_strlen(cwd));
-	else
+    if (getcwd(cwd, sizeof(cwd)) != NULL && *cwd)
+    {
+        ft_putstr(fd, cwd);
+        write(fd, "\n", 1);
+        msh()->exit_status = 0;
+    }
+    else
+    {
+        perror("minishell: pwd");
+        msh()->exit_status = 1;
+    }
+}
+
+void	update_pwd(void)
+{
+	t_env	*env;
+	char	*old_pwd;
+
+	env = msh()->env;
+	while (env)
 	{
-		write(fd, error_msg, ft_strlen(error_msg));
-		write(fd, strerror(errno), ft_strlen(strerror(errno)));
-		write(fd, "\n", 1);
+		if (ft_strcmp(env->var_name, "PWD") == 0)
+		{
+			old_pwd = env->var_value;
+			env->var_value = getcwd(NULL, 0);
+			free(old_pwd);
+			return ;
+		}
+		env = env->next;
 	}
 }
