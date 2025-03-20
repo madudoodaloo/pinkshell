@@ -1,40 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   signals.h                                          :+:      :+:    :+:   */
+/*   signs.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 16:26:02 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/16 15:29:36 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/20 01:24:24 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SIGNS_H
 # define SIGNS_H
 
-# include "minishell.h"
+# include "../includes/minishell.h"
 
-// extern int g_signal; (?)
-// volatile sig_atomic_t	g_signal = 0; (?)
-typedef struct s_data
-{
-	bool is_heredoc; // Flag to indicate heredoc mode
-	void *strut;     // Placeholder for resources to free
-	char **envp;     // Environment variables
-}		t_data;
+/* signals.c */
+void    init_signals(void);
+void	handle_sigint(int sig);
+void    set_parent_signals(void);
+void    set_signals_to_ignore(void);
+void    set_signals_to_default(void);
 
-t_data  *msdata(void);
-
-/*signals 1*/
-void	signal_handler(int signum);
-void	handle_signals_and_cleanup(t_data *data);
+/*signals1.c*/
+void	signal_handler(t_exec * exec, int signum);
+void	handle_signals_and_cleanup(t_exec * exec);
 void	setup_signals(void);
 void	restore_parent_signals(void);
 void	handle_child_exit_status(int status);
 
-/*signals 2*/
+/*signals2.c*/
 void	handle_ctrl_d(char *line);
-void	handle_sigint(char *temp_filename);
-void	handle_sigquit(void);
+//void	handle_sigint(t_exec * exec, char *temp_filename);
+void	handle_sigquit(t_exec * exec);
+void	handle_general_signals(t_exec *exec);
+
 #endif

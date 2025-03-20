@@ -6,13 +6,13 @@
 /*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 17:31:05 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/16 21:40:03 by marianamest      ###   ########.fr       */
+/*   Updated: 2025/03/19 15:19:34 by marianamest      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/builtins.h"
+#include "../includes/minishell.h"
 
-int	find_env_key_index(char **env, const char *key) // searches for the index of an env var by its key in the env array.
+int	find_env_key_index(char **env, const char *key)
 {
 	int	i;
 	int	key_len;
@@ -32,42 +32,42 @@ int	find_env_key_index(char **env, const char *key) // searches for the index of
 	return (-1);
 }
 
-char	**update_env_var(char *arg, char **env, int idx) // updates the value of an existing env var, in the index idx in the env array, with arg as value
+char	**update_env_var(char *arg, char **env, int idx)
 {
 	char	*equal_sign;
 	char	*key;
 	char	*value;
-	int key_len;
+	int		key_len;
 
-	equal_sign = arg;// Find the '=' character in the arg string
-	while (*equal_sign && *equal_sign != '=') // if no ""="" was found
+	equal_sign = arg;
+	while (*equal_sign && *equal_sign != '=')
 		equal_sign++;
 	if (*equal_sign != '=')
 		return (NULL);
-	key_len = equal_sign - arg; // Length of the key
-	key = (char *)malloc(key_len + 1);
+	key_len = equal_sign - arg;
+	key = (char *)safe_malloc(key_len + 1);
 	if (!key)
 		return (NULL);
 	my_strcpy(key, arg);
-	value = equal_sign + 1;// The value is everything after the '=' character
+	value = equal_sign + 1;
 	free(env[idx]);
-	env[idx] = create_env_entry(key, value);// Create the new environment variable with the key and value
+	env[idx] = create_env_entry(key, value);
 	free(key);
 	if (!env[idx])
 		return (NULL);
 	return (env);
 }
 
-char	**expand_env(char **env, char *new_entry)// expands env to add 1 new var and sets it to NULL
+char	**expand_env(char **env, char *new_entry)
 {
-	int i;
-	int j;
-	char **new_env;
+	int		i;
+	int		j;
+	char	**new_env;
 
 	i = 0;
 	while (env[i])
 		i++;
-	new_env = malloc((i + 2) * sizeof(char *));
+	new_env = safe_malloc((i + 2) * sizeof(char *));
 	if (!new_env)
 		return (NULL);
 	j = 0;
@@ -81,12 +81,12 @@ char	**expand_env(char **env, char *new_entry)// expands env to add 1 new var an
 	return (new_env);
 }
 
-void	set_or_add_env_value(char ***env, const char *key, const char *value)// adds or updates an env variable (depending on if it already exists or not)
+void	set_or_add_env_value(char **env, const char *key, const char *value)
 {
 	int		index;
 	char	*new_entry;
 
-	index = find_env_key_index(*env, key);
+	index = find_env_key_index(env, key);
 	new_entry = create_env_entry(key, value);
 	if (!new_entry)
 		return ;
@@ -98,3 +98,36 @@ void	set_or_add_env_value(char ***env, const char *key, const char *value)// add
 	else
 		*env = expand_env(*env, new_entry);
 }
+
+char	**general_manage_env(t_env *env, int action, char **envp)
+{
+	int		index;
+	t_env	*temp;
+
+	if (env == NULL)
+		env = init_env_array(envp);
+	if (action == 0)
+		set_or_add_env_value(env, env->var_name, env->var_value);
+	else if (action == 1)
+	{
+		temp = find_env_key_index(env, env->var_name);
+		if (index != -1)
+		{
+			if (create_env_entry(env->var_name, env->var_value))
+			{
+				free(env[index]);
+				env[index] = create_env_entry(env->var_name, env->var_name);
+			}
+		}
+	}
+	else if (action == 2)
+	{
+		if (create_env_entry(env->var_name, env->var_value)
+			&& (env = expand_env(env, create_env_entry(env->var_name,
+						env->var_value))) == NULL)
+			return (NULL);
+	}
+	return (env);
+}
+
+t_env	*env_cmd(t_env *env, int action);

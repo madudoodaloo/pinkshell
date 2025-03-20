@@ -1,25 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft_2.c                                          :+:      :+:    :+:   */
+/*   free_2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/17 04:24:44 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/17 04:25:29 by msilva-c         ###   ########.fr       */
+/*   Created: 2025/03/18 01:38:25 by msilva-c          #+#    #+#             */
+/*   Updated: 2025/03/19 19:55:09 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-int ft_strcmp(const char *s1, const char *s2)
+void	free_and_exit(void)
 {
-    if (s1 == NULL || s2 == NULL)
-        return (0);
-    while (*s1 && (*s1 == *s2))
-    {
-        s1++;
-        s2++;
-    }
-    return (*(const unsigned char *)s1 - *(const unsigned char *)s2);
+	t_msh	*m;
+
+	m = (msh());
+	if (!m)
+		return ;
+	clear_history();
+	if (m->line)
+		free(m->line);
+	if (m->tokens)
+		free_tokens(m->tokens);
+	if (m->pwd)
+		free(m->pwd);
+	if (m->exec)
+		free_exec(m->exec);
+	if (m->env)
+		free_env(m->env);
+	if (m->home)
+		free(m->home);
 }

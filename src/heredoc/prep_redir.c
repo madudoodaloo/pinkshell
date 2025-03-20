@@ -6,7 +6,11 @@
 /*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 18:29:52 by marianamest       #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2025/03/20 02:31:37 by marianamest      ###   ########.fr       */
+=======
+/*   Updated: 2025/03/20 02:27:11 by marianamest      ###   ########.fr       */
+>>>>>>> 1b3a26233614e8e1c79ebd318651765b6d918b75
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +21,11 @@ int	prep_in_redir(char **in_redirs, t_exec *exec, int k)
 	int	i;
 
 	i = 0;
+<<<<<<< HEAD
 	while (i < exec[i].nbr_cmds) // value might be somewhere else
+=======
+	while (i < exec[i].nr_cmds) // value might be somewhere else
+>>>>>>> 1b3a26233614e8e1c79ebd318651765b6d918b75
 	{
 		if (exec[i].redir_in != NULL)
 		{
@@ -27,7 +35,11 @@ int	prep_in_redir(char **in_redirs, t_exec *exec, int k)
 		i++;
 	}
 	i = 0;
+<<<<<<< HEAD
 	while (i < exec[i].nbr_cmds)
+=======
+	while (i < exec[i].nr_cmds)
+>>>>>>> 1b3a26233614e8e1c79ebd318651765b6d918b75
 	{
 		open_infile_loop(, exec, /*index*/);
 	}

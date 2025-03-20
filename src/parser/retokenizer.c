@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   retokenizer.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 04:46:51 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/17 13:35:11 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/19 16:57:12 by marianamest      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 /*
  * example:
- * token->content="ola|"
+ * token->content=">>test.txt|cat"
  */
 t_token	*get_operator(t_token *t)
 {
@@ -23,9 +23,12 @@ t_token	*get_operator(t_token *t)
 	t_token	*remain;
 
 	temp = ft_substr(t->content, 0, ft_isoperator(t->content, 0));
+	//printf("get_op = %s\n", temp);
 	op = init_token(temp);
-	free (temp);
-	temp = ft_strdup(t->content[ft_isoperator(t->content, 0)]);
+	free(temp);
+	temp = ft_substr(t->content, ft_isoperator(t->content, 0),
+			ft_strlen(t->content));
+	//printf("get_remain = %s\n", temp);
 	remain = init_token(temp);
 	free(temp);
 	remain->prev = op;
@@ -36,7 +39,7 @@ t_token	*get_operator(t_token *t)
 /*
  * example:
  * token->content="ola|"
-*/
+ */
 t_token	*get_word(t_token *t)
 {
 	int		i;
@@ -45,12 +48,16 @@ t_token	*get_word(t_token *t)
 	t_token	*remain;
 
 	i = 0;
-	while ((ft_isoperator(t->content, i) > 0 && in_quote(t->content, i)) || ft_isoperator(t->content, i) == 0)
+	while (t->content[i] && ((ft_isoperator(t->content, i) > 0
+				&& in_quotes(t->content, i)) || ft_isoperator(t->content,
+				i) == 0))
 		i++;
 	temp = ft_substr(t->content, 0, i);
+	//printf("get_op = %s\n", temp);
 	word = init_token(temp);
 	free(temp);
-	temp = ft_strdup(t->content[i]);
+	temp = ft_substr(t->content, i, ft_strlen(t->content));
+	//printf("get_remain = %s\n", temp);
 	remain = init_token(temp);
 	free(temp);
 	word->next = remain;
@@ -58,54 +65,72 @@ t_token	*get_word(t_token *t)
 	return (word);
 }
 
-
 int	needs_retoken(char *cmd)
 {
-	int i;
-	bool operator;
-	bool word;
+	int		i;
+	bool	operator;
+	bool	word;
 
 	i = -1;
-	while (cmd[++i])
+	operator = false;
+	word = false;
+	while (cmd && cmd[++i])
 	{
-		if (ft_isoperator(cmd, i) && !check_quotes(cmd, i))
+		if (ft_isoperator(cmd, i) && !in_quotes(cmd, i))
 			operator = true;
 		else
 			word = true;
 	}
 	if (ft_strlen(cmd) > ft_isoperator(cmd, 0) && operator)
-		return (2);
+		return (1);
 	else if (operator && word)
 		return (1);
 	return (0);
 }
 
-t_token *update_token(t_token *old, int flag)
+t_token	*get_which(t_token *old)
 {
-	t_token *new;
+	t_token	*new;
 
-	if (flag == 0)
-		new = old;
-	else if (flag == 2 && ft_isoperator(old->content, 0) > 0)
+
+	new = NULL;
+	if (ft_isoperator(old->content, 0) > 0)
 		new = get_operator(old);
 	else
 		new = get_word(old);
 	return (new);
 }
 
-t_token	*re_token(t_token *head)
+t_token *update_token(t_token *old)
 {
-	t_token *temp;
-	int i;
+	t_token	*new;
 
-	i = 0;
+
+	new = get_which(old);
+	new->next->next = old->next;
+	if(old->prev != NULL)
+		old->prev->next = new;
+	new->prev = old->prev;
+	if (old->next)
+		old->next->prev = new->next;
+	free(old);
+	return (new);
+}
+
+void	re_token(t_token *head)
+{
+	t_token	*temp;
+
 	temp = head;
 	while (temp)
 	{
-		temp = update_token(temp, needs_retoken(temp->content));
-		temp = temp->next;
+		// printf("  needs_retoken: %s\n", needs_retoken(temp->content));
+		if (needs_retoken(temp->content))
+		{
+			//printf("going to get_which\n");
+			temp = update_token(temp);
+		}
+		else
+			temp = temp->next;
 	}
-	while (temp->prev)
-		temp = temp->prev;
-	return (temp);
 }

@@ -3,50 +3,69 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 15:19:12 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/16 20:00:59 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/20 02:14:26 by marianamest      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "../includes/minishell.h"
 
-void msh_loop(char **envp)
+void    clean_cmdline(void)
 {
-    t_msh *m;
+	t_msh	*m;
 
+	m = msh();
+	if (!m)
+		return ;
+	if (m->line)
+		free(m->line);
+	if (m->tokens)
+	{
+		free_tokens(m->tokens);
+		m->tokens = NULL;
+	}
+	if (m->exec)
+	{
+		free_exec(m->exec);
+		m->exec = NULL;
+	}
+}
+
+void	msh_loop(char **envp)
+{
     init_all(envp);
-    m = msh();
-    while (m->exit == 0)
+    while (1)
     {
-        if (m->line)
-            m->line = clearline(m);
-        m->line = readline("minishell$");
-        if (m->line && *m->line)
+        msh()->line = readline("minishell$");
+        if (!msh()->line)
         {
-            add_history(m->line);
-            if (parser(m))
-                execute(m);
+            ft_put_str_fd("exit\n", 2);
+            break ;
+        }
+        if (msh()->line && *msh()->line)
+        {
+            add_history(msh()->line);
+            if (parser())
+                   printf("siga crlh\n");//start_execution();
             else
-                m->exit = 2;
+                msh()->exit_status = 2;
         }
         clean_cmdline();
     }
-    free_and_exit(m);
+    free_and_exit();
 }
 
-int main(int ac, char **av, char **envp)
+int	main(int ac, char **av, char **envp)
 {
-    (void)av;
-
-    if (ac == 1)
-    {
-        setup_signals();
-        msh_loop(envp);
-    }
-    else
-        printf("Cmdline to launch: ./minishell\n");
-    return (0);
+	(void)av;
+	if (ac == 1)
+	{
+		init_signals();
+		msh_loop(envp);
+	}
+	else
+		printf("Cmdline to launch: ./minishell\n");
+	return (0);
 }

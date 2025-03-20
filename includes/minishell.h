@@ -6,14 +6,12 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 13:57:32 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/17 17:14:56 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/20 02:19:48 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINISHELL_H
 # define MINISHELL_H
-
-volatile sig_atomic_t	g_signal = 0;
 
 # include <errno.h>
 # include <fcntl.h>
@@ -31,60 +29,61 @@ volatile sig_atomic_t	g_signal = 0;
 # include <sys/wait.h>
 # include <unistd.h>
 
-/* ../includes headers */
-# include "builtins.h"
-# include "expander.h"
-# include "heredoc.h"
-# include "lexer.h"
-# include "parser.h"
-# include "signals.h"
-# include "utils.h"
-# include "executor.h"
-
 # define CMD 1
 # define PIPE 2
 # define R_OUT 3
 # define R_APP 4
 # define R_IN 5
 # define HERE_DOC 6
-# define MAXLINE 1024
-# define MAXPATH 4096
+
+// rever 1: se ainda vai ser preciso dps da ft_dup_env - Environment variables
+// rever 2: EXPANSÃO DE VARIÁVEIS NO HEREDOC
+// rever 3: projetgemos leaks de memoria antes de matar os processos no heredoc (?)
+
+typedef struct s_exec
+{
+	char			**redir_in;
+	char			**redir_out;
+	char			**args;
+	int				heredoc_pipefd[2];
+	int 			nbr_cmds; // pipes - 1
+	int				pipe_fd[2];
+	int 			in_fd;  // vai ler
+	int 			out_fd; // vai escrever
+	bool			is_heredoc;
+	char 			**envp; // manter a t_env e arranjar uma função
+	bool			cmd_invalid;
+}					t_exec;
 
 typedef struct s_env
 {
-	char				*var;
-	char				*var_name;
-	char				*var_value;
-	int valid; // inicializar para false
-	struct s_env		*next;
-}						t_env;
+	char			*var;
+	char			*var_name;
+	char			*var_value;
+	int				valid;
+	struct s_env	*next;
+}					t_env;
 
 typedef struct s_token
 {
-	char		*content;
-	int 		type;
-	int			index;
+	char			*content;
+	int				type;
+	int				index;
 	struct s_token	*next;
 	struct s_token	*prev;
-}			t_token;
+}					t_token;
 
-typedef struct s_pipex
-{
-	int flag
-}						t_pipex;
-
+// rever: criar uma ft que transforma linked list em char **
 typedef struct s_msh
 {
-	char				*line;
-	char				*home;
-	char				*pwd;
-	t_env				*env;
-	t_token				*tokens;
-	t_pipex				*pipex;
-	int					exit;
-	int					signaled;
-	int					ret;
-}						t_msh;
+	char			*line;
+	char			*home;
+	char			*pwd;
+	t_env			*env;
+	t_token			*tokens;
+	t_exec			*exec;
+	int				exit_status;
+}					t_msh;
 
 typedef enum e_temp_op
 {
@@ -92,8 +91,16 @@ typedef enum e_temp_op
 	TEMP_PIPE = -2,
 	TEMP_IN = -3,
 	TEMP_OUT = -4,
-}		t_temp_op;
+}					t_temp_op;
 
-t_msh	*msh(void);
+t_msh				*msh(void);
+
+# include "builtins.h"
+# include "executor.h"
+# include "expander.h"
+# include "heredoc.h"
+# include "parser.h"
+# include "signs.h"
+# include "utils.h"
 
 #endif

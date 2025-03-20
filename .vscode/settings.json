@@ -1,9 +1,7 @@
 {
-    "files.associations": {
-        "*.embeddedhtml": "html",
-        "minishell.h": "c",
-        "signals.h": "c",
-        "parser.h": "c",
-        "builtins.h": "c"
-    }
+	"files.associations": {
+		"*.embeddedhtml": "html",
+		"minishell.h": "c",
+		"heredoc.h": "c"
+	}
 }

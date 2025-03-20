@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.c                                            :+:      :+:    :+:   */
+/*   libft_utils3.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 21:44:47 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/16 21:55:00 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/19 15:36:37 by marianamest      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,14 @@
 
 int	ft_isoperator(char *str, int i)
 {
-	if (str[i])
-	{
-		if (str[i] == '<' || str[i] == '>')
-		{
-			if (str[i] == str[i + 1])
-				return (2);
-			else
-				return (1);
-		}
-		else if (str[i] == '|')
-			return (1);
-		else
-			return (0);
-	}
+	if (str[i] == '>' && str[i + 1] == '>')
+		return (2);
+	else if (str[i] == '<' && str[i + 1] == '<')
+		return (2);
+	else if (str[i] == '|' || str[i] == '>' || str[i] == '<')
+		return (1);
+	return (0);
 }
-
 
 int	ft_isspace(char c)
 {
@@ -37,7 +29,6 @@ int	ft_isspace(char c)
 		return (1);
 	return (0);
 }
-
 
 int	ft_isalpha(char c)
 {
@@ -55,9 +46,8 @@ int	ft_isdigit(char c)
 
 int	ft_isquote(char c)
 {
-	if (c == '"')
+	if (c == 39 || c == 35)
 		return (1);
-	else if (c == '\'')
-		return (2);
-	return (0);
+	else
+		return (0);
 }

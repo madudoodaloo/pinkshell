@@ -3,46 +3,49 @@
 /*                                                        :::      ::::::::   */
 /*   split_spaces.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 22:49:40 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/16 22:50:53 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/19 15:35:05 by marianamest      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-int count_words(char *line)
+// rever
+int	count_words(char *line)
 {
-	int i;
-	int word;
+	int	i;
+	int	word;
 
 	i = 0;
 	word = 0;
 	while (line[i])
 	{
-		if (!ft_isspace(line[i]) || (check_quotes(line, i) && ft_isspace(line[i])))
+		if (!ft_isspace(line[i]) || (in_quotes(line, i) && ft_isspace(line[i])))
 		{
 			word++;
-			while (!ft_isspace(line[i]) || (check_quotes(line, i) && ft_isspace(line[i])))
+			while ((!ft_isspace(line[i]) || (in_quotes(line, i)
+						&& ft_isspace(line[i]))) && line[i])
 				i++;
 		}
-		if (ft_isspace(line[i]) && !check_quotes(line, i))
+		if (ft_isspace(line[i]) && !in_quotes(line, i))
 			i++;
 	}
 	return (word);
 }
 
-int parser_wdlen(char *line, int i)
+int	parser_wdlen(char *line, int i)
 {
-	int len;
+	int	len;
 
 	len = 0;
 	while (line[i + len])
 	{
 		if (!ft_isspace(line[i + len]))
 			len++;
-		else if (ft_isspace(line[i + len]) && check_quotes(line, i + len)) //test: see if in_quotes is working
+		else if (ft_isspace(line[i + len]) && in_quotes(line, i + len))
+			// test: see if in_quotes is working
 			len++;
 		else
 			return (len);
@@ -52,10 +55,10 @@ int parser_wdlen(char *line, int i)
 
 char	**split_spaces(char *line)
 {
-	char **matrix;
-	int wc;
-	int i;
-	int j;
+	char	**matrix;
+	int		wc;
+	int		i;
+	int		j;
 
 	i = 0;
 	j = 0;
@@ -67,7 +70,8 @@ char	**split_spaces(char *line)
 	{
 		while (ft_isspace(line[i]))
 			i++;
-		matrix[j] = ft_substr(line, i, parser_wdlen(line, i)); // ver se está a guardar bem
+		matrix[j] = ft_substr(line, i, parser_wdlen(line, i));
+		// ver se está a guardar bem
 		if (!matrix[j++])
 			return (matrix);
 		i += parser_wdlen(line, i);

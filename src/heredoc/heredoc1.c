@@ -3,53 +3,53 @@
 /*                                                        :::      ::::::::   */
 /*   heredoc1.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 16:18:49 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/17 17:19:19 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/19 18:12:19 by marianamest      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/heredoc.h"
+#include "../includes/minishell.h"
 
 /*expansão*/
-const char *extract_var_name(const char *start, char *var_name)
+const char	*extract_var_name(const char *start, char *var_name)
 {
-    const char *var_end;
+	const char	*var_end;
 
 	var_end = start;
-    while (*var_end && (ft_isalnum(*var_end) || *var_end == '_'))
-        var_end++;
-    ft_strncpy(var_name, start, var_end - start);
-    var_name[var_end - start] = '\0';
-    return (var_end);
+	while (*var_end && (ft_isalnum(*var_end) || *var_end == '_'))
+		var_end++;
+	ft_strncpy(var_name, start, var_end - start);
+	var_name[var_end - start] = '\0';
+	return (var_end);
 }
 
-char *expand_variables(const char *input)
+char	*expand_variables(const char *input)
 {
-	const char *start;
-	char *expanded;
-	char var_name[256];
-	char *var_value;
+	const char	*start;
+	char		*expanded;
+	char		var_name[256];
+	char		*var_value;
 
-    expanded = malloc(ft_strlen(input) + 250); // Depois ajustamos
-    if (!expanded)
-		return NULL;
-    expanded[0] = '\0';
-    start = input;
-    while (*start)
-    {
-        if (*start == '$')
-        {
-            start = extract_var_name(start + 1, var_name);
-            var_value = getenv(var_name);
-            if (var_value)
+	expanded = safe_malloc(ft_strlen(input) + 250);
+	if (!expanded)
+		return (NULL);
+	expanded[0] = '\0';
+	start = input;
+	while (*start)
+	{
+		if (*start == '$')
+		{
+			start = extract_var_name(start + 1, var_name);
+			var_value = getenv(var_name);
+			if (var_value)
 				ft_strcat(expanded, var_value);
-        }
-        else
-            ft_strncat(expanded, start++, 1);
-    }
-    return (expanded);
+		}
+		else
+			ft_strncat(expanded, start++, 1);
+	}
+	return (expanded);
 }
 
 char	*get_delimiter(char *str, int i)
@@ -63,7 +63,7 @@ char	*get_delimiter(char *str, int i)
 	k = i;
 	while (str[i] != ' ' && str[i] != '\0')
 		i++;
-	delimiter = (char *)malloc(sizeof(char) * (i - k + 1));
+	delimiter = (char *)safe_malloc(sizeof(char) * (i - k + 1));
 	if (!delimiter)
 		return (NULL);
 	m = 0;
@@ -94,54 +94,31 @@ int	heredoc_parser(char *str)
 	return (-1);
 }
 
-void read_until_delimiter(int fd, char *delimiter)
+void	read_until_delimiter(int fd, char *delimiter)
 {
-    char buffer[1024]; // quantidade standard nada de mais
-    int bytes_read; // qunatidade de bytes que ja foram lidos
-    int delimiter_len = ft_strlen(delimiter);
-	char *expanded_input; // input ja expandido
+	int		delimiter_len;
+	char	buffer[1024];
+	int		bytes_read;
+	char	*expanded_input;
 
-    while (1) // lê infinitamene ate encontrar um delimitador ou der erro
-    {
-        write(STDOUT_FILENO, "> ", 2); // display do ">" no prompt
-        bytes_read = read(STDIN_FILENO, buffer, 1023); // so le ate 1023 bytes
-        if (bytes_read <= 0) // se der 0 ou menos quer dizer que ou foi EOF ou CTR+D
-            break;
-        buffer[bytes_read] = '\0'; // null terminates para o input ser tratado como string válida
-        if (ft_strncmp(buffer, delimiter, delimiter_len) == 0 && buffer[delimiter_len] == '\n') // compara o input com o delimitador e verifica se tem \n logo  a seguir (se foi <<EOF + enter)
-            break;
-        expanded_input = expand_variables(buffer); // expande variaveis se for o caso
-        if (!expanded_input)
-        {
-            write(STDERR_FILENO, "Error: Failed to expand variables\n", 33); // se nao for possivel expandir
-            break;
-        }
-        write(fd, expanded_input, ft_strlen(expanded_input)); // escreve as expansoes para o fd
-        free(expanded_input);
-    }
+	delimiter_len = ft_strlen(delimiter);
+	while (1)
+	{
+		write(STDOUT_FILENO, "> ", 2);
+		bytes_read = read(STDIN_FILENO, buffer, 1023);
+		if (bytes_read <= 0)
+			break ;
+		buffer[bytes_read] = '\0';
+		if (ft_strncmp(buffer, delimiter, delimiter_len) == 0
+			&& buffer[delimiter_len] == '\n')
+			break ;
+		expanded_input = expand_variables(buffer);
+		if (!expanded_input)
+		{
+			write(STDERR_FILENO, "Error: Failed to expand variables\n", 33);
+			break ;
+		}
+		write(fd, expanded_input, ft_strlen(expanded_input));
+		free(expanded_input);
+	}
 }
-
-// int	main(int ac, char **av)
-// {
-// 	int pos;
-// 	char *delimiter;
-
-// 	if (ac == 2)
-// 	{
-// 		pos = heredoc_parser(av[1]);
-// 		if (pos == -1)
-// 		{
-// 			printf("No heredoc found.\n");
-// 			return (1);
-// 		}
-// 		delimiter = get_delimiter(av[1], pos);
-// 		if (!delimiter)
-// 		{
-// 			printf("Memory allocation failed.\n");
-// 			return (1);
-// 		}
-// 		printf("Delimiter: '%s'\n", delimiter);
-// 		free(delimiter);
-// 	}
-// 	return (0);
-// }
