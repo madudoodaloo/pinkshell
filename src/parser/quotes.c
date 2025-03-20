@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   quotes.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
+/*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 20:35:37 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/19 15:29:53 by marianamest      ###   ########.fr       */
+/*   Updated: 2025/03/20 04:54:01 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

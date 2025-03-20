@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expander.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
+/*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 01:39:20 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/20 02:04:29 by marianamest      ###   ########.fr       */
+/*   Updated: 2025/03/20 03:25:49 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include "../includes/minishell.h"
 
 /* expander_1.c */
+int		is_edge_expand(char *var_name);
 char	*edge_expand(char *var_name, t_msh *msh);
 char	*regular_expand(t_env *env, char *var_name);
 char	*update_content(t_token *token, char *old, char *expanded);

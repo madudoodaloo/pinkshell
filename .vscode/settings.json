@@ -2,6 +2,8 @@
 	"files.associations": {
 		"*.embeddedhtml": "html",
 		"minishell.h": "c",
-		"heredoc.h": "c"
+		"heredoc.h": "c",
+		"executor.h": "c",
+		"expander.h": "c"
 	}
 }

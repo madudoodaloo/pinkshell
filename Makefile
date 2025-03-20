@@ -1,39 +1,32 @@
 NAME = minishell
 CC = cc
 
-SRC =			src/main/main.c \
+SRC =			src/1_main/main.c \
+				src/2_parser/create_tokens.c \
+				src/2_parser/envp_1.c \
+				src/2_parser/envp_2.c \
+				src/2_parser/init_exec.c \
+				src/2_parser/init.c \
+				src/2_parser/parser.c \
+				src/2_parser/quotes.c \
+				src/2_parser/retokenizer.c \
+				src/2_parser/split_spaces.c \
+				src/2_parser/syntax.c \
+				src/2_parser/tokenizer.c \
+				src/3_expander/expander_1.c \
+                src/3_expander/expander_2.c \
+                src/3_expander/expander_3.c \
 				src/signals/signals.c \
 				src/utils/free_1.c \
                 src/utils/free_2.c \
-                src/utils/heredoc_utils.c \
                 src/utils/libft_utils1.c \
                 src/utils/libft_utils2.c \
                 src/utils/libft_utils3.c \
                 src/utils/libft_utils4.c \
                 src/utils/libft_utils5.c \
                 src/utils/malloc.c \
-                src/utils/utils_builtins.c \
                 src/utils/utils_str.c \
-				src/parser/create_tokens.c \
-				src/parser/envp_1.c \
-				src/parser/envp_2.c \
-				src/parser/init_exec.c \
-				src/parser/init.c \
-				src/parser/parser.c \
-				src/parser/quotes.c \
-				src/parser/retokenizer.c \
-				src/parser/split_spaces.c \
-				src/parser/syntax.c \
-				src/parser/tokenizer.c \
-				src/expander/expander_1.c \
-                src/expander/expander_2.c \
-                src/expander/expander_3.c \
-				src/utils/delete.c \
-				src/executor/init_exec.c \
-				src/heredoc/prep_redir.c \
-				src/heredoc/run_doc.c \
-				src/heredoc/waitpid.c
-#src/executor/execute_builtins.c 				src/executor/redirections1.c 				src/executor/fork_and_execute1.c 				src/executor/fork_and_execute2.c 				src/executor/exec_parser.c 				src/executor/redirections2.c 				src/builtins/cd.c 				src/builtins/echo.c 				src/builtins/env1.c 				src/builtins/env2.c 				src/builtins/exit.c 				src/builtins/pwd.c 				src/builtins/export1.c 				src/builtins/export2.c 				src/builtins/unset1.c 				src/builtins/unset2.c 				src/heredoc/heredoc1.c 				src/heredoc/heredoc2.c 				src/signals/signals1.c 				src/signals/signals2.c \
+				src/utils/delete.c
 
 CFLAGS =		-I./includes -g #-fsanitize=address -Wall -Wextra -Werror
 OTHERFLAGS =	-lreadline #-lasan -O3

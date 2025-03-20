@@ -6,7 +6,7 @@
 /*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 18:29:52 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/20 02:27:11 by marianamest      ###   ########.fr       */
+/*   Updated: 2025/03/20 13:07:18 by marianamest      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,38 +17,41 @@ int	prep_in_redir(char **in_redirs, t_exec *exec, int k)
 	int	i;
 
 	i = 0;
-	while (i < exec[i].nr_cmds) // value might be somewhere else
+	while (i < exec[i].nbr_cmds)
 	{
 		if (exec[i].redir_in != NULL)
 		{
-			is_final_heredoc(in_redirs);
+			is_final_heredoc(exec[i].redir_in, exec, i);
 			doc_loop(exec[i].redir_in, exec, i);
 		}
 		i++;
 	}
 	i = 0;
-	while (i < exec[i].nr_cmds)
+	while (i < exec[i].nbr_cmds)
 	{
-		open_infile_loop(, exec, /*index*/);
+		open_infile_loop(exec[i].redir_in, exec, i);
+		i++;
 	}
 }
 
 int	doc_loop(char **in_redirs, t_exec *exec, int k)
-		// recebe da prep_in_redir e i de index de onde estou no arr do exec e k para char **
 {
-	int i = 0;
+	int	i;
+
+	i = 0;
 	while (in_redirs[i] != NULL)
 	{
-		if (!ft_strncmp(in_redirs[i], "app:", 4)) // append flag
+		if (!ft_strncmp(in_redirs[i], "app:", 4))
 		{
-			safe_close(exec[k].heredoc_pipefd[0]); // qual fd
+			safe_close(exec[k].pipe_fd[0]);
 			if (run_doc(in_redirs[i] + 4, exec, k) < 0)
 				return (-1);
 		}
 		i++;
 	}
-	if (!is_final_heredoc())
-		close(exec[k].heredoc_pipefd[0]);
+	if (!is_final_heredoc(in_redirs, exec, k))
+		close(exec[k].pipe_fd[0]);
+	return (0);
 }
 
 int	open_infile_loop(char **in_redirs, t_exec *exec, int k)
@@ -60,12 +63,12 @@ int	open_infile_loop(char **in_redirs, t_exec *exec, int k)
 	while (in_redirs[i] != NULL)
 	{
 		if (ft_strncmp(in_redirs[i], "app:", 4) != 0)
-			if (/*return da nova func < 0*/)
-				// fd = open(in_redirs[i] + 4, O_RDONLY);
-				exec[k]->command_invalid = true;
+			if (!check_and_open_file(in_redirs[i] + 4))
+				exec[k].cmd_invalid = true;
 	}
 	if (exec[k].is_heredoc)
 		safe_close(exec->in_fd);
+	return (0);
 }
 
 int	is_final_heredoc(char **in_redirs, t_exec *exec, int k)
@@ -78,7 +81,9 @@ int	is_final_heredoc(char **in_redirs, t_exec *exec, int k)
 	while (in_redirs[i] != NULL)
 	{
 		if (ft_strncmp(in_redirs[i], "app:", 4) == 0)
+		{
 			last_heredoc_index = i;
+		}
 		i++;
 	}
 	if (last_heredoc_index != -1 && last_heredoc_index == i - 1)
@@ -90,14 +95,21 @@ int	is_final_heredoc(char **in_redirs, t_exec *exec, int k)
 	return (0);
 }
 
-// rever : nome de funncao novo :
-// 1- if(fd = open(in_redirs[i] + 4, O_RDONLY);)
-// 2- verificar se nome esta vazio
-// 3- verificar o return do open
-
-// rever : is_final_heredoc
-	-> checks if heredoc is last redir and updates is_heredoc bool
-
-int	is_final_heredoc(char **in_redirs, t_exec *exec, int k)
+bool	check_and_open_file(char *file_name)
 {
+	int	fd;
+
+	if (file_name == NULL || *file_name == '\0')
+	{
+		printf("Error: File name is empty\n");
+		return (false);
+	}
+	fd = open(file_name, O_RDONLY);
+	if (fd < 0)
+	{
+		printf("Error opening file: %s\n", file_name);
+		return (false);
+	}
+	close(fd);
+	return (true);
 }
