@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 06:01:00 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/20 20:22:34 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/20 20:54:30 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 
 # include "../includes/minishell.h"
-char *path_search(char *str)
+char *path_search(char *str, t_env *env);
 
 /* cd */
 void	cd(char **args, int fd);

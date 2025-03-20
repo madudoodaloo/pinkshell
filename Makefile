@@ -37,6 +37,7 @@ SRC =			src/main/main.c \
 				src/builtins/unset1.c \
 				src/builtins/unset2.c \
 				src/heredoc/prep_redir.c \
+				src/executor/redirection_1.c \
 				src/heredoc/run_doc.c \
 				src/heredoc/waitpid.c \
 				src/utils/free_1.c \

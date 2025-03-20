@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 11:59:02 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/20 20:37:25 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/20 21:57:25 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,7 @@ void new_child(t_exec *ex)
 	char	**envp;
 	char	*path;
 
+	envp = get_matrix_env(msh()->env);
 	if (!ex || ex->cmd_invalid)
 		close_args_fds(ex);
 	do_input_redir(ex);
@@ -114,10 +115,10 @@ void new_child(t_exec *ex)
 			path = path_search(ex->args[0], msh()->env);
 		else
 			path = ex->args[0];
-		envp = get_matrix_env(msh()->env);
 		execve(path, ex->args, envp);
 		excve_perror(ex->args[0]);
 	}
+	free_matrix(envp);
 	exit(127);
 }
 
@@ -153,8 +154,8 @@ void start_executing(void)
 	t_exec *ex;
 	ex = msh()->exec;
 	//nana preciso duma ft que checke se temos permissões sobre os ficheiros dados
-	if (check_redirs(ex) < 0)
-		return ;
+	// if (check_redirs(ex) < 0)
+	// 	return ;
 	ex = msh()->exec;
 	if (msh()->exec->nbr_cmds == 1)
 		exec_single_cmd(ex);

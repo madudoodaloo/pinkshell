@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 18:18:18 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/20 14:05:43 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/20 21:36:20 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,16 +49,13 @@ t_msh	*msh(void)
 
 t_msh	*init_all(char **envp)
 {
-	t_msh	*minishell;
-
-	minishell = msh();
-	minishell->line = NULL;
-	minishell->tokens = NULL;
-	minishell->env = get_env(envp);
-	minishell->home = get_home();
-	minishell->pwd = getcwd(NULL, 0);
-	minishell->exec = NULL;
-	minishell->exit_status = 0;
-	minishell->signaled = false;
+	msh()->line = NULL;
+	msh()->tokens = NULL;
+	get_env(envp);
+	msh()->home = get_home();
+	msh()->pwd = getcwd(NULL, 0);
+	msh()->exec = NULL;
+	msh()->exit_status = 0;
+	msh()->signaled = false;
 	return (msh());
 }

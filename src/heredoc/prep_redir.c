@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 18:29:52 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/20 19:56:16 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/20 21:09:31 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ int	prep_out_redir(t_exec *exec)
 		}
 		i++;
 	}
+	return (1);
 
 }
 

@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 12:22:09 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/20 17:16:19 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/20 21:14:46 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	safe_close(int fd)
 	if (fd > 2)
 		close(fd);
 }
-
+/*
 void	ft_waitpid(int pid)
 {
 	int	status;
@@ -43,7 +43,7 @@ void	ft_waitpid(int pid)
 	else
 		msh()->exit_status = 1;
 }
-
+ */
 void	write_to_pipe(char *str, t_exec *exec)
 {
 	char	*s1;

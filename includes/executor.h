@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 19:58:02 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/20 20:00:54 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/20 20:55:04 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 void do_input_redir(t_exec *ex);
 void do_output_redir(t_exec *ex);
-
+int	check_redirs(t_exec *ex);
 
 /* src/executor/execute_builtins.c */
 int     execute_builtin(t_exec *exec);
