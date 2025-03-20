@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 18:17:41 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/20 03:33:25 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/19 20:49:16 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,6 @@ void	free_env(t_env *env)
 		free_var(env);
 		env = temp;
 	}
-	free(env);
 }
 
 void	free_matrix(char **matrix)
