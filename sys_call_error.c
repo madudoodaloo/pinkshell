@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sys_call_error.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 11:59:02 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/20 18:04:18 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/20 18:07:34 by marianamest      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,7 +125,7 @@ void new_child(t_exec *ex)
 		close_fds(ex->pipe_fd);
 	if (!ex->args)
 		exit(0);
-	if (is_builtin(ex))
+	if (is_builtin(ex->args[0]))
 		exec_if_builtin(ex);
 	else
 	{
@@ -144,7 +144,7 @@ void exec_single_cmd(t_exec *ex)
 {
 	if (ex->cmd_invalid)
 		return ;
-	if (is_builtin(ex))
+	if (is_builtin(ex->args[0]))
 	{
 		exec_if_builtin(ex);
 	}
