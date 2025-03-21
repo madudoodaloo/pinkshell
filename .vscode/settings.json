@@ -5,11 +5,6 @@
 		"heredoc.h": "c",
 		"executor.h": "c",
 		"expander.h": "c",
-		"utils.h": "c",
-		"builtins.h": "c",
-		"array": "c",
-		"string_view": "c",
-		"initializer_list": "c",
-		"utility": "c"
+		"utils.h": "c"
 	}
 }

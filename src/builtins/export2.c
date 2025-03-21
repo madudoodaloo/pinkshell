@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   export2.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 16:47:08 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/20 21:42:21 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/20 14:11:37 by marianamest      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-/* void	add_or_update_env_var(char ***env, const char *var)
+void	add_or_update_env_var(char ***env, const char *var)
 {
 	char	*equals;
 	int		name_len;
@@ -37,7 +37,7 @@
 	else
 		add_new_var(env, var);
 }
- */
+
 char	**get_matrix_env(t_env *env)
 {
 	t_env	*temp;
@@ -47,12 +47,15 @@ char	**get_matrix_env(t_env *env)
 
 	temp = env;
 	env_size = 0;
-	while (temp && ++env_size)
+	while (temp)
+	{
+		env_size++;
 		temp = temp->next;
+	}
 	matrix_env = (char **)safe_malloc((env_size + 1) * sizeof(char *));
 	temp = env;
 	i = 0;
-	while (temp && matrix_env)
+	while (temp && !matrix_env)
 	{
 		matrix_env[i] = ft_strdup(temp->var);
 		i++;
@@ -61,7 +64,7 @@ char	**get_matrix_env(t_env *env)
 	matrix_env[i] = NULL;
 	return (matrix_env);
 }
-/*
+
 void	print_sorted_env(t_env *env, int fd)
 {
 	char	**temp_env;
@@ -140,4 +143,4 @@ char	**init_export_array(char **env)
 	}
 	export[i] = NULL;
 	return (export);
-} */
+}

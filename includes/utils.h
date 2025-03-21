@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 06:01:56 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/20 21:12:15 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/20 16:22:25 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 # define UTILS_H
 
 # include "../includes/minishell.h"
-
-int	prep_out_redir(t_exec *exec);
 
 /* src/utils/free_1.c */
 void	free_var(t_env *var);
@@ -71,6 +69,7 @@ void	my_strcat(char *dest, const char *src);
 int		ft_isalnum(int c);
 
 /* src/utils/utils_str.c */
+int		ft_strcmp(const char *s1, const char *s2);
 int		ft_strlen(const char *str);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*ft_strdup(const char *s);

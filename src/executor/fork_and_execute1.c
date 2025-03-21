@@ -6,14 +6,14 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 21:05:44 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/20 21:13:28 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/20 17:36:58 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
 // rever se tenho que dar free a alguma merda
-/* void	handle_error(const char *message)
+void	handle_error(const char *message)
 {
 	write(2, message, ft_strlen(message));
 	write(2, "\n", 1);
@@ -38,9 +38,9 @@ void	redirect_output(t_exec *exec)
 			handle_error("dup2");
 		close(exec->out_fd);
 	}
-} */
+}
 
-/* void	fork_and_execute_command(char **args, t_exec *exec, char **env)
+void	fork_and_execute_command(char **args, t_exec *exec, char **env)
 {
 	//pid_t	pid;
 
@@ -52,4 +52,4 @@ void	redirect_output(t_exec *exec)
 	}
 	else if (exec->pid < 0)
 		handle_error("fork");
-} */
+}

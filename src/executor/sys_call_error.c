@@ -6,55 +6,38 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 14:42:43 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/20 21:56:51 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/20 20:16:51 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-int ft_check_access(char *str, char *cmd, char **tmp)
+int ft_check_access(char *str)
 {
-	cmd = ft_strjoin(str, cmd);
-	free(str);
-	if (!access(cmd, F_OK) && !access(cmd, R_OK))
+	if (access(str, F_OK) && access(str, R_OK))
 	{
-		tmp[0] = cmd;
+		free(str);
 		return 1;
 	}
-	free(cmd);
+	free(str);
 	return 0;
 }
-char *get_path(t_env *env)
-{
-	while (env)
-	{
-		if (!ft_strncmp(env->var_name, "PATH", 5))
-			return (env->var_value);
-		env = env->next;
-	}
-	return (NULL);
-}
 
-char *path_search(char *str, t_env *env)
+char *path_search(char *str)
 {
 	int i = 0;
-	char *tmp;
-	char *path = get_path(env);
-
-	tmp = NULL;
-	if (!path)
-		return (ft_strdup(str));
+	char *path = get_path();
 	char **ret = ft_split(path, ':');
 	while(ret && ret[i])
 	{
-		if (ft_check_access(ft_strjoin(ret[i], "/"), str, &tmp))
-			break;
+		if (ft_check_access(ft_strjoin(ret[i], str)))
+		{
+			free_matrix(ret);
+			return (ft_strjoin(ret[i], str));
+		}
 		i++;
 	}
-	free_matrix(ret);
-	if (!tmp)
-		return (ft_strdup(str));
-	return (tmp);
+	return (ft_strdup(str));
 }
 
 int	pipe_error(void)
