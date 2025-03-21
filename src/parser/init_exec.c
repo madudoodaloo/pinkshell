@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_exec.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 20:08:55 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/20 23:04:55 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/20 16:07:38 by marianamest      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,19 +40,19 @@ int	strlen_args(char **args)
 	return i;
 }
 
-// char **add_prefix(t_token *token, char **args)
-// {
-// 	char *str;
-// 	char **ret;
+char **add_prefix(t_token *token, char **args)
+{
+	char *str;
+	char **ret;
 
-// 	if (token->type == HERE_DOC || token->type == R_APP)
-// 		str = ft_strjoin("APP", token->next->content);
-// 	else
-// 		str = ft_strjoin("STD", token->next->content);
-// 	ret = add_to_matrix(str, args);
-// 	free(str);
-// 	return (ret);
-// }
+	if (token->type == HERE_DOC || token->type == R_APP)
+		str = ft_strjoin("APP", token->next->content);
+	else
+		str = ft_strjoin("STD", token->next->content);
+	ret = add_to_matrix(str, args);
+	free(str);
+	return (ret);
+}
 
 char **add_to_matrix(char *content, char **args)
 {
@@ -89,12 +89,12 @@ void tokens_to_exec(t_token *token, t_exec *exec, int nbr_cmds)
 	{
 		exec[i].index = i;
 		exec[i].nbr_cmds = nbr_cmds;
-		if (token->type != PIPE)
+		if (token->type == CMD)
 				exec[i].args = add_to_matrix(token->content, exec[i].args);
-		// else if (token->type == R_APP || token->type == R_OUT)
-		// 	exec[i].redir_out = add_prefix(token, exec[i].args);
-		// else if (token->type == R_IN || token->type == HERE_DOC)
-		// 	exec[i].redir_in = add_prefix(token, exec[i].args);
+		else if (token->type == R_APP || token->type == R_OUT)
+			exec[i].redir_out = add_prefix(token, exec[i].args);
+		else if (token->type == R_IN || token->type == HERE_DOC)
+			exec[i].redir_in = add_prefix(token, exec[i].args);
 		if (token->type == CMD)
 			token = token->next;
 		else if (token->type == PIPE)

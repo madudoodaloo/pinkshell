@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 00:04:58 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/20 21:14:26 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/20 19:45:35 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,6 @@
 # define HEREDOC_H
 
 # include "minishell.h"
-
-char	**ft_split(char const *str, char c);
-size_t	ft_strlcat(char *dst, const char *src, size_t n);
 
 
 /* prep_redir.c */
@@ -33,7 +30,7 @@ void    control_d_handle(t_exec *exec, int k, char *str);
 void    write_to_pipe(char *str, t_exec *exec);
 
 /* waitpid.c */
-//void    ft_waitpid(int pid);
+void    ft_waitpid(int pid);
 void    write_to_pipe(char *str, t_exec *exec);
 void    close_pipe(int *fd);
 void    safe_close(int fd);

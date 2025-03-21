@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pwd.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 17:32:36 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/20 21:08:28 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/20 14:46:39 by marianamest      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	pwd(int fd)
 
     if (getcwd(cwd, sizeof(cwd)) != NULL && *cwd)
     {
-        ft_putstr_fd(cwd, fd);
+        ft_putstr(fd, cwd);
         write(fd, "\n", 1);
         msh()->exit_status = 0;
     }

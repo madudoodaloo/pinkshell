@@ -37,7 +37,6 @@ SRC =			src/main/main.c \
 				src/builtins/unset1.c \
 				src/builtins/unset2.c \
 				src/heredoc/prep_redir.c \
-				src/executor/redirection_1.c \
 				src/heredoc/run_doc.c \
 				src/heredoc/waitpid.c \
 				src/utils/free_1.c \
@@ -53,7 +52,7 @@ SRC =			src/main/main.c \
 				src/utils/utils_str.c \
 				src/utils/delete.c
 
-CFLAGS =		-I./includes -g -fsanitize=address # -Wall -Wextra -Werror #
+CFLAGS =		-I./includes -g -Wall -Wextra -Werror #-fsanitize=address
 OTHERFLAGS =	-lreadline #-lasan -O3
 
 OBJ_DIR =		./obj/
