@@ -6,7 +6,7 @@
 /*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 15:35:26 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/20 14:10:06 by marianamest      ###   ########.fr       */
+/*   Updated: 2025/03/20 20:58:40 by marianamest      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ void	exec_exit(char **args)
 		}
 		exit_code = normalize_exit_code(ft_atoi(args[1]));
 	}
-	printf("exit\n");
+	write(1, "exit\n", 5);
+	//FAZER FREE ALL
 	exit(exit_code);
 }

@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 11:59:02 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/20 23:13:39 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/21 02:10:03 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -188,7 +188,6 @@ void start_executing(void)
 
 	t_exec *ex;
 	ex = msh()->exec;
-	//nana preciso duma ft que checke se temos permissões sobre os ficheiros dados
 	if (check_redirs(ex) < 0)
 		return ;
 	ex = msh()->exec;

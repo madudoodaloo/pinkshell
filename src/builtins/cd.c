@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cd.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/03 20:40:50 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/20 21:01:52 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/20 23:35:42 by marianamest      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 
 void	cd(char **args, int fd)
 {
-	(void)fd;
 	char	env_var[4128];
 	char	cwd[4096];
-
+	(void)fd;
+	
 	if (!args || chdir(args[1]))
 	{
-		write(2, "minishell: cd: ", 15);
+		write(2, "minishell: cd ", 14);
 		perror(args[1]);
 		msh()->exit_status = 1;
 		return ;
@@ -33,7 +33,9 @@ void	cd(char **args, int fd)
 	}
 	ft_strlcpy(env_var, "PWD=", sizeof(env_var));
 	ft_strlcat(env_var, cwd, sizeof(env_var));
-	update_pwd();
-	//export((char *[]){"export", env_var, NULL}, fd);
+	update_pwd(); // updates the pwd env var internally within shell's env struct
+	//export((char *[]){"export", env_var, NULL}, fd); // ensures that the updated PWD var 
+	// is also reflected in the shell's environment
+	// that is accessible to child processes and external commands
 	msh()->exit_status = 0;
 }

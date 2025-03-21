@@ -19,13 +19,13 @@ SRC =			src/main/main.c \
                 src/expander/expander_3.c \
 				src/signals/signals_1.c \
 				src/signals/signals_2.c \
-				src/executor/execute_builtins.c \
 				src/executor/fork_and_execute1.c \
 				src/executor/fork_and_execute2.c \
 				src/executor/redirections1.c \
 				src/executor/redirections2.c \
 				src/executor/start_executer.c \
 				src/executor/sys_call_error.c \
+				src/builtins/execute_builtins.c \
 				src/builtins/cd.c \
 				src/builtins/echo.c \
 				src/builtins/env1.c \
@@ -35,7 +35,6 @@ SRC =			src/main/main.c \
 				src/builtins/export2.c \
 				src/builtins/pwd.c \
 				src/builtins/unset1.c \
-				src/builtins/unset2.c \
 				src/heredoc/prep_redir.c \
 				src/executor/redirection_1.c \
 				src/heredoc/run_doc.c \

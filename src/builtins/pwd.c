@@ -6,11 +6,12 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 17:32:36 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/20 21:08:28 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/21 02:41:11 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
+#include <linux/limits.h>
 
 void	pwd(int fd)
 {
@@ -18,7 +19,7 @@ void	pwd(int fd)
 
     if (getcwd(cwd, sizeof(cwd)) != NULL && *cwd)
     {
-        ft_putstr_fd(cwd, fd);
+        ft_put_str_fd(cwd, fd);
         write(fd, "\n", 1);
         msh()->exit_status = 0;
     }

@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   env2.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 17:31:05 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/20 21:04:33 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/20 21:41:35 by marianamest      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-/* int	find_env_key_index(char **env, const char *key)
+int	find_env_key_index(char **env, const char *key)
 {
 	int	i;
 	int	key_len;
@@ -92,43 +92,11 @@ void	set_or_add_env_value(char **env, const char *key, const char *value)
 		return ;
 	if (index != -1)
 	{
-		free((*env)[index]);
-		(*env)[index] = new_entry;
+		free((env)[index]);
+		(env)[index] = new_entry;
 	}
 	else
-		*env = expand_env(*env, new_entry);
-}
-
-char	**general_manage_env(t_env *env, int action, char **envp)
-{
-	int		index;
-	t_env	*temp;
-
-	if (env == NULL)
-		env = init_env_array(envp);
-	if (action == 0)
-		set_or_add_env_value(env, env->var_name, env->var_value);
-	else if (action == 1)
-	{
-		temp = find_env_key_index(env, env->var_name);
-		if (index != -1)
-		{
-			if (create_env_entry(env->var_name, env->var_value))
-			{
-				free(env[index]);
-				env[index] = create_env_entry(env->var_name, env->var_name);
-			}
-		}
-	}
-	else if (action == 2)
-	{
-		if (create_env_entry(env->var_name, env->var_value)
-			&& (env = expand_env(env, create_env_entry(env->var_name,
-						env->var_value))) == NULL)
-			return (NULL);
-	}
-	return (env);
+		env = expand_env(env, new_entry);
 }
 
 t_env	*env_cmd(t_env *env, int action);
- */

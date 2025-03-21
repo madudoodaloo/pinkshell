@@ -6,13 +6,13 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 16:47:08 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/20 21:42:21 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/21 02:57:19 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-/* void	add_or_update_env_var(char ***env, const char *var)
+void	add_or_update_env_var(char **env, const char *var)
 {
 	char	*equals;
 	int		name_len;
@@ -23,12 +23,12 @@
 		name_len = equals - var;
 	else
 		name_len = ft_strlen(var);
-	index = find_var_index(*env, var, name_len);
+	index = find_var_index(env, var, name_len);
 	if (index != -1)
 	{
-		free((*env)[index]);
-		(*env)[index] = ft_strdup(var);
-		if (!(*env)[index])
+		free((env)[index]);
+		(env)[index] = ft_strdup(var);
+		if (!(env)[index])
 		{
 			perror("strdup failed");
 			exit(1);
@@ -37,7 +37,7 @@
 	else
 		add_new_var(env, var);
 }
- */
+
 char	**get_matrix_env(t_env *env)
 {
 	t_env	*temp;
@@ -47,12 +47,15 @@ char	**get_matrix_env(t_env *env)
 
 	temp = env;
 	env_size = 0;
-	while (temp && ++env_size)
+	while (temp)
+	{
+		env_size++;
 		temp = temp->next;
+	}
 	matrix_env = (char **)safe_malloc((env_size + 1) * sizeof(char *));
 	temp = env;
 	i = 0;
-	while (temp && matrix_env)
+	while (temp && !matrix_env)
 	{
 		matrix_env[i] = ft_strdup(temp->var);
 		i++;
@@ -61,8 +64,8 @@ char	**get_matrix_env(t_env *env)
 	matrix_env[i] = NULL;
 	return (matrix_env);
 }
-/*
-void	print_sorted_env(t_env *env, int fd)
+
+void	print_sorted_env(t_env *env)
 {
 	char	**temp_env;
 	int		env_size;
@@ -96,48 +99,53 @@ void	export_command(char **args, t_env *env, int fd)
 	int	i;
 
 	if (!args[1])
-		print_sorted_env(, fd);
+		print_sorted_env(env);
 	else
 	{
 		i = 1;
 		while (args[i])
 		{
 			if (!parse_export(args[i]))
-				printf("export: '%s': not a valid identifier\n", args[i]);
+			{
+				ft_put_str_fd("export: '",fd);
+				ft_put_str_fd(args[i],fd);
+				ft_put_str_fd("': not a valid identifier\n",fd);
+			}
 			else
 			{
-				add_or_update_env_var(env, args[i]);
-				print_sorted_env(*env, fd);
+
+				var_add_back(env, create_var(args[i]));
+				print_sorted_env(env);
 			}
 			i++;
 		}
 	}
 }
 
-char	**init_export_array(char **env)
-{
-	int		i;
-	char	**export;
+// char	**init_export_array(char **env)
+// {
+// 	int		i;
+// 	char	**export;
 
-	i = 0;
-	while (env[i])
-		i++;
-	export = (char **)safe_malloc((i + 1) * sizeof(char *));
-	if (!export)
-		return (NULL);
-	i = 0;
-	while (env[i])
-	{
-		export[i] = ft_strdup(env[i]);
-		if (!export[i])
-		{
-			while (i > 0)
-				free(export[--i]);
-			free(export);
-			return (NULL);
-		}
-		i++;
-	}
-	export[i] = NULL;
-	return (export);
-} */
+// 	i = 0;
+// 	while (env[i])
+// 		i++;
+// 	export = (char **)safe_malloc((i + 1) * sizeof(char *));
+// 	if (!export)
+// 		return (NULL);
+// 	i = 0;
+// 	while (env[i])
+// 	{
+// 		export[i] = ft_strdup(env[i]);
+// 		if (!export[i])
+// 		{
+// 			while (i > 0)
+// 				free(export[--i]);
+// 			free(export);
+// 			return (NULL);
+// 		}
+// 		i++;
+// 	}
+// 	export[i] = NULL;
+// 	return (export);
+// }

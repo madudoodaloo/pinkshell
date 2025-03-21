@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   export1.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
+/*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 13:07:55 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/20 17:35:44 by marianamest      ###   ########.fr       */
+/*   Updated: 2025/03/21 02:43:37 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,14 +66,14 @@ int	find_var_index(char **env, const char *var, int name_len)
 	return (-1);
 }
 
-void	add_new_var(char ***env, const char *var)
+void	add_new_var(char **env, const char *var)
 {
 	int		env_size;
 	char	**new_env;
 	int		i;
 
 	env_size = 0;
-	while ((*env)[env_size])
+	while (env[env_size])
 		env_size++;
 	new_env = safe_malloc((env_size + 2) * sizeof(char *));
 	if (!new_env)
@@ -84,11 +84,11 @@ void	add_new_var(char ***env, const char *var)
 	i = 0;
 	while (i < env_size)
 	{
-		new_env[i] = (*env)[i];
+		new_env[i] = env[i];
 		i++;
 	}
 	new_env[env_size] = ft_strdup(var);
 	new_env[env_size + 1] = NULL;
 	free(*env);
-	*env = new_env;
+	env = new_env;
 }

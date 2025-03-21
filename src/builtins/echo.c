@@ -6,32 +6,32 @@
 /*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 15:07:40 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/20 14:06:44 by marianamest      ###   ########.fr       */
+/*   Updated: 2025/03/20 23:36:59 by marianamest      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-int	is_flag_n(char *str)
+int	is_flag_n(char *str) // protects from -n flag
 {
 	return (str[0] == '-' && str[1] == 'n' && str[2] == '\0');
 }
 
-void	print_args(char **args, int start_index)
+void	print_args(char **args, int start_index, int fd)
 {
 	int	i;
 
 	i = start_index;
 	while (args[i])
 	{
-		printf("%s", args[i]);
+		write(fd, args[i], ft_strlen(args[i]));
 		if (args[i + 1])
-			printf(" ");
+			write(fd, " ", 1);
 		i++;
 	}
 }
 
-void	run_echo(char **args)
+void	run_echo(char **args, int fd)
 {
 	int	start_index;
 	int	newline;
@@ -43,7 +43,7 @@ void	run_echo(char **args)
 		newline = 0;
 		start_index++;
 	}
-	print_args(args, start_index);
+	print_args(args, start_index, fd);
 	if (newline)
-		printf("\n");
+		write(fd, " ", 1);
 }

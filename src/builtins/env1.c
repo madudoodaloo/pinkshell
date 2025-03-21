@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   env1.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 15:20:31 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/20 21:05:06 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/20 21:38:47 by marianamest      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-/* char	*create_env_entry(const char *key, const char *value)
+char	*create_env_entry(const char *key, const char *value)
 {
 	int		key_len;
 	int		value_len;
@@ -66,14 +66,15 @@ int	process_env_variable(char *env_var, char **env, int i)
 	return (1);
 }
 
-char	**init_env_array(char **envp);
- {
+char	**init_env_array(char **envp)
+{
 	int		i;
 	char	**env;
 
 	i = 0;
+	env = NULL;
 	if (!check_env(envp))
-		env = empty_env();
+		free_matrix(envp);
 	else
 	{
 		env = allocate_env(envp);
@@ -94,4 +95,3 @@ char	**init_env_array(char **envp);
 	}
 	return (env);
 }
- */
