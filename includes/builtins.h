@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 06:01:00 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/21 04:16:08 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/21 04:43:21 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	add_new_var(char **env, const char *var);
 /* export2 */
 void	add_or_update_env_var(char **env, const char *var);
 char	**get_matrix_env(t_env *env);
-void	print_sorted_env(t_env *env);
+void	print_sorted_env(t_env *env, int fd);
 void	export_command(char **args, t_env *env,int fd);
 // char	**init_export_array(char **env);
 

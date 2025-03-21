@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 13:25:45 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/20 07:44:41 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/21 09:43:57 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	is_edge_expand(char *var_name)
 		return (0);
 	else if (var_name[0] == '$')
 	{
-		if (var_name[1] == '?' || var_name[1] == '?')
+		if (var_name[1] == '?' || var_name[1] == '$')
 			return (1);
 	}
 	return (0);

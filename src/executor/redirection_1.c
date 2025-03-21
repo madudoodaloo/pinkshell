@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 18:36:18 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/20 23:40:18 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/21 05:55:52 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int size_args(char **args)
 		size++;
 	return size;
 }
-
+//vai dar skip aos dois strs respetivos à key e ao file da redireção
 char **exred(char **args, int i)
 {
 	char **new;
@@ -44,31 +44,58 @@ char **exred(char **args, int i)
 	}
 	return (new);
 }
-void exec_red2(t_exec *ex, char *key, char *value)
+void	exec_r(t_exec *ex, char *key, char *file_name)
 {
-	printf("r: %s - %s\n", key, value);
+	ex->out_fd = open(file_name, O_WRONLY | O_CREAT | O_TRUNC, 0644);
+	if (ex->out_fd == -1)
+
+
+}
+void	exec_rr(t_exec *ex, char *key, char *file_name)
+void	exec_l(t_exec *ex, char *key, char *file_name)
+void	exec_ll(t_exec *ex, char *key, char *file_name)
+
+
+
+
+void exec_red2(t_exec *ex, char *key, char *file_name)
+{
+	if (!strcmp(key, ">"))
+		exec_r(ex, key, file_name);
+	else if (!strcmp(key, ">>"))
+		exec_rr(ex, key, file_name);
+	if (!strcmp(key, ">"))
+		exec_l(ex, key, file_name);
+	else if (!strcmp(key, "<<"))
+		exec_ll(ex, key, file_name);
 	free(key);
-	free(value);
+	free(file_name);
 }
 
 char **exec_red(t_exec *ex)
 {
-	char **agrs;
+	char **args;
 	int i = 0;
 
-	agrs = ex->args;
-	while (agrs && agrs[i])
+	args = ex->args;
+	while (args && args[i])
 	{
-		if (!ft_strcmp(agrs[i], "<"))
+		if (!ft_strcmp(args[i], "<"))
 		{
-			exec_red2(ex, agrs[i], agrs[i + 1]);
-			agrs = exred(agrs, i);
+			ex. = exec_red2(ex, args[i], args[i + 1]);
+			args = exred(args, i);
+			i = 0;
+		}
+		else if (!ft_strcmp(args[i], ">"))
+		{
+			exec_red2(ex, args[i], args[i + 1]);
+			args = exred(args, i);
 			i = 0;
 		}
 		else
 			i++;
 	}
-	return agrs;
+	return args;
 }
 
 int	check_redirs(t_exec *ex)
