@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cd.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/03 20:40:50 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/20 23:35:42 by marianamest      ###   ########.fr       */
+/*   Updated: 2025/03/21 18:13:16 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,23 @@ void	cd(char **args, int fd)
 {
 	char	env_var[4128];
 	char	cwd[4096];
+	char	*home;
 	(void)fd;
 	
-	if (!args || chdir(args[1]))
+	if(!args) // go back to root
+	{
+		home = get_home();
+		chdir(home);
+		free(home);
+		return ;
+	}
+	/*if (!args || chdir(args[1]))
 	{
 		write(2, "minishell: cd ", 14);
 		perror(args[1]);
 		msh()->exit_status = 1;
 		return ;
-	}
+	}*/
 	if (getcwd(cwd, sizeof(cwd)) == NULL)
 	{
 		perror("get cwd error.");

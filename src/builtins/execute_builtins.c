@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execute_builtins.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 16:58:48 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/21 04:02:25 by marianamest      ###   ########.fr       */
+/*   Updated: 2025/03/21 18:22:58 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,19 +32,19 @@ void	print_env(t_env *env, int fd)
 
 int	execute_builtin(t_exec *exec)
 {
-	if (ft_strcmp(exec->args[0], "cd") == 0)
+	if (ft_strcmp(exec->args[0], "cd") == 0) // Tá bom!
 		cd(exec->args, exec->out_fd);
-	else if (ft_strcmp(exec->args[0], "export") == 0)
+	else if (ft_strcmp(exec->args[0], "export") == 0) // Tá bom!
 		export_command(exec->args, msh()->env, exec->out_fd);
-	else if (ft_strcmp(exec->args[0], "unset") == 0)
+	else if (ft_strcmp(exec->args[0], "unset") == 0) // Tá bom!
 		exec_unset(exec->args);
-	else if (ft_strcmp(exec->args[0], "exit") == 0)
+	else if (ft_strcmp(exec->args[0], "exit") == 0) //Tá Bom!
 		exec_exit(exec->args);
-	else if (ft_strcmp(exec->args[0], "env") == 0)
+	else if (ft_strcmp(exec->args[0], "env") == 0) //Tá bom!
 		print_env(msh()->env, exec->out_fd);
-	else if (ft_strcmp(exec->args[0], "pwd") == 0)
+	else if (ft_strcmp(exec->args[0], "pwd") == 0) //Tá bom!
 		pwd(exec->out_fd);
-	else if (ft_strcmp(exec->args[0], "echo") == 0)
+	else if (ft_strcmp(exec->args[0], "echo") == 0) // a expação de variaveis não está a funcionar de resto tá bom!
 		run_echo(exec->args, exec->out_fd);
 	else
 		return (0);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   export1.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
+/*   By: msilva-c <msilva-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 13:07:55 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/21 03:57:05 by marianamest      ###   ########.fr       */
+/*   Updated: 2025/03/21 05:08:17 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ void	format_export_var(const char *var, int fd)
 	const char	*equals = ft_strchr(var, '=');
 	int			name_len;
 
+	(void)fd;
+	//REVER TROCAR PRINTF TO FTPUTSTR FD
 	if (!equals)
 		printf("declare -x %s\n", var);
 	else
