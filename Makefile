@@ -19,10 +19,6 @@ SRC =			src/main/main.c \
                 src/expander/expander_3.c \
 				src/signals/signals_1.c \
 				src/signals/signals_2.c \
-				src/executor/fork_and_execute1.c \
-				src/executor/fork_and_execute2.c \
-				src/executor/redirections1.c \
-				src/executor/redirections2.c \
 				src/executor/start_executer.c \
 				src/executor/sys_call_error.c \
 				src/builtins/execute_builtins.c \

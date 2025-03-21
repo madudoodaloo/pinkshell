@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 18:36:18 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/21 05:55:52 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/21 10:23:09 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,12 +48,12 @@ void	exec_r(t_exec *ex, char *key, char *file_name)
 {
 	ex->out_fd = open(file_name, O_WRONLY | O_CREAT | O_TRUNC, 0644);
 	if (ex->out_fd == -1)
-
+		return ;
 
 }
-void	exec_rr(t_exec *ex, char *key, char *file_name)
-void	exec_l(t_exec *ex, char *key, char *file_name)
-void	exec_ll(t_exec *ex, char *key, char *file_name)
+void	exec_rr(t_exec *ex, char *key, char *file_name){}
+void	exec_l(t_exec *ex, char *key, char *file_name){}
+void	exec_ll(t_exec *ex, char *key, char *file_name){}
 
 
 
@@ -82,7 +82,7 @@ char **exec_red(t_exec *ex)
 	{
 		if (!ft_strcmp(args[i], "<"))
 		{
-			ex. = exec_red2(ex, args[i], args[i + 1]);
+			exec_red2(ex, args[i], args[i + 1]);
 			args = exred(args, i);
 			i = 0;
 		}
