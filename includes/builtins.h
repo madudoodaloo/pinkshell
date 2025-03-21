@@ -3,27 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   builtins.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 06:01:00 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/20 20:54:30 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/21 03:59:50 by marianamest      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef BUILTINS_H
 # define BUILTINS_H
 
-
 # include "../includes/minishell.h"
-char *path_search(char *str, t_env *env);
+char	*path_search(char *str, t_env *env);
 
 /* cd */
 void	cd(char **args, int fd);
 
 /* echo */
 int		is_flag_n(char *str);
-void	run_echo(char **args);
-void	print_args(char **args, int start_index);
+void	run_echo(char **args, int fd);
+void	print_args(char **args, int start_index, int fd);
 
 /* env1 */
 char	*create_env_entry(const char *key, const char *value);
@@ -47,12 +46,12 @@ void	exec_exit(char **args);
 /* export1 */
 int		is_valid_var_char(char c, int is_first_char);
 int		parse_export(char *str);
-void	format_export_var(const char *var);
+void	format_export_var(const char *var, int fd);
 int		find_var_index(char **env, const char *var, int name_len);
-void	add_new_var(char ***env, const char *var);
+void	add_new_var(char **env, const char *var);
 
 /* export2 */
-void	add_or_update_env_var(char ***env, const char *var);
+void	add_or_update_env_var(char **env, const char *var);
 char	**get_matrix_env(t_env *env);
 void	print_sorted_env(t_env *env, int fd);
 void	export_command(char **args, t_env *env, int fd);
@@ -63,13 +62,10 @@ void	pwd(int fd);
 void	update_pwd(void);
 
 /* unset1 */
-void	exec_unset(char **envp, char **export, char **args, int *exit_status);
+void	exec_unset(char **envp);
 void	unset_env_var(char **envp, char **export, const char *var);
 void	remove_from_array(char **array, int index);
 int		input_size(char **array);
 void	read_unset(char **envp, char **export, char **cmds, int *exit_status);
-
-/* unset2 */
-int		ft_strcmp_nochr(const char *s1, const char *s2, char delim);
 
 #endif

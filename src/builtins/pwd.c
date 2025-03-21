@@ -3,31 +3,31 @@
 /*                                                        :::      ::::::::   */
 /*   pwd.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 17:32:36 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/21 02:41:11 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/21 04:00:02 by marianamest      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
-#include <linux/limits.h>
+#include <limits.h>
 
 void	pwd(int fd)
 {
-    char	cwd[PATH_MAX];
+	char	cwd[PATH_MAX];
 
-    if (getcwd(cwd, sizeof(cwd)) != NULL && *cwd)
-    {
-        ft_put_str_fd(cwd, fd);
-        write(fd, "\n", 1);
-        msh()->exit_status = 0;
-    }
-    else
-    {
-        perror("minishell: pwd");
-        msh()->exit_status = 1;
-    }
+	if (getcwd(cwd, sizeof(cwd)) != NULL && *cwd)
+	{
+		ft_put_str_fd(cwd, fd);
+		write(fd, "\n", 1);
+		msh()->exit_status = 0;
+	}
+	else
+	{
+		perror("minishell: pwd");
+		msh()->exit_status = 1;
+	}
 }
 
 void	update_pwd(void)

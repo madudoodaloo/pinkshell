@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   export1.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 13:07:55 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/21 02:43:37 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/21 03:57:05 by marianamest      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	parse_export(char *str)
 	return (1);
 }
 
-void	format_export_var(const char *var)
+void	format_export_var(const char *var, int fd)
 {
 	const char	*equals = ft_strchr(var, '=');
 	int			name_len;
@@ -59,7 +59,7 @@ int	find_var_index(char **env, const char *var, int name_len)
 	while (env[i])
 	{
 		if (ft_strncmp(env[i], var, name_len) == 0 && (env[i][name_len] == '='
-			|| env[i][name_len] == '\0'))
+				|| env[i][name_len] == '\0'))
 			return (i);
 		i++;
 	}
