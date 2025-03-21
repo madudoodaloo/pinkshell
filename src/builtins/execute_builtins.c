@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execute_builtins.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 16:58:48 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/21 03:28:19 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/21 04:02:25 by marianamest      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	execute_builtin(t_exec *exec)
 	else if (ft_strcmp(exec->args[0], "export") == 0)
 		export_command(exec->args, msh()->env, exec->out_fd);
 	else if (ft_strcmp(exec->args[0], "unset") == 0)
-		exec_unset(exec->args, );
+		exec_unset(exec->args);
 	else if (ft_strcmp(exec->args[0], "exit") == 0)
 		exec_exit(exec->args);
 	else if (ft_strcmp(exec->args[0], "env") == 0)
@@ -85,5 +85,5 @@ char	*get_var_value(char *name)
 			env = env->next;
 		}
 	}
-	return NULL;
+	return (NULL);
 }

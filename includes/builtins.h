@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 06:01:00 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/21 03:36:31 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/21 04:16:08 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define BUILTINS_H
 
 # include "../includes/minishell.h"
+char	*path_search(char *str, t_env *env);
 
 /* cd */
 void	cd(char **args, int fd);
@@ -44,7 +45,7 @@ void	exec_exit(char **args);
 /* export1 */
 int		is_valid_var_char(char c, int is_first_char);
 int		parse_export(char *str);
-void	format_export_var(const char *var);
+void	format_export_var(const char *var, int fd);
 int		find_var_index(char **env, const char *var, int name_len);
 void	add_new_var(char **env, const char *var);
 
@@ -59,9 +60,11 @@ void	export_command(char **args, t_env *env,int fd);
 void	pwd(int fd);
 void	update_pwd(void);
 
-/* unset */
-void	exec_unset(char **args);
-void	remove_var(char *name);
-int		if_var_exists(char *name);
+/* unset1 */
+void	exec_unset(char **envp);
+void	unset_env_var(char **envp, char **export, const char *var);
+void	remove_from_array(char **array, int index);
+int		input_size(char **array);
+void	read_unset(char **envp, char **export, char **cmds, int *exit_status);
 
 #endif

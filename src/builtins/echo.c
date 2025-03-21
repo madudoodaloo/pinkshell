@@ -6,7 +6,7 @@
 /*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 15:07:40 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/20 23:36:59 by marianamest      ###   ########.fr       */
+/*   Updated: 2025/03/21 04:04:00 by marianamest      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,5 +45,5 @@ void	run_echo(char **args, int fd)
 	}
 	print_args(args, start_index, fd);
 	if (newline)
-		write(fd, " ", 1);
+		write(fd, "\n", 1);
 }

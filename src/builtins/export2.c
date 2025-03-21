@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   export2.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 16:47:08 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/21 02:57:19 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/21 03:57:28 by marianamest      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ char	**get_matrix_env(t_env *env)
 	return (matrix_env);
 }
 
-void	print_sorted_env(t_env *env)
+void	print_sorted_env(t_env *env, int fd)
 {
 	char	**temp_env;
 	int		env_size;
@@ -90,7 +90,7 @@ void	print_sorted_env(t_env *env)
 	}
 	i = -1;
 	while (temp_env[++i])
-		format_export_var(temp_env[i]);
+		format_export_var(temp_env[i], fd);
 	free_matrix(temp_env);
 }
 
@@ -99,7 +99,7 @@ void	export_command(char **args, t_env *env, int fd)
 	int	i;
 
 	if (!args[1])
-		print_sorted_env(env);
+		print_sorted_env(env, fd);
 	else
 	{
 		i = 1;
@@ -107,15 +107,14 @@ void	export_command(char **args, t_env *env, int fd)
 		{
 			if (!parse_export(args[i]))
 			{
-				ft_put_str_fd("export: '",fd);
-				ft_put_str_fd(args[i],fd);
-				ft_put_str_fd("': not a valid identifier\n",fd);
+				ft_put_str_fd("export: '", fd);
+				ft_put_str_fd(args[i], fd);
+				ft_put_str_fd("': not a valid identifier\n", fd);
 			}
 			else
 			{
-
 				var_add_back(env, create_var(args[i]));
-				print_sorted_env(env);
+				print_sorted_env(env, fd);
 			}
 			i++;
 		}
