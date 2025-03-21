@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 16:58:48 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/20 20:38:04 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/20 23:06:16 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,9 @@ int	is_builtin(char *command) // bota struct maybe
 	if (ft_strcmp(command, "cd") == 0 || ft_strcmp(command, "export") == 0
 		|| ft_strcmp(command, "unset") == 0 || ft_strcmp(command, "exit") == 0
 		|| ft_strcmp(command, "env") == 0 || ft_strcmp(command, "pwd") == 0
-		|| ft_strcmp(command, "echo") == 0)
+)
+//||
+		// ft_strcmp(command, "echo") == 0)
 	{
 		return (1);
 	}

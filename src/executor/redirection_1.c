@@ -6,22 +6,82 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 18:36:18 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/20 19:57:37 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/20 23:40:18 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
+int size_args(char **args)
+{
+	int size;
+
+	size = 0;
+	if (!args || !args[0])
+		return (0);
+	while(args[size])
+		size++;
+	return size;
+}
+
+char **exred(char **args, int i)
+{
+	char **new;
+	int size;
+	int	j;
+	int	k;
+
+	size = size_args(args);
+	new = safe_malloc((size + 1) * sizeof(char *));
+	j = 0;
+	k = 0;
+	while(k < size && args[k])
+	{
+		if (k == i)
+			k += 2;
+		else
+			new[j++] = args[k++];
+	}
+	return (new);
+}
+void exec_red2(t_exec *ex, char *key, char *value)
+{
+	printf("r: %s - %s\n", key, value);
+	free(key);
+	free(value);
+}
+
+char **exec_red(t_exec *ex)
+{
+	char **agrs;
+	int i = 0;
+
+	agrs = ex->args;
+	while (agrs && agrs[i])
+	{
+		if (!ft_strcmp(agrs[i], "<"))
+		{
+			exec_red2(ex, agrs[i], agrs[i + 1]);
+			agrs = exred(agrs, i);
+			i = 0;
+		}
+		else
+			i++;
+	}
+	return agrs;
+}
 
 int	check_redirs(t_exec *ex)
 {
-	if (prep_in_redir(ex) < 0)
-		return (-1);
-	if (prep_out_redir(ex) < 0)
-		return (-1);
+	int i = 0;
+	while (i < msh()->exec->nbr_cmds)
+	{
+		ex[i].args = exec_red(&ex[i]);
+		i++;
+	}
 	return (1);
 }
-
+//RESCREVER ESTA MERDA
 void do_input_redir(t_exec *ex)
 {
 	if (ex->index > 0)
@@ -44,7 +104,7 @@ void do_input_redir(t_exec *ex)
 		}
 	}
 }
-
+//RESCREVER ESTA MERDA
 void do_output_redir(t_exec *ex)
 {
 	if (ex->index < ex->nbr_cmds - 1 && !ex->redir_out)

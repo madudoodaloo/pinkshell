@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 01:27:31 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/20 03:42:00 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/20 21:37:09 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,23 +92,26 @@ int	check_env(char **envp)
 t_env	*get_env(char **envp)
 {
 	int		i;
-	t_env	*new;
+	t_env	*end;
 	t_env	*temp;
 
 	i = 0;
-	new = NULL;
 	temp = NULL;
+	end = NULL;
 	if (check_env(envp) == 0)
-		new = empty_env();
+		msh()->env  = empty_env();
 	else
 	{
 		while (envp[i])
 		{
 			temp = create_var(envp[i]);
-			if (i > 0)
-				var_add_back(new, temp);
+			if (!msh()->env)
+				msh()->env = temp;
+			else
+				end->next = temp;
 			i++;
+			end = temp;
 		}
 	}
-	return (new);
+	return (NULL);
 }

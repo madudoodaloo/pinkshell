@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 18:29:52 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/20 19:56:16 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/20 22:53:50 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ int	prep_out_redir(t_exec *exec)
 		}
 		i++;
 	}
+	return (1);
 
 }
 
@@ -47,16 +48,16 @@ int	prep_in_redir(t_exec *exec)
 {
 	int	i;
 
-	i = 0;
-	while (i < exec[i].nbr_cmds)
-	{
-		if (exec[i].redir_in != NULL)
-		{
-			is_final_heredoc(exec[i].redir_in, exec, i);
-			doc_loop(exec[i].redir_in, exec, i);
-		}
-		i++;
-	}
+	// i = 0;
+	// while (i < exec[i].nbr_cmds)
+	// {
+	// 	if (exec[i].redir_in != NULL)
+	// 	{
+	// 		is_final_heredoc(exec[i].redir_in, exec, i);
+	// 		doc_loop(exec[i].redir_in, exec, i);
+	// 	}
+	// 	i++;
+	// }
 	i = 0;
 	while (i < exec[i].nbr_cmds)
 	{

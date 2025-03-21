@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 19:58:02 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/20 20:00:54 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/20 22:34:51 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@
 
 void do_input_redir(t_exec *ex);
 void do_output_redir(t_exec *ex);
-
+int	check_redirs(t_exec *ex);
+void ft_close(int fd);
 
 /* src/executor/execute_builtins.c */
 int     execute_builtin(t_exec *exec);
@@ -53,7 +54,7 @@ void    close_args_fds(t_exec *ex);
 int     fix_fd_pipe(t_exec *ex);
 int     do_child(t_exec *exec);
 void    new_child(t_exec *ex);
-void    exec_single_cmd(t_exec *ex);
+void    exec_single_cmd(t_exec *e, int in, int out);
 void    start_executing(void);
 
 /* sys_call_error.c */

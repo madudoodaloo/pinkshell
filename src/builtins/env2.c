@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   env2.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
+/*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 17:31:05 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/20 14:09:25 by marianamest      ###   ########.fr       */
+/*   Updated: 2025/03/20 21:04:33 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-int	find_env_key_index(char **env, const char *key)
+/* int	find_env_key_index(char **env, const char *key)
 {
 	int	i;
 	int	key_len;
@@ -131,3 +131,4 @@ char	**general_manage_env(t_env *env, int action, char **envp)
 }
 
 t_env	*env_cmd(t_env *env, int action);
+ */

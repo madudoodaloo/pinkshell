@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create_tokens.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
+/*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 04:24:05 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/19 16:57:02 by marianamest      ###   ########.fr       */
+/*   Updated: 2025/03/20 23:12:32 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,16 +19,7 @@ int	get_type(char *str)
 		return (-1);
 	if (ft_strcmp(str, "|") == 0)
 		return (PIPE);
-	else if (ft_strcmp(str, ">") == 0)
-		return (R_OUT);
-	if (ft_strcmp(str, ">>") == 0)
-		return (R_APP);
-	else if (ft_strcmp(str, "<") == 0)
-		return (R_IN);
-	else if (ft_strcmp(str, "<<") == 0)
-		return (HERE_DOC);
-	else
-		return (CMD);
+	return (CMD);
 }
 
 void	token_add_back(t_token *head, t_token *new)
