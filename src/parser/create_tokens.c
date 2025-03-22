@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 04:24:05 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/20 23:12:32 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/22 14:57:02 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,16 @@ int	get_type(char *str)
 {
 	if (!str)
 		return (-1);
-	if (ft_strcmp(str, "|") == 0)
+	if (!ft_strcmp(str, "|"))
 		return (PIPE);
+	else if (!ft_strcmp(str, ">>"))
+		return (R_APP);
+	else if (!ft_strcmp(str, "<<"))
+		return (HERE_DOC);
+	else if (!ft_strcmp(str, ">"))
+		return (R_OUT);
+	else if (!ft_strcmp(str, "<"))
+		return (R_IN);
 	return (CMD);
 }
 

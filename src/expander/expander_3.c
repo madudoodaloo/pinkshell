@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 13:44:20 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/22 13:46:55 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/22 16:28:27 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,14 +50,16 @@ void	expand_var(t_token *token, t_msh *msh)
 	free(var_value);
 }
 
+
+
 void	ignore_dollar(char *str)
 {
 	int	i;
 
 	i = 0;
-	if (str)
+	if (!str)
 		return ;
-	while (str[i])
+	while (str[i] && i < ft_strlen(str))
 	{
 		if (str[i] == '$' && in_singles(str, i))
 			str[i] = TEMP_DOLLAR;

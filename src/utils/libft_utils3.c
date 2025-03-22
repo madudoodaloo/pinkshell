@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft_utils3.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
+/*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 21:44:47 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/19 15:36:37 by marianamest      ###   ########.fr       */
+/*   Updated: 2025/03/22 16:44:09 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int	ft_isdigit(char c)
 
 int	ft_isquote(char c)
 {
-	if (c == 39 || c == 35)
+	if (c == 39 || c == 34)
 		return (1);
 	else
 		return (0);

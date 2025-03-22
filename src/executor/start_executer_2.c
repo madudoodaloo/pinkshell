@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/22 10:03:52 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/22 13:58:31 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/22 16:32:54 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void execute_loop(t_exec *ex, int in, int out)
 void start_executing(void)
 {
 	int i = -1;
-	//int pid;
+	int pid;
 
 	t_exec *ex;
 	ex = msh()->exec;
@@ -54,12 +54,14 @@ void start_executing(void)
 		exec_single_cmd(ex, 0, 1);
 	else
 	{
-		//pid = fork();
-		//if (pid == 0)
-		execute_loop(ex, STDIN_FILENO, STDOUT_FILENO);
+		pid = fork();
+		if (pid == 0)
+			execute_loop(ex, STDIN_FILENO, STDOUT_FILENO);
+		else
+			ft_waitpid(pid);
 	}
 	i = -1;
-		while (i < ex->nbr_cmds)
-			ft_waitpid(ex[i++].pid);
+	while (++i < msh()->exec->nbr_cmds)
+		ft_waitpid(-1);
 	main_signals();
 }

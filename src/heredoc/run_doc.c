@@ -6,11 +6,14 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 12:20:57 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/21 21:52:56 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/22 16:29:21 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
+
+
+
 
 int	run_doc(char *delimiter, t_exec *exec, int k)
 {
@@ -46,14 +49,15 @@ void	read_into_heredoc(char *delimiter, t_exec *exec, int k)
 	safe_close(exec->pipe_fd[0]);
 	while (1)
 	{
+		printf("is here\n");
 		str = readline("> ");
 		if (!str)
 			control_d_handle(exec, k, str);
 		if (ft_strcmp(str, delimiter) == 0)
 			break ;
-		write_to_pipe(str, exec);
+		write_to_pipe(str, exec + k);
 	}
-	safe_close(exec->pipe_fd[1]);
+	safe_close(exec[k].pipe_fd[1]);
 	exit(0);
 }
 

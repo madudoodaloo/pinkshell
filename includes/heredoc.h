@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 00:04:58 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/20 21:14:26 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/22 15:47:32 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ void    control_d_handle(t_exec *exec, int k, char *str);
 void    write_to_pipe(char *str, t_exec *exec);
 
 /* waitpid.c */
-void    write_to_pipe(char *str, t_exec *exec);
 void    close_pipe(int *fd);
 void    safe_close(int fd);
 

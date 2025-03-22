@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 07:28:19 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/19 20:21:15 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/22 15:02:13 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 int	syntax_red(t_token *token)
 {
-	if (token->next->type != CMD)
+	if (!token->next)
 		return (error_redir(token));
-	else if (!token->next)
+	if (token->next->type != CMD)
 		return (error_redir(token));
 	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 18:29:52 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/22 13:34:57 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/22 15:38:08 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,13 +38,12 @@ int	doc_loop(char **args, t_exec *exec, int ex_index) // rever :  doc pipe chece
 int	open_infile_loop(char **in_redirs, t_exec *exec, int k)
 {
 	int	i;
-	//int	fd;
 
 	i = 0;
 	while (in_redirs[i] != NULL)
 	{
-		if (ft_strncmp(in_redirs[i], "app:", 4) != 0)
-			if (!check_and_open_file(in_redirs[i] + 4))
+		if (ft_strncmp(in_redirs[i], "<<", 2) != 0)
+			if (!check_and_open_file(in_redirs[i + 1]))
 				exec[k].cmd_invalid = true;
 	}
 	if (exec[k].is_heredoc)
@@ -61,7 +60,7 @@ int	is_final_heredoc(char **in_redirs, t_exec *exec, int k)
 	i = 0;
 	while (in_redirs[i] != NULL)
 	{
-		if (ft_strncmp(in_redirs[i], "app:", 4) == 0)
+		if (ft_strncmp(in_redirs[i], "<<", 2) == 0)
 		{
 			last_heredoc_index = i;
 		}

@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 18:17:41 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/22 12:53:26 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/22 16:12:54 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void	free_tokens(t_token *tokens)
 	temp = tokens;
 	while (current)
 	{
+
 		temp = current->next;
 		if (current)
 		{

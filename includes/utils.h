@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 06:01:56 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/22 12:35:50 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/22 16:45:49 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,7 @@ char	*ft_strdup(const char *s);
 
 /* src/utils/delete.c */
 void	print_struct(t_token **lst_head);
+void print_exec(t_exec *exec);
 //void	print_exec_struct(t_exec *exec);
 char	**copy_matrix(char **src);
 
