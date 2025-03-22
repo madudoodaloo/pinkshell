@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 13:44:20 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/22 13:12:43 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/22 13:46:55 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,8 @@ void	ignore_dollar(char *str)
 	int	i;
 
 	i = 0;
-	return ;
+	if (str)
+		return ;
 	while (str[i])
 	{
 		if (str[i] == '$' && in_singles(str, i))
