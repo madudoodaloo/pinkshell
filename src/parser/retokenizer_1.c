@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 04:46:51 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/20 23:10:40 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/22 16:54:57 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,8 @@ int	needs_retoken(char *cmd)
 	i = -1;
 	operator = false;
 	word = false;
+	if (!cmd)
+		return 0;
 	while (cmd && cmd[++i])
 	{
 		if (ft_isoperator(cmd, i) && !in_quotes(cmd, i))
