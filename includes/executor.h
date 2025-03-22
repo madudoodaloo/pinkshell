@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 19:58:02 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/20 22:34:51 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/22 01:10:25 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 # define EXECUTOR_H
 
 # include "../includes/minishell.h"
-
-void do_input_redir(t_exec *ex);
-void do_output_redir(t_exec *ex);
-int	check_redirs(t_exec *ex);
 void ft_close(int fd);
+int exec_r(t_exec *ex, char *value);
+int exec_rr(t_exec *ex, char *value);
+int exec_l(t_exec *ex, char *value);
+int	check_redirs(t_exec *ex);
 
 /* src/executor/execute_builtins.c */
 int     execute_builtin(t_exec *exec);

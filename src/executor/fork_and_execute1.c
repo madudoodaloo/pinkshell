@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 21:05:44 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/22 00:16:18 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/22 00:22:12 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,5 +18,5 @@
 	write(2, message, ft_strlen(message));
 	write(2, "\n", 1);
 	exit(1);
-}
+}*/
 

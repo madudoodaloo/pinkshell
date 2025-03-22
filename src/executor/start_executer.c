@@ -6,31 +6,14 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 11:59:02 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/22 00:13:24 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/22 01:13:41 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
 //rever se só tou a chamar isto numa child
-void	close_args_fds(t_exec *ex)
-{
-	int index;
 
-	index = ex->index;
-	if (!ex)
-		exit(1) ;
-	if (ex->is_heredoc)
-		close(ex->pipe_doc[0]);
-	if (ex->index > 0)
-		close(msh()->exec[index-1].pipe_fd[0]);
-	if (ex->index < ex->nbr_cmds - 1)
-	{
-		close_pipe(ex->pipe_fd);
-		ex[1].prev_pipe_fd = 0;
-	}
-	exit(1);
-}
 
 static void	excve_perror(char *command)
 {
@@ -53,44 +36,22 @@ static void	excve_perror(char *command)
 		write(2, ": No such file or directory\n", 28);
 }
 
-int fix_fd_pipe(t_exec *ex)
+void	close_args_fds(t_exec *ex)
 {
-	if (pipe(ex->pipe_fd) < 0)
-		return (-1);
-	if (ex->index < ex->nbr_cmds - 1)
-		ex[1].prev_pipe_fd = ex->pipe_fd[0];
-	//rever se tenho de dar close aqui
-	return (1);
-}
+	int index;
 
-// rever as merdas dos index + 1 ou - 1
-int do_child(t_exec *exec)
-{
-	if (!exec)
-		return (-1);
-	if (fix_fd_pipe(exec) < 0)
-		return (pipe_error());
-	signals_parent();
-	exec->pid = fork();
-	if (exec->pid < 0)
+	index = ex->index;
+	if (!ex)
+		exit(1) ;
+	if (ex->is_heredoc)
+		close(ex->pipe_doc[0]);
+	if (ex->index > 0)
+		close(msh()->exec[index-1].pipe_fd[0]);
+	if (ex->index < ex->nbr_cmds - 1)
 	{
-		close_pipe(exec->pipe_fd);
-		return (fork_error());
+		close_pipe(ex->pipe_fd);
 	}
-	if (exec->pid == 0)
-	{
-		signals_default();
-		new_child(exec);
-	}
-	int i = exec->index;
-	if (i > 0 && i + 1 < msh()->exec->nbr_cmds)
-		safe_close(msh()->exec[i - 1].pipe_fd[0]);
-	if (exec->is_heredoc)
-		safe_close(exec->pipe_doc[0]);
-	safe_close(exec->pipe_fd[1]);
-	if (i + 1 >= msh()->exec->nbr_cmds)
-		safe_close(exec->pipe_fd[0]);
-	return (1);
+	exit(1);
 }
 
 void new_child(t_exec *ex)

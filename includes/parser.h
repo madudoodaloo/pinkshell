@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 05:59:04 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/20 16:52:05 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/22 00:57:22 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,8 +80,7 @@ int		tokenizer(void);
 
 /* rm_quotes1.c */
 char    *rm_quote(char *str);
-void    rm_util(char *str, int i, char *new, int i_new);
-void    rm_quotes_exec(t_exec *exec);
+void    rm_quotes_exec(void);
 int     rm_strlen(char *str);
 
 

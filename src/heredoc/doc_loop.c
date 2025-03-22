@@ -6,86 +6,12 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 18:29:52 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/22 00:01:40 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/22 01:02:41 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-//rever se todos os prefixos estão iguais
-void open_outfiles_loop(char **out, t_exec *ex)
-{
-	int i = 0;
-	while (out[i])
-	{
-		safe_close(ex->out_fd);
-		if (!strncmp(out[i], "APP", 3))
-			ex->out_fd = open(out[i] + 3, O_CREAT, O_APPEND);
-		else if (!strncmp(out[i], "STD", 3))
-			ex->out_fd = open(out[i] + 3, O_CREAT, O_TRUNC);
-		i++;
-	}
-}
-
-int	prep_out_redir(t_exec *exec)
-{
-	int	i;
-
-	i = 0;
-	while (i < exec[i].nbr_cmds)
-	{
-		if (exec[i].redir_out != NULL)
-		{
-			open_outfiles_loop(exec[i].redir_out, exec);
-		}
-		i++;
-	}
-	return (1);
-
-}
-
-int	prep_in_redir(t_exec *exec)
-{
-	int	i;
-
-	// i = 0;
-	// while (i < exec[i].nbr_cmds)
-	// {
-	// 	if (exec[i].redir_in != NULL)
-	// 	{
-	// 		is_final_heredoc(exec[i].redir_in, exec, i);
-	// 		doc_loop(exec[i].redir_in, exec, i);
-	// 	}
-	// 	i++;
-	// }
-	i = 0;
-	while (i < exec[i].nbr_cmds)
-	{
-		open_infile_loop(exec[i].redir_in, exec, i);
-		i++;
-	}
-	return (0);
-}
-
-int	old_doc_loop(char **in_redirs, t_exec *exec, int k) // rever :  doc pipe check
-{
-	int	i;
-
-	i = 0;
-	while (in_redirs[i] != NULL)
-	{
-		if (!ft_strncmp(in_redirs[i], "app:", 4))
-		{
-			safe_close(exec[k].pipe_fd[0]);
-			if (run_doc(in_redirs[i] + 4, exec, k) < 0)
-				return (-1);
-		}
-		i++;
-	}
-	if (!is_final_heredoc(in_redirs, exec, k))
-		close(exec[k].pipe_fd[0]);
-	return (0);
-}
 
 
 int	doc_loop(char **args, t_exec *exec, int ex_index) // rever :  doc pipe checex_index
