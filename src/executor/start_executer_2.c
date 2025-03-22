@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/22 10:03:52 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/22 13:23:04 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/22 13:54:31 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ void start_executing(void)
 			execute_loop(ex, STDIN_FILENO, STDOUT_FILENO);
 		else
 			ft_waitpid(pid);
+
 	}
 	i = -1;
 	while (++i < msh()->exec->nbr_cmds)
