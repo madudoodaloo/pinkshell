@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 06:01:56 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/20 21:12:15 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/22 10:29:14 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	free_env(t_env *env);
 void	free_exec(t_exec *exec);
 
 /* src/utils/free_2.c */
-void	free_and_exit(void);
+void	free_and_exit(t_msh *m);
 
 /* src/utils/heredoc_utils.c */
 void	int_to_str(int num, char *str);

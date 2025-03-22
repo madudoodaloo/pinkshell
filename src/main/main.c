@@ -6,21 +6,21 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 15:19:12 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/22 00:02:33 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/22 10:29:52 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-void    clean_cmdline(void)
+void    prep_next_cmdline(t_msh *m)
 {
-	t_msh	*m;
-
-	m = msh();
 	if (!m)
 		return ;
 	if (m->line)
+	{
 		free(m->line);
+		m->line = NULL;
+	}
 	if (m->tokens)
 	{
 		free_tokens(m->tokens);
@@ -38,9 +38,10 @@ void	msh_loop(char **envp)
     init_all(envp);
     while (1)
     {
-        msh()->line = readline("minishell$");
+		msh()->line = readline("minishell$");
         if (!msh()->line)
         {
+			printf("!msh()->line\n");
             ft_put_str_fd("exit\n", 2);
             break ;
         }
@@ -52,9 +53,9 @@ void	msh_loop(char **envp)
             else
                 msh()->exit_status = 2;
         }
-        clean_cmdline();
+        prep_next_cmdline(msh());
     }
-    free_and_exit();
+    free_and_exit(msh());
 }
 
 int	main(int ac, char **av, char **envp)

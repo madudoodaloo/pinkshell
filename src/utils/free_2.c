@@ -6,17 +6,14 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 01:38:25 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/22 10:20:51 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/22 10:28:51 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-void	free_and_exit(void)
+void	free_and_exit(t_msh *m)
 {
-	t_msh	*m;
-
-	m = (msh());
 	if (!m)
 		return ;
 	clear_history();
