@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expander_3.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
+/*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 13:44:20 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/19 15:24:37 by marianamest      ###   ########.fr       */
+/*   Updated: 2025/03/22 13:12:43 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,8 @@ void	put_dollar_back(char *str)
 	int	i;
 
 	i = -1;
+	if (!str)
+		return ;
 	while (str[++i])
 	{
 		if (str[i] == TEMP_DOLLAR)

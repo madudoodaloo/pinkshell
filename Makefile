@@ -53,7 +53,7 @@ SRC =			src/main/main.c \
 				src/utils/utils_str.c \
 				src/utils/delete.c
 
-CFLAGS =		-I./includes -g #-fsanitize=address # -Wall -Wextra -Werror #
+CFLAGS =		-I./includes -g -Wall -Wextra -Werror #-fsanitize=address
 OTHERFLAGS =	-lreadline #-lasan -O3
 
 OBJ_DIR =		./obj/

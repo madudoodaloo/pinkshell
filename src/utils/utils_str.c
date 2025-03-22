@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_str.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
+/*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 14:50:45 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/20 16:09:36 by marianamest      ###   ########.fr       */
+/*   Updated: 2025/03/22 13:14:05 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,8 @@ char	*ft_strdup(const char *s)
 	size_t	i;
 
 	i = 0;
+	if (!s)
+		return NULL;
 	n = ft_strlen((char *)s);
 	copy = (char *)safe_malloc(sizeof(char) * (n + 1));
 	if (!copy)

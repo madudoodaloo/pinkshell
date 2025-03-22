@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   start_executer.c                                   :+:      :+:    :+:   */
+/*   start_executer_1.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 11:59:02 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/22 01:13:41 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/22 12:23:43 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,13 +44,11 @@ void	close_args_fds(t_exec *ex)
 	if (!ex)
 		exit(1) ;
 	if (ex->is_heredoc)
-		close(ex->pipe_doc[0]);
+		safe_close(ex->pipe_doc[0]);
 	if (ex->index > 0)
-		close(msh()->exec[index-1].pipe_fd[0]);
+		safe_close(msh()->exec[index-1].pipe_fd[0]);
 	if (ex->index < ex->nbr_cmds - 1)
-	{
 		close_pipe(ex->pipe_fd);
-	}
 	exit(1);
 }
 
@@ -100,11 +98,11 @@ void exec_single_cmd(t_exec *ex, int in, int out)
 			signals_default();
 			dup2(in, STDIN_FILENO);
 			dup2(out, STDOUT_FILENO);
-			ft_close(in);
-			ft_close(out);
+			safe_close(in);
+			safe_close(out);
 			new_child(ex);
 		}
 	}
-	ft_close(in);
-	ft_close(out);
+	safe_close(in);
+	safe_close(out);
 }

@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 15:19:12 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/22 11:32:45 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/22 13:06:10 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,10 @@ void    prep_next_cmdline(t_msh *m)
 	}
 	if (m->exec)
 	{
-		free_exec(m->exec);
+		int i = 0;
+
+		while (i < m->exec->nbr_cmds)
+			free_exec(&m->exec[i++]);
 		m->exec = NULL;
 	}
 }
@@ -38,11 +41,9 @@ void	msh_loop(char **envp)
     init_all(envp);
     while (1)
     {
-		printf("msh()->line = %p\n", msh()->line);
 		msh()->line = readline("minishell$");
         if (!msh()->line)
         {
-			printf("!msh()->line\n");
             ft_put_str_fd("exit\n", 2);
             break ;
         }

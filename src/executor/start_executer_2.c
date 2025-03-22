@@ -6,16 +6,12 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/22 10:03:52 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/22 10:04:08 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/22 12:26:08 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
-void ft_close(int fd)
-{
-	if (fd > 2)
-		close(fd);
-}
+
 void execute_loop(t_exec *ex, int in, int out)
 {
 	int i = 0;
@@ -29,12 +25,12 @@ void execute_loop(t_exec *ex, int in, int out)
 		}
 		if (ex[i].out_fd)
 		{
-			ft_close(out);
+			safe_close(out);
 			out = ex[i].out_fd;
 		}
 		if (ex[i].in_fd)
 		{
-			ft_close(in);
+			safe_close(in);
 			in = ex[i].in_fd;
 		}
 		exec_single_cmd(&ex[i], in, out);
@@ -51,7 +47,7 @@ void start_executing(void)
 
 	t_exec *ex;
 	ex = msh()->exec;
-	if (!check_redirs(ex) < 0)
+	if (!check_redirs(ex))
 		return ;
 	ex = msh()->exec;
 	if (msh()->exec->nbr_cmds == 1)

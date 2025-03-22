@@ -6,13 +6,13 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 01:44:25 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/20 21:00:44 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/22 12:01:44 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-static int	ft_counter(char const *str, char c)
+int	ft_counter(char const *str, char c)
 {
 	int	i;
 	int	word;
@@ -56,7 +56,7 @@ char	**ft_split(char const *str, char c)
 	return (split);
 }
 
-static int	ft_intmin(char *str)
+int	ft_intmin(char *str)
 {
 	int	i;
 
@@ -65,7 +65,7 @@ static int	ft_intmin(char *str)
 	return (i);
 }
 
-static size_t	ft_digits(int n)
+size_t	ft_digits(int n)
 {
 	size_t	i;
 

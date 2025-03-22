@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 06:01:56 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/22 10:29:14 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/22 12:35:50 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	free_var(t_env *var);
 void	free_matrix(char **matrix);
 void	free_tokens(t_token *tokens);
 void	free_env(t_env *env);
-void	free_exec(t_exec *exec);
+void	free_exec(t_exec *ex);
 
 /* src/utils/free_2.c */
 void	free_and_exit(t_msh *m);
@@ -60,10 +60,10 @@ size_t	ft_strlcat(char *dst, const char *src, size_t n);
 
 /* src/utils/libft_utils5.c */
 char	*ft_itoa(int n);
-static int	ft_counter(char const *str, char c);
+int	ft_counter(char const *str, char c);
 char	**ft_split(char const *str, char c);
-static int	ft_intmin(char *str);
-static size_t	ft_digits(int n);
+int	ft_intmin(char *str);
+size_t	ft_digits(int n);
 
 /* src/utils/malloc.c */
 void	*ft_memset(void *s, int c, size_t n);

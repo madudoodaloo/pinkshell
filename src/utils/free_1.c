@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 18:17:41 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/22 10:33:56 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/22 12:53:26 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,13 +78,8 @@ void	free_matrix(char **matrix)
 
 void	free_exec(t_exec *ex)
 {
-	int	i;
-
-    if (!ex)
-        return ;
-    if (ex->args)
+	if (ex->args)
 		free_matrix(ex->envp);
-    if (ex->envp)
+	if (ex->envp)
 		free_matrix(ex->envp);
-    free(ex);
 }
