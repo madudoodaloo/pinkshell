@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   prep_redir.c                                       :+:      :+:    :+:   */
+/*   doc_loop.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 18:29:52 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/22 01:02:41 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/22 13:33:05 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	doc_loop(char **args, t_exec *exec, int ex_index) // rever :  doc pipe chece
 		i++;
 	}
 	if (!is_final_heredoc(args, exec, ex_index))
-		close(exec[ex_index].pipe_fd[0]);
+		safe_close(exec[ex_index].pipe_fd[0]);
 	return (0);
 }
 
