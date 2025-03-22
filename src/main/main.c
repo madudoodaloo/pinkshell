@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 15:19:12 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/22 10:29:52 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/22 11:32:45 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ void	msh_loop(char **envp)
     init_all(envp);
     while (1)
     {
+		printf("msh()->line = %p\n", msh()->line);
 		msh()->line = readline("minishell$");
         if (!msh()->line)
         {
