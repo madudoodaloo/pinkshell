@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 18:29:52 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/22 13:33:05 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/22 13:34:57 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,6 @@ bool	check_and_open_file(char *file_name)
 		ft_put_str_fd("Error opening file: %s\n", STDERR_FILENO);
 		return (false);
 	}
-	close(fd);
+	safe_close(fd);
 	return (true);
 }

@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 14:42:43 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/22 10:06:10 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/22 13:34:50 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ int	pipe_error(void)
 void	close_fds(int *fds)
 {
 	safe_close(fds[0]);
-	close(fds[1]);
+	safe_close(fds[1]);
 }
 
 int	fork_error(void)
