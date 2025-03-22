@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 13:57:32 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/20 19:27:22 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/21 22:54:43 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,20 +41,28 @@
 typedef struct s_exec
 {
 	int		pid;
-	char	**redir_in;
-	char 	**redir_out;
 	char 	**args;
 	int		nbr_cmds; //pipes
 	int		pipe_fd[2];
 	int		pipe_doc[2];
-	int		prev_pipe_fd;
-	int		in_fd; //vai ler
-	int		out_fd; //vai escrever
+	int		in_fd;
+	int		out_fd;
 	bool	is_heredoc;
 	char	**envp; // manter a t_env e arranjar uma função
 	bool	cmd_invalid;
 	int		index;
 }					t_exec;
+
+//echo "ola" > test.c | wc -l
+//exec[0].args[0] = echo
+//exec[0].args[1] = ola
+//exec[0].args[2] = >
+//exec[0].args[3] = test.c
+//exec[0].args[4] = NULL
+//
+//exec[1].args[0] = wc
+//exec[1].args[1] = -l
+//exec[1].args[2] = NULL
 
 typedef struct s_env
 {

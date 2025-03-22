@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 06:32:58 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/20 13:28:12 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/22 00:06:12 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,6 @@ int	parser(void)
         return (0);
     if (!set_exec())
         return (0);
-    //rm_quotes_exec();
-    //print_exec_struct(msh()->exec);
+    rm_quotes_exec(msh()->exec);
     return (1);
 }

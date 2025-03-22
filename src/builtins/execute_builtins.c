@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execute_builtins.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 16:58:48 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/21 18:22:58 by marvin           ###   ########.fr       */
+/*   Updated: 2025/03/22 00:15:27 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,11 +51,6 @@ int	execute_builtin(t_exec *exec)
 	return (1);
 }
 
-// void	execute_builtin_in_fork(/*whatever it requires*/)// check if void is appropriate and add to .h file
-//{
-//	execute_builtin(/*args required*/);
-//	exit(msh()->exit_status);
-//}
 
 int	is_builtin(char *command) // bota struct maybe
 {

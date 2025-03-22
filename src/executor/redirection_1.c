@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 18:36:18 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/20 23:40:18 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/21 23:54:30 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,72 +44,84 @@ char **exred(char **args, int i)
 	}
 	return (new);
 }
-void exec_red2(t_exec *ex, char *key, char *value)
+
+//ezequiel original
+
+int exec_r(t_exec *ex, char *value)
 {
-	printf("r: %s - %s\n", key, value);
-	free(key);
-	free(value);
+	safe_close(ex->out_fd);
+	ex->out_fd = open(value, O_WRONLY | O_CREAT | O_TRUNC, 0644);
+	if (ex->out_fd < 0)
+		return (0);
+	return (1);
 }
 
-char **exec_red(t_exec *ex)
+int exec_rr(t_exec *ex, char *value)
 {
-	char **agrs;
+	safe_close(ex->out_fd);
+	ex->out_fd = open(value, O_WRONLY | O_CREAT | O_APPEND, 0644);
+	if (ex->out_fd < 0)
+		return (0);
+	return (1);
+}
+int exec_l(t_exec *ex, char *value)
+{
+	safe_close(ex->out_fd);
+	ex->out_fd = open(value, O_RDONLY);
+	if (ex->out_fd < 0)
+		return (0);
+	return (1);
+}
+
+int exec_red2(t_exec *ex, char *key, char *value)
+{
+	int ret;
+
+	ret = 0;
+	if (!ft_strncmp(key, ">", 1))
+		ret = exec_r(ex, value);
+	else if (!ft_strncmp(key, "<", 1))
+		ret = exec_l(ex, value);
+	else if (!strncmp(key, ">>", 2))
+		ret = exec_rr(ex, value);
+	return (ret);
+}
+
+char **exec_red(t_exec *ex, int ex_index)
+{
+	char **args;
 	int i = 0;
 
-	agrs = ex->args;
-	while (agrs && agrs[i])
+	args = ex->args;
+	if (doc_loop(args, ex, ex_index) < 0)
+			return (NULL);
+	while (args && args[i])
 	{
-		if (!ft_strcmp(agrs[i], "<"))
+		if (!ft_strncmp(args[i], ">>", 2) || !ft_strncmp(args[i], ">", 1) || !ft_strncmp(args[i], "<", 1))
 		{
-			exec_red2(ex, agrs[i], agrs[i + 1]);
-			agrs = exred(agrs, i);
+			if (!exec_red2(ex, args[i], args[i + 1]))
+				return (NULL);
+			args = exred(args, i);
 			i = 0;
 		}
 		else
 			i++;
 	}
-	return agrs;
+	return (args);
 }
 
 int	check_redirs(t_exec *ex)
 {
-	int i = 0;
-	while (i < msh()->exec->nbr_cmds)
+	char 	**temp;
+	int ex_index = 0;
+	while (ex_index < msh()->exec->nbr_cmds)
 	{
-		ex[i].args = exec_red(&ex[i]);
-		i++;
+		temp = exec_red(&ex[ex_index], ex_index);
+		if (!temp)
+			return (0);
+		free_matrix(ex[ex_index].args);
+		ex[ex_index].args = temp;
+		ex_index++;
 	}
 	return (1);
-}
-//RESCREVER ESTA MERDA
-void do_input_redir(t_exec *ex)
-{
-	if (ex->index > 0)
-	{
-		if (!ex->redir_in)
-			dup2(ex->prev_pipe_fd, 0);
-		safe_close(ex->prev_pipe_fd);
-	}
-	if (ex->redir_in && ex->redir_in[0])
-	{
-		if (ex->is_heredoc)
-		{
-			dup2(ex->pipe_doc[0], 0);
-			safe_close(ex->pipe_doc[0]);
-		}
-		else
-		{
-			dup2(ex->in_fd, 0);
-			safe_close(ex->in_fd);
-		}
-	}
-}
-//RESCREVER ESTA MERDA
-void do_output_redir(t_exec *ex)
-{
-	if (ex->index < ex->nbr_cmds - 1 && !ex->redir_out)
-		dup2(ex->pipe_fd[1], 0);
-	if (ex->redir_out)
-		dup2(ex->out_fd, 0);
-	safe_close(ex->prev_pipe_fd);
 }

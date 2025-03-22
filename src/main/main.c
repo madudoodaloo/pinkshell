@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 15:19:12 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/20 21:20:34 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/22 00:02:33 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,11 +48,7 @@ void	msh_loop(char **envp)
         {
             add_history(msh()->line);
             if (parser())
-			{
 				start_executing();
-				//printf("%s\n", msh()->exec[0].);
-				//printf("%s\n", msh()->exec[1]);
-			}
             else
                 msh()->exit_status = 2;
         }

@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 04:54:10 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/20 16:54:53 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/22 00:03:50 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,6 @@ char *rm_quote(char *str)
 		rm_util(str, i + 1, new, i_new);
 	free(str);
 	return (new);
-
 }
 void	rm_quotes_exec(t_exec	*exec)
 {
@@ -96,12 +95,6 @@ void	rm_quotes_exec(t_exec	*exec)
 		return ;
 	while (index < exec[0].nbr_cmds)
 	{
-		while (exec[index].redir_in && exec[index].redir_in[++i])
-			exec[index].redir_in[i] = rm_quote(exec[index].redir_in[i]);
-		i = -1;
-		while (exec[index].redir_out && exec[index].redir_out[++i])
-			exec[index].redir_out[i] = rm_quote(exec[index].redir_out[i]);
-		i = -1;
 		while (exec[index].args && exec[index].args[++i])
 			exec[index].args[i] = rm_quote(exec[index].args[i]);
 		index++;

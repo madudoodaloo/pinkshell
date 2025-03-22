@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 18:29:52 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/20 22:53:50 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/22 00:01:40 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ int	prep_in_redir(t_exec *exec)
 	return (0);
 }
 
-int	doc_loop(char **in_redirs, t_exec *exec, int k) // rever :  doc pipe check
+int	old_doc_loop(char **in_redirs, t_exec *exec, int k) // rever :  doc pipe check
 {
 	int	i;
 
@@ -86,6 +86,28 @@ int	doc_loop(char **in_redirs, t_exec *exec, int k) // rever :  doc pipe check
 		close(exec[k].pipe_fd[0]);
 	return (0);
 }
+
+
+int	doc_loop(char **args, t_exec *exec, int ex_index) // rever :  doc pipe checex_index
+{
+	int	i;
+
+	i = 0;
+	while (args[i] != NULL)
+	{
+		if (!ft_strncmp(args[i], "<<", 2))
+		{
+			safe_close(exec[ex_index].pipe_fd[0]);
+			if (run_doc(args[i + 1], exec, ex_index) < 0)
+				return (-1);
+		}
+		i++;
+	}
+	if (!is_final_heredoc(args, exec, ex_index))
+		close(exec[ex_index].pipe_fd[0]);
+	return (0);
+}
+
 
 int	open_infile_loop(char **in_redirs, t_exec *exec, int k)
 {
