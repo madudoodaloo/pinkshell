@@ -6,20 +6,12 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 13:57:32 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/21 22:54:43 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/22 10:01:15 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINISHELL_H
 # define MINISHELL_H
-
-# include "builtins.h"
-# include "executor.h"
-# include "expander.h"
-# include "heredoc.h"
-# include "parser.h"
-# include "signs.h"
-# include "utils.h"
 
 # include <errno.h>
 # include <fcntl.h>
@@ -112,7 +104,13 @@ typedef enum e_temp_op
 	TEMP_OUT = -4,
 }					t_temp_op;
 
-//t_msh				*msh(void);
 
+# include "builtins.h"
+# include "executor.h"
+# include "expander.h"
+# include "heredoc.h"
+# include "parser.h"
+# include "signs.h"
+# include "utils.h"
 
 #endif

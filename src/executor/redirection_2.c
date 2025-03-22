@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   redirection_1.c                                    :+:      :+:    :+:   */
+/*   redirection_2.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 18:36:18 by msilva-c          #+#    #+#             */
-/*   Updated: 2025/03/21 23:54:30 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/22 10:11:44 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ int	check_redirs(t_exec *ex)
 		temp = exec_red(&ex[ex_index], ex_index);
 		if (!temp)
 			return (0);
-		free_matrix(ex[ex_index].args);
+		//free_matrix(ex[ex_index].args);
 		ex[ex_index].args = temp;
 		ex_index++;
 	}

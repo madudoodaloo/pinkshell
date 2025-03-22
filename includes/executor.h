@@ -6,7 +6,7 @@
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 19:58:02 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/22 01:10:25 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/22 10:06:24 by msilva-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,16 @@
 
 # include "../includes/minishell.h"
 
-void ft_close(int fd); 
+void ft_close(int fd);
 int exec_r(t_exec *ex, char *value);
 int exec_rr(t_exec *ex, char *value);
 int exec_l(t_exec *ex, char *value);
 int	check_redirs(t_exec *ex);
+char **exred(char **args, int i);
+int size_args(char **args);
+void ft_close(int fd);
+int ft_check_access(char *str, char *cmd, char **tmp);
+
 
 /* src/executor/execute_builtins.c */
 int     execute_builtin(t_exec *exec);
