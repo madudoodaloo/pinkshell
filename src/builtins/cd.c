@@ -26,13 +26,13 @@ void	cd(char **args, int fd)
 		free(home);
 		return ;
 	}
-	/*if (!args || chdir(args[1]))
+	if (!args || chdir(args[1]))
 	{
 		write(2, "minishell: cd ", 14);
 		perror(args[1]);
 		msh()->exit_status = 1;
 		return ;
-	}*/
+	}
 	if (getcwd(cwd, sizeof(cwd)) == NULL)
 	{
 		perror("get cwd error.");

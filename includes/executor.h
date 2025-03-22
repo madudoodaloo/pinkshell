@@ -14,7 +14,8 @@
 # define EXECUTOR_H
 
 # include "../includes/minishell.h"
-void ft_close(int fd);
+
+void ft_close(int fd); 
 int exec_r(t_exec *ex, char *value);
 int exec_rr(t_exec *ex, char *value);
 int exec_l(t_exec *ex, char *value);
@@ -54,20 +55,12 @@ void    close_args_fds(t_exec *ex);
 int     fix_fd_pipe(t_exec *ex);
 int     do_child(t_exec *exec);
 void    new_child(t_exec *ex);
-void    exec_single_cmd(t_exec *e, int in, int out);
+void    exec_single_cmd(t_exec *ex, int in, int out);
 void    start_executing(void);
 
 /* sys_call_error.c */
 int     pipe_error(void);
 void    close_fds(int *fds);
 int     fork_error(void);
-
-
-
-
-
-
-
-
 
 #endif

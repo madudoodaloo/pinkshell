@@ -13,6 +13,14 @@
 #ifndef MINISHELL_H
 # define MINISHELL_H
 
+# include "builtins.h"
+# include "executor.h"
+# include "expander.h"
+# include "heredoc.h"
+# include "parser.h"
+# include "signs.h"
+# include "utils.h"
+
 # include <errno.h>
 # include <fcntl.h>
 # include <limits.h>
@@ -28,6 +36,7 @@
 # include <sys/types.h>
 # include <sys/wait.h>
 # include <unistd.h>
+# include <stddef.h>
 
 # define CMD 1
 # define PIPE 2
@@ -103,14 +112,7 @@ typedef enum e_temp_op
 	TEMP_OUT = -4,
 }					t_temp_op;
 
-t_msh				*msh(void);
+//t_msh				*msh(void);
 
-# include "builtins.h"
-# include "executor.h"
-# include "expander.h"
-# include "heredoc.h"
-# include "parser.h"
-# include "signs.h"
-# include "utils.h"
 
 #endif

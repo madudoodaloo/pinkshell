@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   retokenizer.c                                      :+:      :+:    :+:   */
+/*   retokenizer_1.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -114,22 +114,4 @@ t_token *update_token(t_token *old)
 		old->next->prev = new->next;
 	free(old);
 	return (new);
-}
-
-void	re_token(t_token *head)
-{
-	t_token	*temp;
-
-	temp = head;
-	while (temp)
-	{
-		// printf("  needs_retoken: %s\n", needs_retoken(temp->content));
-		if (needs_retoken(temp->content))
-		{
-			//printf("going to get_which\n");
-			temp = update_token(temp);
-		}
-		else
-			temp = temp->next;
-	}
 }

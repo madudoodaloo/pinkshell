@@ -14,6 +14,7 @@
 # define BUILTINS_H
 
 # include "../includes/minishell.h"
+
 char	*path_search(char *str, t_env *env);
 
 /* cd */

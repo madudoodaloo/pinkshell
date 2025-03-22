@@ -13,7 +13,7 @@
 #ifndef HEREDOC_H
 # define HEREDOC_H
 
-# include "minishell.h"
+# include "../includes/minishell.h"
 
 char	**ft_split(char const *str, char c);
 size_t	ft_strlcat(char *dst, const char *src, size_t n);
@@ -33,7 +33,6 @@ void    control_d_handle(t_exec *exec, int k, char *str);
 void    write_to_pipe(char *str, t_exec *exec);
 
 /* waitpid.c */
-//void    ft_waitpid(int pid);
 void    write_to_pipe(char *str, t_exec *exec);
 void    close_pipe(int *fd);
 void    safe_close(int fd);

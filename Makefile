@@ -9,7 +9,8 @@ SRC =			src/main/main.c \
 				src/parser/init.c \
 				src/parser/parser.c \
 				src/parser/quotes.c \
-				src/parser/retokenizer.c \
+				src/parser/retokenizer_1.c \
+				src/parser/retokenizer_2.c \
 				src/parser/split_spaces.c \
 				src/parser/syntax.c \
 				src/parser/tokenizer.c \
@@ -21,8 +22,11 @@ SRC =			src/main/main.c \
 				src/signals/signals_2.c \
 				src/executor/fork_and_execute1.c \
 				src/executor/redirection_1.c \
-				src/executor/start_executer.c \
-				src/executor/sys_call_error.c \
+				src/executor/redirection_2.c \
+				src/executor/start_executer_1.c \
+				src/executor/start_executer_2.c \
+				src/executor/sys_call_error_1.c \
+				src/executor/sys_call_error_2.c \
 				src/builtins/execute_builtins.c \
 				src/builtins/cd.c \
 				src/builtins/echo.c \
@@ -34,7 +38,6 @@ SRC =			src/main/main.c \
 				src/builtins/pwd.c \
 				src/builtins/unset1.c \
 				src/heredoc/doc_loop.c \
-				src/executor/redirection_1.c \
 				src/heredoc/run_doc.c \
 				src/heredoc/waitpid.c \
 				src/utils/free_1.c \

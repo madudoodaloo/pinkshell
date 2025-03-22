@@ -36,7 +36,7 @@ t_env	*env_dup(t_env *env);
 /* init_exec.c */
 int     count_cmds(t_token *tokens);
 int     strlen_args(char **args);
-char    **add_prefix(t_token *token, char **args);
+//not being used: char    **add_prefix(t_token *token, char **args);
 char    **add_to_matrix(char *content, char **args);
 void    tokens_to_exec(t_token *token, t_exec *exec, int nbr_cmds);
 t_exec  *init_exec(t_token *tokens);
@@ -49,6 +49,7 @@ t_msh	*init_all(char **envp);
 
 /* parser.c */
 int		parser(void);
+void print_msh(t_msh *msh);
 
 /* quotes.c */
 int		in_quotes(char *line, int max);
@@ -61,6 +62,7 @@ t_token	*get_operator(t_token *t);
 t_token	*get_word(t_token *t);
 int		needs_retoken(char *cmd);
 t_token	*get_which(t_token *old);
+t_token *update_token(t_token *old);
 void	re_token(t_token *head);
 
 /* split_spaces.c */

@@ -56,9 +56,14 @@ int		ft_strcmp(const char *s1, const char *s2);
 void	ft_put_str_fd(char *str, int fd);
 int		ft_atoi(char *str);
 char	*ft_strjoin(const char *s1, const char *s2);
+size_t	ft_strlcat(char *dst, const char *src, size_t n);
 
 /* src/utils/libft_utils5.c */
 char	*ft_itoa(int n);
+static int	ft_counter(char const *str, char c);
+char	**ft_split(char const *str, char c);
+static int	ft_intmin(char *str);
+static size_t	ft_digits(int n);
 
 /* src/utils/malloc.c */
 void	*ft_memset(void *s, int c, size_t n);
@@ -76,7 +81,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*ft_strdup(const char *s);
 
 /* src/utils/delete.c */
-void print_msh(t_msh *msh);
+void	print_struct(t_token **lst_head);
 //void	print_exec_struct(t_exec *exec);
 char	**copy_matrix(char **src);
 
