@@ -3,16 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   run_doc.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msilva-c <msilva-c@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 12:20:57 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/22 16:29:21 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/22 21:34:18 by marianamest      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
-
-
 
 
 int	run_doc(char *delimiter, t_exec *exec, int k)

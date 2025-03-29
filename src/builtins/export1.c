@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   export1.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msilva-c <msilva-c@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 13:07:55 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/21 05:08:17 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/22 21:23:34 by marianamest      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,6 @@ void	format_export_var(const char *var, int fd)
 	int			name_len;
 
 	(void)fd;
-	//REVER TROCAR PRINTF TO FTPUTSTR FD
 	if (!equals)
 		printf("declare -x %s\n", var);
 	else

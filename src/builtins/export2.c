@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   export2.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msilva-c <msilva-c@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marianamestre <marianamestre@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 16:47:08 by marianamest       #+#    #+#             */
-/*   Updated: 2025/03/21 05:46:26 by msilva-c         ###   ########.fr       */
+/*   Updated: 2025/03/22 21:26:03 by marianamest      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ char	**get_matrix_env(t_env *env)
 	env_size = 0;
 	while (temp)
 	{
-	    // printf("Current var: %s\n", temp->var); // Debugging output
 		env_size++;
 		temp = temp->next;
 	}
